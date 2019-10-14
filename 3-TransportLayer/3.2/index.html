@@ -782,14 +782,16 @@
 ③ 收到一个 <font face="Consolas">ACK</font>：<font face="Consolas">GBN</font> 协议对分组采用累积确认 (<font face="Consolas">cumulative acknowledgment</font>) 的方式。对接收方来说，如果一个分组 <font face="Consolas">n</font> 被收到且按序，则接收方为 <font face="Consolas">n</font> 发送一个 <font face="Consolas">ACK</font>，表明它收到了 <font face="Consolas">n</font> 之前且包括 <font face="Consolas">n</font> 的所有分组，并向上层交付数据。所有其他情况下，接收方丢弃分组，并发送 <font face="Consolas">ACK</font> <font face="Consolas">+</font> 最近收到的按序分组序列号。</p>
 <h4 id="3-sr-selective-repeat">(3) <font face="Consolas">SR</font> 协议 (<font face="Consolas">Selective Repeat</font>)</h4>
 <p>&emsp;<font face="Consolas">GBN</font> 协议仍存在性能问题：当窗口长度和时延带宽积很大，流水线中有很多分组时，单个分组的差错就会引起大量不必要的重传。</br>
-&emsp;接收方对每个分组单独确认，并设置缓存机制，保留乱序到达的分组。发送方为每一个分组单独设置定时器，只重传那些没收到 <font face="Consolas">ACK</font> 的分组。</p>
+<div align=center>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/12sr1.png?raw=true">
+</div></p>
 <p>发送方响应事件：</br>
 ① 上层调用：同 <font face="Consolas">GBN</font>。</br>
 ② 超时：每个分组都有自己的逻辑定时器。</br>
 ③ 收到一个 <font face="Consolas">ACK</font>：如果收到的 <font face="Consolas">ACK</font> 在窗口内，则标记为已接收；如果收到的分组序号等于 <font face="Consolas"><em>send_base</em></font>，窗口基序号移动到最小已发送未确认序号处；如果窗口发生移动，且有可发送序号，则发送这些分组。</br></p>
 <p>接收方响应事件：</br>
 ① 在 <font face="Consolas">[<em>rcv_base</em>, <em>rcv_base</em></font> <font face="Consolas"><em>+</em></font> <font face="Consolas"><em>N</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即收到的分组落在接收方的窗口范围内。首先返回一个 <font face="Consolas">ACK</font>；如果该分组以前未收到，缓存该分组；如果该分组等于基序号 <font face="Consolas"><em>rcv_base</em></font>，则将连续的缓存分组交付上层，接收窗口移动。</br>
-② 在 <font face="Consolas">[<em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>N</em></font>, <font face="Consolas"><em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即接收方已确认接收并在窗口外的重复分组，返回一个 <font face="Consolas">ACK</font>。</br>
+② 在 <font face="Consolas">[<em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>N</em>, <em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即接收方已确认接收并在窗口外的重复分组，返回一个 <font face="Consolas">ACK</font>。</br>
 ③ 其他情况，忽略收到的分组。</p>
 <p></font></p>
                 
