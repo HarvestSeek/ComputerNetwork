@@ -545,8 +545,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3-DataStructures/3.3.md" title="3.Binary search trees" class="md-nav__link">
-      3.Binary search trees
+    <a href="../3.3/" title="3.Connection-Oriented Transport： TCP" class="md-nav__link">
+      3.Connection-Oriented Transport： TCP
     </a>
   </li>
 
@@ -557,7 +557,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3-DataStructures/3.4.md" title="4.Red-Black trees" class="md-nav__link">
+    <a href="../3.4/" title="4.Red-Black trees" class="md-nav__link">
       4.Red-Black trees
     </a>
   </li>
@@ -761,7 +761,7 @@
 <div align=center>
 <img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/8rdt30senderfsm.png?raw=true" height=400></br>
 </div></p>
-<p>&emsp;注意到，对于发送方来说，分组丢失、<font face="Consolas">ACK</font> 丢失、<font face="Consolas">ACK</font> 损坏、<font face="Consolas">ACK</font> 的序列列号错误发生时都会依赖于定时器的重传，如果定时器设置过短造成接收方在等待状态下收到损坏或不对应的 <font face="Consolas">ACK</font> 时会什么也不做，避免了不必要的重传。</p>
+<p>&emsp;对于发送方来说，分组丢失、<font face="Consolas">ACK</font> 丢失、<font face="Consolas">ACK</font> 损坏、<font face="Consolas">ACK</font> 的序列列号错误发生时都会导致超时，然后重传。如果定时器设置过短造成接收方在等待状态下收到损坏或不对应的 <font face="Consolas">ACK</font> 时会什么也不做，避免了不必要的重传。</p>
 <p>&emsp;<font face="Consolas">Rdt3.0</font> 可以正确工作，但性能很差。停-等协议信道利用率：$\frac{L/R}{RTT+L/R}, RTT=2×d_{prop}$</p>
 <h3 id="2">2. 滑动窗口协议</h3>
 <h4 id="1_2">(1). 概述</h4>
@@ -829,13 +829,13 @@
           </a>
         
         
-          <a href="../../4-NetworkLayer/4.1/" title="1.a" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../3.3/" title="3.Connection-Oriented Transport： TCP" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                1.a
+                3.Connection-Oriented Transport： TCP
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

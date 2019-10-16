@@ -40,7 +40,7 @@
 
     
       
-        <title>3.3 - Learning Notes of Computer Networking</title>
+        <title>3.Connection-Oriented Transport： TCP - Learning Notes of Computer Networking</title>
       
     
     
@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#1" tabindex="1" class="md-skip">
+      <a href="#1-tcp" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -142,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                3.3
+                3.Connection-Oriented Transport： TCP
               
             </span>
           
@@ -389,10 +389,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       III Transport Layer
@@ -432,11 +434,127 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../3-DataStructures/3.3.md" title="3.Binary search trees" class="md-nav__link">
-      3.Binary search trees
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        3.Connection-Oriented Transport： TCP
+      </label>
+    
+    <a href="./" title="3.Connection-Oriented Transport： TCP" class="md-nav__link md-nav__link--active">
+      3.Connection-Oriented Transport： TCP
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tcp" title="1. TCP 报文段结构" class="md-nav__link">
+    1. TCP 报文段结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-round-trip-time-estimation" title="2. 往返时间估计 (Round-trip Time Estimation)" class="md-nav__link">
+    2. 往返时间估计 (Round-trip Time Estimation)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tcp" title="3. TCP 的可靠数据传输" class="md-nav__link">
+    3. TCP 的可靠数据传输
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="(1). 发送方的简化描述" class="md-nav__link">
+    (1). 发送方的简化描述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 超时间隔加倍" class="md-nav__link">
+    (2). 超时间隔加倍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fast-retransmit" title="(3). 快速重传 (Fast Retransmit)" class="md-nav__link">
+    (3). 快速重传 (Fast Retransmit)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tcp" title="4. TCP 连接管理" class="md-nav__link">
+    4. TCP 连接管理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tcp_1" title="(1). TCP 通信过程" class="md-nav__link">
+    (1). TCP 通信过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tcp" title="(2). TCP 连接建立：三次握手" class="md-nav__link">
+    (2). TCP 连接建立：三次握手
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tcp_1" title="(3). TCP 连接关闭：四次挥手" class="md-nav__link">
+    (3). TCP 连接关闭：四次挥手
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cs" title="(4). C/S 的状态转换" class="md-nav__link">
+    (4). C/S 的状态转换
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -446,7 +564,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3-DataStructures/3.4.md" title="4.Red-Black trees" class="md-nav__link">
+    <a href="../3.4/" title="4.Red-Black trees" class="md-nav__link">
       4.Red-Black trees
     </a>
   </li>
@@ -512,23 +630,44 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1. 二叉搜索树及其性质" class="md-nav__link">
-    1. 二叉搜索树及其性质
+  <a href="#1-tcp" title="1. TCP 报文段结构" class="md-nav__link">
+    1. TCP 报文段结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-round-trip-time-estimation" title="2. 往返时间估计 (Round-trip Time Estimation)" class="md-nav__link">
+    2. 往返时间估计 (Round-trip Time Estimation)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tcp" title="3. TCP 的可靠数据传输" class="md-nav__link">
+    3. TCP 的可靠数据传输
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" title="(1). 定义" class="md-nav__link">
-    (1). 定义
+  <a href="#1" title="(1). 发送方的简化描述" class="md-nav__link">
+    (1). 发送方的简化描述
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" title="(2). 性质" class="md-nav__link">
-    (2). 性质
+  <a href="#2" title="(2). 超时间隔加倍" class="md-nav__link">
+    (2). 超时间隔加倍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fast-retransmit" title="(3). 快速重传 (Fast Retransmit)" class="md-nav__link">
+    (3). 快速重传 (Fast Retransmit)
   </a>
   
 </li>
@@ -539,44 +678,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2_1" title="2. 二叉搜索树的操作" class="md-nav__link">
-    2. 二叉搜索树的操作
+  <a href="#4-tcp" title="4. TCP 连接管理" class="md-nav__link">
+    4. TCP 连接管理
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-search" title="(1).  SEARCH" class="md-nav__link">
-    (1).  SEARCH
+  <a href="#1-tcp_1" title="(1). TCP 通信过程" class="md-nav__link">
+    (1). TCP 通信过程
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-minimummaximum" title="(2). MINIMUM、MAXIMUM" class="md-nav__link">
-    (2). MINIMUM、MAXIMUM
+  <a href="#2-tcp" title="(2). TCP 连接建立：三次握手" class="md-nav__link">
+    (2). TCP 连接建立：三次握手
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-predecessorsuccessor" title="(3). PREDECESSOR、SUCCESSOR" class="md-nav__link">
-    (3). PREDECESSOR、SUCCESSOR
+  <a href="#3-tcp_1" title="(3). TCP 连接关闭：四次挥手" class="md-nav__link">
+    (3). TCP 连接关闭：四次挥手
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-insert" title="(4). INSERT" class="md-nav__link">
-    (4). INSERT
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-delete" title="(4). DELETE" class="md-nav__link">
-    (4). DELETE
+  <a href="#4-cs" title="(4). C/S 的状态转换" class="md-nav__link">
+    (4). C/S 的状态转换
   </a>
   
 </li>
@@ -603,202 +735,46 @@
               
                 
                 
-                  <h1>3.3</h1>
+                  <h1>3.Connection-Oriented Transport： TCP</h1>
                 
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
-<h3 id="1">1. 二叉搜索树及其性质</h3>
-<h4 id="1_1">(1). 定义</h4>
-<p>&emsp;由一棵二叉树组织，每个结点包含属性 <font face="Consolas"><em>key、left、right、parent</em></font>；对任何结点 <font face="Consolas"><em>x</em></font>，其左子树的关键字不大于 <font face="Consolas"><em>x.key</em></font>，右子树的关键字不小于 <font face="Consolas"><em>x.key</em></font>。</br>
-&emsp;结点的前驱 (<font face="Consolas">predecessor</font>)、后继 (<font face="Consolas">successor</font>)：中序的前一个结点和后一个结点。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">key</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
-    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">Node</span><span class="p">;</span>
+<h3 id="1-tcp">1. <font face="Consolas">TCP</font> 报文段结构</h3>
+<div align=center>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/tcpsegment.png?raw=true" width=400>
+</div>
 
-<span class="k">typedef</span> <span class="k">struct</span> <span class="n">Tree</span> <span class="p">{</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
-<span class="p">}</span> <span class="n">BST</span><span class="p">;</span>
-</pre></div>
-</td></tr></table></p>
-<h4 id="2">(2). 性质</h4>
-<p>① 满足二叉树的所有性质。</br>
-② 在 <font face="Consolas">BST</font> 中，如果一个结点有两个孩子，那么它的前驱没有右孩子，后继没有左孩子。</br>
-&emsp;- 前驱为左子树中的最大元，它不可能再有右孩子，后继同理。</br>
-③ 在所有关键字互不相同的 <font face="Consolas">BST</font> 中，如果一个结点 <font face="Consolas"><em>x</em></font> 的右子树为空，并且它存在一个后继 <font face="Consolas"><em>y</em></font>，那么 <font face="Consolas"><em>y</em></font> 是 <strong>{</strong> <font face="Consolas">nodes  | </font><font face="Consolas"><em>node</em></font> 和 <font face="Consolas"><em>node.left</em></font> 都是 <font face="Consolas">x</font> 的祖先 <strong>}</strong> 中的层数最低的元素（规定每个结点都是它自己的祖先）。</br>
-&emsp;- 首先，<font face="Consolas"><em>y</em></font> 一定是 <font face="Consolas"><em>x</em></font> 的祖先；然后，<font face="Consolas"><em>y.left</em></font> 也一定是 <font face="Consolas"><em>x</em></font> 的祖先，否则 <font face="Consolas"><em>x</em></font> 会出现在 <font face="Consolas"><em>y</em></font> 的右子树中；最后，假设 <font face="Consolas"><em>y</em></font> 不是最低的，那么最低的那个一定出现在 <font face="Consolas"><em>y</em></font> 的左子树中。</p>
-<h3 id="2_1">2. 二叉搜索树的操作</h3>
-<h4 id="1-search">(1).  <font face="Consolas"><em>SEARCH</em></font></h4>
+<p></br>
+<font face="Consolas">TCP</font> 的头部一般为 20 字节。</br>
+① 源端口号/目的端口号</br>
+&emsp;同 <font face="Consolas">UDP</font> 一样，用于多路复用/多路分用。</br></p>
+<p>② 序列号、确认号 (<font face="Consolas">32 bit</font>)</br>
+&emsp;<font face="Consolas">TCP</font> 把数据视为有序的字节流，序列号基于字节顺序而不是报文段的序号。当接收方收到报文段之后，接收方填进报文段的序列号是它期望从发送方收到的下一字节的序号。</br>
+&emsp;<font face="Consolas">TCP</font> 是提供累积确认的协议，对于接收方来说，如果收到失序分组，仍会返回最后收到的有序字节号+1的确认号。<font face="Consolas">TCP RFC</font> 没有明确规定对失序报文段的处理，它的具体实现取决于 <font face="Consolas">TCP</font> 实现者，实践中接收方保留失序字节、等待缺少的字节对于网络带宽更有效。</br>
+&emsp;<font face="Consolas">TCP</font> 双方的初始序列号一般为随机选取，这样可以减少两台主机之间先前已终止的连接发送的报文段被误认为是新连接的报文段的可能性。</br></p>
+<p>③ 首部长度 (<font face="Consolas">4 bit</font>)</br>
+&emsp;指示了以 32 比特的字为单位的 <font face="Consolas">TCP</font> 首部长度。由于 <font face="Consolas">option</font> 字段的原因，<font face="Consolas">TCP</font> 首部长度可变。<font face="Consolas">option</font> 子弹通常为空，因此 <font face="Consolas">TCP</font> 首部字段长度一般为 20 字节。</br></p>
+<p>④ 标志字段 (<font face="Consolas">6 bit</font>)</br>
+&emsp;
+<font face="Consolas">ACK</font>: 用于指示确认号字段的值有效。</br>
+<font face="Consolas">RST、SYN、FIN</font>: 用于连接的建立和拆除。</br></p>
+<p>⑤ 接收窗口字段 (<font face="Consolas">16 bit</font>)</br>
+&emsp;用于流量控制。</br></p>
+<p>⑥ 选项字段</br>
+&emsp;用于发送方和接收方协商最大报文段长度，或在高速网络环境下作窗口调节因子使用。</p>
+<h3 id="2-round-trip-time-estimation">2. 往返时间估计 (<font face="Consolas">Round-trip Time Estimation</font>)</h3>
+<p>&emsp;<font face="Consolas">TCP</font> 仍使用超时/重传机制处理数据丢失问题，并维护一个动态的样本往返时间 $SampleRTT$。大多数 <font face="Consolas">TCP</font> 仅在某个时刻对于一个已发送但未确认的报文段做一次 $SampleRTT$ 的测量，而忽略被重传的报文段。<font face="Consolas">TCP</font> 还维护一个样本 <font face="Consolas">RTT</font> 的平均值，每当获得一个新的样本值时更新均值：
+$$EstimatedRTT=(1-\alpha)\cdot EstimatedRTT+\alpha\cdot SampleRTT$$
+其中 $\alpha$ 的推荐值为 0.125。$EstimatedRTT$ 是 $SampleRTT$ 的一个加权平均值，在统计学上，这种平均被称为指数加权移动平均 (<font face="Consolas">Exponential Weighted Moving Average, EWMA</font>)。</br>
+&emsp;<font face="Consolas">TCP</font> 还维护一个 <font face="Consolas">RTT</font> 偏差值，用于估算 $SampleRTT$ 偏离 $EstimatedRTT$ 的程度：
+$$DevRTT=(1-\beta)\cdot DevRTT+\beta\cdot |SampleRTT-EstimatedRTT|$$
+$\beta$ 的推荐值为 0.25。如果 $SampleRTT$ 的波动很小，那么 $DevRTT$ 的值也很小，反之则很大。</br>
+&emsp;<font face="Consolas">TCP</font> 超时间隔应设为大于等于 $EstimatedRTT$，否则会造成不必要的重传；但不能大太多，否则会徒增时延。
+$$TimeoutInterval=EstimatedRTT+4\cdot DevRTT$$
+$TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加倍；只要收到报文段并更新 $EstimatedRTT$，就使用上述公式再次计算 $TimeoutInterval$。</p>
+<h3 id="3-tcp">3. <font face="Consolas">TCP</font> 的可靠数据传输</h3>
+<h4 id="1">(1). 发送方的简化描述</h4>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">IterativeBSTSearch</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">!=</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
-<span class="p">}</span> 
-</pre></div>
-</td></tr></table>
-$O(h)$</p>
-<h4 id="2-minimummaximum">(2). <font face="Consolas"><em>MINIMUM、MAXIMUM</em></font></h4>
-<p>最左即最小，最右即最大。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Minimum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
-<span class="p">}</span> 
-
-<span class="n">Node</span><span class="o">*</span> <span class="nf">Maximum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$O(h)$</p>
-<h4 id="3-predecessorsuccessor">(3). <font face="Consolas"><em>PREDECESSOR、SUCCESSOR</em></font></h4>
-<p>根据第一部分的结论，可以把寻找前驱或后继的过程分为两种情况。前驱和后继的过程是对称的。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Predecessor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">Maximum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">;</span> <span class="c1">// NULL: no pred</span>
-<span class="p">}</span> 
-
-<span class="n">Node</span><span class="o">*</span> <span class="nf">Successor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$O(h)$</p>
-<h4 id="4-insert">(4). <font face="Consolas"><em>INSERT</em></font></h4>
-<p>对任一个关键字，<font face="Consolas">BST</font> 存在一个空位置对应它的插入位置。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">iNode</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">iNode</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">last</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">last</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span>  <span class="p">{</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span> 
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">iNode</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">last</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span> 
-        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">iNode</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">last</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">last</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">iNode</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">last</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">iNode</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$O(h)$</p>
-<h4 id="4-delete">(4). <font face="Consolas"><em>DELETE</em></font></h4>
-<p>&emsp;设要删除的结点为 <font face="Consolas"><em>z</em></font>，其后继为 <font face="Consolas"><em>y</em></font>。删除总体分为三种情况，特殊情况是当 <font face="Consolas"><em>z</em></font> 有两个孩子，这时选取它的后继 <font face="Consolas"><em>y</em></font> 替换它，因为 <font face="Consolas"><em>y</em></font> 一定没有左子树。更详细的过程为：</p>
-<ul>
-<li>如果 <font face="Consolas"><em>z</em></font> 没有左孩子，那么用它的右孩子替换它。</li>
-<li>如果 <font face="Consolas"><em>z</em></font> 有左孩子且只有一个孩子，用左孩子替换它。</li>
-<li>如果 <font face="Consolas"><em>z</em></font> 有两个孩子，需要将 <font face="Consolas"><em>y</em></font> 移出并拼接：<ul>
-<li>如果 <font face="Consolas"><em>y</em></font> 是 <font face="Consolas"><em>z</em></font> 的右孩子，用 <font face="Consolas"><em>y</em></font> 替换 <font face="Consolas"><em>z</em></font>（并把 <font face="Consolas"><em>z</em></font> 的左子树转接到 <font face="Consolas"><em>y</em></font> 上）。</li>
-<li>否则，先用 <font face="Consolas"><em>y</em></font> 的右孩子替换 <font face="Consolas"><em>y</em></font>，然后再用 <font face="Consolas"><em>y</em></font> 替换 <font face="Consolas"><em>z</em></font>（并把 <font face="Consolas"><em>z</em></font> 的左右子树都转接到 <font face="Consolas"><em>y</em></font> 上）。</li>
-</ul>
-</li>
-</ul>
-<p>&emsp;提取一个子过程 <font face="Consolas"><em>TRANSPLANT</em></font>：用一棵子树替换另外一棵子树。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -826,41 +802,119 @@ $O(h)$</p>
 26
 27
 28
-29
-30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Transplant</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">des</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">des</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">src</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">src</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span> 
-
-<span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">Node</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span> <span class="c1">// succ</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-            <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
-        <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
-        <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-    <span class="p">}</span>
+29</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cm">/* Assume:</span>
+<span class="cm"> * 发送方不受 TCP 流量控制和拥塞控制的限制</span>
+<span class="cm"> * 来自上层的数据小于 MSS</span>
+<span class="cm"> * 单向数据传送</span>
+<span class="cm"> */</span>
+<span class="n">NextSeqNum</span> <span class="o">=</span> <span class="n">Initial</span> <span class="n">Sequence</span> <span class="n">Number</span><span class="p">;</span>
+<span class="n">SendBase</span> <span class="o">=</span> <span class="n">Initial</span> <span class="n">Sequence</span> <span class="n">Number</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="nl">event</span><span class="p">:</span> <span class="n">data</span> <span class="n">received</span> <span class="n">from</span> <span class="n">application</span> <span class="n">above</span>
+            <span class="n">create</span> <span class="n">TCP</span> <span class="n">Segment</span> <span class="n">with</span> <span class="n">sequence</span> <span class="n">number</span> <span class="n">NextSeqNum</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="err">定时器未运行</span><span class="p">)</span> 
+                <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+            <span class="n">pass</span> <span class="n">segment</span> <span class="n">to</span> <span class="n">IP</span><span class="p">;</span>
+            <span class="n">NextSeqNum</span> <span class="o">=</span> <span class="n">NextSeqNum</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="nl">event</span><span class="p">:</span> <span class="n">timer</span> <span class="n">timeout</span>
+            <span class="n">retransmit</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span> <span class="n">with</span> <span class="n">smallest</span> <span class="n">sequence</span> <span class="n">number</span><span class="p">;</span>
+            <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="nl">event</span><span class="p">:</span> <span class="n">ACK</span> <span class="n">received</span><span class="p">,</span> <span class="n">with</span> <span class="n">ACK</span> <span class="n">field</span> <span class="n">value</span> <span class="n">of</span> <span class="n">y</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">SendBase</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">SendBase</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">there</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">any</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-$O(h)$</p>
-<p></font></p>
+&emsp;<font face="Consolas">TCP</font> 采用单一定时器。注意到，如果收到的 <font face="Consolas">ACK</font> 使得 <font face="Consolas"><em>send_base</em></font> 刷新，且还有已发送但未收到回应的报文段的话，要重启计时器。</p>
+<h4 id="2">(2). 超时间隔加倍</h4>
+<p>&emsp;在大多数 <font face="Consolas">TCP</font> 中，每当超时事件发生，在重传相应报文段后，会设置 $TimeoutInterval×2$；直到另外两个响应时间其一发生，通过 $EstimatedRTT$ 和 $DevRTT$ 得到超时间隔的新值。</br>
+&emsp;这种机制提供了一种形式受限的拥塞控制，定时器过期很可能由网络拥塞引起。</p>
+<h4 id="3-fast-retransmit">(3). 快速重传 (<font face="Consolas">Fast Retransmit</font>)</h4>
+<p>&emsp;当一个报文段丢失，如果超时周期过长，会增加端到端时延。<font face="Consolas">TCP</font> 发送方通过检测重复 <font face="Consolas">ACK</font> (<font face="Consolas">duplicate ACK</font>) 实现快速重传机制：如果 <font face="Consolas">TCP</font> 发送方接收到对于同一个报文段的 3 个 <font face="Consolas">ACK</font>，就认为该报文段已丢失，在定时器过期之前执行快速重传。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nl">event</span><span class="p">:</span> <span class="n">ACK</span> <span class="n">received</span><span class="p">,</span> <span class="n">with</span> <span class="n">ACK</span> <span class="n">field</span> <span class="n">value</span> <span class="n">of</span> <span class="n">y</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">SendBase</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SendBase</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">there</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">any</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">increment</span> <span class="n">number</span> <span class="n">of</span> <span class="n">duplicate</span> <span class="n">ACKs</span> <span class="n">received</span> <span class="k">for</span> <span class="n">y</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">number</span> <span class="n">of</span> <span class="n">duplicated</span> <span class="n">ACKs</span> <span class="k">for</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">resend</span> <span class="n">segment</span> <span class="n">with</span> <span class="n">sequence</span> <span class="n">number</span> <span class="n">y</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></p>
+<h3 id="4-tcp">4. <font face="Consolas">TCP</font> 连接管理</h3>
+<h4 id="1-tcp_1">(1). <font face="Consolas">TCP</font> 通信过程</h4>
+<p>&emsp;在一个进程可以向另一个进程发送数据之前，这两个进程必须相互握手：发送预备报文段、确保传输的某些参数。这种连接是一种逻辑连接，连接的状态仅保留在端系统的 <font face="Consolas">TCP</font> 程序中，而中间的网络元素不保留关于连接的任何信心。</br>
+&emsp;在建立连接后，进程之间就可以相互发送数据。发送方通过 <font face="Consolas">Socket</font> 得到上层的数据后，将其引导至发送缓存中。<font face="Consolas">TCP</font> 从缓存中取出的数据大小受限于最大报文段长度 (<font face="Consolas">Maximum Segment Size, MSS</font>)，<font face="Consolas">MSS</font> 通常根据最大链路层帧长度 (最大传输单元<font face="Consolas">, Maximum Transmission Unit, MTU</font>) 设置。<font face="Consolas">TCP</font> 为每个数据配上头部，形成报文段，下传给网络层。接收方将接收到的数据引导至接收缓存中。</br>
+&emsp;因此，<font face="Consolas">TCP</font> 连接的组成包括：一台主机上的缓存、变量、套接字以及另一台主机上的相同元素。</p>
+<h4 id="2-tcp">(2). <font face="Consolas">TCP</font> 连接建立：三次握手</h4>
+<p>&emsp;以客户端主动向服务器发起连接为例。</br></p>
+<ul>
+<li>① 客户端向服务器发送一个 <font face="Consolas">SYN</font> 报文段，在这个报文段中，标志位 <font face="Consolas">SYN</font> 被置为 1 (<font face="Consolas">ACK = 0</font>)，并设置了一个随机的初始序列号 <font face="Consolas"><em>client_isn</em></font>。<ul>
+<li><font face="Consolas">C: to <em>SYN_SENT</em></font></br></li>
+</ul>
+</li>
+<li>② 服务器收到后，首先为 <font face="Consolas">TCP</font> 连接分配缓存和变量，然后发送一个 <font face="Consolas">SYNACK</font> 报文段，其中标志位 <font face="Consolas">SYN、ACK</font> 被置为 1，表示允许连接；<font face="Consolas">Ack = <em>client_isn</em> + 1</font>，<font face="Consolas">Seq = <em>server_isn</em> + 1</font>。</br><ul>
+<li><font face="Consolas">S: to <em>SYN_RCVD</em></font></li>
+</ul>
+</li>
+<li>③ 客户端收到 <font face="Consolas">SYNACK</font> 报文段后，为该连接分配缓存和变量。然后向服务器发送一个报文段，对服务器的允许连接进行确认，因为连接已经建立，<font face="Consolas">SYN</font> 被置为 0。这个报文段可以携带客户端要发送的数据。</br><ul>
+<li><font face="Consolas">C/S: to <em>ESTABLISHED</em></font></li>
+</ul>
+</li>
+</ul>
+<p>&emsp;这个过程被称为三次握手 (<font face="Consolas">three-way handshake</font>)。在建立连接后，<font face="Consolas">C/S</font> 之间就可以相互发送数据了，但 <font face="Consolas">SYN</font> 被置为 0.</p>
+<h4 id="3-tcp_1">(3). <font face="Consolas">TCP</font> 连接关闭：四次挥手</h4>
+<p>&emsp;以客户端主动发起关闭请求为例。</p>
+<ul>
+<li>① 客户端发送一个特殊的报文段，关闭客户端到服务器的数据传送，其中的 <font face="Consolas">FIN</font> 标志位置为 1。<ul>
+<li><font face="Consolas">C: to <em>FIN_WAIT_1</em></font></li>
+</ul>
+</li>
+<li>② 服务器收到后，发送一个确认报文段，客户端接收这个报文段。<ul>
+<li><font face="Consolas">S: to <em>CLOSE_WAIT</em>, C: to <em>FIN_WAIT_2</em></font></li>
+</ul>
+</li>
+<li>③ 服务器发送终止报文段，关闭服务器到客户端的数据传送，<font face="Consolas">FIN</font> 置为 1。<ul>
+<li><font face="Consolas">S: to <em>LAST_ACK</em></font></li>
+</ul>
+</li>
+<li>④ 客户端收到服务器的 <font face="Consolas">FIN</font> 后，发送一个确认报文段。<ul>
+<li><font face="Consolas">C: to <em>TIME_WAIT</em>, S: to <em>CLOSED</em></font>。</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;被动方在收到主动方的关闭请求后，可能还有需要继续处理的报文段，因此，发送 <font face="Consolas">ACK</font> 和发送 <font face="Consolas">FIN</font> 要分开进行。</p>
+<h4 id="4-cs">(4). <font face="Consolas">C/S</font> 的状态转换</h4>
+<p><div align=center>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/clientstate.png?raw=true"></br>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/serverstate.png?raw=true">
+</div>
+</font></p>
                 
                   
                 
@@ -877,6 +931,41 @@ $O(h)$</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../3.2/" title="2.Principles of Reliable Data Transfer" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                2.Principles of Reliable Data Transfer
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../3.4/" title="4.Red-Black trees" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                4.Red-Black trees
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
