@@ -40,7 +40,7 @@
 
     
       
-        <title>1.a - Learning Notes of Computer Networking</title>
+        <title>1.Network Service Model - Learning Notes of Computer Networking</title>
       
     
     
@@ -116,6 +116,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -138,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                1.a
+                1.Network Service Model
               
             </span>
           
@@ -442,8 +446,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3-TransportLayer/3.4/" title="4.Red-Black trees" class="md-nav__link">
-      4.Red-Black trees
+    <a href="../../3-TransportLayer/3.4/" title="4.TCP：Flow and Congestion Control" class="md-nav__link">
+      4.TCP：Flow and Congestion Control
     </a>
   </li>
 
@@ -486,10 +490,103 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="1.a" class="md-nav__link md-nav__link--active">
-      1.a
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        1.Network Service Model
+      </label>
+    
+    <a href="./" title="1.Network Service Model" class="md-nav__link md-nav__link--active">
+      1.Network Service Model
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 网络层服务模型" class="md-nav__link">
+    1. 网络层服务模型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 网络层功能概述" class="md-nav__link">
+    (1). 网络层功能概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 网络服务模型" class="md-nav__link">
+    (2). 网络服务模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 虚电路网络和数据报网络" class="md-nav__link">
+    2. 虚电路网络和数据报网络
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-virtual-circuit" title="(1). 虚电路网络 (Virtual Circuit)" class="md-nav__link">
+    (1). 虚电路网络 (Virtual Circuit)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 数据报网络" class="md-nav__link">
+    (2). 数据报网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 两种网络的比较" class="md-nav__link">
+    (3). 两种网络的比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4.2/" title="2.IPv4" class="md-nav__link">
+      2.IPv4
+    </a>
   </li>
 
         
@@ -505,15 +602,124 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 网络层服务模型" class="md-nav__link">
+    1. 网络层服务模型
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 网络层功能概述" class="md-nav__link">
+    (1). 网络层功能概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 网络服务模型" class="md-nav__link">
+    (2). 网络服务模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 虚电路网络和数据报网络" class="md-nav__link">
+    2. 虚电路网络和数据报网络
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-virtual-circuit" title="(1). 虚电路网络 (Virtual Circuit)" class="md-nav__link">
+    (1). 虚电路网络 (Virtual Circuit)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 数据报网络" class="md-nav__link">
+    (2). 数据报网络
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 两种网络的比较" class="md-nav__link">
+    (3). 两种网络的比较
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>1.a</h1>
+                  <h1>1.Network Service Model</h1>
                 
-                
+                <p><font face="思源黑体 CN"   >
+<font face="Consolas"></font></p>
+<h3 id="1">1. 网络层服务模型</h3>
+<h4 id="1_1">(1). 网络层功能概述</h4>
+<ul>
+<li>转发 (<font face="Consolas">forwarding</font>): 将分组从路由器的输入端口移动到合适的输出端口。时间尺度短，常由硬件实现，是数据平面 (<font face="Consolas">data plane</font>) 的唯一功能。</li>
+<li>路由 (<font face="Consolas">routing</font>): 通过路由选择算法，确定分组从发送方流向接收方所走的路径。时间尺度长，常用软件实现，是控制平面 (<font face="Consolas">control plane</font>) 实现的功能。</li>
+</ul>
+<p>&emsp;每台路由器中都有一个转发表 (<font face="Consolas">forwarding table</font>)，路由器通过它查找输出链路。路由选择算法运行在每台路由器中，决定了转发表的内容，这也揭示了转发和路由是相互作用的。路由选择算法也可以被分离出来，运行在远程控制器上。</p>
+<h4 id="2">(2). 网络服务模型</h4>
+<p>&emsp;网络服务模型定义了分组在发送端与接收端之间的端到端传输特性。举例来说，网络层可能提供的服务有：确保交付、有序交付、确保带宽、安全性等。<font face="Consolas">Internet</font> 的网络层提供尽力而为服务 (<font face="Consolas">best-effort service</font>)，即不提供任何服务，尽管存在其他的网络模型提供了更好的网络层服务，<font face="Consolas">Internet</font> 的尽力而为服务和适当带宽供给相结合已被实践证明足够好。</p>
+<h3 id="2_1">2. 虚电路网络和数据报网络</h3>
+<h4 id="1-virtual-circuit">(1). 虚电路网络 (<font face="Consolas">Virtual Circuit</font>)</h4>
+<p>&emsp;虚电路网络在网络层提供面向连接的服务。一条虚电路的组成如下：① 源主机和目的主机之间的一条路径；② 每条链路的 <font face="Consolas">VC</font> 号；③ 路径中每个路由器中的转发表。同一路径中每条链路的 <font face="Consolas">VC</font> 号都不相同，属于一条虚电路的分组的头部携带一个 <font face="Consolas">VC</font> 号，每当经过一个路由器的时候，依据其中的转发表查找输出链路，并用输出链路的 <font face="Consolas">VC</font> 号代替自己头部中的 <font face="Consolas">VC</font> 号。通过这种机制，而不是一条电路中每个链路都使用同一 <font face="Consolas">VC</font> 号，简化了虚电路网络的实现；如果采用后者，路由器之间需要交换并处理大量的报文，并占用更大的头部空间。</br>
+&emsp;虚电路通信分为三个阶段：</br>
+&emsp;① 虚电路建立：传输层指定接收方地址，网络层确定路径，并在每个路由器的转发表中增加一项。在虚电路建立期间，网络层还可以预留虚电路路径上的带宽资源。</br>
+&emsp;② 数据传送；</br>
+&emsp;③ 虚电路拆除：通知另一侧端系统结束呼叫，并更新路径上路由器的转发表。</br>
+&emsp;端系统发送的指示虚电路建立与拆除、路由器间传递的用于建立和拆除虚电路的报文称为信令报文 (<font face="Consolas">signaling message</font>)，处理这些报文的协议称为信令协议 (<font face="Consolas">signaling protocol</font>)。</br>
+&emsp;它与电路交换的主要区别是它建立一个逻辑连接，使用分组交换。</p>
+<h4 id="2_2">(2). 数据报网络</h4>
+<p>&emsp;数据报网络提供尽力而为服务。每当一个端系统要发送分组，它为该分组添加目的端系统的地址，然后将此分组推进网络中；每经过一个路由器，就检索转发表，确定输出链路。</br>
+&emsp;由于地址空间很大，转发表的表项使用地址区间，每个区间通过两端的值的公共前缀标识，在查找索引的时候，使用最长前缀匹配规则确定链路接口。</p>
+<h4 id="3">(3). 两种网络的比较</h4>
+<p>&emsp;虚电路网络的典型例子是 <font face="Consolas">ATM</font>，它由电话网络演化而来，核心业务是实时对话，对时间和可靠性要求较高，且端系统非智能，因此采用“简化边缘，复杂网络”的设计。</br>
+&emsp;数据报网络的典型例子是 <font face="Consolas">Internet</font>，它由互连计算机的需求发展而来，对响应时间的要求相对不是很严格，并且端系统设备更加智能，因此采用“简化网络，复杂边缘”的设计，更多的可靠服务在更高层实现。</br></p>
+<p></font></p>
                 
                   
                 
@@ -534,7 +740,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../3-TransportLayer/3.4/" title="4.Red-Black trees" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../3-TransportLayer/3.4/" title="4.TCP：Flow and Congestion Control" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -543,11 +749,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                4.Red-Black trees
+                4.TCP：Flow and Congestion Control
               </span>
             </div>
           </a>
         
+        
+          <a href="../4.2/" title="2.IPv4" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                2.IPv4
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

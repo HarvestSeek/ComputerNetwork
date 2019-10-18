@@ -564,8 +564,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../3.4/" title="4.Red-Black trees" class="md-nav__link">
-      4.Red-Black trees
+    <a href="../3.4/" title="4.TCP：Flow and Congestion Control" class="md-nav__link">
+      4.TCP：Flow and Congestion Control
     </a>
   </li>
 
@@ -600,8 +600,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../../4-NetworkLayer/4.1/" title="1.a" class="md-nav__link">
-      1.a
+    <a href="../../4-NetworkLayer/4.1/" title="1.Network Service Model" class="md-nav__link">
+      1.Network Service Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../4-NetworkLayer/4.2/" title="2.IPv4" class="md-nav__link">
+      2.IPv4
     </a>
   </li>
 
@@ -741,7 +753,7 @@
 <font face="Consolas"></font></p>
 <h3 id="1-tcp">1. <font face="Consolas">TCP</font> 报文段结构</h3>
 <div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/tcpsegment.png?raw=true" width=400>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/tcpsegment.png?raw=true" width=300>
 </div>
 
 <p></br>
@@ -753,7 +765,7 @@
 &emsp;<font face="Consolas">TCP</font> 是提供累积确认的协议，对于接收方来说，如果收到失序分组，仍会返回最后收到的有序字节号+1的确认号。<font face="Consolas">TCP RFC</font> 没有明确规定对失序报文段的处理，它的具体实现取决于 <font face="Consolas">TCP</font> 实现者，实践中接收方保留失序字节、等待缺少的字节对于网络带宽更有效。</br>
 &emsp;<font face="Consolas">TCP</font> 双方的初始序列号一般为随机选取，这样可以减少两台主机之间先前已终止的连接发送的报文段被误认为是新连接的报文段的可能性。</br></p>
 <p>③ 首部长度 (<font face="Consolas">4 bit</font>)</br>
-&emsp;指示了以 32 比特的字为单位的 <font face="Consolas">TCP</font> 首部长度。由于 <font face="Consolas">option</font> 字段的原因，<font face="Consolas">TCP</font> 首部长度可变。<font face="Consolas">option</font> 子弹通常为空，因此 <font face="Consolas">TCP</font> 首部字段长度一般为 20 字节。</br></p>
+&emsp;指示了以 32 比特的字为单位的 <font face="Consolas">TCP</font> 首部长度。由于 <font face="Consolas">option</font> 字段的原因，<font face="Consolas">TCP</font> 首部长度可变。<font face="Consolas">option</font> 字段通常为空，因此 <font face="Consolas">TCP</font> 首部字段长度一般为 20 字节。</br></p>
 <p>④ 标志字段 (<font face="Consolas">6 bit</font>)</br>
 &emsp;
 <font face="Consolas">ACK</font>: 用于指示确认号字段的值有效。</br>
@@ -878,7 +890,7 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
 <li><font face="Consolas">C: to <em>SYN_SENT</em></font></br></li>
 </ul>
 </li>
-<li>② 服务器收到后，首先为 <font face="Consolas">TCP</font> 连接分配缓存和变量，然后发送一个 <font face="Consolas">SYNACK</font> 报文段，其中标志位 <font face="Consolas">SYN、ACK</font> 被置为 1，表示允许连接；<font face="Consolas">Ack = <em>client_isn</em> + 1</font>，<font face="Consolas">Seq = <em>server_isn</em> + 1</font>。</br><ul>
+<li>② 服务器收到后，首先为 <font face="Consolas">TCP</font> 连接分配缓存和变量，然后发送一个 <font face="Consolas">SYNACK</font> 报文段，其中标志位 <font face="Consolas">SYN、ACK</font> 被置为 1，表示允许连接；<font face="Consolas">Ack = <em>client_isn</em> + 1</font>，<font face="Consolas">Seq = <em>server_isn</em></font>。</br><ul>
 <li><font face="Consolas">S: to <em>SYN_RCVD</em></font></li>
 </ul>
 </li>
@@ -911,10 +923,10 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
 <p>&emsp;被动方在收到主动方的关闭请求后，可能还有需要继续处理的报文段，因此，发送 <font face="Consolas">ACK</font> 和发送 <font face="Consolas">FIN</font> 要分开进行。</p>
 <h4 id="4-cs">(4). <font face="Consolas">C/S</font> 的状态转换</h4>
 <p><div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/clientstate.png?raw=true"></br>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/serverstate.png?raw=true">
-</div>
-</font></p>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/clientstate.png?raw=true" height=250>
+<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.3/serverstate.png?raw=true" height=250>
+</div></p>
+<p></font></p>
                 
                   
                 
@@ -950,13 +962,13 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
           </a>
         
         
-          <a href="../3.4/" title="4.Red-Black trees" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../3.4/" title="4.TCP：Flow and Congestion Control" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                4.Red-Black trees
+                4.TCP：Flow and Congestion Control
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
