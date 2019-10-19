@@ -534,8 +534,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" title="(1)." class="md-nav__link">
-    (1).
+  <a href="#1" title="(1). 标识、标志、片偏移" class="md-nav__link">
+    (1). 标识、标志、片偏移
   </a>
   
 </li>
@@ -543,6 +543,54 @@
           <li class="md-nav__item">
   <a href="#2" title="(2). 分片过程" class="md-nav__link">
     (2). 分片过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ipv4" title="3. IPv4 编址" class="md-nav__link">
+    3. IPv4 编址
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 子网与接口" class="md-nav__link">
+    (1). 子网与接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ip" title="(2). 有类 IP 地址" class="md-nav__link">
+    (2). 有类 IP 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ip" title="(3). IP 子网划分" class="md-nav__link">
+    (3). IP 子网划分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cidr" title="(4). CIDR" class="md-nav__link">
+    (4). CIDR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-dhcp" title="(5). DHCP 协议" class="md-nav__link">
+    (5). DHCP 协议
   </a>
   
 </li>
@@ -602,8 +650,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" title="(1)." class="md-nav__link">
-    (1).
+  <a href="#1" title="(1). 标识、标志、片偏移" class="md-nav__link">
+    (1). 标识、标志、片偏移
   </a>
   
 </li>
@@ -611,6 +659,54 @@
           <li class="md-nav__item">
   <a href="#2" title="(2). 分片过程" class="md-nav__link">
     (2). 分片过程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ipv4" title="3. IPv4 编址" class="md-nav__link">
+    3. IPv4 编址
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 子网与接口" class="md-nav__link">
+    (1). 子网与接口
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ip" title="(2). 有类 IP 地址" class="md-nav__link">
+    (2). 有类 IP 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ip" title="(3). IP 子网划分" class="md-nav__link">
+    (3). IP 子网划分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cidr" title="(4). CIDR" class="md-nav__link">
+    (4). CIDR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-dhcp" title="(5). DHCP 协议" class="md-nav__link">
+    (5). DHCP 协议
   </a>
   
 </li>
@@ -642,10 +738,10 @@
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
 <h3 id="1-ip">1. <font face="Consolas">IP</font> 数据报格式</h3>
-<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/4.2/IPdatagram.png?raw=true" height=250></div>
+<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/4-NetworkLayer/4.2/IPdatagram.png?raw=true" height=250></div>
 
-<p></br></p>
-<p>① 版本号 (<font face="Consolas">4 bit</font>)</br>
+<p></br>
+① 版本号 (<font face="Consolas">4 bit</font>)</br>
 &emsp;数据报对应的 <font face="Consolas">IP</font> 协议版本，决定了如何解释数据报的剩下部分。</p>
 <p>② 首部长度 (<font face="Consolas">4 bit</font>)</br>
 &emsp;以 4 字节为单位。由于 <font face="Consolas">options</font> 字段，首部长度可变，故通过此字段确定数据实际开始的地方。一般来说，大多说 <font face="Consolas">IP</font> 数据报不包含选项，首部长度为 20 字节。</p>
@@ -668,7 +764,7 @@
 <p>⑨ 填充</br>
 &emsp;补齐，使头部长为 4 字节的倍数。</p>
 <h3 id="2-ip-fragmentation">2. <font face="Consolas">IP</font> 数据报分片 (<font face="Consolas">Fragmentation</font>)</h3>
-<h4 id="1">(1).</h4>
+<h4 id="1">(1). 标识、标志、片偏移</h4>
 <p>&emsp;一个链路层帧能承载的最大数据量为最大传输单元 (<font face="Consolas">MTU</font>)，对于不同类型的链路层协议，其值并不确定。当 <font face="Consolas">IP</font> 数据报大小大于出链路的有效载荷大小，且对应的标志位允许路由器进行分片，那么就会进行分片，这些片 (<font face="Consolas">fragment</font>) 在目的主机的运输层之前重新组装。分片过程利用了头部相关字段：</p>
 <ul>
 <li>标识 (<font face="Consolas">ID, 16 bit</font>)：和源 <font face="Consolas">IP</font>、目的 <font face="Consolas">IP</font>、上层协议字段一同唯一地标识一个分片</li>
@@ -680,11 +776,130 @@
 <li>片偏移 (<font face="Consolas">13 bit</font>)：以 8 字节为单位，指出了分片封装的原数据的相对偏移量(首字节)</li>
 </ul>
 <h4 id="2">(2). 分片过程</h4>
-<p>&emsp;设原 <font face="Consolas">IP</font> 分组总长度为 $L$，待转发链路的 <font face="Consolas">MTU</font> 大小为 $M$。当 $L&gt;M$ 且 <font face="Consolas">DF</font> <font face="Consolas">=</font> <font face="Consolas">1</font>，需要分片。</br>
-&emsp;一个最大分片可以封装的数据大小：$d=\lfloor (M-20)/8\rfloor × 8$</br>
-&emsp;在最大分组条件下需要的总片数：$n=\lceil (L-20)/d \rceil$</br>
-&emsp;每片的片偏移量为：$F_i=d/8×(i-1),\ 1\leq i \leq n$</br>
-&emsp;前 $n-1$ 片的总长度为 $d+20$，最后一片的长度为 $L-(n-1)\cdot d$。</p>
+<p>&emsp;设原 <font face="Consolas">IP</font> 分组总长度为 $L$，待转发链路的 <font face="Consolas">MTU</font> 大小为 $M$。当 $L&gt;M$ 且 <font face="Consolas">DF</font> <font face="Consolas">=</font> <font face="Consolas">1</font>，需要分片。</br></p>
+<ul>
+<li>一个最大分片可以封装的数据大小：$d=\lfloor \frac{(M-20)}{8}\rfloor × 8$</br></li>
+<li>在最大分组条件下需要的总片数：$n=\lceil (L-20)/d \rceil$</br></li>
+<li>每片的片偏移量为：$F_i=\frac{d}{8}×(i-1),\ 1\leq i \leq n$</br></li>
+<li>前 $n-1$ 片的总长度为 $d+20$，最后一片的长度为 $L-(n-1)\cdot d$。</li>
+</ul>
+<h3 id="3-ipv4">3. <font face="Consolas">IPv4</font> 编址</h3>
+<h4 id="1_1">(1). 子网与接口</h4>
+<p>&emsp;网络层设备（主机、路由器）与物理链路之间的边界叫做接口 (<font face="Consolas">interface</font>)，路由器通常有多个接口，现代的主机也可以有一个以上的接口（多数情况下，主机只有一条链路接入网络）。<font face="Consolas">IP</font> 要求每个接口都有自己的 <font face="Consolas">IP</font> 地址，其长度为 32 <font face="Consolas">bit</font>，由于二进制数难于记忆，因此通常用点分十进制记法 (<font face="Consolas">dotted-decimal notation</font>) 表示。</br>
+&emsp;每个以主机和路由器（网络层设备）的接口为端点划分出的区域 (<font face="Consolas">"islands of network"</font>) 叫做子网 (<font face="Consolas">subnet</font>)。<font face="Consolas">IP</font> 编址依照这一点，将 <font face="Consolas">IP</font> 地址分为网络号 (<font face="Consolas">NetID</font>) 和主机号 (<font face="Consolas">HostID</font>) 两部分。</p>
+<h4 id="2-ip">(2). 有类 <font face="Consolas">IP</font> 地址</h4>
+<p>&emsp;在 <font face="Consolas">CIDR</font> 被采用之前，<font face="Consolas">IP</font> 使用分类编址 (<font face="Consolas">classful addressing</font>)，通过二分法做如下划分：</p>
+<ul>
+<li><font face="Consolas">A</font> 类地址：首位为 0，占用地址空间的 50%，<font face="Consolas">NetID(8)-HostID(24)</font>，<font face="Consolas">0.0.0.0</font> ~ <font face="Consolas">127.255.255.255</font>。</li>
+<li><font face="Consolas">B</font> 类地址：前两位为 10，占 25%，<font face="Consolas">NetID(16)-HostID(16)</font>，<font face="Consolas">128.0.0.0</font> ~ <font face="Consolas">191.255.255.255</font>。</li>
+<li><font face="Consolas">C</font> 类地址：前三位为 110，占 12.5%，<font face="Consolas">NetID(24)-HostID(8)</font>，<font face="Consolas">192.0.0.0</font> ~ <font face="Consolas">223.255.255.255</font>。</li>
+<li><font face="Consolas">D</font> 类地址：前四位 1110，占 6.25%，不区分网络号和主机号，<font face="Consolas">224.0.0.0</font> ~ <font face="Consolas">239.255.255.255</font>。也被称作多播地址，用于标识互联网中一组主机，只能作目的 <font face="Consolas">IP</font>。</li>
+<li><font face="Consolas">E</font> 类地址：前四位 1111，占 6.25%，不区分网络号和主机号，<font face="Consolas">240.0.0.0</font> ~ <font face="Consolas">255.255.255.255</font>。</li>
+</ul>
+<p>&emsp;<font face="Consolas">A、B、C</font> 类地址可以用于标识子网，但其中并不是每个地址都可以用于标识主机。</p>
+<details class="info"><summary>不能标识接口的特殊地址</summary><table>
+<thead>
+<tr>
+<th align="center"><font face="Consolas">NetID</font></th>
+<th align="center"><font face="Consolas">HostID</font></th>
+<th align="center">作为源 <font face="Consolas">IP</font></th>
+<th align="center">作为目的 <font face="Consolas">IP</font></th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">全0</td>
+<td align="center">全0</td>
+<td align="center">可以</td>
+<td align="center">不可以</td>
+<td align="center">在本网范围内表示本机；在路由表中用于表示默认路由</td>
+</tr>
+<tr>
+<td align="center">全0</td>
+<td align="center">特定值</td>
+<td align="center">不可以</td>
+<td align="center">可以</td>
+<td align="center">用于表示本网内某个特定主机</td>
+</tr>
+<tr>
+<td align="center">全1</td>
+<td align="center">全1</td>
+<td align="center">不可以</td>
+<td align="center">可以</td>
+<td align="center">本网广播地址</td>
+</tr>
+<tr>
+<td align="center">特定值</td>
+<td align="center">全0</td>
+<td align="center">不可以</td>
+<td align="center">不可以</td>
+<td align="center">网络的地址，表示一个网络</td>
+</tr>
+<tr>
+<td align="center">特定值</td>
+<td align="center">全1</td>
+<td align="center">不可以</td>
+<td align="center">可以</td>
+<td align="center">直接广播地址，对特定网络（另外一个网络）上所有主机进行广播</td>
+</tr>
+<tr>
+<td align="center">127</td>
+<td align="center">非全0或非全1的任何数</td>
+<td align="center">可以</td>
+<td align="center">可以</td>
+<td align="center">环回地址，用于本地软件环回测试</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>&emsp;<font face="Consolas">A、B、C</font> 还保留了一部分私有地址，这些地址只能在每一个组织或子网内部使用，在公共互联网络中无法使用。</p>
+<details class="info"><summary>Private IPs</summary><table>
+<thead>
+<tr>
+<th align="center"><font face="Consolas">Class</font></th>
+<th align="center"><font face="Consolas">NetIDs</font></th>
+<th align="center"><font face="Consolas">Blocks</font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><font face="Consolas">A</font></td>
+<td align="center"><font face="Consolas">10</font></td>
+<td align="center"><font face="Consolas">1</font></td>
+</tr>
+<tr>
+<td align="center"><font face="Consolas">B</font></td>
+<td align="center"><font face="Consolas">172.16 to 172.31</font></td>
+<td align="center"><font face="Consolas">16</font></td>
+</tr>
+<tr>
+<td align="center"><font face="Consolas">C</font></td>
+<td align="center"><font face="Consolas">192.168.0 to 192.168.255</font></td>
+<td align="center"><font face="Consolas">256</font></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h4 id="3-ip">(3). <font face="Consolas">IP</font> 子网划分</h4>
+<p>&emsp;有类 <font face="Consolas">IP</font> 地址通过网络号对地址空间进行了一定程度的划分。在此基础上，当一个组织获得一个网络号以后，对 <font face="Consolas">IP</font> 继续进行子网划分：<font face="Consolas">NetID-SubID-HostID</font>，然后将这些子网通过路由器互连，在数据传播的时候可以通过子网号隔离流量。</br>
+&emsp;子网掩码 (<font face="Consolas">network mask</font>)：形如 <font face="Consolas">IP</font> 地址，是一个用点分十进制表示的 32 比特数；<font face="Consolas">NetID-SubID</font> 全取 1，<font face="Consolas">HostID</font> 全取 0。目的 <font face="Consolas">IP</font> 地址通过与子网掩码进行求与运算，可以提取出子网地址，从而得到子网的地址范围；在地址范围内去掉主机域全 0 和全 1 的 <font face="Consolas">IP</font> 地址，得到可分配地址范围。</p>
+<h4 id="4-cidr">(4). <font face="Consolas">CIDR</font></h4>
+<p>&emsp;<font face="Consolas">Internet</font> 采用的地址分配策略为 无类域间路由 (<font face="Consolas">Classless Interdomain Routing, CIDR</font>)，它一般化了子网寻址的概念，消除了传统的 <font face="Consolas">A、B、C</font> 类地址界限：将 <font face="Consolas">NetID-SubID</font> 统一为网络前缀；融合了子网地址与子网掩码，无类地址格式为 <font face="Consolas">a.b.c.d/<em>x</em></font>，<font face="Consolas"><em>x</em></font> 为网络前缀长度。</br>
+&emsp;<font face="Consolas">CIDR</font> 提高了地址空间的利用率；伴随着路由聚合技术的出现，有效减少了转发表的表项数，提高了路由效率。</br>
+&emsp;路由聚合通常作用于这样的情形：子网数为 2 的倍数，且它们的地址空间连续。当路由聚集的空间属于另外一个 <font face="Consolas">ISP</font> 的子网，当数据转发到这个子网时，就会出现路由黑洞现象。为了仍能够利用路由聚集及带来的便利，可以在两个 <font face="Consolas">ISP</font> 前的路由器的转发表中，利用最长前缀匹配原则，避免路由黑洞。</p>
+<h4 id="5-dhcp">(5). <font face="Consolas">DHCP</font> 协议</h4>
+<p>&emsp;一台主机获取 <font face="Consolas">IP</font> 通常有两种方法。可以通过静态配置，即通过网络管理员或操作系统静态设定 <font face="Consolas">IP</font> 地址。通过操作系统还可以设定默认网关（第一跳的接口的 IP）、本地（默认）<font face="Consolas">DNS</font> 服务器等。</br>
+&emsp;动态地址配置通过动态主机配置协议 (<font face="Consolas">Dynamic Host Configuration Protocol, DHCP</font>) 实现。在一台主机接入网络时，可通过 <font face="Consolas">DHCP</font> 获得临时的 <font face="Consolas">IP</font> 地址、子网掩码、默认网关、本地 <font face="Consolas">DNS</font> 服务器地址，<font face="Consolas">DHCP</font> 广泛应用于主机动态地连接和离开某子网的情境中。</br>
+&emsp;<font face="Consolas">DHCP</font> 是一个应用层的 <font face="Consolas">C-S</font> 协议，每一个子网具有一个 <font face="Consolas">DHCP</font> 服务器（如果没有，某台路由器作为中继代理，记录了用于该子网的 <font face="Consolas">DHCP</font> 服务器地址）。一台新接入的主机通过 4 个步骤获得 <font face="Consolas">IP</font> 地址：
+- ① <font face="Consolas">DHCP server discovery</font>：客户端在端口 67 通过 <font face="Consolas">UDP</font> 分组发送一个 <font face="Consolas">DHCP</font> 发现报文 (<font face="Consolas">DHCP discovery message</font>)，首先生成一个包含此报文的 <font face="Consolas">IP</font> 数据报，源 <font face="Consolas">IP</font> 填为“本主机” <font face="Consolas">0.0.0.0</font>，目的 <font face="Consolas">IP</font> 填为广播地址 <font face="Consolas">255.255.255.255</font>。在客户端将数据报传给链路层后，链路层将该帧广播到所有与该子网相邻的节点。
+- <font face="Consolas">DHCP server offer</font>：<font face="Consolas">DHCP</font> 服务器收到一个发现报文时，仍通过广播地址 <font face="Consolas">255.255.255.255</font>，向所有结点广播一个 <font face="Consolas">DHCP</font> 发现报文 (<font face="Consolas">DHCP offer message</font>)。报文的内容包含报文的事务 ID、向客户端推荐的 <font face="Consolas">IP</font> 地址、网络掩码和 <font face="Consolas">IP</font> 地址的租用期。
+- <font face="Consolas">DHCP request</font>：客户端从一个或多个服务器中选择一个，相应一个 <font face="Consolas">DHCP</font> 请求报文 (<font face="Consolas">DHCP request message</font>)，回应配置参数。
+- <font face="Consolas">DHCP ACK</font>：服务器响应一个 <font face="Consolas">DHCP ACK</font> 报文，证实参数。</p>
+<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/4-NetworkLayer/4.2/DHCPprocess.png?raw=true" height=250></div>
+
+<p></br>
+&emsp;<font face="Consolas">DHCP</font> 的一个缺陷是，当一台主机在不同子网间移动，无法维持与远程应用的 <font face="Consolas">TCP</font> 连接。</p>
 <p></font></p>
                 
                   
