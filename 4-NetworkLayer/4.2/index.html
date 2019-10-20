@@ -595,6 +595,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-nat" title="(6). 网络地址转换 (NAT)" class="md-nav__link">
+    (6). 网络地址转换 (NAT)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-icmp" title="(7). ICMP 协议" class="md-nav__link">
+    (7). ICMP 协议
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -707,6 +721,20 @@
           <li class="md-nav__item">
   <a href="#5-dhcp" title="(5). DHCP 协议" class="md-nav__link">
     (5). DHCP 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-nat" title="(6). 网络地址转换 (NAT)" class="md-nav__link">
+    (6). 网络地址转换 (NAT)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-icmp" title="(7). ICMP 协议" class="md-nav__link">
+    (7). ICMP 协议
   </a>
   
 </li>
@@ -891,15 +919,72 @@
 <h4 id="5-dhcp">(5). <font face="Consolas">DHCP</font> 协议</h4>
 <p>&emsp;一台主机获取 <font face="Consolas">IP</font> 通常有两种方法。可以通过静态配置，即通过网络管理员或操作系统静态设定 <font face="Consolas">IP</font> 地址。通过操作系统还可以设定默认网关（第一跳的接口的 IP）、本地（默认）<font face="Consolas">DNS</font> 服务器等。</br>
 &emsp;动态地址配置通过动态主机配置协议 (<font face="Consolas">Dynamic Host Configuration Protocol, DHCP</font>) 实现。在一台主机接入网络时，可通过 <font face="Consolas">DHCP</font> 获得临时的 <font face="Consolas">IP</font> 地址、子网掩码、默认网关、本地 <font face="Consolas">DNS</font> 服务器地址，<font face="Consolas">DHCP</font> 广泛应用于主机动态地连接和离开某子网的情境中。</br>
-&emsp;<font face="Consolas">DHCP</font> 是一个应用层的 <font face="Consolas">C-S</font> 协议，每一个子网具有一个 <font face="Consolas">DHCP</font> 服务器（如果没有，某台路由器作为中继代理，记录了用于该子网的 <font face="Consolas">DHCP</font> 服务器地址）。一台新接入的主机通过 4 个步骤获得 <font face="Consolas">IP</font> 地址：
-- ① <font face="Consolas">DHCP server discovery</font>：客户端在端口 67 通过 <font face="Consolas">UDP</font> 分组发送一个 <font face="Consolas">DHCP</font> 发现报文 (<font face="Consolas">DHCP discovery message</font>)，首先生成一个包含此报文的 <font face="Consolas">IP</font> 数据报，源 <font face="Consolas">IP</font> 填为“本主机” <font face="Consolas">0.0.0.0</font>，目的 <font face="Consolas">IP</font> 填为广播地址 <font face="Consolas">255.255.255.255</font>。在客户端将数据报传给链路层后，链路层将该帧广播到所有与该子网相邻的节点。
-- <font face="Consolas">DHCP server offer</font>：<font face="Consolas">DHCP</font> 服务器收到一个发现报文时，仍通过广播地址 <font face="Consolas">255.255.255.255</font>，向所有结点广播一个 <font face="Consolas">DHCP</font> 发现报文 (<font face="Consolas">DHCP offer message</font>)。报文的内容包含报文的事务 ID、向客户端推荐的 <font face="Consolas">IP</font> 地址、网络掩码和 <font face="Consolas">IP</font> 地址的租用期。
-- <font face="Consolas">DHCP request</font>：客户端从一个或多个服务器中选择一个，相应一个 <font face="Consolas">DHCP</font> 请求报文 (<font face="Consolas">DHCP request message</font>)，回应配置参数。
-- <font face="Consolas">DHCP ACK</font>：服务器响应一个 <font face="Consolas">DHCP ACK</font> 报文，证实参数。</p>
-<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/4-NetworkLayer/4.2/DHCPprocess.png?raw=true" height=250></div>
+&emsp;<font face="Consolas">DHCP</font> 是一个应用层的 <font face="Consolas">C-S</font> 协议，每一个子网具有一个 <font face="Consolas">DHCP</font> 服务器（如果没有，某台路由器作为中继代理，记录了用于该子网的 <font face="Consolas">DHCP</font> 服务器地址）。一台新接入的主机通过 4 个步骤获得 <font face="Consolas">IP</font> 地址：</p>
+<ul>
+<li>① <font face="Consolas">DHCP server discovery</font>：客户端在端口 67 通过 <font face="Consolas">UDP</font> 分组发送一个 <font face="Consolas">DHCP</font> 发现报文 (<font face="Consolas">DHCP discovery message</font>)，首先生成一个包含此报文的 <font face="Consolas">IP</font> 数据报，源 <font face="Consolas">IP</font> 填为“本主机” <font face="Consolas">0.0.0.0</font>，目的 <font face="Consolas">IP</font> 填为广播地址 <font face="Consolas">255.255.255.255</font>。在客户端将数据报传给链路层后，链路层将该帧广播到所有与该子网相邻的节点。</li>
+<li>② <font face="Consolas">DHCP server offer</font>：<font face="Consolas">DHCP</font> 服务器收到一个发现报文时，仍通过广播地址 <font face="Consolas">255.255.255.255</font>，向所有结点广播一个 <font face="Consolas">DHCP</font> 发现报文 (<font face="Consolas">DHCP offer message</font>)。报文的内容包含报文的事务 ID、向客户端推荐的 <font face="Consolas">IP</font> 地址、网络掩码和 <font face="Consolas">IP</font> 地址的租用期。</li>
+<li>③ <font face="Consolas">DHCP request</font>：客户端从一个或多个服务器中选择一个，相应一个 <font face="Consolas">DHCP</font> 请求报文 (<font face="Consolas">DHCP request message</font>)，回应配置参数。</li>
+<li>④ <font face="Consolas">DHCP ACK</font>：服务器响应一个 <font face="Consolas">DHCP ACK</font> 报文，证实参数。</li>
+</ul>
+<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/4-NetworkLayer/4.2/DHCPprocess.png?raw=true" height=350></div>
 
 <p></br>
 &emsp;<font face="Consolas">DHCP</font> 的一个缺陷是，当一台主机在不同子网间移动，无法维持与远程应用的 <font face="Consolas">TCP</font> 连接。</p>
+<h4 id="6-nat">(6). 网络地址转换 (<font face="Consolas">NAT</font>)</h4>
+<p>&emsp;对 <font face="Consolas">IPv4</font> 来说，<font face="Consolas">IP</font> 地址已经枯竭；并且，对一个 <font face="Consolas">ISP</font> 来说，如果实现为其分配了一块地址空间，但随后需要更多的地址数，也会造成问题。以上的情形通过已被广泛应用的网络地址转换 (<font face="Consolas">Network Address Translation</font>) 被解决。</br>
+&emsp;假设当前具有 <font face="Consolas">A</font> 类私有地址的三台家庭主机 <font face="Consolas">10.0.0.1</font>、<font face="Consolas">10.0.0.2</font>、<font face="Consolas">10.0.0.3</font>，它们共同接入路由器的 <font face="Consolas">10.0.0.4</font> 端，路由器另有一端具有公共 <font face="Consolas">IP</font> 地址 <font face="Consolas">138.76.29.7</font>。这些内部主机之间的通信使用这些私有地址不会出现问题，但如果要与外界通信，就要使用路由器维护的 <font face="Consolas">NAT</font> 转换表：每个外出的数据报的 <font face="Consolas">(src-IP, src-Port)</font> 被替换为 <font face="Consolas">(NAT-IP, new-Port)</font>，<font face="Consolas">NAT</font> 转换表维护这个映射，返回来的数据报再根据表项替换，就可以与内网相应主机通信。
+<div align=center>
+<table>
+    <tr>
+        <th colspan="2"><font face="Consolas">NAT Translation Table</td>  <br />
+    </tr>
+    <tr><td><font face="Consolas"><B>WAN side</B>
+    </font></td> 
+        <td><font face="Consolas"><B>LAN side</B></font></td> 
+    </tr>
+    <tr><td><font face="Consolas">138.76.29.7, 5001</font></td> 
+        <td><font face="Consolas">10.0.0.1, 3345</font></td> 
+    </tr><br />
+</table>
+</div></p>
+<p>&emsp;<font face="Consolas">NAT</font> 技术的产生还带来了其他的好处：① 本地主机 <font face="Consolas">IP</font> 变更，无需通知外界；② 本地变更 <font face="Consolas">ISP</font> 时，无需修改内部网络 <font face="Consolas">IP</font>；③ 内部网络对外界不可见，外界无法直接寻址，提高了安全性。</br>
+&emsp;相应地，<font face="Consolas">NAT</font> 还带来了以下争议：① 路由器只应该处理网络层功能；② 违背端-端通信原则，作为中间设备的路由器不应修改传输层的内容；③ 端-端应用的开发必须要考虑到 <font face="Consolas">NAT</font> 的存在，如 <font face="Consolas">P2P</font>；④ 地址短缺应该由 <font face="Consolas">IPv6</font> 完成。</br>
+&emsp;按照上面的例子，以 <font face="Consolas">P2P</font> 应用为例，当其中一台家庭主机要作为对等方的服务器角色，客户端无法直接访问服务器，造成了 <font face="Consolas">NAT</font> 穿透问题。可有以下解决方案：</p>
+<ul>
+<li>① 在路由器中静态配置 <font face="Consolas">NAT</font>，将特定端口的请求转发给相应主机，<font face="Consolas"><em>e.g.</em></font> <font face="Consolas">(138.76.29.7, 2500)</font> 总是转发给 <font face="Consolas">(10.0.0.1, 2500)</font></li>
+<li>② 利用 <font face="Consolas">UPnP</font> 互联网网关设备协议自动配置</li>
+<li>③ 中继：双方与中继服务器连接</li>
+</ul>
+<h4 id="7-icmp">(7). <font face="Consolas">ICMP</font> 协议</h4>
+<p>&emsp;互联网控制报文协议 <font face="Consolas">(Internet Control Message Protocol, ICMP)</font> 支持主机或路由器进行差错报告或网络探询。</p>
+<ul>
+<li>差错报告报文<ul>
+<li>目的不可达：数据报到达目的地后，无法交付数据，则丢弃报文，并发送差错报告</li>
+<li>源抑制：缓存已满导致数据报被丢弃，在实际的网络的拥塞控制没有采用此方法</li>
+<li>超期：<font face="Consolas">TTL</font> 超期使得数据报被丢弃</li>
+<li>参数问题：转发数据报时发现头部某些字段参数错误，丢弃报文</li>
+<li>重定向：当某数据报到达一个路由器，在路由器看来不该由它转发，则像源主机发送重定向报文</li>
+</ul>
+</li>
+<li>
+<p>网络探询</p>
+<ul>
+<li>回声请求与应答报文：通过接收相应探测网络是否通达，如 <font face="Consolas">ping</font> 工具</li>
+<li>时间戳请求与应答报文</li>
+</ul>
+</li>
+<li>
+<p>不发送 <font face="Consolas">ICMP</font> 差错报告报文的特殊情况：</p>
+<ul>
+<li><font face="Consolas">ICMP</font> 报文出差错</li>
+<li>除了第一个 <font face="Consolas">IP</font> 数据报分片的所有后续分片</li>
+<li>所有的多播 <font face="Consolas">IP</font> 数据报</li>
+<li>具有特殊地址的 <font face="Consolas">IP</font> 数据报 (如 <font face="Consolas">127.0.0.0</font> 或 <font face="Consolas">0.0.0.0</font>)</li>
+</ul>
+</li>
+</ul>
+<p>&emsp;<font face="Consolas">ICMP</font> 是一个介于网络层与传输层之间的网络层协议。<font face="Consolas">ICMP</font> 报文被封装到 <font face="Consolas">IP</font> 数据报中传输，其结构为 <font face="Consolas">ICMP header(8 byte)</font> <font face="Consolas">+</font> 出问题的 <font face="Consolas">IP</font> 数据报头部 <font face="Consolas">+</font> <font face="Consolas">IP</font> 数据前 8 字节。最后一部分对应完成的 <font face="Consolas">UDP</font> 头部或 <font face="Consolas">TCP</font> 头部的端口号字段之前。</br>
+&emsp;应用 <font face="Consolas">Trace Route</font> 举例：源主机发送一系列 <font face="Consolas">UDP</font> 数据报，第 <font face="Consolas"><em>i</em></font> 组数据报 <font face="Consolas">TTL</font> <font face="Consolas">=</font> <font face="Consolas"><em>i</em></font>，且目的端口号设为不可能使用的一个端口号。路由器会返回 <font face="Consolas">ICMP</font> 报文 (type = 11, code = 0)，携带路由器名称和 <font face="Consolas">IP</font> 地址信息；当目的主机返回 <font face="Consolas">ICMP</font> 报文“目的端口不可达” (type = 3, code = 3)，源主机停止发送。</p>
 <p></font></p>
                 
                   
