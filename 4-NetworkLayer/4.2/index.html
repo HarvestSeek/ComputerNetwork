@@ -636,6 +636,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-ipv4-ipv6" title="(3). IPv4 → IPv6" class="md-nav__link">
+    (3). IPv4 → IPv6
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -649,6 +656,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3.Route Algorithm/4.3.md" title="None" class="md-nav__link">
+      None
+    </a>
   </li>
 
         
@@ -789,6 +808,13 @@
           <li class="md-nav__item">
   <a href="#2-ipv6" title="(2). IPv6 地址表示" class="md-nav__link">
     (2). IPv6 地址表示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ipv4-ipv6" title="(3). IPv4 → IPv6" class="md-nav__link">
+    (3). IPv4 → IPv6
   </a>
   
 </li>
@@ -1068,6 +1094,8 @@
 &emsp;为与 <font face="Consolas">IPv4</font> 兼容，<font face="Consolas">IPv6</font> 划定了一块空间 <font face="Consolas">0:0:0:0:0:FFFF:a.b.c.d</font>，表示 <font face="Consolas">IPv4</font> 的嵌入形式。</br>
 &emsp;<font face="Consolas">IPv6</font> 舍弃了掩码的概念，采用 <font face="Consolas">CIDR</font> 的形式，例如 <font face="Consolas">2002:43C:476B::/48</font>。</br>
 &emsp;在表示 <font face="Consolas">URL</font> 的时候，<font face="Consolas">IPv6</font> 可能造成歧义，因此规定地址部分用中括号“<font face="Consolas">[]</font>”括起来，例如 <font face="Consolas">http://[3FFE::1:800:200C:417A]:8080</font>。</p>
+<h4 id="3-ipv4-ipv6">(3). <font face="Consolas">IPv4 → IPv6</font></h4>
+<p>&emsp;<font face="Consolas">IPv4</font> 的网络设备不可能同时都被更新为 <font face="Consolas">IPv6</font>。过渡的方法是，<font face="Consolas">IPv4</font> 路由器支持双协议，在传输 <font face="Consolas">IPv6</font> 数据报时可以被看做逻辑上的一个隧道：把 <font face="Consolas">IPv6</font> 数据报作为有效载荷封装进 <font face="Consolas">IPv4</font> 数据报中。</p>
 <p></font></p>
                 
                   
