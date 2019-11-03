@@ -1007,7 +1007,7 @@ height=250></div>
 <li>③ <font face="Consolas">DHCP request</font>：客户端从一个或多个服务器中选择一个，相应一个 <font face="Consolas">DHCP</font> 请求报文 (<font face="Consolas">DHCP request message</font>)，回应配置参数。</li>
 <li>④ <font face="Consolas">DHCP ACK</font>：服务器响应一个 <font face="Consolas">DHCP ACK</font> 报文，证实参数。</li>
 </ul>
-<div align=center><img src="/img/4-NetworkLayer/4.2//DHCPprocess.png" height=350></div>
+<div align=center><img src="/ComputerNetwork/img/4-NetworkLayer/4.2/dhcpprocess.png" height=350></div>
 
 <p></br>
 &emsp;<font face="Consolas">DHCP</font> 的一个缺陷是，当一台主机在不同子网间移动，无法维持与远程应用的 <font face="Consolas">TCP</font> 连接。</p>
@@ -1068,7 +1068,7 @@ height=250></div>
 &emsp;应用 <font face="Consolas">Trace Route</font> 举例：源主机发送一系列 <font face="Consolas">UDP</font> 数据报，第 <font face="Consolas"><em>i</em></font> 组数据报 <font face="Consolas">TTL</font> <font face="Consolas">=</font> <font face="Consolas"><em>i</em></font>，且目的端口号设为不可能使用的一个端口号。路由器会返回 <font face="Consolas">ICMP</font> 报文 (type = 11, code = 0)，携带路由器名称和 <font face="Consolas">IP</font> 地址信息；当目的主机返回 <font face="Consolas">ICMP</font> 报文“目的端口不可达” (type = 3, code = 3)，源主机停止发送。</p>
 <h3 id="4-ipv6">4. <font face="Consolas">IPv6</font> 简介</h3>
 <h4 id="1-ipv6">(1). <font face="Consolas">IPv6</font> 数据报格式</h4>
-<div align=center><img src="/img/4-NetworkLayer/4.2/IPv6.png" width=350></div>
+<div align=center><img src="/ComputerNetwork/img/4-NetworkLayer/4.2/ipv6.png" width=350></div>
 
 <p></br></p>
 <p><font face="Consolas">IPv6</font> 最初动机是 <font face="Consolas">IPv4</font> 地址空间的耗尽；它还改进了头部的格式，支持快速处理、<font face="Consolas">QoS</font>。</br>
