@@ -753,18 +753,18 @@
 <h4 id="1_1">(1). 概述</h4>
 <p>&emsp;信道本身是不可靠的，通过数据传输协议的处理使传输变得可靠。可靠的定义为：不错、不丢、不乱。信道的不可靠性决定了可靠数据传输协议的复杂性。</br>
 &emsp;可靠数据传输协议的基本结构：</br>
-<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/1structure.png?raw=true" width=370></div></br>
+<div align=center><img src="/img/3-TransportLayer/3.2/1structure.png" width=370></div></br>
 应用层与传输层之间的调用是单向的：可靠数据传输底层实现交给传输层实现；传输层和网络层之间的调用时双向的：在不可靠信道上数据传输不仅需要单向的数据流动，还需要双向的控制信息流动。</br>
 &emsp;以下的讨论仅考虑单向 (<font face="Consolas">unidirectional</font>) 数据传输。</p>
 <h4 id="2-rdt10">(2). <font face="Consolas">Rdt1.0:</font> 可靠信道</h4>
 <p>&emsp;假设底层信道处于理想状态，完全可靠：不发生位错误、不丢弃分组、不乱序。</br>
 &emsp;发送方和接收方的状态机独立，不需要交互控制消息。</p>
-<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/2rdt10fsm.png?raw=true" width=500></div>
+<div align=center><img src="/img/3-TransportLayer/3.2/2rdt10fsm.png" width=500></div>
 
 <h4 id="3-rdt20">(3). <font face="Consolas">Rdt2.0:</font> 产生位错误的信道</h4>
 <p>&emsp;假设信道只会产生位错误，底层信道可能翻转某些位。发送方可以使用 <font face="Consolas">checksum</font> 机制检测错误；如果要从错误中恢复，就要使用确认机制 (<font face="Consolas">Acknowledgements, ACK</font>)：接收方显式告诉发送方已正确接收；通过发送 <font face="Consolas">NAK</font> 告知发送方存在错误，发送方收到 <font face="Consolas">NAK</font> 后，重传分组。</br>
 &emsp;基于这种重传机制的 <font face="Consolas">rdt</font> 协议称为 <font face="Consolas">ARQ(Automatic Repeat reQuest)</font> 协议。<font face="Consolas">ARQ</font> 协议的实现需要三种功能：1.差错检测；2.接收方反馈；3.重传。</p>
-<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/3rdt20fsm.png?raw=true"></div>
+<div align=center><img src="/img/3-TransportLayer/3.2/3rdt20fsm.png"></div>
 
 <p></br>
 &emsp;当发送方处于等待 <font face="Consolas">ACK/NAK</font> 的状态时，不能从上层接收新数据，除非它确信接收方正确接收分组。这样的协议被称为停-等 (<font face="Consolas">stop-and-wait</font>) 协议。</p>
@@ -772,18 +772,18 @@
 <p>&emsp;<font face="Consolas">Rdt2.0</font> 存在致命缺陷：无法处理 <font face="Consolas">ACK/NAK</font> 发生错误或者被破坏 (<font face="Consolas">corrupted</font>) 的情况。解决的办法是如果发送方收到损坏的 <font face="Consolas">ACK/NAK</font> 就让发送方重传，但简单的重传会导致重复分组 (<font face="Consolas">duplicate packet</font>) 问题：接收方可能收到相同的数据，因此 <font face="Consolas">Rdt2.1</font> 引入序列号 (<font face="Consolas">sequence number</font>) 机制：一旦重复，接收方丢弃重复分组。</br>
 &emsp;因为采用停-等协议，只需要两个序列号就足够，因此与 <font face="Consolas">Rdt2.0</font> 相比，状态数量翻倍。接收方需要判断是否重复：收到一个重复分组后，丢弃，并发送一个 <font face="Consolas">ACK</font>。</br>
 <div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/4rdt31senderfsm.png?raw=true" height=400></br>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/5rdt21rcverfsm.png?raw=true" height=350></br>
+<img src="/img/3-TransportLayer/3.2/4rdt31senderfsm.png" height=400></br>
+<img src="/img/3-TransportLayer/3.2/5rdt21rcverfsm.png" height=350></br>
 </div>
 &emsp;从发送方的角度来说，如果收到一个 <font face="Consolas">NAK</font>，等同于接收方最后收到上一个成功发送的包。因此，<font face="Consolas">Rdt2.2</font> 在此基础上，使用 <font face="Consolas">ACK</font> <font face="Consolas">+</font> <font face="Consolas">seq number</font> 代替 <font face="Consolas">NAK</font>；从接收方来看，需要重传的两种情况行为相同，因此合并。
 <div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/6rdt22senderfsm.png?raw=true" height=350></br>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/rdt22rcverfsm.png?raw=true" height=300></br>
+<img src="/img/3-TransportLayer/3.2/6rdt22senderfsm.png" height=350></br>
+<img src="/img/3-TransportLayer/3.2/rdt22rcverfsm.png" height=300></br>
 </div></p>
 <h4 id="5-rdt30">(5). <font face="Consolas">Rdt3.0</font></h4>
 <p>&emsp;信道既可能发生错误，也可能丢失分组。发送方发送的分组、接收方返回的 <font face="Consolas">ACK</font> 都可能会发生丢失，解决的方法是让发送方等待一个合理的时间，这个时间过后，如果没收到 <font face="Consolas">ACK</font>，则重传。如果是因为延迟问题，数据包并未真生丢失，可以通过序列号解决重复分组问题。</br>
 <div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/8rdt30senderfsm.png?raw=true" height=400></br>
+<img src="/img/3-TransportLayer/3.2/8rdt30senderfsm.png" height=400></br>
 </div></p>
 <p>&emsp;对于发送方来说，分组丢失、<font face="Consolas">ACK</font> 丢失、<font face="Consolas">ACK</font> 损坏、<font face="Consolas">ACK</font> 的序列列号错误发生时都会导致超时，然后重传。如果定时器设置过短造成接收方在等待状态下收到损坏或不对应的 <font face="Consolas">ACK</font> 时会什么也不做，避免了不必要的重传。</p>
 <p>&emsp;<font face="Consolas">Rdt3.0</font> 可以正确工作，但性能很差。停-等协议信道利用率：$\frac{L/R}{RTT+L/R}, RTT=2×d_{prop}$</p>
@@ -792,12 +792,12 @@
 <p>&emsp;针对停-等协议利用率低的原因，利用流水线机制，允许发送方在收到 <font face="Consolas">ACK</font> 之前连续发送多个分组，此时利用率变为 $\frac{n×L/R}{RTT+L/R}$。相应地，需要更大的序列号范围，同时发送方和接收方也需要更大的缓存空间。</br>
 &emsp;要想实现这种流水线机制，就需要滑动窗口协议 (<font face="Consolas">sliding-window protocol</font>)。窗口：允许使用的序列号范围，最多等待确认的消息数。滑动：随着协议运行，序列号在空间内向前滑动。</p>
 <h4 id="2-gbn-go-back-n">(2). <font face="Consolas">GBN</font> 协议 (<font face="Consolas">Go-Back-N</font>)</h4>
-<div align=center><img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/9gbn1.png?raw=true"></div>
+<div align=center><img src="/img/3-TransportLayer/3.2/9gbn1.png"></div>
 
 <p>&emsp;图示为发送方视角的序号范围。基序号 <font face="Consolas">base</font> 为最早已发送但未确认的序号，<font face="Consolas">nextseqnum</font> 为最小的未使用序号。</br></p>
 <div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/10gbnsenderfsm.png?raw=true" height=300></br>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/11gbnrcverfsm.png?raw=true" height=200></br>
+<img src="/img/3-TransportLayer/3.2/10gbnsenderfsm.png" height=300></br>
+<img src="/img/3-TransportLayer/3.2/11gbnrcverfsm.png" height=200></br>
 </div>
 
 <p>发送方响应事件：</br>
@@ -807,7 +807,7 @@
 <h4 id="3-sr-selective-repeat">(3) <font face="Consolas">SR</font> 协议 (<font face="Consolas">Selective Repeat</font>)</h4>
 <p>&emsp;<font face="Consolas">GBN</font> 协议仍存在性能问题：当窗口长度和时延带宽积很大，流水线中有很多分组时，单个分组的差错就会引起大量不必要的重传。</br>
 <div align=center>
-<img src="https://github.com/HarvestSeek/ComputerNetwork/blob/gh-pages/img/3-TransportLayer/3.2/12sr1.png?raw=true">
+<img src="/img/3-TransportLayer/3.2/12sr1.png">
 </div></p>
 <p>发送方响应事件：</br>
 ① 上层调用：同 <font face="Consolas">GBN</font>。</br>
