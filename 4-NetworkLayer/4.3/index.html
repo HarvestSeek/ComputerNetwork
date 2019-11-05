@@ -552,6 +552,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 距离向量路由算法" class="md-nav__link">
+    (3). 距离向量路由算法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" title="① 链路开销改变" class="md-nav__link">
+    ① 链路开销改变
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" title="② 无穷计数：增加毒性逆转" class="md-nav__link">
+    ② 无穷计数：增加毒性逆转
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -613,6 +640,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 距离向量路由算法" class="md-nav__link">
+    (3). 距离向量路由算法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" title="① 链路开销改变" class="md-nav__link">
+    ① 链路开销改变
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" title="② 无穷计数：增加毒性逆转" class="md-nav__link">
+    ② 无穷计数：增加毒性逆转
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -653,11 +707,45 @@
 <li>动态路由算法：随着网络流量负载或拓扑发生变化而改变路由选择路径。</li>
 </ul>
 <h4 id="2">(2). 链路状态路由算法</h4>
-<p>&emsp;链路状态 (<font face="Consolas">Link State, LS</font>) 路由算法是一种全局路由算法。网络中每个节点向其他结点广播链路状态分组，当某个结点获得了全局的路由信息后，就使用 <font face="Consolas"><em>Dijskra</em></font> 算法，经过 <font face="Consolas">k</font> 次迭代，求出到相邻结点的最短路径。最后，路由器将求出的最短路径反映到转发表中。</br>
-&emsp;<font face="Consolas">LS</font> 算法 (以及其他以拥塞、时延为测度的算法) 可能会导致震荡 (<font face="Consolas">oscillations</font>) 现象。</p>
+<p>&emsp;链路状态 (<font face="Consolas">Link State, LS</font>) 路由算法是一种全局路由算法。首先，每个节点设置链路成本、构造并向其他结点广播链路状态分组（泛洪），当某个结点获得了全局的路由信息后，就使用 <font face="Consolas"><em>Dijskra</em></font> 算法，经过 <font face="Consolas">k</font> 次迭代，求出到相邻结点的最短路径。最后，路由器将求出的最短路径反映到转发表中。</br></p>
 <p><img alt="" src="../../img/4-NetworkLayer/4.3/oscillation.png" title="oscillation" /></p>
-<p>&emsp;以上图为例，节点 <font face="Consolas"><em>x</em>、<em>y</em>、<em>z</em></font> 分别要发往 <font face="Consolas"><em>w</em></font> 节点 <font face="Consolas">1、e、1</font> 个单位的流量，初始的链路状态如 <font face="Consolas">(a)</font> 所示。随后，三台路由器都运行 <font face="Consolas">LS</font> 算法，它们确定到到 <font face="Consolas"><em>w</em></font> 的最短路径将在逆时针和顺时针之间来回震荡。</br>
-&emsp;一种有效的改进措施是不让所有的路由器同时运行 <font face="Consolas">LS</font> 算法，让每台路由器发送链路通告的时间随机化。</p>
+<p>&emsp;<font face="Consolas">LS</font> 算法 (以及其他以拥塞、时延为测度的算法) 可能会导致震荡 (<font face="Consolas">oscillations</font>) 现象。以上图为例，节点 <font face="Consolas"><em>x</em>、<em>y</em>、<em>z</em></font> 分别要发往 <font face="Consolas"><em>w</em></font> 节点 <font face="Consolas">1、e、1</font> 个单位的流量，初始的链路状态如 <font face="Consolas">(a)</font> 所示。随后，三台路由器都运行 <font face="Consolas">LS</font> 算法，它们确定的到 <font face="Consolas"><em>w</em></font> 的最短路径将在逆时针和顺时针之间来回震荡。</br>
+&emsp;一种有效的改进措施是不让所有的路由器同时运行 <font face="Consolas">LS</font> 算法，让每台路由器发送链路状态分组的时间随机化。</p>
+<h4 id="3">(3). 距离向量路由算法</h4>
+<p>&emsp;距离向量 (<font face="Consolas">Distance-Vertor, DV</font>) 路由算法是一个迭代的、异步的、分布式的算法。分布式：<font face="Consolas">DV</font> 算法需要从一个或多个邻居收集信息，执行计算后再把结果分发给邻居；迭代：<font face="Consolas">DV</font> 算法执行到邻居之间无更多信息可交换为止；异步：所有节点之间不需要步调一致。</br>
+&emsp;<font face="Consolas">DV</font> 算法基于动态规划的 <font face="Consolas"><em>Bellman-Ford</em></font> 方程：$d_x(y)=\min_v\lbrace c(x,v)+d_v(y)\rbrace$，其中 $(x,v)\in E$，$d_u(v)$ 表示 $u$ 到 $v$ 的最短路的长度。<font face="Consolas">DV</font> 算法中的每个结点 $x$ 维护以下三种路由选择信息：</p>
+<ul>
+<li>一个距离向量：$\boldsymbol{D_x(y)}=( D_x(y):\ y\in E)$，包含 $x$ 到 $E$ 中所有点的开销估计</li>
+<li>每个邻接点的开销 $c(x,v)$</li>
+<li>每个邻接点的距离向量</li>
+</ul>
+<p>每个节点不时地向它的每个邻居发送自己的距离向量副本。当 $x$ 从某个邻居 $v$ 收到了一个距离向量，就保存它并通过 <font face="Consolas"><em>Bellman-Ford</em></font> 方程更新自己的距离向量；如果 $x$ 的距离向量因此而发生改变，就向每个邻居发送更新后的距离向量。只要节点之间持续以异步的方式交换距离向量，迭代终止时，$D_x(y)$ 就会收敛到 $d_x(y)$。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">loop</span> <span class="k">for</span> <span class="n">each</span> <span class="nl">node</span><span class="p">:</span>
+    <span class="n">wait</span> <span class="p">(</span><span class="n">until</span> <span class="n">I</span> <span class="n">see</span> <span class="n">a</span> <span class="n">link</span> <span class="n">cost</span> <span class="n">change</span> <span class="n">to</span> <span class="n">some</span> <span class="n">neighbor</span> <span class="n">w</span> <span class="n">or</span>
+            <span class="n">until</span> <span class="n">I</span> <span class="n">receive</span> <span class="n">a</span> <span class="n">distance</span> <span class="n">vector</span> <span class="n">from</span> <span class="n">some</span> <span class="n">neighbor</span> <span class="n">w</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">each</span> <span class="n">y</span> <span class="n">in</span> <span class="nl">E</span><span class="p">:</span>
+            <span class="n">D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">min</span><span class="p">{</span><span class="n">c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="n">D</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">y</span><span class="p">)}</span>
+
+<span class="k">if</span> <span class="n">D</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="n">changed</span> <span class="k">for</span> <span class="n">any</span> <span class="n">destination</span> <span class="n">y</span>
+    <span class="n">send</span> <span class="n">distance</span> <span class="n">vector</span> <span class="n">Dx</span> <span class="n">to</span> <span class="n">all</span> <span class="n">neighbors</span>
+</pre></div>
+</td></tr></table></p>
+<h5 id="1_2"><font size=3><strong>① 链路开销改变</strong></font></h5>
+<p><img align=right src="/img/4-NetworkLayer/4.3/dv1.png" height=100></p>
+<p>&emsp;假设 $c(x,y)$ 从 $4$ 变为 $60$，在变化之前，$\boldsymbol{D_y}=(4,0,1)$，$\boldsymbol{D_z}=(5,1,0)$。在 $t_0$ 时刻，$y$ 探测到这个变化，并由 $\boldsymbol{D_z}$ 重计算 $D_y(x)=6$；随后，在 $t_1$ 时刻，$y$ 将变化通知 $z$，$z$ 又重计算 $D_z(x)=7$，这时就进入了路由选择环路 <font face="Consolas">(routing loop)</font>。经过 $44$ 次迭代 ($y$ 和 $z$ 之间交换报文) 以后，$z$ 才能确定到 $x$ 的最短路为 $(z,x)$。当链路开销增加的非常大，迭代的次数也就更多。这个问题也被称作无穷计数问题 (<font face="Consolas">count-to-infinity</font>)。</p>
+<h5 id="2_1"><font size=3><strong>② 无穷计数：增加毒性逆转</strong></font></h5>
+<p>&emsp;毒性逆转 (<font face="Consolas">poisoned reverse</font>) 的基本思想为：如果某点 $a$ 通过 $m$ 路由到目的地 $b$，那么 $z$ 向 $m$ 发送距离向量时，通告 $m$ 更新 $D_a(b)=\infty$，即使这是一个“善意的谎言”。</br>
+&emsp;考虑 ① 中的情形，变化发生前，$y$ 存储的 $D_z(x)$ 已经为 $\infty$。随后，$y$ 与 $z$ 经过三次报文交换，就可以确定 $D_y(x)=d_y(x)=51$，且 $z$ 最后存储的 $D_y(x)=\infty$。</br>
+&emsp;毒性逆转并没有解决一般性的无穷计数问题，如果不是两个直连的结点，就无法通过毒性逆转解决。</p>
 <p></font></p>
                 
                   
