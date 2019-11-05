@@ -740,7 +740,7 @@
 </pre></div>
 </td></tr></table></p>
 <h5 id="1_2"><font size=3><strong>① 链路开销改变</strong></font></h5>
-<p><img align=right src="/img/4-NetworkLayer/4.3/dv1.png" height=100></p>
+<p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.3/dv1.png" height=100></p>
 <p>&emsp;假设 $c(x,y)$ 从 $4$ 变为 $60$，在变化之前，$\boldsymbol{D_y}=(4,0,1)$，$\boldsymbol{D_z}=(5,1,0)$。在 $t_0$ 时刻，$y$ 探测到这个变化，并由 $\boldsymbol{D_z}$ 重计算 $D_y(x)=6$；随后，在 $t_1$ 时刻，$y$ 将变化通知 $z$，$z$ 又重计算 $D_z(x)=7$，这时就进入了路由选择环路 <font face="Consolas">(routing loop)</font>。经过 $44$ 次迭代 ($y$ 和 $z$ 之间交换报文) 以后，$z$ 才能确定到 $x$ 的最短路为 $(z,x)$。当链路开销增加的非常大，迭代的次数也就更多。这个问题也被称作无穷计数问题 (<font face="Consolas">count-to-infinity</font>)。</p>
 <h5 id="2_1"><font size=3><strong>② 无穷计数：增加毒性逆转</strong></font></h5>
 <p>&emsp;毒性逆转 (<font face="Consolas">poisoned reverse</font>) 的基本思想为：如果某点 $a$ 通过 $m$ 路由到目的地 $b$，那么 $z$ 向 $m$ 发送距离向量时，通告 $m$ 更新 $D_a(b)=\infty$，即使这是一个“善意的谎言”。</br>
