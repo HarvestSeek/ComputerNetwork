@@ -612,8 +612,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" title="4. 循环冗余检测" class="md-nav__link">
-    4. 循环冗余检测
+  <a href="#4" title="4. 循环冗余校验" class="md-nav__link">
+    4. 循环冗余校验
   </a>
   
 </li>
@@ -698,8 +698,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4" title="4. 循环冗余检测" class="md-nav__link">
-    4. 循环冗余检测
+  <a href="#4" title="4. 循环冗余校验" class="md-nav__link">
+    4. 循环冗余校验
   </a>
   
 </li>
@@ -737,12 +737,13 @@
 <h3 id="3">3. 校验和方法</h3>
 <p>&emsp;其基本思想为把数据的 $d$ 个比特看成 $k$ 比特整数的序列，把这些数求和作为差错检测比特。例如 <font face="Consolas">TCP</font> 和 <font face="Consolas">UDP</font> 的校验和就通过 $16$ 比特整数求和取反码生成检测比特。</br>
 &emsp;传输层使用开销更小、保护性更弱的 $16$ 比特校验和作为检错机制，而链路层使用了 <font face="Consolas">CRC</font>。其原因在于，传输层的差错检测通过用户 <font face="Consolas">OS</font> 中的软件实现，需要一种简单而快速的机制；而链路层通过专用硬件实现，能够执行更快更复杂的 <font face="Consolas">CRC</font>。</p>
-<h3 id="4">4. 循环冗余检测</h3>
-<p>&emsp;循环冗余检测 (<font face="Consolas">Cyclic Redundancy Check, CRC</font>) 编码在现今的计算机网络中被广泛应用，它又称多项式编码。其基本思想如下。</br>
+<h3 id="4">4. 循环冗余校验</h3>
+<p>&emsp;循环冗余校验 (<font face="Consolas">Cyclic Redundancy Check, CRC</font>) 编码在现今的计算机网络中被广泛应用，它又称多项式编码。其基本思想如下。</br>
 &emsp;设要发送的数据 $D$ 有 $d$ 个比特，用于检错的 <font face="Consolas">CRC</font> 比特 $R$ 有 $r$ 个比特。发送方和接收方要协商一个生成多项式 (<font face="Consolas">generator</font>)，记为 $G$：</br>
 &ensp;① $G$ 有 $r+1$ 个比特，且左数第一位为 $1$；</br>
 &ensp;② $d+r$ 个比特对应的二进制数在模 $2$ 运算下可以整除 $G$。</br>
-所有的 <font face="Consolas">CRC</font> 计算都使用模 $2$ 运算，在加法中不进位、在减法中不借位，即加法和减法都与 $xor$ 运算等价。因此有：$D\cdot 2^r\ xor\ R=nG$。由于 $G$ 只比 $R$ 多 $1$ 个比特，$n$ 的值也是确定的，$nG$ 只有后 $r$ 位与 $D$ 不同，因此，$R$ 可以通过 $R=remainder (D\cdot 2^r/G)$ 求得。</br>
+相应地，接收方通过判断 $D\cdot 2^r+R$ 除以 $G$ 的余数是否全 $0$ 进行检错。</br>
+&emsp;所有的 <font face="Consolas">CRC</font> 计算都使用模 $2$ 运算，在加法中不进位、在减法中不借位，即加法和减法都与 $xor$ 运算等价。因此有：$D\cdot 2^r\ xor\ R=nG$。由于 $G$ 只比 $R$ 多 $1$ 个比特，$n$ 的值也是确定的，$nG$ 只有后 $r$ 位与 $D$ 不同，因此，$R$ 可以通过 $R=remainder (D\cdot 2^r/G)$ 求得。</br>
 &emsp;国际标准定义了 $8$、$12$、$16$ 和 $32$ 比特生成多项式 $G$，每个标准都可以检测小于 $r+1$ 比特的突发差错 (连续的 $r$ 比特或更少的差错)。在适当的假设下，长度大于 $r+1$ 比特的突发差错被检测的概率为 $1-0.5^r$。</p>
 <p></font></p>
                 
