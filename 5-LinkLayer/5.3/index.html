@@ -40,7 +40,7 @@
 
     
       
-        <title>3.x - Learning Notes of Computer Networking</title>
+        <title>3.Multiple Access Control Protocols - Learning Notes of Computer Networking</title>
       
     
     
@@ -116,6 +116,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -138,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                3.x
+                3.Multiple Access Control Protocols
               
             </span>
           
@@ -582,9 +586,117 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="3.x" class="md-nav__link md-nav__link--active">
-      3.x
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        3.Multiple Access Control Protocols
+      </label>
+    
+    <a href="./" title="3.Multiple Access Control Protocols" class="md-nav__link md-nav__link--active">
+      3.Multiple Access Control Protocols
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 多路访问协议概述" class="md-nav__link">
+    1. 多路访问协议概述
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 网络链路" class="md-nav__link">
+    (1). 网络链路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 多路访问问题" class="md-nav__link">
+    (2). 多路访问问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 信道划分协议" class="md-nav__link">
+    2. 信道划分协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tdm" title="(1). TDM" class="md-nav__link">
+    (1). TDM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fdm" title="(2). FDM" class="md-nav__link">
+    (2). FDM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. 随机访问协议" class="md-nav__link">
+    3. 随机访问协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aloha" title="(1). 时隙 ALOHA 协议" class="md-nav__link">
+    (1). 时隙 ALOHA 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-aloha" title="(2). ALOHA 协议" class="md-nav__link">
+    (2). ALOHA 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-csma" title="(3). CSMA 协议" class="md-nav__link">
+    (3). CSMA 协议
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -613,15 +725,204 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 多路访问协议概述" class="md-nav__link">
+    1. 多路访问协议概述
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 网络链路" class="md-nav__link">
+    (1). 网络链路
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 多路访问问题" class="md-nav__link">
+    (2). 多路访问问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 信道划分协议" class="md-nav__link">
+    2. 信道划分协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tdm" title="(1). TDM" class="md-nav__link">
+    (1). TDM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fdm" title="(2). FDM" class="md-nav__link">
+    (2). FDM
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. 随机访问协议" class="md-nav__link">
+    3. 随机访问协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aloha" title="(1). 时隙 ALOHA 协议" class="md-nav__link">
+    (1). 时隙 ALOHA 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-aloha" title="(2). ALOHA 协议" class="md-nav__link">
+    (2). ALOHA 协议
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-csma" title="(3). CSMA 协议" class="md-nav__link">
+    (3). CSMA 协议
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>3.x</h1>
+                  <h1>3.Multiple Access Control Protocols</h1>
                 
-                
+                <p><font face="思源黑体 CN">
+<font face="Consolas"></font></p>
+<h3 id="1">1. 多路访问协议概述</h3>
+<h4 id="1_1">(1). 网络链路</h4>
+<p>&emsp;本章主要涉及两种网络链路。</br>
+&emsp;点对点链路 (<font face="Consolas">point-to-point link</font>) 由链路及其两端单一的发送方和接收方组成。很多链路层协议如 <font face="Consolas">PPP</font>、<font face="Consolas">HDLC</font> 基于此而设计。</br>
+&emsp;广播链路 (<font face="Consolas">broadcast link</font>) 能够让多个发送和接收节点接入到同一个共享链路上。广播的含义是当任何一个节点传输一个帧时，信道广播该帧，每个其他节点都收到一个副本，以太网和无线局域网均基于此实现。</p>
+<h4 id="2">(2). 多路访问问题</h4>
+<p>&emsp;多路访问问题即为如何协调多个发送和接收节点对一个共享广播链路的访问，它对链路层来说十分重要。其关键在于，当多个节点同时传输帧的时候，所有节点同时接收到多个帧，帧与帧之间发生了冲突 (<font face="Consolas">collide</font>)，所有涉及冲突的帧都会因为信号纠缠而丢失，因此而导致了信道被浪费。</br>
+&emsp;当多个节点保持活跃状态，多路访问控制 (<font face="Consolas">mutiple access control</font>) 协议负责协调活跃节点之间的传输。近年来，已有几十种 <font face="Consolas">MAC</font> 被实现，它们可以被划分为三类：信道划分协议 (<font face="Consolas">channel partioning</font>)、随机访问协议 (<font face="Consolas">random access</font>)、轮流协议 (<font face="Consolas">taking-turns</font>)。</br>
+&emsp;对于带宽为 $R$ <font face="Consolas">bps</font> 的广播链路，理想的 <font face="Consolas">MAC</font> 协议应具有以下特性：</br>
+&emsp;① 当仅有一个节点发送数据，其吞吐量为 $R$ <font face="Consolas">bps</font>；</br>
+&emsp;② 当有 $M$ 个节点发送数据，每个节点的吞吐量为 $R/M$ <font face="Consolas">bps</font> (平均传输速率)；</br>
+&emsp;③ 协议是分散的：不会因为某个节点的崩溃而崩溃；</br>
+&emsp;④ 协议的实现简单。</br></p>
+<h3 id="2_1">2. 信道划分协议</h3>
+<p>&emsp;划分广播信道带宽通过多路复用技术实现。</p>
+<h4 id="1-tdm">(1). <font face="Consolas">TDM</font></h4>
+<p>&emsp;<font face="Consolas">TDM</font> 将时间划分为时间帧 (<font face="Consolas">time frame</font>)，并把每个时间帧划分为 $N$ 个时隙 (<font face="Consolas">slot</font>)，然后把每个时隙分给 $N$ 个节点中的一个。时隙长度通常可以使一个节点发完一个链路层帧。</br>
+&emsp;<font face="Consolas">TDM</font> 避免了冲突，且十分公平，每个节点在每个帧内的平均传输速率为 $R/N$ <font face="Consolas">bps</font>；但每个节点最大平均速率为 $R/N$ <font face="Consolas">bps</font>，且每个节点只能占用特定时隙，当发送节点很少时信道资源不能得到充分利用。</p>
+<h4 id="2-fdm">(2). <font face="Consolas">FDM</font></h4>
+<p>&emsp;<font face="Consolas">FDM</font> 将 $R$ <font face="Consolas">bps</font> 信道划分为不同频段，并未每个节点分配一个频率，相当于建立了 $N$ 个并行的 $R/N$ <font face="Consolas">bps</font> 的信道。<font face="Consolas">FDM</font> 的优缺点与 <font face="Consolas">TDM</font> 类似。</p>
+<h3 id="3">3. 随机访问协议</h3>
+<p>&emsp;在随机访问协议中，当一个节点要发送分组时，利用信道全部带宽 $R$。当多个节点同时传输引起冲突，随机访问 <font face="Consolas">MAC</font> 协议需要定义：① 如何检测冲突，如超时；② 如何从冲突中恢复，如重传。</p>
+<h4 id="1-aloha">(1). 时隙 <font face="Consolas">ALOHA</font> 协议</h4>
+<p>&emsp;时隙 <font face="Consolas">ALOHA</font> 协议基于以下假设：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">所有帧大小相等，为 $L$ <font face="Consolas">bit</font>，并且时间被划分为等长的 $L/R$ 秒的时隙</li>
+<li style="margin:1px 26px;">节点只在时隙起点传输帧，且节点之间是同步的，每个节点都知道时隙何时开始</li>
+<li style="margin:1px 26px;">如果一个时隙内发生了冲突，所有节点在时隙结束前可以检测到该冲突</li>
+</ul>
+</body>
+</html>
+&emsp;对每个节点，时隙 <font face="Consolas">ALOHA</font> 的操作：
+<html> 
+<body>
+<ul style="margin-top:10px;margin-bottom:10px">
+<li style="margin:1px 26px;">当节点有一个新帧要发送，它等待下一个时隙开始传输该帧</li>
+<li style="margin:1px 26px;">如果未发生冲突，节点无需考虑重传；如果冲突发生，节点在时隙结束前检测到冲突，并以概率 $p$ 在后续的时隙中重新发送该帧，直到无冲突发送为止。</li>
+</ul>
+</body>
+</html>
+&emsp;时隙 <font face="Consolas">ALOHA</font> 的优点是高度分散，节点之间只需同步时隙；在单发送节点的情况下全部带宽都可以被占用；实现足够简单。</br>
+&emsp;但在多节点传送的情况下，时隙 <font face="Consolas">ALOHA</font> 效率较低。定义空闲时隙和冲突时隙为被浪费掉的时隙，单节点传输的时隙为成功时隙，时隙 <font face="Consolas">ALOHA</font> 的效率为：当节点数很多，且每个节点都有大量的帧要传输时，成功时隙所占的比例。给定节点数 $N$、概率 $p$，对于一个时隙来说，它是成功时隙的概率为 $Np\cdot (1-p)^{N-1}$，也即效率。当 $N\rightarrow \infty$、$p=p^*$，时隙 <font face="Consolas">ALOHA</font> 取得的最大效率为 $1/e\approx0.37$ (空闲时隙: $0.37$、冲突时隙: $0.26$) ，所以共享信道的有效传输速率为 $0.37R$ <font face="Consolas">bps</font>。</p>
+<h4 id="2-aloha">(2). <font face="Consolas">ALOHA</font> 协议</h4>
+<p>&emsp;又称纯 <font face="Consolas">ALOHA</font> 协议、非时隙 <font face="Consolas">ALOHA</font> 协议。它与时隙 <font face="Consolas">ALOHA</font> 协议的区别是不划分时隙，节点之间无需同步，当有新的帧生成，节点立即将其发送。</br>
+&emsp;纯 <font face="Consolas">ALOHA</font> 协议发生冲突的可能性更大。令 $u=L/R$，假设某节点在 $t_0$ 时刻发送数据，对于时隙 <font face="Consolas">ALOHA</font> 协议，其易损时间区仅为时隙 $[t_0, t_0+u]$；而纯 <font face="Consolas">ALOHA</font> 协议为 $[t_0-u,t_0+u]$，因此一个节点成功发送的概率为 $p(1-p)^{2(N-1)}$，当 $N\rightarrow \infty$、$p=p^*$，纯 <font face="Consolas">ALOHA</font> 的最大效率为 $1/2e\approx 0.18$。</p>
+<h4 id="3-csma">(3). <font face="Consolas">CSMA</font> 协议</h4>
+<p>&emsp;载波监听多路访问 (<font face="Consolas">Carrier Sense Multiple Access, CSMA</font>) 协议族改进了 <font face="Consolas">ALOHA</font> 协议族的缺点，在发送帧之前，<font face="Consolas">CSMA</font> 监听信道 (载波)：如果信道空闲，就发送完整帧，否则推迟发送。<font face="Consolas">CSMA</font> 有以下推迟策略：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">$1$-坚持 <font face="Consolas">CSMA</font></li>
+<li style="margin:1px 26px;">非坚持 <font face="Consolas">CSMA</font></li>
+<li style="margin:1px 26px;">$p$-坚持 <font face="Consolas">CSMA</font></li>
+</ul>
+</body>
+</html>
+&emsp;即使使用监听机制，冲突仍有可能发生。以下面的时空图为例，$t_0$ 时节点 <font face="Consolas">B</font> 监听到信道是空闲的，发送一个帧；$t_1$ 时，尽管信道已被占用，由于端到端信道传播时延的存在，<font face="Consolas">D</font> 并不能检测到信道已被占用，因此也会发送一个帧。
+<img src="/img/5-LinkLayer/5.3/csma.png" height=300></br>
+&emsp;对于 <font face="Consolas">CSMA</font>，即使随后 <font face="Consolas">B</font> 和 <font face="Consolas">D</font> 已经发现了冲突，它们也会把相应的帧完整发送；对于具有冲突检测的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CD</font>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>，在发现冲突后会立刻停止发送，减少对信道资源的浪费。</br>
+&emsp;<font face="Consolas">CSMA/CD</font> 在此情况下的的冲突检测在有限局域网下相对容易实现，可以通过比较检测到的信号强度是否大于发送信号的最大强度实现；对于无线局域网，实现十分困难，因为信号强度随距离衰减较快，因此在无线网中较少使用。</br>
+<div align=center>
+<img src="/img/5-LinkLayer/5.3/cond1.png" height=180>
+</div></p>
+<p>&emsp;为保证可靠性，<font face="Consolas">CSMA/CD</font> 必须保证每个节点在传输延迟内可以检测到已存在的冲突。如果传输的过快或传播延迟过长，均可能导致无法检测到。假设网络带宽 $R$ <font face="Consolas">bps</font>，数据帧最小长度为 $L_{min}$ <font face="Consolas">bits</font>，信号传播速度为 $V$ <font face="Consolas">m/s</font>，考虑如上图所示的临界情况：$AD=d_{max}$ 为最长链路，<font face="Consolas">A</font> 发送的信号恰好在 $t_1$ 之后到达 <font face="Consolas">D</font>，最后 <font face="Consolas">A</font> 又恰好在传输延迟内检测到了冲突。因此，<font face="Consolas">CSMA/CD</font> 需要满足 $\min{d_{trans}}=L_{min}/R\leq 2\cdot d_{max}/V=RTT_{max}$。</br>
+&emsp;<font face="Consolas">CSMA/CD</font> 的效率近似为：
+$$Efficiency=\frac{1}{1+5\cdot d_{prop}/d_{trans}}$$
+如果 $d_{prop}=0$，冲突的节点会立即终止传输，因此效率接近 $1$。</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>所有的 <font face="Consolas">CSMA</font> 都有冲突检测机制，这样命名只表示在这种特殊情况下的不同。
+</font>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
