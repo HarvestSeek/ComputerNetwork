@@ -40,7 +40,7 @@
 
     
       
-        <title>4.y - Learning Notes of Computer Networking</title>
+        <title>4.Switched LANs - Learning Notes of Computer Networking</title>
       
     
     
@@ -116,6 +116,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#1-arp" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -138,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                4.y
+                4.Switched LANs
               
             </span>
           
@@ -594,9 +598,117 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="4.y" class="md-nav__link md-nav__link--active">
-      4.y
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        4.Switched LANs
+      </label>
+    
+    <a href="./" title="4.Switched LANs" class="md-nav__link md-nav__link--active">
+      4.Switched LANs
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-arp" title="1. 链路层寻址：ARP 协议" class="md-nav__link">
+    1. 链路层寻址：ARP 协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mac" title="(1). MAC 地址" class="md-nav__link">
+    (1). MAC 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-arp" title="(2). ARP 协议" class="md-nav__link">
+    (2). ARP 协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="① 子网内通信" class="md-nav__link">
+    ① 子网内通信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="② 子网间通信" class="md-nav__link">
+    ② 子网间通信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 以太网" class="md-nav__link">
+    2. 以太网
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 以太网服务" class="md-nav__link">
+    (1). 以太网服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 以太网帧的结构" class="md-nav__link">
+    (2). 以太网帧的结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 交换机" class="md-nav__link">
+    (3). 交换机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" title="(4). 虚拟局域网" class="md-nav__link">
+    (4). 虚拟局域网
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -613,15 +725,244 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-arp" title="1. 链路层寻址：ARP 协议" class="md-nav__link">
+    1. 链路层寻址：ARP 协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mac" title="(1). MAC 地址" class="md-nav__link">
+    (1). MAC 地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-arp" title="(2). ARP 协议" class="md-nav__link">
+    (2). ARP 协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="① 子网内通信" class="md-nav__link">
+    ① 子网内通信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="② 子网间通信" class="md-nav__link">
+    ② 子网间通信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 以太网" class="md-nav__link">
+    2. 以太网
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 以太网服务" class="md-nav__link">
+    (1). 以太网服务
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 以太网帧的结构" class="md-nav__link">
+    (2). 以太网帧的结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 交换机" class="md-nav__link">
+    (3). 交换机
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" title="(4). 虚拟局域网" class="md-nav__link">
+    (4). 虚拟局域网
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>4.y</h1>
+                  <h1>4.Switched LANs</h1>
                 
-                
+                <p><font face="思源黑体 CN">
+<font face="Consolas"></font></p>
+<h3 id="1-arp">1. 链路层寻址：<font face="Consolas">ARP</font> 协议</h3>
+<h4 id="1-mac">(1). <font face="Consolas">MAC</font> 地址</h4>
+<p>&emsp;主机和路由器的接口 (适配器) 除了具有一个 <font face="Consolas">IP</font> 地址以外，还具有一个链路层地址，称为物理地址、<font face="Consolas">LAN</font> 地址或 <font face="Consolas">MAC</font> 地址。<font face="Consolas">MAC</font> 地址通常为 $6$ 个字节，用通过“-”分割的六个十六进制数表示。</br>
+&emsp;<font face="Consolas">MAC</font> 地址是唯一的，在网卡出厂时就写入到了它的 <font face="Consolas">ROM</font> 中。当一个网卡商要生产适配器时，它向 <font face="Consolas">IEEE</font> 支付费用，购买一块 $24$ 位的地址空间。一般来说，对任意设备，无论到哪里使用，其 <font face="Consolas">MAC</font> 地址是不会改变的。</p>
+<p><img align=right src="/ComputerNetwork/img/5-LinkLayer/5.4/in.png" height=200></p>
+<h4 id="2-arp">(2). <font face="Consolas">ARP</font> 协议</h4>
+<h5 id="1"><font size=3>① 子网内通信</font></h5>
+<p>&emsp;如图所示，假设主机 <font face="Consolas">C</font> 要向主机 <font face="Consolas">A</font> 发送 <font face="Consolas">IP</font> 数据报，但主机 <font face="Consolas">C</font> 只知道目的 <font face="Consolas">IP</font> 而不知道目的 <font face="Consolas">MAC</font> 地址。于是，主机 <font face="Consolas">C</font> 查询自己的 <font face="Consolas">ARP</font> 表，<font face="Consolas">ARP</font> 表的格式如下：</p>
+<style type="text/css">
+@import "/css/orgtable.css";
+</style>
+
+<div align=center>
+<table class="gridtable">
+<tr>
+    <th>IP<font face="思源黑体 CN"> 地址</font></th><th>MAC<font face="思源黑体 CN"> 地址</font></th><th>TTL</th>
+</tr>
+<tr>
+    <td>222.222.222.221</td><td>88-B2-2F-54-1A-0F</td><td>13:45:00</td>
+</tr>
+<tr>
+    <td>222.222.222.223</td><td>5C-66-AB-90-75-B1</td><td>13:52:00</td>
+</tr>
+</table>
+</div>
+
+<p>表中包含了 <font face="Consolas">IP</font> 到 <font face="Consolas">MAC</font> 的映射关系，<font face="Consolas">TTL</font> 代表表项的寿命，通常，从一个表项被设置开始，其寿命大约为 $20$ 分钟。</br>
+&emsp;如果 <font face="Consolas">C</font> 查询到目的 <font face="Consolas">MAC</font>，则这个问题就被解决了；如果 <font face="Consolas">ARP</font> 表中没有相应表项，发送方就会构造一个 <font face="Consolas">ARP</font> 分组 (<font face="Consolas">ARP packet</font>)，目的 <font face="Consolas">MAC</font> 被设置为广播地址 <font face="Consolas">FF-FF-FF-FF-FF-FF</font>，局域网的每个节点都会检查自己的 <font face="Consolas">IP</font> 是否与 <font face="Consolas">ARP</font> 请求分组的目的 <font face="Consolas">IP</font> 是否匹配，如果匹配，则返回相应的映射。</br>
+&emsp;<font face="Consolas">ARP</font> 协议是即插即用的：<font face="Consolas">ARP</font> 自动建立而不需要手动配置，如果某主机与局域网断开连接，它的相应表项也会被清空。</br>
+&emsp;<font face="Consolas">ARP</font> 协议是一个介于网络层与链路层之间的协议。</p>
+<h5 id="2"><font size=3>② 子网间通信</font></h5>
+<p><div align=center><img src="/ComputerNetwork/img/5-LinkLayer/5.4/out.png" height=160></div></p>
+<p>&emsp;如图，假设主机 $1$: <font face="Consolas">111.111.111.111</font> 向主机 $2$: <font face="Consolas">222.222.222.222</font> 发送一个数据报。主机 $1$ 首先检测出目的 <font face="Consolas">IP</font> 不与自己在同一子网内，通过 <font face="Consolas">ARP</font> 获得网关的 <font face="Consolas">MAC</font> 地址后，向网关发送此数据报；之后，路由器查询转发表发送该分组，并将其封装到一个新的帧中，此时，帧中的目的 <font face="Consolas">MAC</font> 是通过 <font face="Consolas">ARP</font> 获得的主机 $2$ 的 <font face="Consolas">MAC</font>。</p>
+<h3 id="2_1">2. 以太网</h3>
+<p>&emsp;以太网 (<font face="Consolas">Ethernet</font>) 自 20 世纪 70 年代被发明以来，不断演化与发展，直至现在仍保持支配地位。它是应用最广泛的有线 <font face="Consolas">LAN</font> 技术：造价低廉，一个以太网 <font face="Consolas">NIC</font> 不足 <font face="Consolas">￥100</font>；它比令牌局域网和 <font face="Consolas">ATM</font> 更简单、便宜；它可以满足网络带宽的需求。它以古时的假想物质“以太”命名。</br>
+&emsp;20 世纪 90 年代以前，以太网使用总线拓扑结构，同过同轴电缆总线互连节点，是一种广播局域网；90 年代后期，出现了基于集线器 (<font face="Consolas">hub</font>) 的星形拓扑，但其本质也是广播局域网；21 世纪初，位于中心的集线器被交换机所替代。</p>
+<h4 id="1_1">(1). 以太网服务</h4>
+<p>&emsp;以太网提供无连接、不可靠的服务，遇到差错帧直接丢弃，丢弃帧的数据恢复依赖于高层协议。</br>
+&emsp;以太网的 <font face="Consolas">MAC</font> 协议采用 <font face="Consolas">CSMA/CD</font>。当监听的链路处于占用状态，以太网的推迟策略采用 $1$-坚持 <font face="Consolas">CSMA</font>；当在传输数据过程中没有检测到冲突，则确认发送帧成功发送；否则，发送方发送一个阻塞信号后中止发送，然后根据二进制指数退避算法确认等待的时间量：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">设这个帧经历了 $m$ 次的连续冲突，取 $n=\min{(m,10)}$</li>
+<li style="margin:1px 26px;"><font face="Consolas">NIC</font> 从 $\lbrace0,1,...,2^{n-1}\rbrace$ 中随机选取一个数 $K$，等待 $K\cdot 512$ <font face="Consolas">bit</font> 的传输延迟时间后，重新进入  监听-空闲时传输  的过程</li>
+</ul>
+</body>
+</html>
+其原因在于，冲突次数多意味着网络负载高，应当提升随机时间的范围，减小节点之间连续冲突的概率。</p>
+<h4 id="2_2">(2). 以太网帧的结构</h4>
+<p>&emsp;&emsp;<img src="/ComputerNetwork/img/5-LinkLayer/5.4/frame.png" height=80>
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">前导码 (<font face="Consolas">Preamble</font>)(<font face="Consolas">8B</font>): 前 $7$ 个字节均为 <font face="Consolas">10101010</font>，用于同步接收端和发送端的时钟；第 $8$ 个字节为 <font face="Consolas">10101011</font>，用于定界。</li>
+    <ul style="margin-top:0px;margin-bottom:0px">
+    <li style="margin:1px 50px;" type="circle">时钟同步：同步串行通信需要通过相同的时钟频率恢复数据信息。虽然双方可以根据链路类型指定频率，但实际过程中会有微小偏差，因此需要同步。</li>
+    <li style="margin:1px 50px;" type="circle">不做特殊声明，前导码长度不算进帧长内。</li>
+    </ul>
+<li style="margin:1px 26px;">目的 <font face="Consolas">MAC</font>、源 <font face="Consolas">MAC</font> (各 <font face="Consolas">6B</font>): 接收方会匹配目的 <font face="Consolas">MAC</font> 和自身的 <font face="Consolas">MAC</font>，如果一致才会接收，否则丢弃。</li>
+<li style="margin:1px 26px;">类型 (<font face="Consolas">Type</font>)(<font face="Consolas">2B</font>): 用于复用和分用，指示了上层协议，如 <font face="Consolas">ARP</font> 为 <font face="Consolas">0x0806</font>。</li>
+<li style="margin:1px 26px;">数据 (<font face="Consolas">min:46B, max:1500B</font>): 最小值基于 <font face="Consolas">CSMA/CD</font> 的限制，当小于 $46$ 字节时需要填充，网络层通过 <font face="Consolas">IP</font> 的长度字段去除填充；最大值取自以太网的 <font face="Consolas">MTU</font>。</li>
+<li style="margin:1px 26px;"><font face="Consolas">CRC</font> (<font face="Consolas">4B</font>): 循环冗余校验码。</li>
+</ul>
+</body>
+</html>
+&emsp;以太网标准的不同通常是速率和物理介质的不同，帧的格式和使用的 <font face="Consolas">MAC</font> 协议是相同的。</p>
+<h4 id="3">(3). 交换机</h4>
+<p>&emsp;交换机的功能是转发链路层帧，它对于子网中的主机和路由器来说是透明的 (<font face="Consolas">transparent</font>)。在交换以太网中，主机和路由器通过独享链路直连交换机，每段链路通过 <font face="Consolas">CSMA/CD</font> 收发帧，且不会有冲突出现；每段链路都支持全双工通信，链路之间支持并行通信。类似于路由器，交换机的输出接口也设有缓存。</br></p>
+<p>&emsp;交换机的功能通过存储于内部的转发表 (<font face="Consolas">switch table</font>) 实现，其形式如下：
+<style type="text/css">
+@import "/css/orgtable.css";
+</style></p>
+<table class="gridtable">
+<tr>
+    <th>MAC<font face="思源黑体 CN"> 地址</font></th><th><font face="思源黑体 CN">接口</font></th><th><font face="思源黑体 CN">时间</font></th>
+</tr>
+<tr>
+    <td>01-12-23-34-45-56</td><td>2</td><td>13:45</td>
+</tr>
+<tr>
+    <td>...</td><td>...</td><td>...</td>
+</tr>
+</table>
+
+<p>&emsp;基于交换表，交换机实现它的以下功能。</br>
+&emsp;① 自学习：假设交换表为空，每当有一个帧到达交换机，交换机会记录源 <font face="Consolas">MAC</font>、帧到达的接口、到达时间为一个新的表项。如果某个表项超过了交换机设定的老化期，则删除相应表项。因此，交换机是即插即用的，不需要管理员的外部干预。</br>
+&emsp;② 过滤和转发：假设某个帧到达交换机的 $x$ 接口，可能出现三种情况：
+<html> 
+<body>
+<ul style="margin-top:-12px;margin-bottom:10px">
+<li style="margin:1px 26px;">表中没有对应表项，则交换机向除 $x$ 以外的所有接口广播该帧；</li>
+<li style="margin:1px 26px;">交换机中有对应表项，但与接口 $x$ 关联，则交换机认为源与目的在同一个局域网网段，无需转发，将帧丢弃；</li>
+<li style="margin:1px 26px;">交换机中有相应表项，且与接口 $y\ne x$ 关联，则交换机将帧放至 $y$ 的输出缓存。</li>
+</ul>
+</body>
+</html></p>
+<h4 id="4">(4). 虚拟局域网</h4>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<img src="/ComputerNetwork/img/5-LinkLayer/5.4/institution.png" height=280></p>
+<p>&emsp;如图是一个机构如中小企业、学校等的典型局域网的简化拓扑，部门之间通过交换机的互连而互连，整个机构通过路由器划分为一个 <font face="Consolas">IP</font> 子网。子网内任意一个接口如果发送一个广播帧 (如 <font face="Consolas">ARP、DHCP</font>)，这些交换机会把广播帧转发到所有接口上，因此整个子网是一个广播域。</br>
+&emsp;这样的配置常常会有以下缺点：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">现实中可能出于性能或者部门之间的安全隐私角度，需要划分多个广播域；</li>
+<li style="margin:1px 26px;">如果每个部门的主机都较少，无法充分利用交换机的接口；</li>
+<li style="margin:1px 26px;">属于多个部门的主机、部门之间主机的移动等问题解决起来困难，灵活性低。</li>
+</ul>
+</body>
+</html>
+&emsp;为实现广播域的划分，可以通过引入路由器划分子网实现，但这不是最经济的解决办法。</br>
+&emsp;虚拟局域网 (<font face="Consolas">VLAN</font>) 技术因此而产生。管理员可以通过软件对支持 <font face="Consolas">VLAN</font> 的交换机的接口进行划分，每一组为同一个 <font face="Consolas">VLAN</font>，每个 <font face="Consolas">VLAN</font> 的端口形成一个广播域。基于端口的划分是在软件层面通过交换表实现的，类似地还以基于 <font face="Consolas">MAC</font> 地址划分。</br>
+&emsp;如果要实现 <font face="Consolas">VLAN</font> 之间的通信，通常需要在不同 <font face="Consolas">VLAN</font> 的端口间再连接一个路由器，对于集成了路由器功能的三层交换机实现这一点更为方便。</br>
+<img src="/ComputerNetwork/img/5-LinkLayer/5.4/general.png" height=100></br>
+&emsp;如果 <font face="Consolas">VLAN</font> 的划分需要通过多交换机实现，就需要连接这些交换机。一种连线的方法是把跨越不同交换机的 <font face="Consolas">VLAN</font> 中的某两个端口连线，其问题在于不具有扩展性，对于 $2$ 台交换机和 $N$ 个 <font face="Consolas">VLAN</font>，将需要连接 $N$ 条线。</br>
+<img src="/ComputerNetwork/img/5-LinkLayer/5.4/trunk.png" height=130></br>
+&emsp;更好的方法是连接交换机之间的中继端口 (<font face="Consolas">trunk port</font>)，经过 <font face="Consolas">trunk</font> 端口转发的帧必须附加 <font face="Consolas">VLAN</font> 的 <font face="Consolas">ID</font>，<font face="Consolas">IEEE</font> 专门为此设置了 <font face="Consolas">802.1q</font> 协议。</br>
+&emsp;这里只是对 <font face="Consolas">VLAN</font> 作简要介绍，实际的 <font face="Consolas">VLAN</font> 也可以基于网络层而定义、跨越 <font face="Consolas">IP</font> 路由器扩展。</p>
+<p></font></p>
                 
                   
                 

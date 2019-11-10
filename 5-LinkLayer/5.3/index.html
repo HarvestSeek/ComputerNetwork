@@ -714,8 +714,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../5.4/" title="4.y" class="md-nav__link">
-      4.y
+    <a href="../5.4/" title="4.Switched LANs" class="md-nav__link">
+      4.Switched LANs
     </a>
   </li>
 
@@ -920,7 +920,7 @@
 </html>
 &emsp;即使使用监听机制，冲突仍有可能发生。以下面的时空图为例，$t_0$ 时节点 <font face="Consolas">B</font> 监听到信道是空闲的，发送一个帧；$t_1$ 时，尽管信道已被占用，由于端到端信道传播时延的存在，<font face="Consolas">D</font> 并不能检测到信道已被占用，因此也会发送一个帧。
 <img src="/ComputerNetwork/img/5-LinkLayer/5.3/csma.png" height=300></br>
-&emsp;对于 <font face="Consolas">CSMA</font>，即使随后 <font face="Consolas">B</font> 和 <font face="Consolas">D</font> 已经发现了冲突，它们也会把相应的帧完整发送；对于具有冲突检测的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CD</font>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>，在发现冲突后会立刻停止发送，减少对信道资源的浪费。</br>
+&emsp;对于 <font face="Consolas">CSMA</font>，即使随后 <font face="Consolas">B</font> 和 <font face="Consolas">D</font> 已经发现了冲突，它们也会把相应的帧完整发送；对于具有冲突检测的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CD</font>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>，在发现冲突后会立刻停止发送，减少对信道资源的浪费。在确认传输失败后，发送节点会等待一个随机时间量，然后重新发送。</br>
 &emsp;<font face="Consolas">CSMA/CD</font> 在此情况下的的冲突检测在有限局域网下相对容易实现，可以通过比较检测到的信号强度是否大于发送信号的最大强度实现；对于无线局域网，实现十分困难，因为信号强度随距离衰减较快，因此在无线网中较少使用。</br>
 <div align=center>
 <img src="/ComputerNetwork/img/5-LinkLayer/5.3/cond1.png" height=180>
@@ -979,13 +979,13 @@ $$Efficiency=\frac{1}{1+5\cdot d_{prop}/d_{trans}}$$
           </a>
         
         
-          <a href="../5.4/" title="4.y" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../5.4/" title="4.Switched LANs" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                4.y
+                4.Switched LANs
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
