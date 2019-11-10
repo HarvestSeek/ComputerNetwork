@@ -690,6 +690,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4" title="4. 轮转访问协议" class="md-nav__link">
+    4. 轮转访问协议
+  </a>
+  
+</li>
+      
       
       
       
@@ -824,6 +831,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4" title="4. 轮转访问协议" class="md-nav__link">
+    4. 轮转访问协议
+  </a>
+  
+</li>
+      
       
       
       
@@ -859,14 +873,15 @@
 &emsp;③ 协议是分散的：不会因为某个节点的崩溃而崩溃；</br>
 &emsp;④ 协议的实现简单。</br></p>
 <h3 id="2_1">2. 信道划分协议</h3>
-<p>&emsp;划分广播信道带宽通过多路复用技术实现。</p>
+<p>&emsp;划分广播信道带宽通过多路复用技术实现。当网路负载较重时，信道划分协议效率较高；而当负载较轻时，效率较低。</p>
 <h4 id="1-tdm">(1). <font face="Consolas">TDM</font></h4>
 <p>&emsp;<font face="Consolas">TDM</font> 将时间划分为时间帧 (<font face="Consolas">time frame</font>)，并把每个时间帧划分为 $N$ 个时隙 (<font face="Consolas">slot</font>)，然后把每个时隙分给 $N$ 个节点中的一个。时隙长度通常可以使一个节点发完一个链路层帧。</br>
 &emsp;<font face="Consolas">TDM</font> 避免了冲突，且十分公平，每个节点在每个帧内的平均传输速率为 $R/N$ <font face="Consolas">bps</font>；但每个节点最大平均速率为 $R/N$ <font face="Consolas">bps</font>，且每个节点只能占用特定时隙，当发送节点很少时信道资源不能得到充分利用。</p>
 <h4 id="2-fdm">(2). <font face="Consolas">FDM</font></h4>
-<p>&emsp;<font face="Consolas">FDM</font> 将 $R$ <font face="Consolas">bps</font> 信道划分为不同频段，并未每个节点分配一个频率，相当于建立了 $N$ 个并行的 $R/N$ <font face="Consolas">bps</font> 的信道。<font face="Consolas">FDM</font> 的优缺点与 <font face="Consolas">TDM</font> 类似。</p>
+<p>&emsp;<font face="Consolas">FDM</font> 将 $R$ <font face="Consolas">bps</font> 信道划分为不同频段，并未每个节点分配一个频率，相当于建立了 $N$ 个并行的 $R/N$ <font face="Consolas">bps</font> 的信道。<font face="Consolas">FDM</font> 的优缺点与 <font face="Consolas">TDM</font> 类似。</br></p>
 <h3 id="3">3. 随机访问协议</h3>
-<p>&emsp;在随机访问协议中，当一个节点要发送分组时，利用信道全部带宽 $R$。当多个节点同时传输引起冲突，随机访问 <font face="Consolas">MAC</font> 协议需要定义：① 如何检测冲突，如超时；② 如何从冲突中恢复，如重传。</p>
+<p>&emsp;在随机访问协议中，当一个节点要发送分组时，利用信道全部带宽 $R$。当多个节点同时传输引起冲突，随机访问 <font face="Consolas">MAC</font> 协议需要定义：① 如何检测冲突，如超时；② 如何从冲突中恢复，如重传。</br>
+&emsp;由于冲突的存在，随机访问协议与信道划分协议正相反，适用于网络负载较轻的情况。</p>
 <h4 id="1-aloha">(1). 时隙 <font face="Consolas">ALOHA</font> 协议</h4>
 <p>&emsp;时隙 <font face="Consolas">ALOHA</font> 协议基于以下假设：
 <html> 
@@ -904,16 +919,22 @@
 </body>
 </html>
 &emsp;即使使用监听机制，冲突仍有可能发生。以下面的时空图为例，$t_0$ 时节点 <font face="Consolas">B</font> 监听到信道是空闲的，发送一个帧；$t_1$ 时，尽管信道已被占用，由于端到端信道传播时延的存在，<font face="Consolas">D</font> 并不能检测到信道已被占用，因此也会发送一个帧。
-<img src="/img/5-LinkLayer/5.3/csma.png" height=300></br>
+<img src="/ComputerNetwork/img/5-LinkLayer/5.3/csma.png" height=300></br>
 &emsp;对于 <font face="Consolas">CSMA</font>，即使随后 <font face="Consolas">B</font> 和 <font face="Consolas">D</font> 已经发现了冲突，它们也会把相应的帧完整发送；对于具有冲突检测的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CD</font>)<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>，在发现冲突后会立刻停止发送，减少对信道资源的浪费。</br>
 &emsp;<font face="Consolas">CSMA/CD</font> 在此情况下的的冲突检测在有限局域网下相对容易实现，可以通过比较检测到的信号强度是否大于发送信号的最大强度实现；对于无线局域网，实现十分困难，因为信号强度随距离衰减较快，因此在无线网中较少使用。</br>
 <div align=center>
-<img src="/img/5-LinkLayer/5.3/cond1.png" height=180>
+<img src="/ComputerNetwork/img/5-LinkLayer/5.3/cond1.png" height=180>
 </div></p>
 <p>&emsp;为保证可靠性，<font face="Consolas">CSMA/CD</font> 必须保证每个节点在传输延迟内可以检测到已存在的冲突。如果传输的过快或传播延迟过长，均可能导致无法检测到。假设网络带宽 $R$ <font face="Consolas">bps</font>，数据帧最小长度为 $L_{min}$ <font face="Consolas">bits</font>，信号传播速度为 $V$ <font face="Consolas">m/s</font>，考虑如上图所示的临界情况：$AD=d_{max}$ 为最长链路，<font face="Consolas">A</font> 发送的信号恰好在 $t_1$ 之后到达 <font face="Consolas">D</font>，最后 <font face="Consolas">A</font> 又恰好在传输延迟内检测到了冲突。因此，<font face="Consolas">CSMA/CD</font> 需要满足 $\min{d_{trans}}=L_{min}/R\leq 2\cdot d_{max}/V=RTT_{max}$。</br>
 &emsp;<font face="Consolas">CSMA/CD</font> 的效率近似为：
 $$Efficiency=\frac{1}{1+5\cdot d_{prop}/d_{trans}}$$
-如果 $d_{prop}=0$，冲突的节点会立即终止传输，因此效率接近 $1$。</p>
+如果 $d_{prop}=0$，冲突的节点会立即终止传输，因此效率值接近 $1$。</p>
+<h3 id="4">4. 轮转访问协议</h3>
+<p>&emsp;轮转访问协议综合了前两种协议的优点：① 当只有一个节点活跃，其吞吐量为 $R$ <font face="Consolas">bps</font>；② 当有 $N$ 个节点活跃，可以规避冲突，每个节点吞吐量接近于 $R/N$ <font face="Consolas">bps</font>。下面介绍两种轮转访问协议。</br></p>
+<p>&emsp;轮询协议指定一个节点为主节点，主节点以发送报文的方式轮询 (<font face="Consolas">poll</font>) 每个节点，告诉相应节点可以发送多少帧。其主要缺点在于轮询的开销、发送节点的等待延迟以及单点故障。</br>
+&emsp;应用：蓝牙协议。</br></p>
+<p>&emsp;令牌传递协议指定一个称为令牌 (<font face="Consolas">token</font>) 的特殊帧在节点之间以某种次序交换。某个节点获得令牌后，如果有帧要发送，则发送最大帧，之后继续传递令牌。其主要缺点也在于令牌的开销、等待延迟以及单点故障。</br>
+&emsp;应用：<font face="Consolas">FODI</font> 协议、令牌环协议。</br></p>
 <div class="footnote">
 <hr />
 <ol>
