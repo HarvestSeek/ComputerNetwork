@@ -40,7 +40,7 @@
 
     
       
-        <title>5.6 - Learning Notes of Computer Networking</title>
+        <title>6.Retrospective：a Web Page Request - Learning Notes of Computer Networking</title>
       
     
     
@@ -116,6 +116,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#1-getting-started-dhcp-udp-ip-and-ethernet" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -138,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                5.6
+                6.Retrospective：a Web Page Request
               
             </span>
           
@@ -529,10 +533,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
     <label class="md-nav__link" for="nav-7">
       V Link Layer
@@ -604,6 +610,73 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        6.Retrospective：a Web Page Request
+      </label>
+    
+    <a href="./" title="6.Retrospective：a Web Page Request" class="md-nav__link md-nav__link--active">
+      6.Retrospective：a Web Page Request
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-getting-started-dhcp-udp-ip-and-ethernet" title="1. Getting Started: DHCP,  UDP,  IP  and  Ethernet" class="md-nav__link">
+    1. Getting Started: DHCP,  UDP,  IP  and  Ethernet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dns-arp" title="2. DNS, ARP" class="md-nav__link">
+    2. DNS, ARP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-intra-domain-to-the-dns-server" title="3. Intra-Domain to the DNS Server" class="md-nav__link">
+    3. Intra-Domain to the DNS Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-web-cs-interaction" title="4. Web C/S Interaction" class="md-nav__link">
+    4. Web C/S Interaction
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -616,15 +689,91 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-getting-started-dhcp-udp-ip-and-ethernet" title="1. Getting Started: DHCP,  UDP,  IP  and  Ethernet" class="md-nav__link">
+    1. Getting Started: DHCP,  UDP,  IP  and  Ethernet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-dns-arp" title="2. DNS, ARP" class="md-nav__link">
+    2. DNS, ARP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-intra-domain-to-the-dns-server" title="3. Intra-Domain to the DNS Server" class="md-nav__link">
+    3. Intra-Domain to the DNS Server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-web-cs-interaction" title="4. Web C/S Interaction" class="md-nav__link">
+    4. Web C/S Interaction
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>5.6</h1>
+                  <h1>6.Retrospective：a Web Page Request</h1>
                 
-                
+                <p><font face="思源黑体 CN">
+<font face="Consolas"></font>
+<img src="/img/5-LinkLayer/5.6/process.png" height=290></br></p>
+<p>&emsp;假设一名学生 <font face="Consolas">Bob</font> 将他的笔记本与学校的以太网交换机相连，并下载了一个 <font face="Consolas">Web</font> 页面: <font face="Arial">www.google.com</font>。上图描述了这个场景，学校的路由器与 <font face="Consolas">ISP</font> <font face="Arial">comcast.net</font> 连接，并且它为学校提供了 <font face="Consolas">DNS</font> 服务。假设学校的 <font face="Consolas">DHCP</font> 服务器运行在路由器中。</p>
+<h3 id="1-getting-started-dhcp-udp-ip-and-ethernet">1. <font face="Roboto">Getting Started: DHCP,  UDP,  IP  and  Ethernet</font></h3>
+<p>① <font face="Consolas">Bob</font> 手动配置 <font face="Consolas">IP</font> 等信息，他的笔记本的 <font face="Consolas">OS</font> 生成一个 <font face="Consolas">DHCP</font> 请求报文，依次封装至 <font face="Consolas">UDP</font> 报文段、<font face="Consolas">IP</font> 数据报，且 <font face="Consolas">(src, dest)</font> <font face="Consolas">=</font> <font face="Consolas">(0.0.0.0, 68; 255.255.255.255, 67)</font>。</p>
+<p>② 数据报封装至以太网帧，其 <font face="Consolas">(src, dest)</font> <font face="Consolas">=</font> <font face="Consolas">(00-16-D3-23-68-8A; FF-FF-FF-FF-FF-FF)</font>。随后该帧广播至局域网内，包括 <font face="Consolas">DHCP</font> 服务器。交换机借此自学习了一个表项。</p>
+<p>③ 路由器在链路层接口收到该帧，首先抽取出 <font face="Consolas">IP</font> 数据报，目的地址 <font face="Consolas">255.255.255.255</font> 指示了这个数据报应当交由高层协议处理。随后，依次抽取出 <font face="Consolas">UDP、DHCP</font> 报文。</p>
+<p>④ 路由器中的 <font face="Consolas">DHCP</font> 服务器根据请求报文的内容，判断 <font face="Consolas">IP</font> 等内容可用，回应一个 <font face="Consolas">DHCP ACK</font> 报文，报文中携带了这些配置信息。然后依次向下封装到链路层帧，其 <font face="Consolas">(src, dest)</font> <font face="Consolas">=</font> <font face="Consolas">(00-22-6B-45-1F-1B; 00-16-D3-23-68-8A)</font>。</p>
+<p>⑤ 通过表项，交换机寻址到 <font face="Consolas">Bob</font> 的笔记本。</p>
+<p>⑥ <font face="Consolas">Bob</font> 的笔记本抽取出 <font face="Consolas">DHCP ACK</font> 报文，提取出配置信息，并在自己的 <font face="Consolas">IP</font> 转发表中添加默认网关的地址。它将目的 <font face="Consolas">IP</font> 在 <font face="Consolas">68.85.2.0/24</font> 以外的所有数据报发往默认网关。</p>
+<h3 id="2-dns-arp">2. <font face="Roboto">DNS, ARP</font></h3>
+<p>&emsp;联网后，<font face="Consolas">Bob</font> 在浏览器中输入了 <font face="Consolas">URL</font>: <font face="Arial">www.google.com</font>。</p>
+<p>⑦ 为了发送 <font face="Consolas">HTTP</font> 请求，<font face="Consolas">Bob</font> 的浏览器需要生成一个 <font face="Consolas">TCP</font> 套接字；而这个套接字需要 <font face="Arial">www.google.com</font> 的 <font face="Consolas">IP</font> 地址。</p>
+<p>⑧ <font face="Consolas">Bob</font> 笔记本上的 <font face="Consolas">OS</font> 生成一个 <font face="Consolas">DNS</font> 查询报文，将字符串 <font face="Arial">www.google.com</font> 放入报文的问题段中。然后依次封装进 <font face="Consolas">UDP、IP</font> 中。其 <font face="Consolas">(src, dest)</font> <font face="Consolas">=</font> <font face="Consolas">(<em>x</em>, 68.85.2.101; 53, 68.87.71.226)</font>。其中，<font face="Consolas">DNS</font> 服务器的地址是通过 <font face="Consolas">DHCP ACK</font> 报文获知的。</p>
+<p>⑨ 继续向下封装成帧时，由于目的 <font face="Consolas">IP</font> 在子网外，需要网关路由器接口的 <font face="Consolas">MAC</font> 地址。因此，<font face="Consolas">Bob</font> 的笔记本构造一个目的 <font face="Consolas">IP</font> 为 <font face="Consolas">68.85.2.1</font> 的 <font face="Consolas">ARP</font> 查询报文，并广播至局域网内。</p>
+<p>⑩ <font face="Consolas">Bob</font> 从 <font face="Consolas">ARP</font> 应答报文中抽取网关的 <font face="Consolas">MAC</font> 地址，成功构造出了包含 <font face="Consolas">DNS</font> 查询报文的以太网帧。</p>
+<h3 id="3-intra-domain-to-the-dns-server">3. <font face="Roboto">Intra-Domain to the DNS Server</font></h3>
+<p>⑪ 网关路由器接收该帧，抽取出包含 <font face="Consolas">DNS</font> 查询报文的 <font face="Consolas">IP</font> 数据报，读取目的 <font face="Consolas">IP</font> 后，根据其转发表决定把数据报发往 <font face="Consolas">Comcast</font> 最左边的路由器。然后封装成帧，通过链路发送。</p>
+<p>⑫ <font face="Consolas">Comcast</font> 接收到帧后，抽取 <font face="Consolas">IP</font> 数据报，根据目的 <font face="Consolas">IP</font> 和转发表确定出接口。它的转发表已根据域内路由协议和域间路由协议 (<font face="Consolas">BGP</font>) 填写。</p>
+<p>⑬ 在包含 <font face="Consolas">DNS</font> 查询报文的 <font face="Consolas">IP</font> 数据报到达 <font face="Consolas">DNS</font> 服务器后，找到与 <font face="Arial">www.google.com</font> 对应 <font face="Consolas">IP(64.233.169.105)</font> 的 <font face="Consolas">DNS</font> 源记录 (假设已缓存)。<font face="Consolas">DNS</font> 服务器构造回答报文，依次封装，然后反向转发至学校的路由器。</p>
+<p>⑭ 最终，<font face="Consolas">Bob</font> 的笔记本从 <font face="Consolas">DNS</font> 报文中抽取出 <font face="Arial">www.google.com</font> 的 <font face="Consolas">IP</font> 地址。</p>
+<h3 id="4-web-cs-interaction">4. <font face="Roboto">Web C/S Interaction</font></h3>
+<p>⑮ <font face="Consolas">Bob</font> 的主机成功生成了 <font face="Consolas">TCP</font> 套接字，它首先要与谷歌服务器的 <font face="Consolas">TCP</font> 进行三次握手。因此，首先构造 <font face="Consolas">TCP SYN</font> 报文段，依次封装。最终，其 <font face="Consolas">dest</font> <font face="Consolas">=</font> <font face="Consolas">(80, 64.233.169.105, 00-22-6B-45-1F-1B)</font>。</p>
+<p>⑯ 随后，通过域内和域间路由转发，谷歌服务器抽取出报文段，回应一个 <font face="Consolas">TCP SYNACK</font> 报文段，并反向转发。</p>
+<p>⑰ 最终，<font face="Consolas">Bob</font> 的笔记本收到这个报文段后，就可以发送 <font face="Consolas">HTTP GET</font> 请求了。再经过类似过程的转发，当它从 <font face="Consolas">HTTP</font> 响应报文中抽取出 <font face="Consolas">Web</font> 的 <font face="Consolas">html</font> 网页时，浏览器就显示了网页。整个过程至此结束。</p>
+<p></font></p>
                 
                   
                 
@@ -641,6 +790,27 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../5.5/" title="5.PPP" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                5.PPP
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

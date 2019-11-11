@@ -739,6 +739,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../5-LinkLayer/5.6/" title="6.Retrospective：a Web Page Request" class="md-nav__link">
+      6.Retrospective：a Web Page Request
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -909,7 +921,7 @@
 <p>&emsp;<font face="Consolas">UDP</font> 的 <font face="Consolas">Socket</font> 用二元组标识：<font face="Consolas">(dest-IP, dest-port)</font>。只要两个 <font face="Consolas">UDP</font> 报文段的 目的 <font face="Consolas">IP</font> 和 目的端口号 都相同，即使 源 <font face="Consolas">IP</font> 或 源端口号不同，它们也将通过相同的 <font face="Consolas">Socket</font> 导向相同的进程。</br></p>
 <h4 id="2-tcp">(2). <font face="Consolas">TCP:</font> 面向连接的分用</h4>
 <p>&emsp;<font face="Consolas">TCP</font> 的 <font face="Consolas">Socket </font>用四元组标识：<font face="Consolas">(src-IP, src-port, dest-IP, dest-port)</font>，接收端用所有四个参数将 <font face="Consolas">Segment</font> 导向合适的 <font face="Consolas">Socket</font>。与 <font face="Consolas">UDP</font> 不同的是，两个具有不同 源 <font face="Consolas">IP</font> 或 源端口号 的到达报文段会被导向两个不同的 <font face="Consolas">Socket</font>。</br>
-&emsp;其原因在于，客户端到服务器的 <font face="Consolas">TCP</font> 连接的 <font face="Consolas">(dest-IP, dest-port)</font> 字段通常为服务器的 <font face="Consolas">IP</font> 和周知端口 $80$，<font face="Consolas">dest-port</font> 对应的是监听套接字，在建立连接后服务器会另启一个套接字作为通信的进程，因此，接收方本质上是通过 <font face="Consolas">(src-IP, src-Port)</font> 标识这个连接的。</p>
+&emsp;以 <font face="Consolas">HTTP</font> 服务器为例，客户端到服务器的 <font face="Consolas">TCP</font> 连接的 <font face="Consolas">(dest-IP, dest-port)</font> 字段通常为服务器的 <font face="Consolas">IP</font> 和周知端口 $80$，<font face="Consolas">dest-port</font> 对应的是监听套接字，在建立连接后服务器会另启一个套接字作为通信的进程，因此，接收方本质上是通过 <font face="Consolas">(src-IP, src-Port)</font> 标识这个连接的。</p>
 <h3 id="3-udp-user-datagram-protocol">3. <font face="Consolas">UDP: User Datagram Protocol</font></h3>
 <h4 id="1-udp_1">(1). <font face="Consolas">UDP</font> 功能</h4>
 <p>&emsp;① 在 <font face="Consolas">Internet IP</font> 协议基础上，增加了分用复用，并做了简单的错误校验。在传输层做错误检测符合“端-端原则”。</br>
