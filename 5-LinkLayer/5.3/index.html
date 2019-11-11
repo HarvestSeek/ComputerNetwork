@@ -937,7 +937,7 @@
 <div align=center>
 <img src="/ComputerNetwork/img/5-LinkLayer/5.3/cond1.png" height=180>
 </div></p>
-<p>&emsp;为保证可靠性，<font face="Consolas">CSMA/CD</font> 必须保证每个节点在传输延迟内可以检测到已存在的冲突。如果传输的过快或传播延迟过长，均可能导致无法检测到。假设网络带宽 $R$ <font face="Consolas">bps</font>，数据帧最小长度为 $L_{min}$ <font face="Consolas">bits</font>，信号传播速度为 $V$ <font face="Consolas">m/s</font>，考虑如上图所示的临界情况：$AD=d_{max}$ 为最长链路，<font face="Consolas">A</font> 发送的信号恰好在 $t_1$ 之后到达 <font face="Consolas">D</font>，最后 <font face="Consolas">A</font> 又恰好在传输延迟内检测到了冲突。因此，<font face="Consolas">CSMA/CD</font> 需要满足 $\min{d_{trans}}=L_{min}/R\leq 2\cdot d_{max}/V=RTT_{max}$。</br>
+<p>&emsp;为保证可靠性，<font face="Consolas">CSMA/CD</font> 必须保证每个节点在传输延迟内可以检测到已存在的冲突。如果传输的过快或传播延迟过长，均可能导致无法检测到。假设网络带宽 $R$ <font face="Consolas">bps</font>，数据帧最小长度为 $L_{min}$ <font face="Consolas">bits</font>，信号传播速度为 $V$ <font face="Consolas">m/s</font>，考虑如上图所示的临界情况：$AD=d_{max}$ 为最长链路，<font face="Consolas">A</font> 发送的信号恰好在 $t_1$ 之后到达 <font face="Consolas">D</font>，最后 <font face="Consolas">A</font> 又恰好在传输延迟内检测到了冲突。因此，<font face="Consolas">CSMA/CD</font> 需要满足 $$\min{d_{trans}}=\frac{L_{min}}{R}\leq \frac{2\cdot d_{max}}{V}=RTT_{max}$$</br>
 &emsp;<font face="Consolas">CSMA/CD</font> 的效率近似为：
 $$Efficiency=\frac{1}{1+5\cdot d_{prop}/d_{trans}}$$
 如果 $d_{prop}=0$，冲突的节点会立即终止传输，因此效率值接近 $1$。</p>

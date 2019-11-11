@@ -859,8 +859,13 @@
 <font face="Consolas"></font></p>
 <h3 id="1-arp">1. 链路层寻址：<font face="Consolas">ARP</font> 协议</h3>
 <h4 id="1-mac">(1). <font face="Consolas">MAC</font> 地址</h4>
-<p>&emsp;主机和路由器的接口 (适配器) 除了具有一个 <font face="Consolas">IP</font> 地址以外，还具有一个链路层地址，称为物理地址、<font face="Consolas">LAN</font> 地址或 <font face="Consolas">MAC</font> 地址。<font face="Consolas">MAC</font> 地址通常为 $6$ 个字节，用通过“-”分割的六个十六进制数表示。</br>
-&emsp;<font face="Consolas">MAC</font> 地址是唯一的，在网卡出厂时就写入到了它的 <font face="Consolas">ROM</font> 中。当一个网卡商要生产适配器时，它向 <font face="Consolas">IEEE</font> 支付费用，购买一块 $24$ 位的地址空间。一般来说，对任意设备，无论到哪里使用，其 <font face="Consolas">MAC</font> 地址是不会改变的。</p>
+<p>&emsp;主机和路由器的接口 (适配器) 除了具有一个 <font face="Consolas">IP</font> 地址以外，还具有一个链路层地址，称为物理地址、<font face="Consolas">LAN</font> 地址或 <font face="Consolas">MAC</font> 地址。<font face="Consolas">MAC</font> 地址通常为 $6$ 个字节，表示为“-”分割的六个十六进制数。</br>
+&emsp;<font face="Consolas">MAC</font> 地址是唯一的，在网卡出厂时就写入到了它的 <font face="Consolas">ROM</font> 中。当一个网卡商要生产 <font face="Consolas">NIC</font> 时，它向 <font face="Consolas">IEEE</font> 支付费用，购买一块 $24$ 位的地址空间。一般来说，对任意设备，无论到哪里使用，其 <font face="Consolas">MAC</font> 地址是不会改变的。</p>
+<details class="hint"><summary>为什么不能用 IP 代替 MAC</summary><p>&emsp;本质在于模块化、层次化的优点。</br>
+&emsp;首先，链路层局域网必须可以支持多种网络层协议，如 <font face="Consolas">IPX</font>、<font face="Consolas">DECnet</font> 等，而不仅仅是 <font face="Consolas">IP</font>。</br>
+&emsp;其次，如果 <font face="Consolas">NIC</font> 使用网络层地址，它难以满足网络层功能需要的动态改变 <font face="Consolas">IP</font> 的需求，并且，<font face="Consolas">NIC</font> 需要处理多种网络层协议的报头，增加了 <font face="Consolas">NIC</font> 实现的复杂度。</br>
+&emsp;因此，对于不同层次的功能，各自使用自己的寻址方案是更好的设计。</p>
+</details>
 <p><img align=right src="/ComputerNetwork/img/5-LinkLayer/5.4/in.png" height=200></p>
 <h4 id="2-arp">(2). <font face="Consolas">ARP</font> 协议</h4>
 <h5 id="1"><font size=3>① 子网内通信</font></h5>
@@ -883,7 +888,7 @@
 </table>
 </div>
 
-<p>表中包含了 <font face="Consolas">IP</font> 到 <font face="Consolas">MAC</font> 的映射关系，<font face="Consolas">TTL</font> 代表表项的寿命，通常，从一个表项被设置开始，其寿命大约为 $20$ 分钟。</br>
+<p>表中包含了 <font face="Consolas">IP</font> 到 <font face="Consolas">MAC</font> 的映射关系，<font face="Consolas">TTL</font> 记录了表项被设置的时间，通常其寿命大约为 $20$ 分钟。</br>
 &emsp;如果 <font face="Consolas">C</font> 查询到目的 <font face="Consolas">MAC</font>，则这个问题就被解决了；如果 <font face="Consolas">ARP</font> 表中没有相应表项，发送方就会构造一个 <font face="Consolas">ARP</font> 分组 (<font face="Consolas">ARP packet</font>)，目的 <font face="Consolas">MAC</font> 被设置为广播地址 <font face="Consolas">FF-FF-FF-FF-FF-FF</font>，局域网的每个节点都会检查自己的 <font face="Consolas">IP</font> 是否与 <font face="Consolas">ARP</font> 请求分组的目的 <font face="Consolas">IP</font> 是否匹配，如果匹配，则返回相应的映射。</br>
 &emsp;<font face="Consolas">ARP</font> 协议是即插即用的：<font face="Consolas">ARP</font> 自动建立而不需要手动配置，如果某主机与局域网断开连接，它的相应表项也会被清空。</br>
 &emsp;<font face="Consolas">ARP</font> 协议是一个介于网络层与链路层之间的协议。</p>
@@ -912,8 +917,8 @@
 <ul style="margin-top:-10px;margin-bottom:10px">
 <li style="margin:1px 26px;">前导码 (<font face="Consolas">Preamble</font>)(<font face="Consolas">8B</font>): 前 $7$ 个字节均为 <font face="Consolas">10101010</font>，用于同步接收端和发送端的时钟；第 $8$ 个字节为 <font face="Consolas">10101011</font>，用于定界。</li>
     <ul style="margin-top:0px;margin-bottom:0px">
-    <li style="margin:1px 50px;" type="circle">时钟同步：同步串行通信需要通过相同的时钟频率恢复数据信息。虽然双方可以根据链路类型指定频率，但实际过程中会有微小偏差，因此需要同步。</li>
-    <li style="margin:1px 50px;" type="circle">不做特殊声明，前导码长度不算进帧长内。</li>
+    <li style="margin:1px 50px;" type="circle">时钟同步：同步串行通信需要通过相同的时钟频率恢复数据信息。虽然双方可以根据链路类型指定频率，但实际传输时会有微小偏差，因此需要同步。</li>
+    <li style="margin:1px 50px;" type="circle">若不做特殊声明，前导码长度不算进帧长内。</li>
     </ul>
 <li style="margin:1px 26px;">目的 <font face="Consolas">MAC</font>、源 <font face="Consolas">MAC</font> (各 <font face="Consolas">6B</font>): 接收方会匹配目的 <font face="Consolas">MAC</font> 和自身的 <font face="Consolas">MAC</font>，如果一致才会接收，否则丢弃。</li>
 <li style="margin:1px 26px;">类型 (<font face="Consolas">Type</font>)(<font face="Consolas">2B</font>): 用于复用和分用，指示了上层协议，如 <font face="Consolas">ARP</font> 为 <font face="Consolas">0x0806</font>。</li>
