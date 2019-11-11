@@ -410,8 +410,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../3-TransportLayer/3.1/" title="1.Introduction to Transport Layer" class="md-nav__link">
-      1.Introduction to Transport Layer
+    <a href="../../3-TransportLayer/3.1/" title="1.Introduction to Transport Layer and UDP" class="md-nav__link">
+      1.Introduction to Transport Layer and UDP
     </a>
   </li>
 
@@ -861,7 +861,7 @@
 <h4 id="1-mac">(1). <font face="Consolas">MAC</font> 地址</h4>
 <p>&emsp;主机和路由器的接口 (适配器) 除了具有一个 <font face="Consolas">IP</font> 地址以外，还具有一个链路层地址，称为物理地址、<font face="Consolas">LAN</font> 地址或 <font face="Consolas">MAC</font> 地址。<font face="Consolas">MAC</font> 地址通常为 $6$ 个字节，表示为“-”分割的六个十六进制数。</br>
 &emsp;<font face="Consolas">MAC</font> 地址是唯一的，在网卡出厂时就写入到了它的 <font face="Consolas">ROM</font> 中。当一个网卡商要生产 <font face="Consolas">NIC</font> 时，它向 <font face="Consolas">IEEE</font> 支付费用，购买一块 $24$ 位的地址空间。一般来说，对任意设备，无论到哪里使用，其 <font face="Consolas">MAC</font> 地址是不会改变的。</p>
-<details class="hint"><summary>为什么不能用 IP 代替 MAC</summary><p>&emsp;本质在于模块化、层次化的优点。</br>
+<details class="hint"><summary>为什么不能用 IP 代替 MAC</summary><p>&emsp;其本质在于模块化、层次化的优点。两种地址面向不同层次的功能，如果耦合在一起，将带来很多不便。</br>
 &emsp;首先，链路层局域网必须可以支持多种网络层协议，如 <font face="Consolas">IPX</font>、<font face="Consolas">DECnet</font> 等，而不仅仅是 <font face="Consolas">IP</font>。</br>
 &emsp;其次，如果 <font face="Consolas">NIC</font> 使用网络层地址，它难以满足网络层功能需要的动态改变 <font face="Consolas">IP</font> 的需求，并且，<font face="Consolas">NIC</font> 需要处理多种网络层协议的报头，增加了 <font face="Consolas">NIC</font> 实现的复杂度。</br>
 &emsp;因此，对于不同层次的功能，各自使用自己的寻址方案是更好的设计。</p>

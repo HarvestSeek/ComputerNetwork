@@ -40,7 +40,7 @@
 
     
       
-        <title>1.Introduction to Transport Layer - Learning Notes of Computer Networking</title>
+        <title>1.Introduction to Transport Layer and UDP - Learning Notes of Computer Networking</title>
       
     
     
@@ -142,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                1.Introduction to Transport Layer
+                1.Introduction to Transport Layer and UDP
               
             </span>
           
@@ -419,11 +419,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        1.Introduction to Transport Layer
+        1.Introduction to Transport Layer and UDP
       </label>
     
-    <a href="./" title="1.Introduction to Transport Layer" class="md-nav__link md-nav__link--active">
-      1.Introduction to Transport Layer
+    <a href="./" title="1.Introduction to Transport Layer and UDP" class="md-nav__link md-nav__link--active">
+      1.Introduction to Transport Layer and UDP
     </a>
     
       
@@ -477,15 +477,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" title="(1). 概述" class="md-nav__link">
-    (1). 概述
+  <a href="#1-udp" title="(1). UDP: 无连接分用" class="md-nav__link">
+    (1). UDP: 无连接分用
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" title="(2). 多路分用" class="md-nav__link">
-    (2). 多路分用
+  <a href="#2-tcp" title="(2). TCP: 面向连接的分用" class="md-nav__link">
+    (2). TCP: 面向连接的分用
   </a>
   
 </li>
@@ -504,7 +504,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-udp" title="(1). UDP 功能" class="md-nav__link">
+  <a href="#1-udp_1" title="(1). UDP 功能" class="md-nav__link">
     (1). UDP 功能
   </a>
   
@@ -805,15 +805,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" title="(1). 概述" class="md-nav__link">
-    (1). 概述
+  <a href="#1-udp" title="(1). UDP: 无连接分用" class="md-nav__link">
+    (1). UDP: 无连接分用
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" title="(2). 多路分用" class="md-nav__link">
-    (2). 多路分用
+  <a href="#2-tcp" title="(2). TCP: 面向连接的分用" class="md-nav__link">
+    (2). TCP: 面向连接的分用
   </a>
   
 </li>
@@ -832,7 +832,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-udp" title="(1). UDP 功能" class="md-nav__link">
+  <a href="#1-udp_1" title="(1). UDP 功能" class="md-nav__link">
     (1). UDP 功能
   </a>
   
@@ -881,13 +881,13 @@
               
                 
                 
-                  <h1>1.Introduction to Transport Layer</h1>
+                  <h1>1.Introduction to Transport Layer and UDP</h1>
                 
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
 <h3 id="1">1. 传输层概述</h3>
 <h4 id="1_1">(1). 传输层功能</h4>
-<p>&emsp;传输层为运行在不同主机 (端系统)的进程提供了一种逻辑通信机制(端-端)，传输层协议只工作在<strong>端系统</strong>中。</br>
+<p>&emsp;传输层为运行在不同主机的进程提供了一种逻辑通信机制，传输层协议只工作在端系统中。</br>
 &emsp;传输层协议的功能：</br>
 &emsp;① 发送方：将应用层递交的消息分成一个或多个报文段 (<font face="Consolas">segment</font>)，并向下传给网络层</br>
 &emsp;② 接收方：将接收到的报文段组装成消息，向上交给应用层。</p>
@@ -897,23 +897,21 @@
 <li>传输层：提供应用进程之间的逻辑通信机制，位于网络层之上，依赖于网络层服务</li>
 </ul>
 <h4 id="3-internet">(3). <font face="Consolas">Internet</font> 传输层协议</h4>
-<p>&emsp;<font face="Consolas">TCP:</font> 可靠按序的交付服务，流量控制、拥塞控制、面向连接。</br>
+<p>&emsp;<font face="Consolas">Internet</font> 有两种传输层协议:</br>
+&emsp;<font face="Consolas">TCP:</font> 可靠按序的交付服务，流量控制、拥塞控制、面向连接。</br>
 &emsp;<font face="Consolas">UDP: </font>不可靠的交付服务，“尽力而为”的模型，只实现传输层必要的服务，如多路分用、多路复用</br>
 &emsp;两种服务均没有延迟和带宽方面的保障。</p>
 <h3 id="2_1">2. 多路复用和多路分用</h3>
-<h4 id="1_2">(1). 概述</h4>
-<p>&emsp;多路分用和多路复用是传输层必要的功能。如果某层的一个协议直接对应上层的多个协议/实体，则需要复用/分用。</br>
-&emsp;接收端进行多路分用：传输层依据头部信息将收到的<font face="Consolas"> Segment </font>交给正确的 <font face="Consolas">Socket</font>，即不同的进程。</br>
-&emsp;发送端进行多路复用：从多个 <font face="Consolas">Socket</font> 接收数据，为每块数据封装上头部信息，生成 <font face="Consolas">Segment</font>，交给网络层。</p>
-<h4 id="2_2">(2). 多路分用</h4>
-<p>&emsp;主机接收到 <font face="Consolas">IP</font> 数据报(<font face="Consolas">datagram</font>)，每个数据报携带源 <font face="Consolas">IP</font>地址、目的 <font face="Consolas">IP</font> 地址、一个传输层的 <font face="Consolas">Segment</font>；每个段携带源端口号和目的端口号。</br>
-&emsp;主机收到<font face="Consolas"> Segment </font>之后，传输层协议提取<font face="Consolas"> IP </font>地址和端口号信息，将<font face="Consolas"> Segment </font>导向相应的<font face="Consolas"> Socket</font>。</br></br>
-① <font face="Consolas">UDP:</font> 无连接分用</br>
-&emsp;<font face="Consolas">UDP</font> 的 <font face="Consolas">Socket</font> 用二元组标识：<font face="Consolas">(des-IP, des-Port)</font>。如果两个 <font face="Consolas">UDP</font> 报文段有不同的 源 <font face="Consolas">IP</font> 或 源端口号，但目的 <font face="Consolas">IP</font> 和目的端口号都相同，那么它们通过相同的 <font face="Consolas">Socket</font> 导向相同的进程。</br>
-② <font face="Consolas">TCP:</font> 面向连接的分用</br></br>
-&emsp;<font face="Consolas">TCP</font> 的 <font face="Consolas">Socket </font>用四元组标识：<font face="Consolas">(des-IP, des-Port, src-IP, src-Port)</font>，接收端用所有四个参数将 <font face="Consolas">Segment</font> 导向合适的 <font face="Consolas">Socket</font>。与 <font face="Consolas">UDP</font> 不同的是，两个具有不同 源 <font face="Consolas">IP</font> 或源端口号的到达报文段会被导向两个不同的 <font face="Consolas">Socket</font>。</p>
+<p>&emsp;复用和分用并不只作用于传输层，如果某层的一个协议直接与上层的多个模块交互，就需要复用和分用。应用层可能运行着多个不同协议的进程，传输层需要通过多路复用和分用协调通信，实现它的功能。</br>
+&emsp;<strong>·</strong> 接收端进行多路分用：传输层依据头部信息将收到的<font face="Consolas"> Segment </font>交给正确的 <font face="Consolas">Socket</font>，即不同的进程。(可用的字段包括：从数据报中提取的 源 <font face="Consolas">IP</font> 和目的 <font face="Consolas">IP</font>、从报文段中提取的源端口号和目的端口号)</br>
+&emsp;<strong>·</strong> 发送端进行多路复用：从多个 <font face="Consolas">Socket</font> 接收数据，为每块数据封装上头部信息，生成 <font face="Consolas">Segment</font>，交给网络层。</p>
+<h4 id="1-udp">(1). <font face="Consolas">UDP:</font> 无连接分用</h4>
+<p>&emsp;<font face="Consolas">UDP</font> 的 <font face="Consolas">Socket</font> 用二元组标识：<font face="Consolas">(dest-IP, dest-port)</font>。只要两个 <font face="Consolas">UDP</font> 报文段的 目的 <font face="Consolas">IP</font> 和 目的端口号 都相同，即使 源 <font face="Consolas">IP</font> 或 源端口号不同，它们也将通过相同的 <font face="Consolas">Socket</font> 导向相同的进程。</br></p>
+<h4 id="2-tcp">(2). <font face="Consolas">TCP:</font> 面向连接的分用</h4>
+<p>&emsp;<font face="Consolas">TCP</font> 的 <font face="Consolas">Socket </font>用四元组标识：<font face="Consolas">(src-IP, src-port, dest-IP, dest-port)</font>，接收端用所有四个参数将 <font face="Consolas">Segment</font> 导向合适的 <font face="Consolas">Socket</font>。与 <font face="Consolas">UDP</font> 不同的是，两个具有不同 源 <font face="Consolas">IP</font> 或 源端口号 的到达报文段会被导向两个不同的 <font face="Consolas">Socket</font>。</br>
+&emsp;其原因在于，客户端到服务器的 <font face="Consolas">TCP</font> 连接的 <font face="Consolas">(dest-IP, dest-port)</font> 字段通常为服务器的 <font face="Consolas">IP</font> 和周知端口 $80$，<font face="Consolas">dest-port</font> 对应的是监听套接字，在建立连接后服务器会另启一个套接字作为通信的进程，因此，接收方本质上是通过 <font face="Consolas">(src-IP, src-Port)</font> 标识这个连接的。</p>
 <h3 id="3-udp-user-datagram-protocol">3. <font face="Consolas">UDP: User Datagram Protocol</font></h3>
-<h4 id="1-udp">(1). <font face="Consolas">UDP</font> 功能</h4>
+<h4 id="1-udp_1">(1). <font face="Consolas">UDP</font> 功能</h4>
 <p>&emsp;① 在 <font face="Consolas">Internet IP</font> 协议基础上，增加了分用复用，并做了简单的错误校验。在传输层做错误检测符合“端-端原则”。</br>
 &emsp;② 因为 <font face="Consolas">IP</font> 协议就是尽力而为 (<font face="Consolas">Best effort</font>) 模型，所以 <font face="Consolas">UDP</font>也是；它是不可靠的，可能会发生丢失、非按需到达。</br>
 &emsp;③ <font face="Consolas">UDP</font> 是无连接的：发送方和接收方之间不需要握手，每个 <font face="Consolas">UDP</font> 段的处理之间没有关系、相互独立。</br>
@@ -925,7 +923,8 @@
 <li>没有拥塞控制，应用层可以增加可靠性机制、错误恢复机制</li>
 </ul>
 <h4 id="3-udp">(3). <font face="Consolas">UDP</font> 报文段的格式</h4>
-<p><img src="https://note.youdao.com/yws/public/resource/bcdcb6bebd565008c078b730b6ddbc39/xmlnote/B3C4DB258CB247E1AE1B41AA0E11F91E/27446" height=300></p>
+<p><img align=absmiddle src="/ComputerNetwork/img/3-TransportLayer/3.1/udp.png" height=180>
+&emsp;<font face="Consolas">UDP</font> 头部共 $8$ 字节，其中每个字段 $2$ 个字节。</p>
 <h4 id="4-udp-checksum">(4). <font face="Consolas">UDP</font> 校验和 (<font face="Consolas">checksum</font>)</h4>
 <p>&emsp;用于检测<font face="Consolas"> UDP </font>段在传输中是否发生错误，如位翻转。</br></p>
 <p>&emsp;发送方生成校验和：</br>
