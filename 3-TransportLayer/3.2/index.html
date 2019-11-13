@@ -523,6 +523,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4-arq" title="(4) 连续 ARQ 协议的窗口大小" class="md-nav__link">
+    (4) 连续 ARQ 协议的窗口大小
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -725,8 +732,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../5-LinkLayer/5.6/" title="6.Retrospective：a Web Page Request" class="md-nav__link">
-      6.Retrospective：a Web Page Request
+    <a href="../../5-LinkLayer/5.6/" title="6.Retrospective：A Web Page Request" class="md-nav__link">
+      6.Retrospective：A Web Page Request
     </a>
   </li>
 
@@ -831,6 +838,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#4-arq" title="(4) 连续 ARQ 协议的窗口大小" class="md-nav__link">
+    (4) 连续 ARQ 协议的窗口大小
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -899,7 +913,7 @@
 <h4 id="1_2">(1). 概述</h4>
 <p>&emsp;针对停-等协议利用率低的原因，利用流水线机制，允许发送方在收到 <font face="Consolas">ACK</font> 之前连续发送多个分组，此时利用率变为 $\frac{n×L/R}{RTT+L/R}$。相应地，需要更大的序列号范围，同时发送方和接收方也需要更大的缓存空间。</br>
 &emsp;要想实现这种流水线机制，就需要滑动窗口协议 (<font face="Consolas">sliding-window protocol</font>)。窗口：允许使用的序列号范围，最多等待确认的消息数。滑动：随着协议运行，序列号在空间内向前滑动。</p>
-<h4 id="2-gbn-go-back-n">(2). <font face="Consolas">GBN</font> 协议 (<font face="Consolas">Go-Back-N</font>)</h4>
+<h4 id="2-gbn-go-back-n">(2). <font face="Consolas">GBN</font> 协议 (<font face="Roboto">Go-Back-N</font>)</h4>
 <div align=center><img src="/ComputerNetwork/img/3-TransportLayer/3.2/9gbn1.png"></div>
 
 <p>&emsp;图示为发送方视角的序号范围。基序号 <font face="Consolas">base</font> 为最早已发送但未确认的序号，<font face="Consolas">nextseqnum</font> 为最小的未使用序号。</br></p>
@@ -912,7 +926,7 @@
 ① 上层调用：发送方首先检查发送窗口是否已满，如果未满则生成分组并发送、并更新变量；否则，把数据返回给上层。（在实际实现时，使用缓存或同步机制)</br>
 ② 超时：如果发生超时，发送方重传所有已发送但还未确认的分组；发送方仅使用一个定时器，它被用给最早发送但还未被确认的分组。在收到一个 <font face="Consolas">ACK</font> 后，如果仍有未被确认的分组，重启定时器；否则停止定时器。</br>
 ③ 收到一个 <font face="Consolas">ACK</font>：<font face="Consolas">GBN</font> 协议对分组采用累积确认 (<font face="Consolas">cumulative acknowledgment</font>) 的方式。发送方更新 <font face="Consolas"><em>base</em></font> 和定时器；对接收方来说，如果一个分组 <font face="Consolas">n</font> 被收到且按序，则接收方为 <font face="Consolas">n</font> 发送一个 <font face="Consolas">ACK</font>，表明它收到了 <font face="Consolas">n</font> 之前且包括 <font face="Consolas">n</font> 的所有分组，并向上层交付数据；在发送方的视角，可能没有收到某个 <font face="Consolas">n-i</font> 的 <font face="Consolas">ACK</font>，但只要收到 <font face="Consolas">ACK n</font>，<font face="Consolas"><em>send_base</em></font> 就移动到 <font face="Consolas">n</font> <font face="Consolas">+</font> <font face="Consolas">1</font> 的位置。所有其他情况下，接收方丢弃分组，并发送 <font face="Consolas">ACK</font> <font face="Consolas">+</font> 最近收到的按序分组序列号。</p>
-<h4 id="3-sr-selective-repeat">(3) <font face="Consolas">SR</font> 协议 (<font face="Consolas">Selective Repeat</font>)</h4>
+<h4 id="3-sr-selective-repeat">(3) <font face="Consolas">SR</font> 协议 (<font face="Roboto">Selective Repeat</font>)</h4>
 <p>&emsp;<font face="Consolas">GBN</font> 协议仍存在性能问题：当窗口长度和时延带宽积很大，流水线中有很多分组时，单个分组的差错就会引起大量不必要的重传。</br>
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/12sr1.png">
@@ -925,6 +939,20 @@
 ① 在 <font face="Consolas">[<em>rcv_base</em>, <em>rcv_base</em></font> <font face="Consolas"><em>+</em></font> <font face="Consolas"><em>N</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即收到的分组落在接收方的窗口范围内。首先返回一个 <font face="Consolas">ACK</font>；如果该分组以前未收到，缓存该分组；如果该分组等于基序号 <font face="Consolas"><em>rcv_base</em></font>，则将连续的缓存分组交付上层，接收窗口移动。</br>
 ② 在 <font face="Consolas">[<em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>N</em>, <em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即接收方已确认接收并在窗口外的重复分组，返回一个 <font face="Consolas">ACK</font>。</br>
 ③ 其他情况，忽略收到的分组。</p>
+<h4 id="4-arq">(4) 连续 <font face="Consolas">ARQ</font> 协议的窗口大小</h4>
+<p>假设有 $n$ <font face="Roboto">bit</font> 可以用于存储序列号，发送窗口大小为 $W_s$，接收窗口大小为 $W_r$。</p>
+<p>① <font face="Consolas">GBN</font> 协议的发送窗口最大值为 $2^{n}-1$</br>
+<font face="宋体">
+[证] 首先，发送窗口内不能有重复编号的包，有 $W_s\leq 2^n$。</br>
+以 $n=3$ 为例，假设发送方未收到任何确认，接收方收到了全部的包，此时，</br>
+发送窗口为:$\fcolorbox{blue}{white}{0\ 1\ 2\ 3\ 4\ 5\ 6\ 7}\ 0\ 1\ 2\ 3\ ...$</br>
+接受窗口为:$0\ 1\ 2\ 3\ 4\ 5\ 6\ 7\ \fcolorbox{blue}{white}{0}\ 1\ 2\ 3\ ...$</br>
+接收方无法判断包 $0$ 是新包还是重传包。由此可得，发送窗口的旧范围不能与接收窗口的新范围有重叠，即 $W_s+W_r\leq 2^n$，当 $W_r=1$，$W_s\leq 2^n-1$。</p>
+<p></font></p>
+<p>② <font face="Consolas">SR</font> 协议的发送窗口和接收窗口之和的最大值为 $2^n$，且它们各自的最大值为 $2^{n-1}$</br>
+<font face="宋体">
+[证] 由 ① 已知，$W_s+W_r\leq 2^n$。且必须有 $W_r\leq W_s$，以保证接收窗口不会溢出。如果 $W_r&gt;W_s$，多出来的部分并没有意义。因此，$W_r=W_s$。
+</font></p>
 <p></font></p>
                 
                   
