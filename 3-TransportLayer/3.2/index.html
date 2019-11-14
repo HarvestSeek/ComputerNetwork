@@ -239,11 +239,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      I Computer Networks
+      I Computer Networks And Internet
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
-        I Computer Networks
+        I Computer Networks And Internet
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -254,8 +254,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../1-Fundamentals/1.1.md" title="1.analysis" class="md-nav__link">
-      1.analysis
+    <a href="../../1-Introduction/1.1/" title="1.A Nuts-And-Bolts Description" class="md-nav__link">
+      1.A Nuts-And-Bolts Description
     </a>
   </li>
 
@@ -266,8 +266,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../1-Fundamentals/1.2.md" title="2.asymptotic complexity" class="md-nav__link">
-      2.asymptotic complexity
+    <a href="../../1-Introduction/1.2/" title="2.Performance Parameters" class="md-nav__link">
+      2.Performance Parameters
     </a>
   </li>
 
@@ -278,8 +278,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../1-Fundamentals/1.3.md" title="3.solving recurrences" class="md-nav__link">
-      3.solving recurrences
+    <a href="../../1-Introduction/1.3/" title="3.Layered Architecture" class="md-nav__link">
+      3.Layered Architecture
     </a>
   </li>
 
@@ -314,8 +314,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-sort/2.1.md" title="1.Simple Sort" class="md-nav__link">
-      1.Simple Sort
+    <a href="../../2-ApplicationLayer/2.1/" title="1.Principles of Network Application" class="md-nav__link">
+      1.Principles of Network Application
     </a>
   </li>
 
@@ -326,8 +326,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-sort/2.2.md" title="2.Mergesort" class="md-nav__link">
-      2.Mergesort
+    <a href="../../2-ApplicationLayer/2.2/" title="2.Web And HTTP" class="md-nav__link">
+      2.Web And HTTP
     </a>
   </li>
 
@@ -338,8 +338,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-sort/2.3.md" title="3.Heap and Heapsort" class="md-nav__link">
-      3.Heap and Heapsort
+    <a href="../../2-ApplicationLayer/2.3/" title="3.Electronic Email" class="md-nav__link">
+      3.Electronic Email
     </a>
   </li>
 
@@ -350,8 +350,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-sort/2.4.md" title="4.Quicksort" class="md-nav__link">
-      4.Quicksort
+    <a href="../../2-ApplicationLayer/2.4/" title="4.DNS" class="md-nav__link">
+      4.DNS
     </a>
   </li>
 
@@ -362,8 +362,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-sort/2.5.md" title="5.Sorting in linear time" class="md-nav__link">
-      5.Sorting in linear time
+    <a href="../../2-ApplicationLayer/2.5/" title="5.Peer-to-Peer" class="md-nav__link">
+      5.Peer-to-Peer
     </a>
   </li>
 
@@ -374,8 +374,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-sort/2.6.md" title="6.Median and order statictics" class="md-nav__link">
-      6.Median and order statictics
+    <a href="../../2-ApplicationLayer/2.6/" title="6.Socket Programming" class="md-nav__link">
+      6.Socket Programming
     </a>
   </li>
 
@@ -940,18 +940,18 @@
 ② 在 <font face="Consolas">[<em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>N</em>, <em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即接收方已确认接收并在窗口外的重复分组，返回一个 <font face="Consolas">ACK</font>。</br>
 ③ 其他情况，忽略收到的分组。</p>
 <h4 id="4-arq">(4) 连续 <font face="Consolas">ARQ</font> 协议的窗口大小</h4>
-<p>假设有 $n$ <font face="Roboto">bit</font> 可以用于存储序列号，发送窗口大小为 $W_s$，接收窗口大小为 $W_r$。</p>
+<p>假设有 $n$ <font face="Roboto">bit</font> 可以用于存储序列号，发送窗口大小为 $N_s$，接收窗口大小为 $N_r$。</p>
 <p>① <font face="Consolas">GBN</font> 协议的发送窗口最大值为 $2^{n}-1$</br>
 <font face="宋体">
-[证] 首先，发送窗口内不能有重复编号的包，有 $W_s\leq 2^n$。</br>
-以 $n=3$ 为例，假设发送方未收到任何确认，接收方收到了全部的包，此时，</br>
-发送窗口为:$\fcolorbox{blue}{white}{0\ 1\ 2\ 3\ 4\ 5\ 6\ 7}\ 0\ 1\ 2\ 3\ ...$</br>
-接受窗口为:$0\ 1\ 2\ 3\ 4\ 5\ 6\ 7\ \fcolorbox{blue}{white}{0}\ 1\ 2\ 3\ ...$</br>
-接收方无法判断包 $0$ 是新包还是重传包。由此可得，发送窗口的旧范围不能与接收窗口的新范围有重叠，即 $W_s+W_r\leq 2^n$，当 $W_r=1$，$W_s\leq 2^n-1$。</p>
+[证] 首先，发送窗口内不能有重复编号的帧，有 $N_s\leq 2^n$。</br>
+以 $n=3$ 为例，假设发送方未收到任何确认，接收方收到了全部的帧，此时，</br>
+发送窗口为: $\fcolorbox{blue}{white}{0\ 1\ 2\ 3\ 4\ 5\ 6\ 7}\ 0\ 1\ 2\ 3\ ...$</br>
+接受窗口为: $0\ 1\ 2\ 3\ 4\ 5\ 6\ 7\ \fcolorbox{blue}{white}{0}\ 1\ 2\ 3\ ...$</br>
+接收方无法判断帧 $0$ 是新包还是重传包。由此可得，发送窗口的旧范围不能与接收窗口的新范围有重叠，即 $N_s+N_r\leq 2^n$，当 $N_r=1$，$N_s\leq 2^n-1$。</p>
 <p></font></p>
 <p>② <font face="Consolas">SR</font> 协议的发送窗口和接收窗口之和的最大值为 $2^n$，且它们各自的最大值为 $2^{n-1}$</br>
 <font face="宋体">
-[证] 由 ① 已知，$W_s+W_r\leq 2^n$。且必须有 $W_r\leq W_s$，以保证接收窗口不会溢出。如果 $W_r&gt;W_s$，多出来的部分并没有意义。因此，$W_r=W_s$。
+[证] 由 ① 已知，$N_s+N_r\leq 2^n$。且必须有 $N_r\leq N_s$，以保证接收窗口不会溢出。如果 $N_r&gt;N_s$，多出来的部分并没有意义。因此，$N_r=N_s$。
 </font></p>
 <p></font></p>
                 
