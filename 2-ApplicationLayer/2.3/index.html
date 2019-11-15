@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#1" tabindex="1" class="md-skip">
+      <a href="#1-e-mail" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -363,30 +363,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1.堆的定义" class="md-nav__link">
-    1.堆的定义
+  <a href="#1-e-mail" title="1. E-mail 应用的构成" class="md-nav__link">
+    1. E-mail 应用的构成
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" title="2.基本操作" class="md-nav__link">
-    2.基本操作
+  <a href="#2-smtp" title="2. SMTP" class="md-nav__link">
+    2. SMTP
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-smtp" title="(1). SMTP 通信过程" class="md-nav__link">
+    (1). SMTP 通信过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-http" title="(2). 与 HTTP 的对比" class="md-nav__link">
+    (2). 与 HTTP 的对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. 邮件报文格式" class="md-nav__link">
+    3. 邮件报文格式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" title="3.堆排序" class="md-nav__link">
-    3.堆排序
+  <a href="#4" title="4. 邮件访问协议" class="md-nav__link">
+    4. 邮件访问协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pop3" title="(1). POP3" class="md-nav__link">
+    (1). POP3
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4priority-queue" title="4.优先队列(priority queue)" class="md-nav__link">
-    4.优先队列(priority queue)
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -701,30 +734,63 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1.堆的定义" class="md-nav__link">
-    1.堆的定义
+  <a href="#1-e-mail" title="1. E-mail 应用的构成" class="md-nav__link">
+    1. E-mail 应用的构成
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" title="2.基本操作" class="md-nav__link">
-    2.基本操作
+  <a href="#2-smtp" title="2. SMTP" class="md-nav__link">
+    2. SMTP
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-smtp" title="(1). SMTP 通信过程" class="md-nav__link">
+    (1). SMTP 通信过程
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-http" title="(2). 与 HTTP 的对比" class="md-nav__link">
+    (2). 与 HTTP 的对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. 邮件报文格式" class="md-nav__link">
+    3. 邮件报文格式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" title="3.堆排序" class="md-nav__link">
-    3.堆排序
+  <a href="#4" title="4. 邮件访问协议" class="md-nav__link">
+    4. 邮件访问协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pop3" title="(1). POP3" class="md-nav__link">
+    (1). POP3
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4priority-queue" title="4.优先队列(priority queue)" class="md-nav__link">
-    4.优先队列(priority queue)
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -747,155 +813,89 @@
                 
                   <h1>3.Electronic Email</h1>
                 
-                <p><font face="思源黑体 CN"></p>
-<h4 id="1">1.堆的定义</h4>
-<p>(1). 二叉堆：一个用数组表示的完全二叉树(<font face="Consolas">complete binary tree</font>)</br>
-(2). 最大堆：除了根结点以外的所有结点 $i$ 都满足 $A[PARENT(i)]  \geq A[i]$</br>
-(3). 最小堆：除了根结点以外的所有结点 $i$ 都满足 $A[PARENT(i)] \leq A[i]$</br>
-(4). 结点的高度：该结点到叶结点最长简单路径上边的数目</br>
-(5). 堆的高度：根结点的高度</p>
-<h4 id="2">2.基本操作</h4>
-<p>① <font face="Consolas"><strong><em>MAX-HEAPIFY(A, i)</em></strong></font>: </br>&emsp;假设当前堆以<font face="Consolas"> <em>LEFT(i)</em> </font>和<font face="Consolas"> <em>RIGHT(i)</em> </font>为根结点的二叉树都是最大堆，<font face="Consolas"> <em>A[i]</em> </font>与这两个结点的关系不确定，该操作用于维护最大堆的性质。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">MaxHeapify</span><span class="p">(</span><span class="n">Heap</span><span class="o">*</span> <span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">father</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">child</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">root</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&amp;&amp;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
-            <span class="n">child</span><span class="o">++</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">father</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span><span class="p">];</span>
-        <span class="n">father</span> <span class="o">=</span> <span class="n">child</span><span class="p">;</span>
-        <span class="n">child</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">father</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$T(n)=O(lgn)=O(h)$</p>
-<p>② <font face="Consolas"><strong><em>BUILD-MAX-HEAP(A)</em></strong></font>: </br>&emsp;建堆</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">BuildMaxHeap</span><span class="p">(</span><span class="n">Heap</span><span class="o">*</span> <span class="n">H</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
-    <span class="p">}</span>   
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-自底向上，迭代通过<font face="Consolas"> <em>MaxHeapify(A, i)</em> </font>调整最大堆。</br>$T(n)=O(n)$，最大调整次数为各结点高度和。</p>
-<p>③ <font face="Consolas"><strong><em>HEAP-INCREASE-KEY(A, i, key)</em></strong></font>: </br>&emsp;增大堆中某个元素的值。因为增大 <font face="Consolas"><em>A[i]</em></font> 后，最大堆的性质可能被违背，在其到根结点的路径上不断与其父结点比较并交换，寻找适当的插入位置。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">HeapIncreaseKey</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error: new key is smaller&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$T(n)=O(lgn)$</p>
-<h4 id="3">3.堆排序</h4>
-<p>先建堆，随后不断把堆顶元素交换到末尾、缩小堆并调整，直到排好序。
+                <p><font face="思源黑体 CN">
+<font face="Consolas"></font></p>
+<h3 id="1-e-mail">1. <font face="Consolas">E-mail</font> 应用的构成</h3>
+<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.3/stru.png" height=290>
+&emsp;同普通邮件一样，电子邮件也是异步通信媒介，人们只在方便的时候收发。</br>
+&emsp;如图所示，因特网的电子邮件系统主要有三个组成部分：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">用户代理 (<font face="Consolas">user agent</font>)</li>
+<li style="margin:1px 26px;">邮件服务器 (<font face="Consolas">mail server</font>)</li>
+<li style="margin:1px 26px;">简单邮件传输协议 (<font face="Consolas">Simple Mail Transfer Protocol,</font> <font face="Consolas">SMTP</font>)</li>
+</ul>
+</body>
+</html>
+当用户完成邮件的编辑时，用户代理向服务器发送邮件；当用户想要接受邮件时，用户代理从服务器中接收邮件。</br>
+&emsp;每个用户在某个邮件服务器上有一个邮箱 (<font face="Consolas">mailbox</font>)，服务器根据邮箱管理维护发给相应用户的报文；邮件服务器之间根据 <font face="Consolas">SMTP</font> 协议通信。<font face="Consolas">E-mail</font> 通信的常见过程为：
+<html> 
+<body>
+<ul style="margin-top:0px;margin-bottom:10px">
+<li style="margin:1px 26px;"><font face="Consolas">Alice</font> 为用户代理提供 <font face="Consolas">Bob</font> 的邮箱地址，撰写消息、通过代理发送报文到 <font face="Consolas">Server1</font>；</li>
+<li style="margin:1px 26px;"><font face="Consolas">Server1</font> 把报文放入消息队列，运行在 <font face="Consolas">Server1</font> 上的 <font face="Consolas">SMTP</font> 客户端发现这个报文后，创建一个到 <font face="Consolas">Server2</font> 的 <font face="Consolas">TCP</font> 连接；</li>
+<li style="margin:1px 26px;">经过 <font face="Consolas">SMTP</font> 握手后，<font face="Consolas">Server1</font> 发送 <font face="Consolas">Alice</font> 的报文；</li>
+<li style="margin:1px 26px;"><font face="Consolas">Server2</font> 收到报文后，把邮件放入 <font face="Consolas">Bob</font> 的邮箱中；</li>
+<li style="margin:1px 26px;">在 <font face="Consolas">Bob</font> 方便的时候，他通过用户代理，读取报文。</li>
+</ul>
+</body>
+</html>
+如果 <font face="Consolas">Server2</font> 故障或关机，<font face="Consolas">Alice</font> 的 <font face="Consolas">Server1</font> 会把报文放在消息队列中，一段时间后重新发送；如果一定时间后仍然失败，<font face="Consolas">Server1</font> 以邮件的形式通知 <font face="Consolas">Alice</font> 错误信息；注意到，<font face="Consolas">SMTP</font> 一般不使用中间服务器转发邮件。</p>
+<h3 id="2-smtp">2. <font face="Consolas">SMTP</font></h3>
+<p>&emsp;<font face="Consolas">SMTP</font> 由 <font face="Consolas">RFC</font> <font face="Consolas">5321</font> 定义。邮件服务需要可靠性，因此，<font face="Consolas">SMTP</font> 使用持续性 <font face="Consolas">TCP</font> (<font face="Consolas">Port:</font> $25$)，并且 <font face="Consolas">SMTP</font> 也会进行应用层的握手。</br>
+&emsp;初始的 <font face="Consolas">SMTP</font> 协议可以追溯到 <font face="Consolas">1982</font> 年，它限制邮件的消息体只能通过 $7$ 位 <font face="Consolas">ASCII</font> 码传输。在 <font face="Consolas">20</font> 世纪 <font face="Consolas">80</font> 年代早期，这种限制是明智的，因为当时不会通过邮件传送附件。而现在，通过 <font face="Consolas">SMTP</font> 传送邮件之前，需要将多媒体的二进制数据转化为 $7$ 位 <font face="Consolas">ASCII</font> 码，并且传输过后还需要还原。</p>
+<h4 id="1-smtp">(1). <font face="Consolas">SMTP</font> 通信过程</h4>
+<p>&emsp;首先，<font face="Consolas">SMTP</font> 客户端通过端口号 $25$ 向 <font face="Consolas">SMTP</font> 服务器发起连接，如果服务器没有开机，客户端会在稍后再次尝试。连接建立以后，<font face="Consolas">C-S</font> 之间执行应用层的 <font face="Consolas">SMTP</font> 握手，握手过程中，<font face="Consolas">SMTP</font> 客户端会指示两个用户的邮箱地址。</br>
+&emsp;假设 <font face="Consolas">SMTP</font> 客户端的主机名为 <font face="Consolas">crepes.fr</font>，服务器的主机名为 <font face="Consolas">hamburger.edu</font>，在建立 <font face="Consolas">TCP</font> 连接之后，<font face="Consolas">SMTP</font> 交互过程如下：</p>
+<p><html>
+<pre>
+<font face="Consolas"> S: 220 hamburger.edu
+ C: HELO crepes.fr
+ S: 250 Hello crepes.fr, pleased to meet you
+ C: MAIL FROM: &lt;alice@crepes.fr&gt;
+ S: 250 alice@crepes.fr ... Sender ok
+ C: RCPT TO: &lt;bob@hamburger.edu&gt;
+ S: 250 bob@hamburger.edu ... Recipient ok
+ C: DATA
+ S: 354 Enter mail, end with ”.” on a line by itself
+ C: Do you like ketchup?
+ C: How about pickles?
+ C: .
+ S: 250 Message accepted for delivery
+ C: QUIT
+ S: 221 hamburger.edu closing connection</font>
+</pre>
+&emsp;在这个例子中，邮件服务器 <font face="Consolas">crepes.fr</font> 向邮件服务器 <font face="Consolas">hamburger.edu</font> 发送了一段报文“<font face="Rototo" size=2>Do you like ketchup? How about pickles?</font>”。<font face="Consolas">SMTP</font> 客户端在整个过程中发送了五个命令：<font face="Consolas">HELO、MAIL FROM、RCPT TO、DATA、QUIT</font>，服务器对这些命令作出回答，包含回答码和可选的解释。客户端发送一个只有“.”的行 (对应于 <font face="Consolas">ASCII</font> 码的 <font face="Consolas">CLRF.CLRF</font>)，指示断开连接。</p>
+<h4 id="2-http">(2). 与 <font face="Consolas">HTTP</font> 的对比</h4>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 是拉式协议，用户从服务器拉取数据；<font face="Consolas">SMTP</font> 是推式协议，发起 <font face="Consolas">TCP</font> 连接的 <font face="Consolas">SMTP</font> 服务器把文件推向接收服务器。</li>
+<li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 的二进制数据无需进行编码解码。</li>
+<li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 把对象封装到自己的相应报文中，<font face="Consolas">SMTP</font> 把所有的东西封装到一个报文中。</li>
+</ul>
+</body>
+</html></p>
+<h3 id="3">3. 邮件报文格式</h3>
+<p>&emsp;邮件报文的格式由 <font face="Consolas">RFC</font> <font face="Consolas">5322</font> 定义。类似于 <font face="Consolas">HTTP</font>，头部行和消息体之间用 <font face="Consolas">CRLF</font> 隔开，且一部分首部行是必要的，包括 <font face="Consolas">From、To、Subject</font>。</br>
+&emsp;例子：
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">HeapSort</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">BuildMaxHeap</span><span class="p">(</span><span class="n">H</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-        <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
-        <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">From</span>: <span class="nv">alice</span>@<span class="nv">crepes</span>.<span class="nv">fr</span>
+<span class="nv">To</span>: <span class="nv">bob</span>@<span class="nv">hamburger</span>.<span class="nv">edu</span>
+<span class="nv">Subject</span>: <span class="nv">Searching</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">meaning</span> <span class="nv">of</span> <span class="nv">life</span>.
+
+<span class="o">//</span> <span class="nv">content</span>
 </pre></div>
-</td></tr></table>
-相比于快速排序，堆排序无论好坏情况，复杂度都是 $O(nlgn)$，但是它的复杂度中的常数较大，因此通常比快排慢。</p>
-<p><strong>堆排序的特点：</strong></br>
-① 堆排序不稳定</br>
-② 对缓存不友好</br>
-③ 无所谓最好、最坏、平均，运行时间为 $O(nlgn)$ (当所有元素相同时为 $O(n)$)</p>
-<h4 id="4priority-queue">4.优先队列(<font face="Consolas">priority queue</font>)</h4>
-<p>一个最大优先队列应有以下操作：</br>
-&emsp;① <font face="Consolas"> <em>INSERT(S, x)</em></font>: 把元素<font face="Consolas"> <em>x</em> </font>插入集合<font face="Consolas"> <em>S</em></font>。</br>
-&emsp;② <font face="Consolas"> <em>MAXIMUM(S)</em></font>: 返回<font face="Consolas"> <em>S</em> </font>中具有最大关键字的元素。</br>
-&emsp;③ <font face="Consolas"> <em>EXTRACT-MAX(S)</em></font>: 去掉并返回<font face="Consolas"> <em>S</em> </font>中最大关键字元素。</br>
-&emsp;④ <font face="Consolas"> <em>INCREASE-KEY(s, x, k)</em></font>: 把<font face="Consolas"> <em>x</em> </font>的值增加到<font face="Consolas"> <em>k</em></font>。</p>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">MaxHeapInsert</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
-    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">INF</span><span class="p">;</span>
-    <span class="n">HeapIncreaseKey</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$T(n)=O(lgn)$
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="nf">HeapExtractMax</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;heap underflow&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">];</span>
-    <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
-    <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">max</span><span class="p">;</span> 
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-$T(n)=O(lgn)$</p>
+</td></tr></table></p>
+<h3 id="4">4. 邮件访问协议</h3>
+<p>&emsp;<font face="Consolas">20</font> 世纪 <font face="Consolas">90</font> 年代以前，用户通过登录，直接在服务器主机上运行一个阅读程序读取邮件。今天的邮件访问使用了 <font face="Consolas">C/S</font> 结构，即用户在自己的主机上阅读邮件，主机上运行用户代理。
+<img align=middle src="/ComputerNetwork/img/2-ApplicationLayer/2.3/proc.png" height=105></br>
+&emsp;回顾 <font face="Consolas">Alice</font> 向 <font face="Consolas">Bob</font> 发送邮件的完整过程。<font face="Consolas">Alice</font> 的用户代理向 <font face="Consolas">Server1</font> 发送报文的过程也是把报文推向一个目的主机，因此可以通过 <font face="Consolas">SMTP</font> 完成；而 <font face="Consolas">Bob</font> 通过代理读取邮件是一个拉操作，需要引入邮件访问协议。</p>
+<h4 id="1-pop3">(1). <font face="Consolas">POP3</font></h4>
 <p></font></p>
                 
                   
