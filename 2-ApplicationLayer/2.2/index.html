@@ -431,6 +431,60 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-cookie" title="3. Cookie" class="md-nav__link">
+    3. Cookie
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cookie" title="(1). Cookie 组件" class="md-nav__link">
+    (1). Cookie 组件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cookie" title="(2). Cookie 原理" class="md-nav__link">
+    (2). Cookie 原理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-web" title="4. Web 缓存" class="md-nav__link">
+    4. Web 缓存
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" title="(1). 缓存应用实例" class="md-nav__link">
+    (1). 缓存应用实例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get" title="(2). 条件 GET 方法" class="md-nav__link">
+    (2). 条件 GET 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -834,6 +888,60 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-cookie" title="3. Cookie" class="md-nav__link">
+    3. Cookie
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cookie" title="(1). Cookie 组件" class="md-nav__link">
+    (1). Cookie 组件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cookie" title="(2). Cookie 原理" class="md-nav__link">
+    (2). Cookie 原理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-web" title="4. Web 缓存" class="md-nav__link">
+    4. Web 缓存
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" title="(1). 缓存应用实例" class="md-nav__link">
+    (1). 缓存应用实例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get" title="(2). 条件 GET 方法" class="md-nav__link">
+    (2). 条件 GET 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -871,7 +979,7 @@
 <h3 id="2-http">2. <font face="Consolas">HTTP</font></h3>
 <h4 id="1">(1). 基本概念</h4>
 <p>&emsp;<font face="Consolas">HTTP</font> 定义了 <font face="Consolas">Web</font> 客户端向服务器请求网页以及 <font face="Consolas">Web</font> 服务器传送网页的方式。<font face="Consolas">HTTP</font> 使用 <font face="Consolas">TCP</font> 作为传输层协议，<font face="Consolas">C-S</font> 之间建立连接。</br>
-&emsp;<font face="Consolas">HTTP</font> 是一个无状态的协议 (<font face="Consolas">stateless</font>): 服务器不会维护过去的有关客户端所发请求的消息，只是机械地根据收到的报文做出回应。因此，<font face="Consolas">Web</font> 服务器是始终打开的。</br> </p>
+&emsp;<font face="Consolas">HTTP</font> 是一个无状态的协议 (<font face="Consolas">stateless</font>): 服务器不会维护过去的有关客户端所发请求的消息，即对事务处理没有记忆能力，只是机械地根据收到的报文做出回应，不需要状态转换 <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>。因此，<font face="Consolas">Web</font> 服务器是始终打开的。</br> </p>
 <h4 id="2">(2). 连接类型</h4>
 <h5 id="1_1"><font size=3>①. 非持久性连接</font></h5>
 <p>&emsp;使用非持久性连接的 <font face="Consolas">HTTP</font> 应用，每一对 <font face="Consolas">request/response</font> 各自经一个 <font face="Consolas">TCP</font> 连接发送。定义响应时间 $=$ 客户请求 <font face="Consolas">HTML</font> 基本文件到客户收到整个 <font face="Consolas">HTML</font> 文件所花的时间；衡量它的单位是往返时间 (<font face="Consolas">Round-Trip-Time, RTT</font>)，指客户端发送一个很小的数据包到服务器并返回所需要的时间。</br>
@@ -906,18 +1014,22 @@
 <body>
 <ul style="margin-top:-10px;margin-bottom:10px">
 <li style="margin:1px 26px;">请求行 (<font face="Consolas">request line</font>): 格式为 <font face="Consolas">|method|sp|URL|sp|version|cr|lf|</font>。</li>
-    <ul style="margin-top:0px;margin-bottom:0px">
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
     <li style="margin:1px 46px;"><font face="Consolas">GET</font>: 请求服务器的指定资源。使用此方法时消息体字段为空。对比 <font face="Consolas">POST</font>，如果输入的数据不长，可以省出消息体字段，在 <font face="Consolas">URL</font> 中填入输入的信息，例如 <font face="Consolas">www.somesite.com/animalsearch?monkey&amp;banana</font>。</li>
     <li style="margin:1px 46px;"><font face="Consolas">POST</font>: 请求指定资源的同时，提交数据，如文件上传、搜素引擎输入信息等。消息体填入客户端提交的内容。不可被缓存。</li>
     <li style="margin:1px 46px;"><font face="Consolas">HEAD</font>: 仍为请求指定资源，但只请求资源的首部信息，响应报文的消息体为空。通常用于测试超链接的有效性、检查资源的有效性、检查网页是否被篡改等。</li>
     </ul>
-<li style="margin:1px 26px;">Tea</li>
-<li style="margin:1px 26px;">Milk</li>
+<li style="margin:1px 26px;">头部行/请求头 (<font face="Consolas">head lines): 格式为<font face="Consolas"> |header field name:value|cr|lf|... ...</font>。</font></li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
+    <li style="margin:1px 46px;"><font face="Consolas">Host</font>: 请求的主机名</li>
+    <li style="margin:1px 46px;"><font face="Consolas">User-Agent</font>: 产生请求的浏览器名</li>
+    </ul>
+<li style="margin:1px 26px;">消息体 (<font face="Consolas">entity body</font>)</li>
 </ul>
 </body>
 </html></p>
 <h6 id="2-response"><font size=3>②. <font face="Consolas">response</font></font></h6>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -933,11 +1045,49 @@
 <span class="na">Content-Length</span><span class="o">:</span> <span class="l">6821</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html</span>
 
-// data...
+// (entity body) data...
 </pre></div>
 </td></tr></table>
-
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">状态行 (<font face="Consolas">state line</font>): 格式为 <font face="Consolas">HTTP-Version|sp|Status-Code|sp|Reason-Phrase|cr|lf|</font>。其中 <font face="Consolas">Status-Code</font> 为响应的状态码，<font face="Consolas">Reason-Phrase</font> 为状态码的文本描述。</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
+    <li style="margin:1px 46px;"><font face="Consolas">200 OK</font>; <font face="Consolas">301 Move Permanently</font>; <font face="Consolas">404 Not Found</font>。</li>
+   </ul>
+</ul>
+</body>
+</html></p>
+<h3 id="3-cookie">3. <font face="Consolas">Cookie</font></h3>
+<p>&emsp;<font face="Consolas">HTTP</font> 是一个无状态的协议，这简化了 <font face="Consolas">Web</font> 服务器的设计。但 <font face="Consolas">C-S</font> 交互过程中，服务器通常希望可以识别用户，因此 <font face="Consolas">HTTP</font> 使用了 <font face="Consolas">Cookie</font>。</p>
+<h4 id="1-cookie">(1). <font face="Consolas">Cookie</font> 组件</h4>
+<p>① <font face="Consolas">HTTP</font> 响应报文中的一个 <font face="Consolas">Cookie</font> 头部行；</br>
+② <font face="Consolas">HTTP</font> 请求报文中的一个 <font face="Consolas">Cookie</font> 头部行；</br>
+③ 用户的主机中保存的一个 <font face="Consolas">Cookie</font> 文件，由浏览器管理；</br>
+④ 位于 <font face="Consolas">Web</font> 服务器端的一个后台数据库。</p>
+<p><img align=right src="/img/2-ApplicationLayer/2.2/cookie.png" height=310></p>
+<h4 id="2-cookie">(2). <font face="Consolas">Cookie</font> 原理</h4>
+<p>&emsp;如图，假设用户过去访问过 <font face="Consolas">eBay</font>，且首次访问 <font face="Consolas">amazon.com</font>。</br>&emsp;当请求到达服务器后，<font face="Consolas">Web</font> 服务器产生一个唯一的识别码，用以在后端数据库中索引一个表项。然后 <font face="Consolas">Web</font> 服务器在响应报文的头部行中添加一条 <font face="Consolas">Set-Cookie: 1678</font>。</br>
+&emsp;随后，如果客户继续访问 <font face="Consolas">Amazon</font>，浏览器就会在 <font face="Consolas">Cookie</font> 文件中抽取识别码，并添加到请求报文的首部行中：<font face="Consolas">Cookie: 1678</font>。实际上的 <font face="Consolas">Cookie</font> 需要经过加密。</p>
+<h3 id="4-web">4. <font face="Consolas">Web</font> 缓存</h3>
+<p>&emsp;<font face="Consolas">Web</font> 缓存即代理服务器，目的为减少请求时间，提升性能，减少流量开销，实现有效内容分发。</p>
+<h4 id="1_2">(1). 缓存应用实例</h4>
+<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.2/cache.png" height=300></p>
+<p>&emsp;假设机构网络是一个高速局域网，网关与 <font face="Consolas">Internet</font> 通过一条 $15\mathit{Mbps}$ 的链路连接；假设对象平均大小 $1 \mathit{Mb}$，机构内的浏览器对服务器的平均访问速率为每秒 $15$ 个请求；假设因特网时延为 $2\ \mathrm{s}$，即网关发送请求和收到相应的时间间隔。</br>
+&emsp;接入链路上的流量强度为：$15×1\mathnormal{Mb} /15\mathnormal{Mbps}=1$，时延很大且无限增长；局域网内 $0.15$ 的流量强度可以被忽略。</br>
+&emsp;可以通过提升接入链路的带宽解决问题，比如增加到 $100\mathit{Mbps}$，但成本高昂。更好的办法是在机构网络中增加一个代理服务器，实践中的命中率通常介于 $0.2\sim 0.7$。假设命中率为 $0.4$，此时接入链路的流量强度为 $0.6$，时延约为几十毫秒，与因特网时延的 $2$ 秒相比可以忽略。局域网内的时延为 $10$ 毫秒，因此，总的平均时延为 $0.4×0.01+0.6×2.01\approx 1.2\ \mathrm{s}$。这种解决方案的成本很低。</p>
+<h4 id="2-get">(2). 条件 <font face="Consolas">GET</font> 方法</h4>
+<p>&emsp;代理服务器在返回对象时，有时需要考虑返回的对象是否为最新版本，可以通过 <font face="Consolas">HTTP</font> 的条件 <font face="Consolas">GET</font> 方法实现。</br>
+&emsp;代理服务器向服务器第一次请求某个资源时，服务器返回一个携带资源的 <font face="Consolas">200 OK</font> 报文，其中一个头部行为 <font face="Consolas">Last-Modified:</font> <font face="Consolas">&lt;<em>date</em>&gt;</font>。一定时间过后，如果这个对象被某个主机请求，代理可能会确定它是否为最新版本，它会向服务器发送一个 <font face="Consolas">GET</font> 请求，其中一个头部行包含 <font face="Consolas">If-Modified-Since:</font> <font face="Consolas">&lt;<em>date</em>&gt;</font>。如果没有被修改过，服务器会返回一个 <font face="Consolas">304</font> <font face="Consolas">Not</font> <font face="Consolas">Modified</font> 报文；否则返回一个带有数据的 <font face="Consolas">200</font> <font face="Consolas">OK</font> 报文。</p>
 <p></font></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>有状态：<font face="Consolas">TCP</font>; 无状态：<font face="Consolas">UDP、IP</font>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 

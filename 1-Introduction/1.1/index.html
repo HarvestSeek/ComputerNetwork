@@ -848,14 +848,14 @@ $$T=\frac{M}{R}+(h-1)\cdot \frac{L}{R}=\frac{M}{R}+n\frac{L}{R}$$</p>
 &emsp;光的频分复用。</p>
 <p>④ 码分多路复用 (<font face="Roboto">CDM</font>)</br>
 &emsp;既不划分时间，也不划分频率，每个用户被分配一个大小为 $m$ <font face="Roboto">bit</font> 的码片序列 (<font face="Roboto">chipping sequence</font>)，其中的 $0/1$ 用 $-1/+1$ 表示。各用户的码片序列是正交的：
-$$\frac{1}{m} \boldsymbol{S_i}\cdot \boldsymbol{S_j}=
+$$\frac{1}{m} \mathbf{S_i}\cdot \mathbf{S_j}=
 \begin{cases}
 1&amp; if\ i=j\\
 0&amp; else
 \end{cases}$$
 &emsp;定义 编码信号 = 原始数据×码片序列：如果发送比特为 $1$，则直接发送码片序列；如果发送比特为 $0\ (-1)$，则发送码片序列的“反码”。</br>
-&emsp;假设链路支持 $i$ 条电路，原始数据序列为 $\lbrace d_1,\ ...,d_i\rbrace$，其中 $d_i$ 为第 $i$ 个用户要发送的比特，$\boldsymbol{S_i}$ 是他的码片序列。定义叠加向量 $\boldsymbol{P}=\sum_1^n d_i\cdot \boldsymbol{S_i}$。</br>
-&emsp;最后，用户通过计算 $\frac{1}{m} \boldsymbol{S_i}\cdot \boldsymbol{P}$ 解码。如果结果为 $1/-1$，说明发送的比特为 $1/0$；如果结果为 $0$，说明相应的用户没有发送数据。</p>
+&emsp;假设链路支持 $i$ 条电路，原始数据序列为 $\lbrace d_1,\ ...,d_i\rbrace$，其中 $d_i$ 为第 $i$ 个用户要发送的比特，$\mathbf{S_i}$ 是他的码片序列。定义叠加向量 $\mathbf{P}=\sum_1^n d_i\cdot \mathbf{S_i}$。</br>
+&emsp;最后，用户通过计算 $\frac{1}{m} \mathbf{S_i}\cdot \mathbf{P}$ 解码。如果结果为 $1/-1$，说明发送的比特为 $1/0$；如果结果为 $0$，说明相应的用户没有发送数据。</p>
 <h4 id="4-vs">(4). 分组交换 <font face="Roboto">vs.</font> 电路交换</h4>
 <p>&emsp;分组交换的缺点在于可能产生拥塞，导致时延或丢包。它不适用于实时服务，因为其时延难以预测。它使得信道资源被充分共享，更适用于突发数据网络。</br>
 &emsp;电路交换适用于持续数据网络，在其他情况下它对资源的利用率低，比如某个用户以一定的概率处于活跃状态的情况。</p>

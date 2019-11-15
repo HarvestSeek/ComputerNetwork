@@ -786,7 +786,7 @@
 &emsp;节点处理数据需要一定时间，如差错检测、确定输出链路，对于高速路由器通常为微秒级别。</p>
 <p><strong>②</strong> 排队延迟 $d_{queue}$ (<font face="Roboto">queueing delay</font>)</br>
 &emsp;当某个分组确定输出链路后，此链路正在传输其他分组，那么这个分组就要在当前节点路由器排队。</br>
-<img align=right src="/img/1-Introduction/1.2/lar.png" height=150>
+<img align=right src="/ComputerNetwork/img/1-Introduction/1.2/lar.png" height=150>
 &emsp;排队延迟通常通过统计量描述，其大小取决于流量的到达速率、链路带宽和流量性质。设 $a$ 为分组到达队列时的平均速率 (<font face="Consolas">pkt/s</font>)，链路带宽为 $R$ <font face="Consolas">bps</font>，分组大小为 $L$ <font face="Consolas">bit</font>，则流量强度 $=La/R$。当 $La/R&gt;1$，队列趋近于无限增加，$d_{queue}\rightarrow \infty$；当 $La/R\leq 1$，平均排队延迟和流量强度的定性关系如图所示。</p>
 <p><strong>③</strong> 传输延迟 $d_{trans}$ (<font face="Roboto">transmission delay</font>)</br>
 &emsp;将分组的比特推向链路所需要的时间，$d_{trans}=L/R$。</p>
