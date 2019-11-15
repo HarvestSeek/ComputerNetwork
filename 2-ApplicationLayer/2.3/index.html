@@ -418,6 +418,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2-imap" title="(2). IMAP" class="md-nav__link">
+    (2). IMAP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-http" title="(3). HTTP" class="md-nav__link">
+    (3). HTTP
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -789,6 +803,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2-imap" title="(2). IMAP" class="md-nav__link">
+    (2). IMAP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-http" title="(3). HTTP" class="md-nav__link">
+    (3). HTTP
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -890,12 +918,42 @@
 
 <span class="o">//</span> <span class="nv">content</span>
 </pre></div>
-</td></tr></table></p>
+</td></tr></table>
+&emsp;多用途网际邮件扩展 (<font face="Consolas">Multipurpose Internet Mail Extensions, MIME</font>) 广泛应用于电子邮件系统和浏览器，它定义于 <font face="Consolas">RFC</font> <font face="Consolas">2045-2049</font>。服务器可以通过增加额外的头部行标识发送数据的类型，改进了传统的基于 <font face="Consolas">SMTP</font> 的邮件格式的限制。</p>
 <h3 id="4">4. 邮件访问协议</h3>
 <p>&emsp;<font face="Consolas">20</font> 世纪 <font face="Consolas">90</font> 年代以前，用户通过登录，直接在服务器主机上运行一个阅读程序读取邮件。今天的邮件访问使用了 <font face="Consolas">C/S</font> 结构，即用户在自己的主机上阅读邮件，主机上运行用户代理。
 <img align=middle src="/ComputerNetwork/img/2-ApplicationLayer/2.3/proc.png" height=105></br>
 &emsp;回顾 <font face="Consolas">Alice</font> 向 <font face="Consolas">Bob</font> 发送邮件的完整过程。<font face="Consolas">Alice</font> 的用户代理向 <font face="Consolas">Server1</font> 发送报文的过程也是把报文推向一个目的主机，因此可以通过 <font face="Consolas">SMTP</font> 完成；而 <font face="Consolas">Bob</font> 通过代理读取邮件是一个拉操作，需要引入邮件访问协议。</p>
 <h4 id="1-pop3">(1). <font face="Consolas">POP3</font></h4>
+<p>&emsp;<font face="Consolas">POP3</font> (<font face="Consolas">Post Office Protocol</font>) 协议是一个极为简单的邮件访问协议。<font face="Consolas">POP3</font> 使用 <font face="Consolas">TCP</font>，且在邮件服务器的 $110$ 端口工作。在 <font face="Consolas">POP3</font> 的整个过程中，服务器对用户的命令作出应答，可能的应答有两种：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:0px">
+<li style="margin:1px 26px;"><font face="Consolas">+OK</font>: 用于指示前面的命令是正常的；</li>
+<li style="margin:1px 26px;"><font face="Consolas">-ERR</font>: 用于指示前面的某个命令出了差错。</li>
+</ul>
+</body>
+</html>
+<font face="Consolas">POP3</font> 服务器的工作流程可以分为三个阶段：
+<html> 
+<body>
+<ul style="margin-top:0px;margin-bottom:10px">
+<li style="margin:1px 26px;">认证 (<font face="Consolas">authorization</font>): 用户代理以明文的方式发送用户名和口令，以鉴别用户。涉及两个命令：<font face="Consolas">user &lt;username&gt;、pass &lt;password&gt;</font>。</li>
+<li style="margin:1px 26px;">事务处理：获得报文，同时可以控制报文的删除标记。</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
+    <li style="margin:1px 46px;">“下载并删除”：用户代理先后使用 <font face="Consolas">list</font> (列出所有报文的长度)、<font face="Consolas">retr</font> (取回邮件)、<font face="Consolas">dele</font> (标记邮件为删除) 命令。</li>
+    <li style="margin:1px 46px;">“下载并保留”：在服务器端保留邮件。</li>
+    </ul>
+<li style="margin:1px 26px;">更新：在 <font face="Consolas">quit</font> 命令后，会话结束，服务器进入更新阶段，删除被标记的邮件。</li>
+</ul>
+</body>
+</html>
+&emsp;<font face="Consolas">POP3</font> 服务器虽然保留了一些状态信息，但会话过程并不会携带状态信息。因此，<font face="Consolas">POP3</font> 是无状态协议。</p>
+<h4 id="2-imap">(2). <font face="Consolas">IMAP</font></h4>
+<p>&emsp;<font face="Consolas">IMAP</font> (<font face="Consolas">Internet/Interactive Mail Access Protocol)</font> 在 <font face="Consolas">POP3</font> 的基础上，支持用户远程创建文件夹、在文件夹之间移动邮件或查询邮件。<font face="Consolas">IMAP</font> 服务器维护用户会话的状态，例如文件夹的名字等。</br>
+&emsp;<font face="Consolas">IMAP</font> 另一个重要特性是它支持用户代理只读取报文的某个部分。当用户代理与服务器以低带宽连接时，这个特性非常有用。</p>
+<h4 id="3-http">(3). <font face="Consolas">HTTP</font></h4>
+<p>&emsp;今天，绝大多数的邮件服务都提供基于 <font face="Consolas">Web</font> 的接入。在这种情况下，用户代理就是浏览器：发送代理通过 <font face="Consolas">HTTP</font> 发送邮件，接受代理也通过 <font face="Consolas">HTTP</font> 访问邮件，但邮件服务器之间仍使用 <font face="Consolas">SMTP</font>。</p>
 <p></font></p>
                 
                   
