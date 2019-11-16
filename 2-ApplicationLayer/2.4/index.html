@@ -423,6 +423,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-dns" title="(3). DNS 缓存" class="md-nav__link">
+    (3). DNS 缓存
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dns_1" title="3. DNS 记录和报文" class="md-nav__link">
+    3. DNS 记录和报文
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dns_2" title="(1). DNS 资源记录" class="md-nav__link">
+    (1). DNS 资源记录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 举例：注册一个域名" class="md-nav__link">
+    (2). 举例：注册一个域名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dns_2" title="(3). DNS 报文" class="md-nav__link">
+    (3). DNS 报文
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -775,6 +816,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-dns" title="(3). DNS 缓存" class="md-nav__link">
+    (3). DNS 缓存
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dns_1" title="3. DNS 记录和报文" class="md-nav__link">
+    3. DNS 记录和报文
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dns_2" title="(1). DNS 资源记录" class="md-nav__link">
+    (1). DNS 资源记录
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 举例：注册一个域名" class="md-nav__link">
+    (2). 举例：注册一个域名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dns_2" title="(3). DNS 报文" class="md-nav__link">
+    (3). DNS 报文
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -838,12 +920,58 @@
 </body>
 </html>
 &emsp;本地域名服务器不属于层次结构，但也是 <font face="Consolas">DNS</font> 系统中关键的一部分。每个 <font face="Consolas">ISP</font> 会为接入的主机提供一个或多个本地域名服务器的 <font face="Consolas">IP</font> 地址 (通常通过 <font face="Consolas">DHCP</font>)，它与主机邻近，起到代理的作用。</p>
-<p><img align=right src="/img/2-ApplicationLayer/2.4/1.png" height=520></p>
+<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/1.png" height=520></p>
 <h4 id="2-dns_2">(2). <font face="Consolas">DNS</font> 查询</h4>
 <p>&emsp;假设主机 <font face="Consolas">cse.nyu.edu</font> 想知道主机 <font face="Consolas">gaia.cs.umass.edu</font> 的 <font face="Consolas">IP</font>，同时假设 <font face="Consolas">cse.nyu.edu</font> 的本地 <font face="Consolas">DNS</font> 服务器为 <font face="Consolas">dns.nyu.edu</font>。</br></br>
 &emsp;<font face="Consolas">cse.nyu.edu</font> 首先向本地域名服务器发送一个 <font face="Consolas">DNS</font> 查询报文，本地域名服务器将此报文转发至权威域名服务器，然后权威域名服务器根据 <font face="Consolas">edu</font> 前缀返回相应的 <font face="Consolas">TLD</font> 服务器的 <font face="Consolas">IP</font> 列表，本地域名服务从中选择一个，以此类推。在这个例子中，共发送了 $8$ 份 <font face="Consolas">DNS</font> 报文。实际上，<font face="Consolas">TLD</font> 服务器可能无法一次定位到目的权威域名服务器，在机构内部的权威域名服务器可能也存在层次关系，这时就需要更多的查询次数。</br></p>
 <p>&emsp;上面的例子中，<font face="Consolas">cse.nyu.edu</font> 向本地域名服务器的查询是递归查询，把域名解析的任务交给了所查询的服务器；而本地域名服务器的查询是迭代查询，被查询的服务器直接返回域名解析服务器的地址。理论上，任何 <font face="Consolas">DNS</font> 都可以是递归或迭代的，但一般的查询方法都采用上面的模式。</br>
 &emsp;右图为所有查询都是递归的一条查询链。</p>
+<h4 id="3-dns">(3). <font face="Consolas">DNS</font> 缓存</h4>
+<p>&emsp;<font face="Consolas">(2)</font> 中的讨论忽略了 <font face="Consolas">DNS</font> 缓存，实际的 <font face="Consolas">DNS</font> 广泛应用了缓存技术。在一个请求链中，当某个 <font face="Consolas">DNS</font> 服务器收到 <font face="Consolas">DNS</font> 应答报文，获得主机名 → <font face="Consolas">IP</font> 的映射，就会缓存这个映射。由于主机名到 <font face="Consolas">IP</font> 的映射不是永久的，<font face="Consolas">DNS</font> 服务器通常在两天后丢弃缓存信息。</br>
+&emsp;在 <font face="Consolas">(2)</font> 的第一种通用的查询方式中，本地域名服务器会缓存 <font face="Consolas">TLD</font> 服务器的 <font face="Consolas">IP</font>，因此根域名服务器很少会被访问。</p>
+<h3 id="3-dns_1">3. <font face="Consolas">DNS</font> 记录和报文</h3>
+<h4 id="1-dns_2">(1). <font face="Consolas">DNS</font> 资源记录</h4>
+<p>&emsp;实现 <font face="Consolas">DNS</font> 分布式数据库的所有域名服务器都存储了资源记录 (<font face="Consolas">Resource Record, RR</font>)，资源记录是一个包含下列字段的四元组：<font face="Consolas">(<em>Name</em>,</font> <font face="Consolas"><em>Value</em>,</font> <font face="Consolas"><em>Type</em>,</font> <font face="Consolas"><em>TTL</em>)</font>。
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;"><font face="Consolas"><em>Type</em></font> <font face="Consolas">=</font> <font face="Consolas">A</font>，则 <font face="Consolas"><em>Name</em></font> 是主机名，<font face="Consolas"><em>Value</em></font> 是它对应的 <font face="Consolas">IP</font>。</li>
+<li style="margin:1px 26px;"><font face="Consolas"><em>Type</em></font> <font face="Consolas">=</font> <font face="Consolas">NS</font>，则 <font face="Consolas"><em>Name</em></font> 是个域 (如 <font face="Consolas">foo.com</font>)，<font face="Consolas"><em>Value</em></font> 是这个域对应的权威域名服务器的主机名。</li>
+<li style="margin:1px 26px;"><font face="Consolas"><em>Type</em></font> <font face="Consolas">=</font> <font face="Consolas">CName</font>，则 <font face="Consolas"><em>Name</em></font> 是主机别名，<font face="Consolas"><em>Value</em></font> 是它对应的规范主机名。</li>
+<li style="margin:1px 26px;"><font face="Consolas"><em>Type</em></font> <font face="Consolas">=</font> <font face="Consolas">MX</font>，则 <font face="Consolas"><em>Name</em></font> 是主机别名，<font face="Consolas"><em>Value</em></font> 是它对应的邮件服务器的规范主机名。<font face="Consolas">MX</font> 记录允许邮件服务器有简单的别名。<font face="Consolas">DNS</font> 客户端通过 <font face="Consolas">MX</font> 记录获取获取邮件服务器的规范主机名，通过 <font face="Consolas">CName</font> 记录获取其他服务器的规范主机名。</li>
+</ul>
+</body>
+</html></p>
+<h4 id="2">(2). 举例：注册一个域名</h4>
+<p>&emsp;假设我们创建了一个公司 <font face="Consolas">Network</font> <font face="Consolas">Utophia</font>。我们通过某些机构注册域名 <font face="Consolas">networkutophia.com</font>，需要提供基本的和辅助的权威域名服务器的主机名和 <font face="Consolas">IP</font>。以基本权威域名服务器为例，假设相关信息为 <font face="Consolas">dns1.networkutophia.com</font>、<font face="Consolas">212.212.212.1</font>。</br>
+&emsp;注册机构在 <font face="Consolas">TLD</font> <font face="Consolas">com</font> 服务器插入一条 <font face="Consolas">NS</font> 记录和一条 <font face="Consolas">A</font> 记录：</br>
+&emsp;&emsp;<font face="Consolas">(networkutophia.com, dns1.networkutophia.com, NS)</font></br>
+&emsp;&emsp;<font face="Consolas">(dns1.networkutophia.com, 212.212.212.1, A)</font></br>
+&emsp;最后，我们要保证用于 <font face="Consolas">Web</font> 服务器 <font face="Consolas">www.networkutophia.com</font> 的 <font face="Consolas">A</font> 记录和用于邮件服务器 <font face="Consolas">mail.networkutophia.com</font> 的 <font face="Consolas">MX</font> 记录插入到我们的权威域名服务器中。这样，外界就可以访问我们的 <font face="Consolas">Web</font> 站点，并向我们发送邮件。</br>
+&emsp;当外界要访问我们的 <font face="Consolas">Web</font> 站点，在查询过程中，<font face="Consolas">TLD</font> 服务器会向外界的本地域名服务器返回这两条 <font face="Consolas">A</font> 记录和 <font face="Consolas">NS</font> 记录，随后向 <font face="Consolas">212.212.212.1</font> 查询 <font face="Consolas">Web</font> 服务器对应的 <font face="Consolas">A</font> 记录。</p>
+<h4 id="3-dns_2">(3). <font face="Consolas">DNS</font> 报文</h4>
+<p>&emsp;<font face="Consolas">DNS</font> 只有查询和回答两种报文，并且这两种报文格式相同。</p>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">前 $12$ 个字节是首部区域。</li>
+<ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
+    <li style="margin:1px 46px;"><font face="Consolas">Identification: </font> 用于标识查询报文，这个编号会被写回到回答报文中。</li>
+    <img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/dnsmsg.png" height=230 style="margin-top:30px;">
+    <li style="margin:1px 46px;"><font face="Consolas">Flags: </font>包括查询/应答标志、权威标志 (如果接收服务器是目的权威域名服务器)、希望递归标志等。</li>
+    <li style="margin:1px 46px;">数量字段：指出后面四类数据区域出现的数量。</li>
+    </ul></p>
+<li style="margin:1px 26px;">问题字段：包含当前查询的信息。</li>
+
+<li style="margin:1px 26px;">回答字段：包含对应查询的 <font face="Consolas">RR</font> 记录。</li>
+
+<li style="margin:1px 26px;">权威字段：其他权威服务器的记录。</li>
+
+<li style="margin:1px 26px;">附加字段：其他有帮助的记录。</li>
+
+<p></ul>
+</body>
+</html></p>
 <p></font></p>
                 
                   
