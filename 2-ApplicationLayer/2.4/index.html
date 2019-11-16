@@ -909,7 +909,7 @@
 <h3 id="2-dns_1">2. <font face="Consolas">DNS</font> 工作原理</h3>
 <h4 id="1">(1). 分布式数据库</h4>
 <p>&emsp;如果 <font face="Consolas">DNS</font> 服务器被设计成集中式的单一服务器，会造成诸如单点故障、通信容量、时延、难以维护等问题，因此 <font face="Consolas">DNS</font> 采用了分布式、层次化的设计。</p>
-<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/dns.png" height=140></p>
+<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/dns.png" height=140 title="DNS database"></p>
 <p><html> 
 <body>
 <ul style="margin-top:-10px;margin-bottom:10px">
@@ -920,7 +920,7 @@
 </body>
 </html>
 &emsp;本地域名服务器不属于层次结构，但也是 <font face="Consolas">DNS</font> 系统中关键的一部分。每个 <font face="Consolas">ISP</font> 会为接入的主机提供一个或多个本地域名服务器的 <font face="Consolas">IP</font> 地址 (通常通过 <font face="Consolas">DHCP</font>)，它与主机邻近，起到代理的作用。</p>
-<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/1.png" height=520></p>
+<p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/1.png" height=520 title="DNS query"></p>
 <h4 id="2-dns_2">(2). <font face="Consolas">DNS</font> 查询</h4>
 <p>&emsp;假设主机 <font face="Consolas">cse.nyu.edu</font> 想知道主机 <font face="Consolas">gaia.cs.umass.edu</font> 的 <font face="Consolas">IP</font>，同时假设 <font face="Consolas">cse.nyu.edu</font> 的本地 <font face="Consolas">DNS</font> 服务器为 <font face="Consolas">dns.nyu.edu</font>。</br></br>
 &emsp;<font face="Consolas">cse.nyu.edu</font> 首先向本地域名服务器发送一个 <font face="Consolas">DNS</font> 查询报文，本地域名服务器将此报文转发至权威域名服务器，然后权威域名服务器根据 <font face="Consolas">edu</font> 前缀返回相应的 <font face="Consolas">TLD</font> 服务器的 <font face="Consolas">IP</font> 列表，本地域名服务从中选择一个，以此类推。在这个例子中，共发送了 $8$ 份 <font face="Consolas">DNS</font> 报文。实际上，<font face="Consolas">TLD</font> 服务器可能无法一次定位到目的权威域名服务器，在机构内部的权威域名服务器可能也存在层次关系，这时就需要更多的查询次数。</br></p>
@@ -957,7 +957,7 @@
 <li style="margin:1px 26px;">前 $12$ 个字节是首部区域。</li>
 <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
     <li style="margin:1px 46px;"><font face="Consolas">Identification: </font> 用于标识查询报文，这个编号会被写回到回答报文中。</li>
-    <img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/dnsmsg.png" height=230 style="margin-top:30px;">
+    <img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.4/dnsmsg.png" height=230 style="margin-top:30px;" title="DNS message">
     <li style="margin:1px 46px;"><font face="Consolas">Flags: </font>包括查询/应答标志、权威标志 (如果接收服务器是目的权威域名服务器)、希望递归标志等。</li>
     <li style="margin:1px 46px;">数量字段：指出后面四类数据区域出现的数量。</li>
     </ul></p>
