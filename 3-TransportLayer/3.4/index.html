@@ -519,6 +519,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2_1" title="(2). 拥塞控制方法" class="md-nav__link">
+    (2). 拥塞控制方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tcp" title="3. TCP 拥塞控制算法" class="md-nav__link">
+    3. TCP 拥塞控制算法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 慢启动" class="md-nav__link">
+    (1). 慢启动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 拥塞避免" class="md-nav__link">
+    (2). 拥塞避免
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 快速恢复" class="md-nav__link">
+    (3). 快速恢复
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -775,6 +816,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2_1" title="(2). 拥塞控制方法" class="md-nav__link">
+    (2). 拥塞控制方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tcp" title="3. TCP 拥塞控制算法" class="md-nav__link">
+    3. TCP 拥塞控制算法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 慢启动" class="md-nav__link">
+    (1). 慢启动
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 拥塞避免" class="md-nav__link">
+    (2). 拥塞避免
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 快速恢复" class="md-nav__link">
+    (3). 快速恢复
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -803,7 +885,7 @@
 <font face="Consolas"></font></p>
 <h3 id="1-tcp">1. <font face="Consolas">TCP</font> 流量控制</h3>
 <p>&emsp;当一个 <font face="Consolas">TCP</font> 连接收到正确的数据后，会将其放入接收缓存；上层应用并不一定会立即读取其中的数据，如果读取速率远小于发送方的发送速率，就会导致缓存溢出。<font face="Consolas">TCP</font> 为应用程序提供了流量控制服务，使得发送方的发送速率与应用的读取速率相匹配。</br>
-&emsp;<font face="Consolas">TCP</font> 发送方维护一个称为接收窗口的变量，记为 $\small \mathsf{RcvWin}$，表示接收方空闲空间的大小。接收缓存大小记为 $\small \mathrm{RcvBuffer}$，并满足 $\small \mathrm{LastByteRcvd}-\mathrm{LastByteRead}\leq \mathrm{RcvBuffer}$。</br>
+&emsp;<font face="Consolas">TCP</font> 发送方维护一个接收窗口大小，记为 $\small \mathsf{RcvWin}$，表示接收方空闲空间的大小。接收缓存大小记为 $\small \mathrm{RcvBuffer}$，并满足 $\small \mathrm{LastByteRcvd}-\mathrm{LastByteRead}\leq \mathrm{RcvBuffer}$。</br>
 &emsp;于是 $\small \mathsf{RcvWin}=\mathrm{RcvBuffer}-(\mathrm{LastByteRcvd}-\mathrm{LastByteRead})$。接收方会把当前的 $\small \mathsf{RcvWin}$ 值放入接收窗口字段中并发给发送方，其初值设为 $\small \mathrm{RcvBuffer}$。</br>
 &emsp;发送方维护两个变量 $\small \mathrm{LastByteSent}$ 和 $\small \mathrm{LastByteAcked}$，并控制 $\small \mathrm{LastByteSent}-\mathrm{LastByteAceked}\leq \mathsf{RcvWin}$，保证接收方不会缓存溢出。</br>
 &emsp;注意到，当接收方缓存已满，通知发送方 $\small \mathsf{RcvWin}=0$，按照上面的逻辑，发送方会停止发送数据并阻塞。<font face="Consolas">TCP</font> 中规定，当接收方接收窗口为 0 时，发送方发送一个只有一个字节的报文段，这个报文段会被接收方确认，然后清空缓存、返回一个非 0 的  $\small \mathsf{RcvWin}$。</p>
@@ -822,10 +904,33 @@
 <h6 id="3-scenario3"><font size=3>③ <font face="Consolas"><em>Scenario3</em></font>: 四个发送方和多跳缓存有限的路由器</font></h6>
 <p>&emsp;&emsp;<img src="/ComputerNetwork/img/3-TransportLayer/3.4/sc3.png" height=230></br>
 &emsp;假设有四个主机都发送分组，每个连接都经过交叠的两跳路径，每条链路的容量都为 $R$ 字节/秒。</br>
-<img align=right src="/img/3-TransportLayer/3.4/scr3.png" height=145>
+<img align=right src="/ComputerNetwork/img/3-TransportLayer/3.4/scr3.png" height=140>
 &emsp;由 ② 可知，当 $\lambda_{in}$ 较小，吞吐量大致接近于供给载荷。当 $\lambda_{in}$ 较大，考虑连接 <font face="Consolas">A→C</font> 和连接 <font face="Consolas">B→D</font>。首先，<font face="Consolas">R2</font> 的到达流量至多为 $R$；由于 $\lambda_{in}'$ 对于两个连接来说都很大，因此 <font face="Consolas">R2</font> 上 <font face="Consolas">B→D</font> 流量的到达速率远大于 <font face="Consolas">A→C</font> 流量的到达速率。当 $\lambda_{in}'$ 继续增大，<font face="Consolas">A→C</font> 连接的吞吐量趋近于 $0$。</br></br>
-&emsp;这也是拥塞的一种代价，即当一个分组沿一条路径被丢弃，每个上游路由器的传输资源被浪费掉了。
-</font></p>
+&emsp;这也是拥塞的一种代价，即当一个分组沿一条路径被丢弃，每个上游路由器的传输资源被浪费掉了。</p>
+<h4 id="2_1">(2). 拥塞控制方法</h4>
+<p>&emsp;实践中采用的两种主要的拥塞控制方法：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">端到端的拥塞控制：端系统通过对网络的“观察”判定网络是否处于拥塞。<font face="Consolas">TCP</font> 采用这种方法。</li>
+<li style="margin:1px 26px;">通过网络的拥塞控制 (<font face="Consolas">network-assisted</font>)：路由器在发回给发送方的某个数据包中，填写某个比特指出网络拥塞。早期的 <font face="Consolas">ATM、DECnet</font> 采用这种方法，最近版本的 <font face="Consolas">TCP/IP</font> 可以选择性地开启这个功能。</li>
+</ul>
+</body>
+</html></p>
+<h3 id="3-tcp">3. <font face="Consolas">TCP</font> 拥塞控制算法</h3>
+<p>&emsp;在之前提及的 <font face="Consolas">TCP</font> 组成成分的基础上，发送方维护额外的一个拥塞窗口大小 $\small \mathsf{CongWin}$。发送方要确保 $\small \mathrm{LastByteSent}-\mathrm{LastByteAcked}\leq \min \lbrace \mathsf{CongWin,\ RcvWin}\rbrace$。为与流量控制形成对比，假设 <font face="Consolas">TCP</font> 的接收缓存足够大，大到发送方可以忽略 $\small \mathsf{RcvWin}$ 的大小，因此，发送方已发送但未确认的帧的数量只取决于 $\small \mathsf{CongWin}$。</br>
+&emsp;在这个假设下，发送方的发送速率约为 $\small \mathsf{CongWin}/\mathrm{RTT}$。发送方通过控制 $\small \mathsf{CongWin}$ 的大小动态调节发送速率。</p>
+<p>&emsp;&emsp;<img src="/ComputerNetwork/img/3-TransportLayer/3.4/congfsm.png" height=360></p>
+<h4 id="1_1">(1). 慢启动</h4>
+<p>&emsp;<font face="Consolas">TCP</font> 连接被创建时，$\small \mathsf{CongWin}$ 的初值通常被设为 $\small \mathrm{MSS}$ $\times 1$。随后，发送方每收到一个期待的 <font face="Consolas">ACK</font>，$\small \mathsf{CongWin}$ 就增加一个 $\small \mathrm{MSS}$，发送速率因此从 $1$ 开始指数增长。直到以下事件发生：</br>
+&emsp;① 当因为丢包而发生超时，发送方更新慢启动阈值 $\small \mathsf{ssthresh=CongWin/2}$，然后将 $\small \mathsf{CongWin}$ 重置为 $\small \mathrm{MSS}$。当新的 $\small \mathsf{CongWin}$ 再次达到 $\small \mathsf{ssthresh}$，拥塞窗口不会翻倍，而是结束慢启动，进入拥塞避免状态。</br>
+&emsp;② 当发送方收到 $3$ 个 <font face="Consolas">duplicate</font> <font face="Consolas">ACK</font>，依次令 $\small \mathsf{ssthresh=CongWin/2}$、$\small \mathsf{CongWin=ssthresh+3\cdot }\mathrm{MSS}$。然后发送方执行快速重传，并进入快速恢复状态。</br></p>
+<h4 id="2_2">(2). 拥塞避免</h4>
+<p>&emsp;在这个状态下，<font face="Consolas">TCP</font> 变得更为保守，在每个 $\small \mathrm{RTT}$ 内将 $\small \mathsf{CongWin}$ 增加一个 $\small \mathrm{MSS}$。一种通用的实现方法是，每收到一个期待的 <font face="Consolas">ACK</font> 就把 $\small \mathsf{CongWin}$ 增加 $\small \mathrm{MSS}/\mathsf{CongWin}$，结束的两个标志和慢启动相同。</br>
+&emsp;<font face="Consolas">TCP</font> 通过慢启动和拥塞避免的不断探测，使得既能避免拥塞，又可以充分利用带宽。</p>
+<h4 id="3">(3). 快速恢复</h4>
+<p>&emsp;在快速恢复中，对于导致 <font face="Consolas">TCP</font> 进入这个状态的每个 <font face="Consolas">duplicate</font> <font face="Consolas">ACK</font>，$\small \mathsf{CongWin}$ 增加一个 $\small \mathrm{MSS}$。当收到最后一个 <font face="Consolas">duplicate</font> <font face="Consolas">ACK</font> 后、收到一个新的期待的 <font face="Consolas">ACK</font>，<font face="Consolas">TCP</font> 进入拥塞避免状态；当超时事件发生，<font face="Consolas">TCP</font> 重复与前面一样的行为，然后迁移到慢启动状态。</p>
+<p></font></p>
                 
                   
                 
