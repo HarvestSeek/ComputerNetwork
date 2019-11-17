@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#5-tcp" tabindex="1" class="md-skip">
+      <a href="#1-tcp" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -471,9 +471,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#5-tcp" title="5. TCP: 流量控制" class="md-nav__link">
-    5. TCP: 流量控制
+  <a href="#1-tcp" title="1. TCP 流量控制" class="md-nav__link">
+    1. TCP 流量控制
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 拥塞控制原理" class="md-nav__link">
+    2. 拥塞控制原理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="(1). 拥塞的原因与代价" class="md-nav__link">
+    (1). 拥塞的原因与代价
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scenario1" title="① Scenario1: 两个发送方和一台缓存无限大的路由器" class="md-nav__link">
+    ① Scenario1: 两个发送方和一台缓存无限大的路由器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scenario2" title="② Scenario2: 两个发送方和一台缓存有限的路由器" class="md-nav__link">
+    ② Scenario2: 两个发送方和一台缓存有限的路由器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-scenario3" title="③ Scenario3: 四个发送方和多跳缓存有限的路由器" class="md-nav__link">
+    ③ Scenario3: 四个发送方和多跳缓存有限的路由器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -680,9 +727,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#5-tcp" title="5. TCP: 流量控制" class="md-nav__link">
-    5. TCP: 流量控制
+  <a href="#1-tcp" title="1. TCP 流量控制" class="md-nav__link">
+    1. TCP 流量控制
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 拥塞控制原理" class="md-nav__link">
+    2. 拥塞控制原理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="(1). 拥塞的原因与代价" class="md-nav__link">
+    (1). 拥塞的原因与代价
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-scenario1" title="① Scenario1: 两个发送方和一台缓存无限大的路由器" class="md-nav__link">
+    ① Scenario1: 两个发送方和一台缓存无限大的路由器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scenario2" title="② Scenario2: 两个发送方和一台缓存有限的路由器" class="md-nav__link">
+    ② Scenario2: 两个发送方和一台缓存有限的路由器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-scenario3" title="③ Scenario3: 四个发送方和多跳缓存有限的路由器" class="md-nav__link">
+    ③ Scenario3: 四个发送方和多跳缓存有限的路由器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -707,13 +801,31 @@
                 
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
-<h3 id="5-tcp">5. <font face="Consolas">TCP:</font> 流量控制</h3>
+<h3 id="1-tcp">1. <font face="Consolas">TCP</font> 流量控制</h3>
 <p>&emsp;当一个 <font face="Consolas">TCP</font> 连接收到正确的数据后，会将其放入接收缓存；上层应用并不一定会立即读取其中的数据，如果读取速率远小于发送方的发送速率，就会导致缓存溢出。<font face="Consolas">TCP</font> 为应用程序提供了流量控制服务，使得发送方的发送速率与应用的读取速率相匹配。</br>
-&emsp;<font face="Consolas">TCP</font> 发送方维护一个称为接收窗口的变量，记为 <font face="Consolas"><em>RcvWindow</em></font>，表示接收方空闲空间的大小。接收缓存大小记为 <font face="Consolas"><em>RcvBuffer</em></font>，并满足 <font face="Consolas"><em>LastByteRcvd</em></font> - <font face="Consolas"><em>LastByteRead</em></font> ≤ <font face="Consolas"><em>RcvBuffer</em></font>。</br>
-&emsp;于是 <font face="Consolas"><em>RcvWindow</em></font> <font face="Consolas">=</font> <font face="Consolas"><em>RcvBuffer</em></font> <font face="Consolas">-</font> <font face="Consolas">[<em>LastByteRcvd</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>LastByteRead</em>]</font>。接收方会把当前的 <font face="Consolas"><em>RcvWindow</em></font> 值放入接收窗口字段中并发给发送方，其初值设为 <font face="Consolas"><em>RcvBuffer</em></font>。</br>
-&emsp;发送方维护两个变量 <font face="Consolas"><em>LastByteSent</em></font> 和 <font face="Consolas"><em>LastByteAcked</em></font>，并控制 <font face="Consolas"><em>LastByteSent</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>LastByteAcked</em></font> ≤ <font face="Consolas"><em>RcvWindow</em></font>，保证接收方不会缓存溢出。</br>
-&emsp;注意到，当接收方缓存已满，通知发送方 <font face="Consolas"><em>RcvWindow</em></font> <font face="Consolas">=</font> <font face="Consolas">0</font>，按照上面的逻辑，发送方会停止发送数据并阻塞。<font face="Consolas">TCP</font> 中规定，当接收方接收窗口为 0 时，发送方发送一个只有一个字节的报文段，这个报文段会被接收方确认，然后清空缓存、返回一个非 0 的 <font face="Consolas"><em>RcvWindow</em></font>。</p>
-<p></font></p>
+&emsp;<font face="Consolas">TCP</font> 发送方维护一个称为接收窗口的变量，记为 $\small \mathsf{RcvWin}$，表示接收方空闲空间的大小。接收缓存大小记为 $\small \mathrm{RcvBuffer}$，并满足 $\small \mathrm{LastByteRcvd}-\mathrm{LastByteRead}\leq \mathrm{RcvBuffer}$。</br>
+&emsp;于是 $\small \mathsf{RcvWin}=\mathrm{RcvBuffer}-(\mathrm{LastByteRcvd}-\mathrm{LastByteRead})$。接收方会把当前的 $\small \mathsf{RcvWin}$ 值放入接收窗口字段中并发给发送方，其初值设为 $\small \mathrm{RcvBuffer}$。</br>
+&emsp;发送方维护两个变量 $\small \mathrm{LastByteSent}$ 和 $\small \mathrm{LastByteAcked}$，并控制 $\small \mathrm{LastByteSent}-\mathrm{LastByteAceked}\leq \mathsf{RcvWin}$，保证接收方不会缓存溢出。</br>
+&emsp;注意到，当接收方缓存已满，通知发送方 $\small \mathsf{RcvWin}=0$，按照上面的逻辑，发送方会停止发送数据并阻塞。<font face="Consolas">TCP</font> 中规定，当接收方接收窗口为 0 时，发送方发送一个只有一个字节的报文段，这个报文段会被接收方确认，然后清空缓存、返回一个非 0 的  $\small \mathsf{RcvWin}$。</p>
+<h3 id="2">2. 拥塞控制原理</h3>
+<h4 id="1">(1). 拥塞的原因与代价</h4>
+<h6 id="1-scenario1"><font size=3>① <font face="Consolas"><em>Scenario1</em></font>: 两个发送方和一台缓存无限大的路由器</font></h6>
+<p>&emsp;&emsp;<img src="/ComputerNetwork/img/3-TransportLayer/3.4/sc1.png" height=120></br>
+&emsp;假设链路容量均为 $R$ 字节/秒，主机 <font face="Consolas">A</font> 和主机 <font face="Consolas">B</font> 的应用程序把数据发送到连接的平均速率均为 $\lambda_{in}$ 字节/秒，每个连接的接收速率为 $\lambda_{out}$，路由器的缓存无限大。</br>
+<img src="/ComputerNetwork/img/3-TransportLayer/3.4/scr1.png" height=170></br>
+&emsp;对于每个连接，随着吞吐量到达最大值 $R/2$，拥塞使得时延趋近于无穷大。</p>
+<h6 id="2-scenario2"><font size=3>② <font face="Consolas"><em>Scenario2</em></font>: 两个发送方和一台缓存有限的路由器</font></h6>
+<p>&emsp;和情况 1 不同的是，缓存已满时路由器会丢弃到达的分组，因而发送方会有重传行为。定义 $\lambda_{in}'$ 为供给载荷 (<font face="Consolas">offered load</font>)，表示发送方包括重传在内的发送速率。</br>
+&emsp;这种情况下的吞吐量取决于重传的方式。例如，考虑一种边界情况：发送方只在路由器有空闲的时候发送数据 (<font face="Consolas">impossible</font>) ，那么这种情况就和情况 1 一样，且 $\lambda_{in}=\lambda_{in}'$。</br>
+&emsp;&emsp;<img align=right src="/ComputerNetwork/img/3-TransportLayer/3.4/scr2.png" height=190></br>
+&emsp;在实际情况下，发送方判定数据包丢失时会进行重传。因此，发送方就会因为重传那些 (i). 丢失的数据包 (ii). 并未丢失但因为时延而判定为丢失的数据包 而浪费一定的信道资源，即拥塞使得发送方进行不必要的重传。假设极限情况下每个数据包平均被路由器转发两次，吞吐量的变化如右图所示。</br></p>
+<h6 id="3-scenario3"><font size=3>③ <font face="Consolas"><em>Scenario3</em></font>: 四个发送方和多跳缓存有限的路由器</font></h6>
+<p>&emsp;&emsp;<img src="/ComputerNetwork/img/3-TransportLayer/3.4/sc3.png" height=230></br>
+&emsp;假设有四个主机都发送分组，每个连接都经过交叠的两跳路径，每条链路的容量都为 $R$ 字节/秒。</br>
+<img align=right src="/img/3-TransportLayer/3.4/scr3.png" height=145>
+&emsp;由 ② 可知，当 $\lambda_{in}$ 较小，吞吐量大致接近于供给载荷。当 $\lambda_{in}$ 较大，考虑连接 <font face="Consolas">A→C</font> 和连接 <font face="Consolas">B→D</font>。首先，<font face="Consolas">R2</font> 的到达流量至多为 $R$；由于 $\lambda_{in}'$ 对于两个连接来说都很大，因此 <font face="Consolas">R2</font> 上 <font face="Consolas">B→D</font> 流量的到达速率远大于 <font face="Consolas">A→C</font> 流量的到达速率。当 $\lambda_{in}'$ 继续增大，<font face="Consolas">A→C</font> 连接的吞吐量趋近于 $0$。</br></br>
+&emsp;这也是拥塞的一种代价，即当一个分组沿一条路径被丢弃，每个上游路由器的传输资源被浪费掉了。
+</font></p>
                 
                   
                 
