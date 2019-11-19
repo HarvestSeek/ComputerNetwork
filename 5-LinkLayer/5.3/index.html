@@ -959,7 +959,18 @@
 <div align=center>
 <img src="/ComputerNetwork/img/5-LinkLayer/5.3/cond1.png" height=180>
 </div></p>
-<p>&emsp;为保证可靠性，<font face="Consolas">CSMA/CD</font> 必须保证每个节点在传输延迟内可以检测到已存在的冲突。如果传输的过快或传播延迟过长，均可能导致无法检测到。假设网络带宽 $R$ <font face="Consolas">bps</font>，数据帧最小长度为 $L_{min}\ \mathsf{bits}$，信号传播速度为 $V\ \mathsf{m/s}$，考虑如上图所示的临界情况：$AD=d_{max}$ 为最长链路，<font face="Consolas">A</font> 发送的信号恰好在 $t_1$ 之后到达 <font face="Consolas">D</font>，最后 <font face="Consolas">A</font> 又恰好在传输延迟内检测到了冲突。因此，<font face="Consolas">CSMA/CD</font> 需要满足 $$\min{d_{trans}}=\frac{L_{min}}{R}\leq \frac{2\cdot d_{max}}{V}=RTT_{max}$$</br>
+<p>&emsp;为保证可靠性，<font face="Consolas">CSMA/CD</font> 必须保证每个节点在传输延迟内可以检测到已存在的冲突。如果传输的过快或传播延迟过长，均可能导致无法检测到。</br>
+&emsp;给定条件：网络带宽 $R$ <font face="Consolas">bps</font>，数据帧最小长度为 $L_{min}\ \mathsf{bits}$，信号传播速度为 $V\ \mathsf{m/s}$，节点 $A$ 和节点 $D$ 分别在时刻 $t_0$ 和 $t_1$ 发送大小为 $L_{min}$ 的帧，并设 $t_1\geq t_0$。</br>
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">①. 由 <font face="Consolas">CSMA/CD</font> 的监听机制，可得 $t_1\in [t_0,\ t_0+d_{prop}]$；</li>
+<li style="margin:1px 26px;">②. 首先，必须保证 $t_1\in [t_0,\ t_0+L_{min}/R]$，这样 $A$ 才有可能检测到冲突，则传播延迟不能长于传播延迟，即 $\min{d_{trans}}\geq \max{d_{prop}}$；</li>
+<li style="margin:1px 26px;">③. 上图即为临界情况：$D$ 刚好满足 ①. 的条件，可以发送帧；$A$ 又恰好在传输结束之前检测到了冲突；</li>
+</ul>
+</body>
+</html>
+&emsp;因此，<font face="Consolas">CSMA/CD</font> 需要满足 $$\min{d_{trans}}=\frac{L_{min}}{R}\geq \frac{2\cdot d_{max}}{V}=\mathrm{RTT}_{max}=\max{d_{prop}}$$</br>
 &emsp;<font face="Consolas">CSMA/CD</font> 的效率近似为：
 $$\mathit{Efficiency}=\frac{1}{1+5\cdot d_{prop}/d_{trans}}$$
 如果 $d_{prop}=0$，冲突的节点会立即终止传输，因此效率值接近 $1$。</p>
