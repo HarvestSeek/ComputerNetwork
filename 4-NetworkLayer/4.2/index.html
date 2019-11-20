@@ -630,8 +630,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" title="(3). 报文格式、数据封装" class="md-nav__link">
-    (3). 报文格式、数据封装
+  <a href="#3" title="(3). 报文格式" class="md-nav__link">
+    (3). 报文格式
   </a>
   
 </li>
@@ -984,8 +984,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" title="(3). 报文格式、数据封装" class="md-nav__link">
-    (3). 报文格式、数据封装
+  <a href="#3" title="(3). 报文格式" class="md-nav__link">
+    (3). 报文格式
   </a>
   
 </li>
@@ -1353,10 +1353,14 @@ height=250></div>
 </ul>
 </body>
 </html></p>
-<h4 id="3">(3). 报文格式、数据封装</h4>
-<p>&emsp;<font face="Consolas">ICMP</font> 是一个介于网络层与传输层之间的网络层协议。<font face="Consolas">ICMP</font> 报文被封装到 <font face="Consolas">IP</font> 数据报中传输，其结构为 <font face="Consolas">ICMP header(8 byte)</font> <font face="Consolas">+</font> 出问题的 <font face="Consolas">IP</font> 数据报头部 <font face="Consolas">+</font> <font face="Consolas">IP</font> 数据前 8 字节。最后一部分对应完成的 <font face="Consolas">UDP</font> 头部或 <font face="Consolas">TCP</font> 头部的端口号字段之前。</br></p>
+<h4 id="3">(3). 报文格式</h4>
+<p>&emsp;<font face="Consolas">ICMP</font> 是 <font face="Consolas">IP</font> 协议的一部分，本质上是一个介于网络层与传输层之间的网络层协议，其报文被封装到 <font face="Consolas">IP</font> 数据报中传输。</br>
+&emsp;<font face="Consolas">ICMP</font> 头部结构为：<font face="Consolas">Type(1B)</font>、<font face="Consolas">Code(1B)</font>、<font face="Consolas">checksum(2B)</font> 以及特定类型的头部信息 (<font face="Consolas">4B</font>)。</br>
+&emsp;对于 <font face="Consolas">ICMP</font> 的差错报告报文，其头部大小为上面提及的 <font face="Consolas">8B</font>，数据部分封装对应的差错 <font face="Consolas">IP</font> 数据报的头部以及 <font face="Consolas">IP</font> 数据报数据部分的前 $8$ 字节。这 $8$ 个字节的意义在于，它可能包含 <font face="Consolas">UDP</font> 的整个头部或者 <font face="Consolas">TCP</font> 头部前 $4$ 字节的端口号信息。</p>
 <h4 id="4">(4). 应用举例</h4>
-<p>&emsp;应用 <font face="Consolas">Trace Route</font> 举例：源主机发送一系列 <font face="Consolas">UDP</font> 数据报，第 <font face="Consolas"><em>i</em></font> 组数据报 <font face="Consolas">TTL</font> <font face="Consolas">=</font> <font face="Consolas"><em>i</em></font>，且目的端口号设为不可能使用的一个端口号。路由器会返回 <font face="Consolas">ICMP</font> 报文 (type = 11, code = 0)，携带路由器名称和 <font face="Consolas">IP</font> 地址信息；当目的主机返回 <font face="Consolas">ICMP</font> 报文“目的端口不可达” (type = 3, code = 3)，源主机停止发送。</p>
+<p>&emsp;<font face="Consolas">ping</font>：向指定主机发送回声请求 (type=8, code=0) 报文，如果目的主机可以收到，回复一个回声应答 (type=0, code=0) 报文。</br>
+&emsp;<font face="Consolas">traceroute</font>：源主机发送一系列 <font face="Consolas">UDP</font> 数据报，第 <font face="Consolas"><em>i</em></font> 组数据报 <font face="Consolas">TTL</font> <font face="Consolas">=</font> <font face="Consolas"><em>i</em></font>，且目的端口号设为不可能使用的一个端口号 (大于 30000)。节点路由器会返回 <font face="Consolas">ICMP</font> 报文 (type = 11, code = 0)，携带路由器名称和 <font face="Consolas">IP</font> 地址信息；当目的主机返回 <font face="Consolas">ICMP</font> 报文“目的端口不可达” (type = 3, code = 3)，源主机停止发送。</br>
+&emsp;<font face="Consolas">tracert</font>：类似 <font face="Consolas">traceroute</font>，通过 <font face="Consolas">TTL</font> 超期报文收到沿途节点的信息，不同的是，<font face="Consolas">tracert</font> 发送的是 <font face="Consolas">ICMP</font> 的回声请求报文，即通过目的 <font face="Consolas">IP</font> 回复一个回声应答报文判断结束。</p>
 <h3 id="7-ipv6">7. <font face="Consolas">IPv6</font> 简介</h3>
 <h4 id="1-ipv6">(1). <font face="Consolas">IPv6</font> 数据报格式</h4>
 <div align=center><img src="/ComputerNetwork/img/4-NetworkLayer/4.2/ipv6.png" width=350></div>
