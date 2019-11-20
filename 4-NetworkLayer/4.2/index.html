@@ -526,8 +526,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-ip-fragmentation" title="2. IP 数据报分片 (Fragmentation)" class="md-nav__link">
-    2. IP 数据报分片 (Fragmentation)
+  <a href="#2-ip-mathsffragmentation" title="2. IP 数据报分片 $\mathsf{(Fragmentation)}$" class="md-nav__link">
+    2. IP 数据报分片 $\mathsf{(Fragmentation)}$
   </a>
   
     <nav class="md-nav">
@@ -611,6 +611,40 @@
   <a href="#6-icmp" title="6. ICMP 协议" class="md-nav__link">
     6. ICMP 协议
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" title="(1). 报文类型" class="md-nav__link">
+    (1). 报文类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" title="(2). 不进行差错报告的特殊情况" class="md-nav__link">
+    (2). 不进行差错报告的特殊情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 报文格式、数据封装" class="md-nav__link">
+    (3). 报文格式、数据封装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" title="(4). 应用举例" class="md-nav__link">
+    (4). 应用举例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -846,8 +880,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-ip-fragmentation" title="2. IP 数据报分片 (Fragmentation)" class="md-nav__link">
-    2. IP 数据报分片 (Fragmentation)
+  <a href="#2-ip-mathsffragmentation" title="2. IP 数据报分片 $\mathsf{(Fragmentation)}$" class="md-nav__link">
+    2. IP 数据报分片 $\mathsf{(Fragmentation)}$
   </a>
   
     <nav class="md-nav">
@@ -931,6 +965,40 @@
   <a href="#6-icmp" title="6. ICMP 协议" class="md-nav__link">
     6. ICMP 协议
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" title="(1). 报文类型" class="md-nav__link">
+    (1). 报文类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" title="(2). 不进行差错报告的特殊情况" class="md-nav__link">
+    (2). 不进行差错报告的特殊情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" title="(3). 报文格式、数据封装" class="md-nav__link">
+    (3). 报文格式、数据封装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" title="(4). 应用举例" class="md-nav__link">
+    (4). 应用举例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1016,7 +1084,7 @@ height=250></div>
 &emsp;可以携带安全信息、源选路径等。这个字段使得在处理数据报前不能预先确认数据开始处，这个考虑对主机上的 <font face="Consolas">IP</font> 处理、高性能路由器很重要，因此，在 <font face="Consolas">IPv6</font> 中已删除此字段。</p>
 <p>⑨ 填充</br>
 &emsp;补齐，使头部长为 4 字节的倍数。</p>
-<h3 id="2-ip-fragmentation">2. <font face="Consolas">IP</font> 数据报分片 (<font face="Consolas">Fragmentation</font>)</h3>
+<h3 id="2-ip-mathsffragmentation">2. <font face="Consolas">IP</font> 数据报分片 $\mathsf{(Fragmentation)}$</h3>
 <h4 id="1">(1). 标识、标志、片偏移</h4>
 <p>&emsp;一个链路层帧能承载的最大数据量为最大传输单元 (<font face="Consolas">MTU</font>)，对于不同类型的链路层协议，其值并不确定。当 <font face="Consolas">IP</font> 数据报大小大于出链路的有效载荷大小，且对应的标志位允许路由器进行分片，那么就会进行分片，这些片 (<font face="Consolas">fragment</font>) 在目的主机的运输层之前重新组装。分片过程利用了头部相关字段：</p>
 <ul>
@@ -1181,34 +1249,114 @@ height=250></div>
 </ul>
 <h3 id="6-icmp">6. <font face="Consolas">ICMP</font> 协议</h3>
 <p>&emsp;互联网控制报文协议 <font face="Consolas">(Internet Control Message Protocol, ICMP)</font> 支持主机或路由器进行差错报告或网络探询。</p>
-<ul>
-<li>差错报告报文<ul>
-<li>目的不可达：数据报到达目的地后，无法交付数据，则丢弃报文，并发送差错报告</li>
-<li>源抑制：缓存已满导致数据报被丢弃，在实际的网络的拥塞控制没有采用此方法</li>
-<li>超期：<font face="Consolas">TTL</font> 超期使得数据报被丢弃</li>
-<li>参数问题：转发数据报时发现头部某些字段参数错误，丢弃报文</li>
-<li>重定向：当某数据报到达一个路由器，在路由器看来不该由它转发，则像源主机发送重定向报文</li>
+<h4 id="1_2">(1). 报文类型</h4>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">差错报告报文</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
+    <li style="margin:1px 46px;">目的不可达：数据报到达目的地后，无法交付数据，则丢弃报文，并发送差错报告</li>
+    <li style="margin:1px 46px;">源抑制：缓存已满导致数据报被丢弃，在实际的网络的拥塞控制没有采用此方法</li>
+    <li style="margin:1px 46px;">超期：<font face="Consolas">TTL</font> 超期使得数据报被丢弃</li>
+    <li style="margin:1px 46px;">参数问题：转发数据报时发现头部某些字段参数错误，丢弃报文</li>
+    <li style="margin:1px 46px;">重定向：当某数据报到达一个路由器，在路由器看来不该由它转发，则像源主机发送重定向报文</li>
+    </ul>
+<li style="margin:1px 26px;">网络探询</li>
+    <li style="margin:1px 46px;">回声请求与应答报文：通过接收相应探测网络是否通达，如 <font face="Consolas">ping</font> 工具</li>
+    <li style="margin:1px 46px;">时间戳请求与应答报文</li>
 </ul>
-</li>
-<li>
-<p>网络探询</p>
-<ul>
-<li>回声请求与应答报文：通过接收相应探测网络是否通达，如 <font face="Consolas">ping</font> 工具</li>
-<li>时间戳请求与应答报文</li>
+</body>
+</html></p>
+<details class="info"><summary>ICMP message</summary><p><body>
+<table border="1" id="dataTable"  style="margin-left:100px; border-collapse:collapse;border-spacing:0; border:1px  solid  #FFFFFF; text-align: center;" >
+    <tr style="background:#50aca2;color: #fff;border-bottom-width: 0;  text-align: center; height: 2.2rem;">
+        <td>类型 (<font face="Consolas">Type</font>)</td>
+        <td>编码 (<font face="Consolas">Code</font>)</td>
+        <td style="text-align:center">描述 </td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">回声应答 (ping)</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">目的网络不可达</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">1</td>
+        <td style="text-align:center">目的主机不可达</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">2</td>
+        <td style="text-align:center">目的协议不可达</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">目的端口不可达</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">6</td>
+        <td style="text-align:center">目的网络未知</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">3</td>
+        <td style="text-align:center">7</td>
+        <td style="text-align:center">目的主机未知</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">4</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">源抑制</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">8</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">回声请求 (ping)</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">9</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">路由通告</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">10</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">路由发现</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">11</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">TTL 超期</td>
+    </tr>
+    <tr style="background: #e5efeb; text-align: center;height: 2.2rem;">
+        <td style="text-align:center">12</td>
+        <td style="text-align:center">0</td>
+        <td style="text-align:center">IP 首部错误</td>
+    </tr>
+</table>
+</body></p>
+</details>
+<h4 id="2_1">(2). 不进行差错报告的特殊情况</h4>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;"><font face="Consolas">ICMP</font> 报文出差错</li>
+<li style="margin:1px 26px;">除了第一个 <font face="Consolas">IP</font> 数据报分片的所有后续分片</li>
+<li style="margin:1px 26px;">所有的多播 <font face="Consolas">IP</font> 数据报</li>
+<li style="margin:1px 26px;">具有特殊地址的 <font face="Consolas">IP</font> 数据报 (如 <font face="Consolas">127.0.0.0</font> 或 <font face="Consolas">0.0.0.0</font>)</li>
 </ul>
-</li>
-<li>
-<p>不发送 <font face="Consolas">ICMP</font> 差错报告报文的特殊情况：</p>
-<ul>
-<li><font face="Consolas">ICMP</font> 报文出差错</li>
-<li>除了第一个 <font face="Consolas">IP</font> 数据报分片的所有后续分片</li>
-<li>所有的多播 <font face="Consolas">IP</font> 数据报</li>
-<li>具有特殊地址的 <font face="Consolas">IP</font> 数据报 (如 <font face="Consolas">127.0.0.0</font> 或 <font face="Consolas">0.0.0.0</font>)</li>
-</ul>
-</li>
-</ul>
-<p>&emsp;<font face="Consolas">ICMP</font> 是一个介于网络层与传输层之间的网络层协议。<font face="Consolas">ICMP</font> 报文被封装到 <font face="Consolas">IP</font> 数据报中传输，其结构为 <font face="Consolas">ICMP header(8 byte)</font> <font face="Consolas">+</font> 出问题的 <font face="Consolas">IP</font> 数据报头部 <font face="Consolas">+</font> <font face="Consolas">IP</font> 数据前 8 字节。最后一部分对应完成的 <font face="Consolas">UDP</font> 头部或 <font face="Consolas">TCP</font> 头部的端口号字段之前。</br>
-&emsp;应用 <font face="Consolas">Trace Route</font> 举例：源主机发送一系列 <font face="Consolas">UDP</font> 数据报，第 <font face="Consolas"><em>i</em></font> 组数据报 <font face="Consolas">TTL</font> <font face="Consolas">=</font> <font face="Consolas"><em>i</em></font>，且目的端口号设为不可能使用的一个端口号。路由器会返回 <font face="Consolas">ICMP</font> 报文 (type = 11, code = 0)，携带路由器名称和 <font face="Consolas">IP</font> 地址信息；当目的主机返回 <font face="Consolas">ICMP</font> 报文“目的端口不可达” (type = 3, code = 3)，源主机停止发送。</p>
+</body>
+</html></p>
+<h4 id="3">(3). 报文格式、数据封装</h4>
+<p>&emsp;<font face="Consolas">ICMP</font> 是一个介于网络层与传输层之间的网络层协议。<font face="Consolas">ICMP</font> 报文被封装到 <font face="Consolas">IP</font> 数据报中传输，其结构为 <font face="Consolas">ICMP header(8 byte)</font> <font face="Consolas">+</font> 出问题的 <font face="Consolas">IP</font> 数据报头部 <font face="Consolas">+</font> <font face="Consolas">IP</font> 数据前 8 字节。最后一部分对应完成的 <font face="Consolas">UDP</font> 头部或 <font face="Consolas">TCP</font> 头部的端口号字段之前。</br></p>
+<h4 id="4">(4). 应用举例</h4>
+<p>&emsp;应用 <font face="Consolas">Trace Route</font> 举例：源主机发送一系列 <font face="Consolas">UDP</font> 数据报，第 <font face="Consolas"><em>i</em></font> 组数据报 <font face="Consolas">TTL</font> <font face="Consolas">=</font> <font face="Consolas"><em>i</em></font>，且目的端口号设为不可能使用的一个端口号。路由器会返回 <font face="Consolas">ICMP</font> 报文 (type = 11, code = 0)，携带路由器名称和 <font face="Consolas">IP</font> 地址信息；当目的主机返回 <font face="Consolas">ICMP</font> 报文“目的端口不可达” (type = 3, code = 3)，源主机停止发送。</p>
 <h3 id="7-ipv6">7. <font face="Consolas">IPv6</font> 简介</h3>
 <h4 id="1-ipv6">(1). <font face="Consolas">IPv6</font> 数据报格式</h4>
 <div align=center><img src="/ComputerNetwork/img/4-NetworkLayer/4.2/ipv6.png" width=350></div>
