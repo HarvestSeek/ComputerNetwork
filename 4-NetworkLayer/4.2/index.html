@@ -582,8 +582,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-cidr" title="(4). CIDR" class="md-nav__link">
-    (4). CIDR
+  <a href="#4-cidr" title="(4). CIDR 与路由聚合" class="md-nav__link">
+    (4). CIDR 与路由聚合
   </a>
   
 </li>
@@ -936,8 +936,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-cidr" title="(4). CIDR" class="md-nav__link">
-    (4). CIDR
+  <a href="#4-cidr" title="(4). CIDR 与路由聚合" class="md-nav__link">
+    (4). CIDR 与路由聚合
   </a>
   
 </li>
@@ -1205,10 +1205,12 @@ height=250></div>
 <h4 id="3-ip">(3). <font face="Consolas">IP</font> 子网划分</h4>
 <p>&emsp;有类 <font face="Consolas">IP</font> 地址通过网络号对地址空间进行了一定程度的划分。在此基础上，当一个组织获得一个网络号以后，对 <font face="Consolas">IP</font> 继续进行子网划分：<font face="Consolas">NetID-SubID-HostID</font>，然后将这些子网通过路由器互连，在数据传播的时候可以通过子网号隔离流量。</br>
 &emsp;子网掩码 (<font face="Consolas">network mask</font>)：形如 <font face="Consolas">IP</font> 地址，是一个用点分十进制表示的 32 比特数；<font face="Consolas">NetID-SubID</font> 全取 1，<font face="Consolas">HostID</font> 全取 0。目的 <font face="Consolas">IP</font> 地址通过与子网掩码进行求与运算，可以提取出子网地址，从而得到子网的地址范围；在地址范围内去掉主机域全 0 和全 1 的 <font face="Consolas">IP</font> 地址，得到可分配地址范围。</p>
-<h4 id="4-cidr">(4). <font face="Consolas">CIDR</font></h4>
+<h4 id="4-cidr">(4). <font face="Consolas">CIDR</font> 与路由聚合</h4>
 <p>&emsp;<font face="Consolas">Internet</font> 采用的地址分配策略为 无类域间路由 (<font face="Consolas">Classless Interdomain Routing, CIDR</font>)，它一般化了子网寻址的概念，消除了传统的 <font face="Consolas">A、B、C</font> 类地址界限：将 <font face="Consolas">NetID-SubID</font> 统一为网络前缀；融合了子网地址与子网掩码，无类地址格式为 <font face="Consolas">a.b.c.d/<em>x</em></font>，<font face="Consolas"><em>x</em></font> 为网络前缀长度。</br>
-&emsp;<font face="Consolas">CIDR</font> 提高了地址空间的利用率；伴随着路由聚合技术的出现，有效减少了转发表的表项数，提高了路由效率。</br>
-&emsp;路由聚合通常作用于这样的情形：子网数为 2 的倍数，且它们的地址空间连续。当路由聚集的空间属于另外一个 <font face="Consolas">ISP</font> 的子网，当数据转发到这个子网时，就会出现路由黑洞现象。为了仍能够利用路由聚集及带来的便利，可以在两个 <font face="Consolas">ISP</font> 前的路由器的转发表中，利用最长前缀匹配原则，避免路由黑洞。</p>
+&emsp;<font face="Consolas">CIDR</font> 提高了地址空间的利用率；伴随着路由聚合技术，有效减少了转发表的表项数和路由器发布的路由通告数，提高了路由效率。</br>
+&emsp;路由聚合通常要求子网数为 2 的倍数，且它们的地址空间连续。由于互联网发展历史的原因，可能出现路由聚集的空间属于另外一个 <font face="Consolas">ISP</font> 的子网的情况。当数据转发到这个子网时，就会出现路由黑洞现象：数据报不断重复转发进入子网和转发出去的过程。例如图中的两个 <font face="Consolas">ISP</font>。</br></p>
+<p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.2/cidr.png" height=200></p>
+<p>&emsp;为了仍能够利用路由聚集及带来的便利，同时解决路由黑洞现象，可以在两个 <font face="Consolas">ISP</font> 前的公共路由器的转发表中，为 <font face="Consolas">200.23.18.0/23</font> 构造一个更长的公共前缀表项，使得分组可以被转发至  <font face="Consolas">ISPs-R-Us</font>。</p>
 <h3 id="4-dhcp">4. <font face="Consolas">DHCP</font> 协议</h3>
 <p>&emsp;一台主机获取 <font face="Consolas">IP</font> 通常有两种方法，可以通过网络管理员或操作系统静态设定，通过操作系统还可以设定默认网关、本地 <font face="Consolas">DNS</font> 服务器等，更多情况下是通过动态获取。</br>
 &emsp;动态地址配置通过动态主机配置协议 (<font face="Consolas">Dynamic Host Configuration Protocol, DHCP</font>) 实现。在一台主机接入网络时，可通过 <font face="Consolas">DHCP</font> 获得临时的 <font face="Consolas">IP</font> 地址、子网掩码、默认网关、本地 <font face="Consolas">DNS</font> 服务器地址，<font face="Consolas">DHCP</font> 广泛应用于主机动态地连接和离开某子网的情境中。</br>
