@@ -733,6 +733,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-ProblemSets/networklayer/" title="Network Layer" class="md-nav__link">
+      Network Layer
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -825,68 +837,102 @@
                 
                 <p><font face="思源黑体 CN"></p>
 <h3 id="1-internet">1. <font face="Consolas">Internet</font> 路由: 层次化路由</h3>
-<p>&emsp;将整个网络看成一张图过于理想化，实际使用中会遇到以下问题：</p>
-<ul>
-<li>规模：随着节点数增多，有关路由选择信息的通信、计算、存储的开销不可实现</li>
-<li>管理自治：每个 <font face="Consolas">ISP</font> 都需要能控制其网内的路由，如选择路由协议、控制流量如何被路由等</li>
+<p>&emsp;将整个网络看成一张图过于理想化，实际使用中会遇到以下问题：
+<html> <body>
+<ul style="margin-top:-12px;margin-bottom:2px;line-height:30px;">
+<li style="margin:1px 26px;">规模：随着节点数增多，有关路由选择信息的通信、计算、存储的开销不可实现</li>
+<li style="margin:1px 26px;">管理自治：每个 <font face="Consolas">ISP</font> 都需要能控制其网内的路由，如选择路由协议、控制流量如何被路由等</li>
 </ul>
-<p>&emsp;因此，实际中，路由器通过自治系统 (<font face="Consolas">Autonomous System, AS</font>) 组织起来，每个系统由唯一的 <font face="Consolas">AS</font> 号标识。路由也因此变得层次化，分为 <font face="Consolas">inter-AS</font> 和 <font face="Consolas">intra-AS</font>，同一 <font face="Consolas">AS</font> 内运行相同的路由协议，也称内部网络协议 (<font face="Consolas">interior gateway protocols, IGP</font>)，不同系统内的协议可以不同；
+</body>
+</html>
+&emsp;因此，实际中，路由器通过自治系统 (<font face="Consolas">Autonomous System, AS</font>) 组织起来，每个系统由唯一的 <font face="Consolas">AS</font> 号标识。路由也因此变得层次化，分为 <font face="Consolas">inter-AS</font> 和 <font face="Consolas">intra-AS</font>，同一 <font face="Consolas">AS</font> 内运行相同的路由协议，也称内部网络协议 (<font face="Consolas">interior gateway protocols, IGP</font>)，不同系统内的协议可以不同；
 <img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.3/as1.png" height=130>
 为实现 <font face="Consolas">AS</font> 间的通信，每个 <font face="Consolas">AS</font> 都需要有一些网关路由器 (<font face="Consolas">gateway router</font>)。</br>
 &emsp;在 <font face="Consolas">Internet</font> 中， <font face="Consolas">intra-AS</font> 侧重性能，而 <font face="Consolas">inter-AS</font> 侧重策略。</br>
 &emsp;<font face="Consolas"><em>e.g.</em></font> 假设 <font face="Consolas">AS1</font> 通过 <font face="Consolas">AS</font> 间路由协议学习到，子网 <font face="Consolas"><em>x</em></font> 通过 <font face="Consolas">AS2</font> 和 <font face="Consolas">AS3</font> 均可达，那么路由器 <font face="Consolas">1d</font> 会根据热土豆路由策略，将分组发往最近的网关路由器。这个任务也是由 <font face="Consolas">AS</font> 间路由协议完成的。</p>
 <h3 id="2-rip">2. <font face="Consolas">RIP</font> 协议</h3>
-<p>&emsp;路由信息协议 (<font face="Consolas">Routing Information Protocol, RIP</font>) 是一种 <font face="Consolas">AS</font> 内部协议，使用距离向量路由算法：</p>
-<ul>
-<li>其距离度量为跳步数 (<font face="Consolas">hops</font>)，最大度量为 $15$ 跳步</li>
-<li>每隔 $30s$，邻居之间交换一次 <font face="Consolas">DV</font>（通告），每次最多通告 $25$ 个目的子网</li>
-<li>对任一节点，如果 $180s$ 内没有收到来自某个邻居的通告，就认为相应链路失效 ($\infty$)</li>
-<li>应用了毒性逆转技术</li>
-</ul>
-<p>&emsp;由于 $16$ <font face="Consolas">hops</font> 就等同于 $\infty$，<font face="Consolas">RIP</font> 只适用于小规模网络。</br>
+<p>&emsp;路由信息协议 (<font face="Consolas">Routing Information Protocol, RIP</font>) 是一种 <font face="Consolas">AS</font> 内部协议，使用距离向量路由算法：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">其距离度量为跳步数 (<font face="Consolas">hops</font>)，最大度量为 $15$ 跳步</li>
+<li style="margin:1px 26px;">每隔 $30s$，邻居之间交换一次 <font face="Consolas">DV</font>（通告），每次最多通告 $25$ 个目的子网</li>
+<li style="margin:1px 26px;">对任一节点，如果 $180s$ 内没有收到来自某个邻居的通告，就认为相应链路失效 ($\infty$)</li>
+<li style="margin:1px 26px;">应用了毒性逆转技术</li></ul>
+</body>
+</html>
+&emsp;由于 $16$ <font face="Consolas">hops</font> 就等同于 $\infty$，<font face="Consolas">RIP</font> 只适用于小规模网络。</br>
 &emsp;<font face="Consolas">RIP</font> 的路由表由名为 <font face="Consolas">route-d</font> 的应用层进程管理，通告报文周期性通过 <font face="Consolas">UDP</font> 数据报发送。</p>
 <h3 id="3-ospf">3. <font face="Consolas">OSPF</font> 协议</h3>
-<p>&emsp;开放最短路径优先 (<font face="Consolas">Open Shortest Path First</font>) 协议是一种 <font face="Consolas">AS</font> 内部协议，使用链路状态路由算法：</p>
-<ul>
-<li><font face="Consolas">OSPF</font> 通告在整个 <font face="Consolas">AS</font> 范围内泛洪，其报文直接封装至 <font face="Consolas">IP</font> 数据报中</li>
-<li>每个路由器构造完整的 <font face="Consolas">AS</font> 拓扑图，利用 <font face="Consolas"><em>Dijskra</em></font> 算法计算路由</li>
+<p>&emsp;开放最短路径优先 (<font face="Consolas">Open Shortest Path First</font>) 协议是一种 <font face="Consolas">AS</font> 内部协议，使用链路状态路由算法：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;"><font face="Consolas">OSPF</font> 通告在整个 <font face="Consolas">AS</font> 范围内泛洪，其报文直接封装至 <font face="Consolas">IP</font> 数据报中</li>
+<li style="margin:1px 26px;">每个路由器构造完整的 <font face="Consolas">AS</font> 拓扑图，利用 <font face="Consolas"><em>Dijskra</em></font> 算法计算路由</li>
 </ul>
-<p>&emsp;相比于 <font face="Consolas">RIP</font> 协议，<font face="Consolas">OSPF</font> 有如下优点：</p>
-<p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.3/ospf1.png" height=160></p>
-<ul>
-<li>安全：所有 <font face="Consolas">OSPF</font> 报文可以被认证</li>
-<li>允许维护多条最短路径，有利于负载均衡</li>
-<li>对于不同链路，可以根据 <font face="Consolas">IP</font> 数据报中的 <font face="Consolas">ToS</font> 设置不同的度量，实现不同服务类型的数据在不同链路中分流</li>
-<li>由于持有全局信息，可集成单播路由与多播路由 (最小生成树)</li>
-<li>支持在单个 <font face="Consolas">AS</font> 内再分层为主干区 (<font face="Consolas">backbone</font>) 和局部区 (<font face="Consolas">area</font>)。<font face="Consolas">area</font> 之间的通信只知道到达对方的最短路径，而不知到对方区域的详细拓扑。区边界路由器 (<font face="Consolas">Area Border Routers</font>) 同时位于两个区域内，汇总到达所在区网络的距离，通告给其他 <font face="Consolas">ABR</font>。</li>
+</body>
+</html>
+&emsp;相比于 <font face="Consolas">RIP</font> 协议，<font face="Consolas">OSPF</font> 有如下优点：</p>
+<p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.3/ospf1.png" height=160>
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">安全：所有 <font face="Consolas">OSPF</font> 报文可以被认证</li>
+<li style="margin:1px 26px;">允许维护多条最短路径，有利于负载均衡</li>
+<li style="margin:1px 26px;">对于不同链路，可以根据 <font face="Consolas">IP</font> 数据报中的 <font face="Consolas">ToS</font> 设置不同的度量，实现不同服务类型的数据在不同链路中分流</li>
+<li style="margin:1px 26px;">由于持有全局信息，可集成单播路由与多播路由 (最小生成树)</li>
+<li style="margin:1px 26px;">支持在单个 <font face="Consolas">AS</font> 内再两级分层为主干区 (<font face="Consolas">backbone</font>) 和局部区 (<font face="Consolas">area</font>)，每个区域各自共同配置一个 <font face="Consolas">OSPF</font> 协议。
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:32px;">
+    <li style="margin:1px 36px;">区边界路由器 (<font face="Consolas">ABR</font>): 既属于局部区，又属于主干区，它汇总到达自己的区域内网络的距离，并通告给其他 <font face="Consolas">ABR</font>。因此，<font face="Consolas">area</font> 之间的通信只知道到达对方的最短路径，而不知道对方区域的详细拓扑。</li>
+    <li style="margin:1px 36px;">主干路由器 (<font face="Consolas">BR</font>): 主干区域内除了 <font face="Consolas">ABR</font> 的其他路由器。主干区域的主要功能是为区域间的通信提供路由。</li>
+    <li style="margin:1px 36px;"><font face="Consolas">AS</font> 边界路由器: 连接其他 <font face="Consolas">AS</font>，可有一个或多个。</li>
+    </ul>
 </ul>
+</body>
+</html></p>
 <h3 id="4-bgp">4. <font face="Consolas">BGP</font> 协议</h3>
 <p>&emsp;边界网关 (<font face="Consolas">Border Gateway</font>) 协议是最重要的 <font face="Consolas">Internet</font> 协议之一，它已成为标准的域间路由协议，将 <font face="Consolas">Internet</font> 中数以千计的 <font face="Consolas">ISP</font> 连接起来。</br>
-&emsp;<font face="Consolas">BGP</font> 协议主要实现以下两方面的功能：</p>
-<ul>
-<li>某个 <font face="Consolas">AS</font> 通告其他 <font face="Consolas">AS</font> 某个子网的存在，并附带路径信息（而不是距离）</li>
-<li>一个路由器可能知道到某个子网的多条路径，它通过 <font face="Consolas">BGP</font> 选择一条路由</li>
+&emsp;<font face="Consolas">BGP</font> 协议主要实现以下两方面的功能：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">某个 <font face="Consolas">AS</font> 通告其他 <font face="Consolas">AS</font> 某个子网的存在，并附带路径信息（而不是距离）</li>
+<li style="margin:1px 26px;">一个路由器可能知道到某个子网的多条路径，它通过 <font face="Consolas">BGP</font> 选择一条路由</li>
 </ul>
+</body>
+</html></p>
 <h4 id="1-bgp">(1). <font face="Consolas">BGP</font> 路由通告</h4>
 <p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.4/bgp11.png" height=160>
 &emsp;考虑这样一个情境：路由器 <font face="Consolas">3d</font> 向右图中所有路由器发布子网 <font face="Consolas"><em>x</em></font> 的可达性信息。在 <font face="Consolas">BGP</font> 中，每对路由器通过 $179$ 端口的半永久 <font face="Consolas">TCP</font> 连接交换报文。每个连接称为 <font face="Consolas">BGP</font> 连接/会话；跨越不同 <font face="Consolas">AS</font> 的连接称为外部 <font face="Consolas">BGP</font> (<font face="Consolas">eBGP</font>) 连接，而 <font face="Consolas">AS</font> 内部的连接称为内部 <font face="Consolas">BGP</font> (<font face="Consolas">iBGP</font>) 连接。</br>
 <img align=left src="/ComputerNetwork/img/4-NetworkLayer/4.4/bgp12.png" height=170></br></br>
 &emsp;通常，在连接不同 <font face="Consolas">AS</font> 的网关路由器的链路上，有一条 <font face="Consolas">eBGP</font> 连接，每个 <font face="Consolas">AS</font> 内部有多条 <font face="Consolas">iBGP</font> 连接，且 <font face="Consolas">iBGP</font> 连接不总是与物理链路相对应。</br></p>
-<p>&emsp;在通告报文中，有两个重要属性：1. <font face="Consolas">AS-PATH</font>，包含通告经过的 <font face="Consolas">AS</font> 序列，表示可以通过 <font face="Consolas">[ASa, ASb, ...]</font> 到达某个子网；2. <font face="Consolas">NEXT-HOP</font>，指明了 <font face="Consolas">AS-PATH</font> 起始的路由器接口的 <font face="Consolas">IP</font>。<font face="Consolas">BCP</font> 路由器还利用 <font face="Consolas">AS-PATH</font> 防止通告环路：如果一台路由器在路径列表中发现自己的 <font face="Consolas">AS</font>，就拒绝该通告。</br>
+<p>&emsp;在通告报文中，有两个重要属性：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;"><font face="Consolas">AS-PATH</font>：包含通告经过的 <font face="Consolas">AS</font> 序列，表示 <font face="Consolas">AS<sub><em>i</em></sub></font> 可以依次通过序列中的 <font face="Consolas">[AS<sub><em>i</em>-1</sub>, AS<sub><em>i</em>-2</sub>, ...]</font> 到达某个子网；</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 46px;"><font face="Consolas">BGP</font> 路由器还利用 <font face="Consolas">AS-PATH</font> 防止通告环路：如果一台路由器在 <font face="Consolas">AS</font> 序列中发现自己所属的 <font face="Consolas">AS</font>，就拒绝该通告。</li>
+    </ul>
+<li style="margin:1px 26px;"><font face="Consolas">NEXT-HOP</font>：指明了 <font face="Consolas">AS-PATH</font> 起始元素的路由器接口的 <font face="Consolas">IP</font>。</li>
+</ul>
+</body>
+</html>
 &emsp;以上面的情境为例，<font face="Consolas">3a</font> 首先向 <font face="Consolas">2c</font> 发送一个 <font face="Consolas">eBGP</font> 报文，其内容大致为 <font face="Consolas">[AS3, x, 11.11.1.1]</font>，随后 <font face="Consolas">2c</font> 向 <font face="Consolas">AS2</font> 中包括 <font face="Consolas">2a</font> 在内的所有其他路由器发送 <font face="Consolas">iBGP</font> 报文。当一个路由器获得新的前缀可达性时，就会更新它的转发表。<font face="Consolas">2a</font> 可以通过 <font face="Consolas">eBGP</font> 连接继续传播可达性信息，也可能不这样做。</p>
 <h4 id="2-bgp">(2). <font face="Consolas">BGP</font> 路由选择</h4>
 <p>&emsp;当有多条路径可供选择，<font face="Consolas">BGP</font> 并未直接采用自私的热土豆路由，而是采用基于策略 (<font face="Consolas">policy-based</font>) 的路由：</br>
-&emsp;① 传播过来的路径被制定一个本地偏好 (<font face="Consolas">local preference</font>) 值作为其属性，这个值完全取决于相应 <font face="Consolas">AS</font> 的网络管理员。<font face="Consolas">BGP</font> 将首先选择偏好值最高的路径。</br>
-&emsp;② 如果 ① 相同，选择具有最短 <font face="Consolas">AS-PATH</font> 的路由 (仅仅是 <font face="Consolas">AS</font> 的跳数)。</br>
-&emsp;③ 如果 ② 相同，那么 <font face="Consolas">BGP</font> 就根据 <font face="Consolas">NEXT-HOP</font> 和热土豆路由策略选择路径。</br>
-&emsp;④ 如果仍剩余多条路由，根据 <font face="Consolas">BGP</font> 标识符选择。</br>
+&emsp;①. 传播过来的路径被制定一个本地偏好 (<font face="Consolas">local preference</font>) 值作为其属性，这个值完全取决于相应 <font face="Consolas">AS</font> 的网络管理员。<font face="Consolas">BGP</font> 将首先选择偏好值最高的路径。</br>
+&emsp;②. 如果 ① 相同，选择具有最短 <font face="Consolas">AS-PATH</font> 的路由 (仅考虑 <font face="Consolas">AS</font> 的跳数的值，而不是距离)。</br>
+&emsp;③. 如果 ② 相同，那么 <font face="Consolas">BGP</font> 就根据 <font face="Consolas">NEXT-HOP</font> 和热土豆路由策略选择路径。</br>
+&emsp;④. 如果仍剩余多条路由，根据 <font face="Consolas">BGP</font> 标识符选择。</br>
 &emsp;<font face="Consolas">BGP</font> 在热土豆路由之前，利用 <font face="Consolas">AS-PATH</font> 进行了过滤，一定程度上很可能会减小端到端时延。</p>
 <div align=center>
 <img src="/ComputerNetwork/img/4-NetworkLayer/4.4/bgpisp.png" height=120>
 </div>
 
 <p>&emsp;用上图所示的例子，说明 <font face="Consolas">BGP</font> 的基于策略的路由。<font face="Consolas">A、B、C、W、X、Y</font> 是 $6$ 个 <font face="Consolas">AS</font>，其中 <font face="Consolas">A、B、C</font> 是提供商网络，<font face="Consolas">W、X、Y</font> 是客户网络。</br>
-&emsp;① 尽管 <font face="Consolas">X</font> 是一个双宿接入 <font face="Consolas">ISP</font>，它作为一个客户网络，不期待作为中间者转发由 <font face="Consolas">B</font> 到 <font face="Consolas">C</font> 之间的任何流量，因此，它不会向 <font face="Consolas">B</font> 通告任何到达货经过 <font face="Consolas">C</font> 的路径，例如 <font face="Consolas">X-C-Y</font>。</br>
+&emsp;① 尽管 <font face="Consolas">X</font> 是一个双宿接入 <font face="Consolas">ISP</font>，它作为一个客户网络，不期待作为中间者转发由 <font face="Consolas">B</font> 到 <font face="Consolas">C</font> 之间的任何流量，因此，它不会向 <font face="Consolas">B</font> 通告任何到达或经过 <font face="Consolas">C</font> 的路径，例如 <font face="Consolas">X-C-Y</font>。</br>
 &emsp;② 对于任一运营商网络来说，它在通告路径的时候，只会执行那些源或目的是自己的客户的通告，这是一条商业上的经验法则而非官方标准。例如，<font face="Consolas">A</font> 可能向 <font face="Consolas">B</font> 通告路径 <font face="Consolas">A-W</font>，<font face="Consolas">B</font> 也可能向 <font face="Consolas">X</font> 通告路径 <font face="Consolas">B-A-W</font>，但 <font face="Consolas">B</font> 绝不会向 <font face="Consolas">C</font> 通告路径 <font face="Consolas">B-A-W</font>。</p>
 <p></font></p>
                 

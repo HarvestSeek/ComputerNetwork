@@ -661,6 +661,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../networklayer/" title="Network Layer" class="md-nav__link">
+      Network Layer
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -701,6 +713,21 @@
 <p>假设节点 $A$ 和 $B$ 同在一个带宽为 $10 \small \mathsf{Mbps}$ 的以太网广播链路上，它们之间的传播时延为 $325 \ \small \mathsf{bit\ times}$。在 $t=0$ 时刻，$A$ 开始传输一个以太网最小帧，在它传输结束之间 $B$ 开始传输一帧，最坏情况下 $B$ 的信号什么时候到达 $A$。</p>
 </blockquote>
 <p>$324+325\ \small \mathsf{bit\ times}$</p>
+<blockquote>
+<p>给定生成多项式 $G=1001$：</br>
+(1). 它可以检测任何单比特差错吗？</br>
+(2). 它可以检测任何奇数比特差错吗？</p>
+</blockquote>
+<p>(1). <font face="Roboto"></br>
+&emsp;Without loss of generality, suppose $i_{th}$ bit is flipped. We have known that $D\cdot 2^r + R=nG$, and the receiving value equals $D\cdot 2^r+R+2^i$. $2^i$ isn't evenly divisible by $G$, hence nor is the whole formula.</br>
+&emsp;<abbr style="border-bottom: 1px dashed #000;">In general</abbr>, if $G$ contains at least two 1, the a single bit error can always be detected.</p>
+<p>(2).</br>
+&emsp;The key insight is that $G$ and numbers of even-number 1's can be divided by $11$, but any number of odd-number 1's can't be divided by $11$. Therefore, numbers of odd-number of 1's can't be divided by $G$, the error can be detected.
+</font></p>
+<blockquote>
+<p>假设两个节点同时经一个速率为 $R$ 的广播信道传输长为 $L$ 的分组。如果 $d_{prop}&gt;L/R$，在这两个节点处是否会发生碰撞。</p>
+</blockquote>
+<p>&emsp;不会。</p>
 <p></font></p>
                 
                   
@@ -736,6 +763,20 @@
             </div>
           </a>
         
+        
+          <a href="../networklayer/" title="Network Layer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Network Layer
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

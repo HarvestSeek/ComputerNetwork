@@ -746,6 +746,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-ProblemSets/networklayer/" title="Network Layer" class="md-nav__link">
+      Network Layer
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -953,6 +965,13 @@ table.gridtable td {
 &emsp;<font face="Consolas">00010000 00000000</font> $\sim$ <font face="Consolas">00010111 11111111</font> <font face="Consolas">:</font> <font face="Consolas">interface 0</font></br>
 &emsp;<font face="Consolas">00011000 00000000</font> $\sim$ <font face="Consolas">00011000 11111111</font> <font face="Consolas">:</font> <font face="Consolas">interface 1</font></br>
 &emsp;<font face="Consolas">00011001 00000000</font> $\sim$ <font face="Consolas">00011111 11111111</font> <font face="Consolas">:</font> <font face="Consolas">interface 2</font></br></p>
+<p>&emsp;实际中的转发表格式与此略有不同，在后面的内容中会详细介绍。
+<div align=center; style="text-align:center; float:center;"><table class="gridtable">
+<tr>
+    <td>目的网络</td><td>下一跳</td><td>接口</td>
+</tr>
+</table>
+</div></p>
 <h4 id="3">(3). 两种网络的比较</h4>
 <p>&emsp;虚电路网络的典型例子是 <font face="Consolas">ATM</font>，它由电话网络演化而来，核心业务是实时对话，对时间和可靠性要求较高，且端系统非智能，因此采用“简化边缘，复杂网络”的设计。</br>
 &emsp;数据报网络的典型例子是 <font face="Consolas">Internet</font>，它由互连计算机的需求发展而来，对响应时间的要求相对不是很严格，并且端系统设备更加智能，因此采用“简化网络，复杂边缘”的设计，更多的可靠服务在更高层实现。</br></p>

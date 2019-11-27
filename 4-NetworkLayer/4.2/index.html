@@ -849,6 +849,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-ProblemSets/networklayer/" title="Network Layer" class="md-nav__link">
+      Network Layer
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1065,7 +1077,7 @@ height=250></div>
 <p>① 版本号 (<font face="Consolas">4 bit</font>)</br>
 &emsp;数据报对应的 <font face="Consolas">IP</font> 协议版本，决定了如何解释数据报的剩下部分。</p>
 <p>② 首部长度 (<font face="Consolas">4 bit</font>)</br>
-&emsp;以 4 字节为单位。由于 <font face="Consolas">options</font> 字段，首部长度可变，故通过此字段确定数据实际开始的地方。一般来说，大多数 <font face="Consolas">IP</font> 数据报不包含选项，首部长度为 20 字节。</p>
+&emsp;以 4 字节为单位，取值范围 20 $\sim$ 60 字节。由于 <font face="Consolas">options</font> 字段，首部长度可变，故通过此字段确定数据实际开始的地方。一般来说，大多数 <font face="Consolas">IP</font> 数据报不包含选项，首部长度为 20 字节。</p>
 <p>③ 服务类型 (<font face="Consolas">TOS, 8 bit</font>)</br>
 &emsp;用于区分不同服务类型的数据报，服务类型可能是低时延、高吞吐量、可靠性等。</p>
 <p>④ 数据报长度 (<font face="Consolas">16 bit</font>)</br>
@@ -1208,7 +1220,7 @@ height=250></div>
 <h4 id="4-cidr">(4). <font face="Consolas">CIDR</font> 与路由聚合</h4>
 <p>&emsp;<font face="Consolas">Internet</font> 采用的地址分配策略为 无类域间路由 (<font face="Consolas">Classless Interdomain Routing, CIDR</font>)，它一般化了子网寻址的概念，消除了传统的 <font face="Consolas">A、B、C</font> 类地址界限：将 <font face="Consolas">NetID-SubID</font> 统一为网络前缀；融合了子网地址与子网掩码，无类地址格式为 <font face="Consolas">a.b.c.d/<em>x</em></font>，<font face="Consolas"><em>x</em></font> 为网络前缀长度。</br>
 &emsp;<font face="Consolas">CIDR</font> 提高了地址空间的利用率；伴随着路由聚合技术，有效减少了转发表的表项数和路由器发布的路由通告数，提高了路由效率。</br>
-&emsp;路由聚合通常要求子网数为 2 的倍数，且它们的地址空间连续。由于互联网发展历史的原因，可能出现路由聚集的空间属于另外一个 <font face="Consolas">ISP</font> 的子网的情况。当数据转发到这个子网时，就会出现路由黑洞现象：数据报不断重复转发进入子网和转发出去的过程。例如图中的两个 <font face="Consolas">ISP</font>。</br></p>
+&emsp;路由聚合通常要求合并子网数为 2 的倍数，且它们的地址空间连续、转发接口相同。由于互联网发展历史的原因，可能出现路由聚集的空间属于另外一个 <font face="Consolas">ISP</font> 的子网的情况。当数据转发到这个子网时，就会出现路由黑洞现象：数据报不断重复转发进入子网和转发出去的过程。例如图中的两个 <font face="Consolas">ISP</font>。</br></p>
 <p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.2/cidr.png" height=200></p>
 <p>&emsp;为了仍能够利用路由聚集及带来的便利，同时解决路由黑洞现象，可以在两个 <font face="Consolas">ISP</font> 前的公共路由器的转发表中，为 <font face="Consolas">200.23.18.0/23</font> 构造一个更长的公共前缀表项，使得分组可以被转发至  <font face="Consolas">ISPs-R-Us</font>。</p>
 <h3 id="4-dhcp">4. <font face="Consolas">DHCP</font> 协议</h3>
@@ -1254,16 +1266,17 @@ height=250></div>
 <h4 id="1_2">(1). 报文类型</h4>
 <p><html> 
 <body>
-<ul style="margin-top:-10px;margin-bottom:10px">
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
 <li style="margin:1px 26px;">差错报告报文</li>
-    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
     <li style="margin:1px 46px;">目的不可达：数据报到达目的地后，无法交付数据，则丢弃报文，并发送差错报告</li>
     <li style="margin:1px 46px;">源抑制：缓存已满导致数据报被丢弃，在实际的网络的拥塞控制没有采用此方法</li>
     <li style="margin:1px 46px;">超期：<font face="Consolas">TTL</font> 超期使得数据报被丢弃</li>
     <li style="margin:1px 46px;">参数问题：转发数据报时发现头部某些字段参数错误，丢弃报文</li>
     <li style="margin:1px 46px;">重定向：当某数据报到达一个路由器，在路由器看来不该由它转发，则像源主机发送重定向报文</li>
     </ul>
-<li style="margin:1px 26px;">网络探询</li>
+<li style="margin:1px 26px;line-height:30px;">网络探询</li>
+<ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
     <li style="margin:1px 46px;">回声请求与应答报文：通过接收相应探测网络是否通达，如 <font face="Consolas">ping</font> 工具</li>
     <li style="margin:1px 46px;">时间戳请求与应答报文</li>
 </ul>
