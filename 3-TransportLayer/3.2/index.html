@@ -944,6 +944,7 @@
 <ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
 <li style="margin:1px 26px;">接收方通过发送 <font face="Calibri">ACK/NAK</font>，显式通知发送方 正确接收/未正确接收</li>
 <li style="margin:1px 26px;">发送方收到 <font face="Calibri">NAK</font> 后，重传分组</li>
+</ul>
 </body>
 </html>
 &emsp;基于这种重传机制的 <font face="Consolas">rdt</font> 协议称为 <font face="Consolas">ARQ(Automatic Repeat reQuest)</font> 协议。<font face="Consolas">ARQ</font> 协议的实现需要三种功能：1.差错检测；2.接收方反馈；3.重传。</p>
@@ -953,47 +954,71 @@
 &emsp;当发送方处于等待 <font face="Consolas">ACK/NAK</font> 的状态时，不能从上层接收新数据，除非它确认接收方正确接收分组。这样的协议被称为停-等 (<font face="Consolas">stop-and-wait</font>) 协议。</p>
 <h4 id="4-rdt2122-rdt20">(4). <font face="Consolas">Rdt2.1、2.2:</font> 改进 <font face="Consolas">Rdt2.0</font></h4>
 <p>&emsp;假设：同 <font face="Consolas">Rdt2.0</font>。</br>
-&emsp;<font face="Consolas">Rdt2.0</font> 无法处理 <font face="Consolas">ACK/NAK</font> 发生错误或者被破坏的情况。解决的办法是如果发送方收到损坏的 <font face="Consolas">ACK/NAK</font> 就重传分组，但这会导致重复分组问题，即接收方无法知道收到的包是新包还是重传包。因此 <font face="Consolas">Rdt2.1</font> 又引入了序列号机制。注意到以下事实：
+&emsp;<font face="Consolas">Rdt2.0</font> 无法处理 <font face="Consolas">ACK/NAK</font> 发生错误或者被破坏的情况。解决的办法是如果发送方收到损坏的 <font face="Consolas">ACK/NAK</font> 就重传分组，但这会导致重复分组问题，即接收方无法知道收到的包是新包还是重传包。因此 <font face="Consolas">Rdt2.1</font> 又引入了序列号机制，由停等协议的特性以及不乱序的假设，有以下事实：
 <html> 
 <body>
-<ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
+<ul style="margin-top:-16px;margin-bottom:0px;line-height:30px;">
 <li style="margin:1px 26px;">接收方在正确收到 <font face="Consolas">Packet<sub><em>i</em></sub></font> 后，下一个收到的包只可能是 <font face="Consolas">Packet<sub><em>i</em></sub></font> 或 <font face="Consolas">Packet<sub><em>i</em>+1</sub></font></li>
+</ul>
 </body>
 </html>
-&emsp;因为采用停-等协议，只需要两个序列号就足够，因此与 <font face="Consolas">Rdt2.0</font> 相比，状态数量翻倍。接收方需要判断是否重复：收到一个重复分组后，丢弃，并发送一个 <font face="Consolas">ACK</font>。</br>
+&emsp;因此只需要两个序列号，<font face="Consolas">Rdt2.1</font> 的 <font face="Consolas">FSM</font> 如下所示。注意，接收方在收到序列号不匹配的包时，要返回一个 <font face="Consolas">ACK</font>。</br>
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/4rdt31senderfsm.png" height=400></br>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/5rdt21rcverfsm.png" height=350></br>
 </div>
-&emsp;从发送方的角度来说，如果收到一个 <font face="Consolas">NAK</font>，等同于接收方最后收到上一个成功发送的包。因此，<font face="Consolas">Rdt2.2</font> 在此基础上，使用 <font face="Consolas">ACK</font> <font face="Consolas">+</font> <font face="Consolas">seq number</font> 代替 <font face="Consolas">NAK</font>；从接收方来看，需要重传的两种情况行为相同，因此合并。
+&emsp;在 <font face="Consolas">Rdt2.1</font> 中，从发送方的视角看，“接收方没有正确接受 <font face="Consolas">Packet<sub><em>i</em></sub></font>” 和 “接收方上一个正确收到的包是 <font face="Consolas">Packet<sub><em>i</em>-1</sub></font>”，两个事实等价。因此 <font face="Consolas">Rdt2.2</font> 使用 <font face="Consolas">ACK<sub><em>sequence</em></sub></font> 代替 <font face="Consolas">ACK/NAK</font> ; 从接收方的视角看，“收到损坏的包”和“收到序列号不匹配的包”两种情况行为相同，因此 <font face="Consolas">Rdt2.2</font> 合并了这两条状态转移。
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/6rdt22senderfsm.png" height=350></br>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/rdt22rcverfsm.png" height=300></br>
 </div></p>
 <h4 id="5-rdt30">(5). <font face="Consolas">Rdt3.0</font></h4>
-<p>&emsp;信道既可能发生错误，也可能丢失分组。发送方发送的分组、接收方返回的 <font face="Consolas">ACK</font> 都可能会发生丢失，解决的方法是让发送方等待一个合理的时间，这个时间过后，如果没收到 <font face="Consolas">ACK</font>，则重传。如果是因为延迟问题，数据包并未真生丢失，可以通过序列号解决重复分组问题。</br>
+<p>&emsp;假设：信道既可能发生错误，也可能丢失分组。</br>
+&emsp;发送方发送的分组、接收方返回的 <font face="Consolas">ACK</font> 都可能会发生丢失，解决的方法是让发送方等待一个合理的时间，这个时间过后，如果没收到 <font face="Consolas">ACK</font>，则重传数据包。数据包可能由于延迟而并未真正丢失，但由于重传而造成的重复分组问题已经通过序列号机制解决了。</br>
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/8rdt30senderfsm.png" height=400></br>
 </div></p>
-<p>&emsp;对于发送方来说，分组丢失、<font face="Consolas">ACK</font> 丢失、<font face="Consolas">ACK</font> 损坏、<font face="Consolas">ACK</font> 的序列列号错误发生时都会导致超时，然后重传。如果定时器设置过短造成接收方在等待状态下收到损坏或不对应的 <font face="Consolas">ACK</font> 时会什么也不做，避免了不必要的重传。</p>
-<p>&emsp;<font face="Consolas">Rdt3.0</font> 可以正确工作，但性能很差。停-等协议信道利用率：$\frac{L/R}{RTT+L/R}, RTT=2×d_{prop}$</p>
+<p>&emsp;从 <font face="Consolas">Rdt3.0</font> 的 <font face="Consolas">FSM</font> 中可以看到，发送方由于数据错误需要执行的重传，都通过超时需要的重传执行。其意义在于：如果发送方在检错后直接重传，虽然 <font face="Consolas">Rdt3.0</font> 也可以正常工作，但如果定时器的时长设置得相对较短，大量的超时重传又会引发大量不必要的纠错重传。</p>
+<p>&emsp;定义信道的利用率为：传输数据与总的发送时间之比。停-等协议信道利用率为$\frac{L/R}{\mathrm{RTT}+L/R}$。 <font face="Consolas">Rdt3.0</font> 可以正确工作，但性能很差。</p>
 <h3 id="2">2. 滑动窗口协议</h3>
 <h4 id="1_2">(1). 概述</h4>
-<p>&emsp;针对停-等协议利用率低的原因，利用流水线机制，允许发送方在收到 <font face="Consolas">ACK</font> 之前连续发送多个分组，此时利用率变为 $\frac{n×L/R}{RTT+L/R}$。相应地，需要更大的序列号范围，同时发送方和接收方也需要更大的缓存空间。</br>
-&emsp;要想实现这种流水线机制，就需要滑动窗口协议 (<font face="Consolas">sliding-window protocol</font>)。窗口：允许使用的序列号范围，最多等待确认的消息数。滑动：随着协议运行，序列号在空间内向前滑动。</p>
+<p>&emsp;针对停-等协议利用率低的原因，利用流水线机制，允许发送方在收到 <font face="Consolas">ACK</font> 之前连续发送多个分组，此时利用率变为 $\frac{n×L/R}{\mathrm{RTT}+L/R}$。相应地，需要更大的序列号范围，同时发送方和接收方也需要更大的缓存空间。</br>
+&emsp;下面介绍两种滑动窗口协议 (<font face="Consolas">sliding-window protocol</font>)。</p>
 <h4 id="2-gbn-go-back-n">(2). <font face="Consolas">GBN</font> 协议 (<font face="Roboto">Go-Back-N</font>)</h4>
 <div align=center><img src="/ComputerNetwork/img/3-TransportLayer/3.2/9gbn1.png"></div>
 
-<p>&emsp;图示为发送方视角的序号范围。基序号 <font face="Consolas">base</font> 为最早已发送但未确认的序号，<font face="Consolas">nextseqnum</font> 为最小的未使用序号。</br></p>
+<p>&emsp;图示为发送方视角的序号范围。基序号 $\mathsf{base}$ 为最小的已发送但未确认的序号，$\mathsf{next\_seq}$ 为最小的未使用序号。</br></p>
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/10gbnsenderfsm.png" height=300></br>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/11gbnrcverfsm.png" height=200></br>
 </div>
 
-<p>发送方响应事件：</br>
-① 上层调用：发送方首先检查发送窗口是否已满，如果未满则生成分组并发送、并更新变量；否则，把数据返回给上层。（在实际实现时，使用缓存或同步机制)</br>
-② 超时：如果发生超时，发送方重传所有已发送但还未确认的分组；发送方仅使用一个定时器，它被用给最早发送但还未被确认的分组。在收到一个 <font face="Consolas">ACK</font> 后，如果仍有未被确认的分组，重启定时器；否则停止定时器。</br>
-③ 收到一个 <font face="Consolas">ACK</font>：<font face="Consolas">GBN</font> 协议对分组采用累积确认 (<font face="Consolas">cumulative acknowledgment</font>) 的方式。发送方更新 <font face="Consolas"><em>base</em></font> 和定时器；对接收方来说，如果一个分组 <font face="Consolas">n</font> 被收到且按序，则接收方为 <font face="Consolas">n</font> 发送一个 <font face="Consolas">ACK</font>，表明它收到了 <font face="Consolas">n</font> 之前且包括 <font face="Consolas">n</font> 的所有分组，并向上层交付数据；在发送方的视角，可能没有收到某个 <font face="Consolas">n-i</font> 的 <font face="Consolas">ACK</font>，但只要收到 <font face="Consolas">ACK n</font>，<font face="Consolas"><em>send_base</em></font> 就移动到 <font face="Consolas">n</font> <font face="Consolas">+</font> <font face="Consolas">1</font> 的位置。所有其他情况下，接收方丢弃分组，并发送 <font face="Consolas">ACK</font> <font face="Consolas">+</font> 最近收到的按序分组序列号。</p>
+<p>发送方的窗口：
+$0,\ 1,\ ...\ , \ \boxed{\mathsf{base},\ ...\ , \mathsf{next\_seq},\ ..., \mathsf{base+\small N-1}}, \mathsf{base+ \small N}$</p>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">发送方响应事件：</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 40px;">① 上层调用：发送方首先检查发送窗口是否已满，如果未满则生成分组并发送、并更新变量；否则，把数据返回给上层。（在实际实现时，使用缓存或同步机制)</li>
+    <li style="margin:1px 40px;">② 超时：如果发生超时，发送方重传所有已发送但还未确认的分组；发送方仅使用一个定时器，它被用给最早发送但还未被确认的分组。在收到一个 <font face="Consolas">ACK</font> 后，如果仍有未被确认的分组，重启定时器；否则停止定时器。</li>
+    <li style="margin:1px 40px;">③ 收到一个 <font face="Consolas">ACK</font>：<font face="Consolas">GBN</font> 协议对分组采用累积确认 (<font face="Consolas">cumulative acknowledgment</font>) 的方式。发送方更新 <font face="Consolas"><em>base</em></font> 和定时器；对接收方来说，如果一个分组 <font face="Consolas">n</font> 被收到且按序，则接收方为 <font face="Consolas">n</font> 发送一个 <font face="Consolas">ACK</font>，表明它收到了 <font face="Consolas">n</font> 之前且包括 <font face="Consolas">n</font> 的所有分组，并向上层交付数据；在发送方的视角，可能没有收到某个 <font face="Consolas">n-i</font> 的 <font face="Consolas">ACK</font>，但只要收到 <font face="Consolas">ACK n</font>，<font face="Consolas"><em>send_base</em></font> 就移动到 <font face="Consolas">n</font> <font face="Consolas">+</font> <font face="Consolas">1</font> 的位置。所有其他情况下，接收方丢弃分组，并发送 <font face="Consolas">ACK</font> <font face="Consolas">+</font> 最近收到的按序分组序列号。</li>
+    </ul>
+</ul>
+</body>
+</html></p>
+<p>接收方的窗口：$... \, \boxed{\mathsf{expected}}, ...$，假设 $\mathsf{next\_seq=base+\small N - 1}$，则可以得到 $\mathsf{base \leq expected \leq base+\small N}$。</p>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">接收方响应事件：</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 40px;">① 收到按序的 $\small \mathsf{Packet_{expected}}$：返回 $\mathsf{\small ACK_{expected}}$、向上层交付数据，然后向前移动一格滑动窗口；</li>
+    <li style="margin:1px 40px;">② 收到 $\small \mathsf{Packet_{i}}$，其中 $\mathsf{base\leq i \leq base+\small N-1}$ 且 $\mathsf{i \ne expected}$。此时接收方丢弃该分组，并返回 $\small \mathsf{ACK_j}$，$\mathsf{j}=$ 最近收到的正序分组编号。</li>
+    </ul>
+</ul>
+</body>
+</html></p>
 <h4 id="3-sr-selective-repeat">(3) <font face="Consolas">SR</font> 协议 (<font face="Roboto">Selective Repeat</font>)</h4>
 <p>&emsp;<font face="Consolas">GBN</font> 协议仍存在性能问题：当窗口长度和时延带宽积很大，流水线中有很多分组时，单个分组的差错就会引起大量不必要的重传。</br>
 <div align=center>
