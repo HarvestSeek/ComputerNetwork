@@ -73,6 +73,8 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         
@@ -992,26 +994,26 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
 <span class="n">NextSeqNum</span> <span class="o">=</span> <span class="n">Initial</span> <span class="n">Sequence</span> <span class="n">Number</span><span class="p">;</span>
 <span class="n">SendBase</span> <span class="o">=</span> <span class="n">Initial</span> <span class="n">Sequence</span> <span class="n">Number</span><span class="p">;</span>
 <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span>
-        <span class="nl">event</span><span class="p">:</span> <span class="n">data</span> <span class="n">received</span> <span class="n">from</span> <span class="n">application</span> <span class="n">above</span>
-            <span class="n">create</span> <span class="n">TCP</span> <span class="n">Segment</span> <span class="n">with</span> <span class="n">sequence</span> <span class="n">number</span> <span class="n">NextSeqNum</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="err">定时器未运行</span><span class="p">)</span> 
-                <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
-            <span class="n">pass</span> <span class="n">segment</span> <span class="n">to</span> <span class="n">IP</span><span class="p">;</span>
-            <span class="n">NextSeqNum</span> <span class="o">=</span> <span class="n">NextSeqNum</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="nl">event</span><span class="p">:</span> <span class="n">timer</span> <span class="n">timeout</span>
-            <span class="n">retransmit</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span> <span class="n">with</span> <span class="n">smallest</span> <span class="n">sequence</span> <span class="n">number</span><span class="p">;</span>
-            <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="nl">event</span><span class="p">:</span> <span class="n">ACK</span> <span class="n">received</span><span class="p">,</span> <span class="n">with</span> <span class="n">ACK</span> <span class="n">field</span> <span class="n">value</span> <span class="n">of</span> <span class="n">y</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">SendBase</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">SendBase</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">there</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">any</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-            <span class="k">break</span><span class="p">;</span>
+	<span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span>
+		<span class="nl">event</span><span class="p">:</span> <span class="n">data</span> <span class="n">received</span> <span class="n">from</span> <span class="n">application</span> <span class="n">above</span>
+			<span class="n">create</span> <span class="n">TCP</span> <span class="n">Segment</span> <span class="n">with</span> <span class="n">sequence</span> <span class="n">number</span> <span class="n">NextSeqNum</span><span class="p">;</span>
+			<span class="k">if</span> <span class="p">(</span><span class="err">定时器未运行</span><span class="p">)</span> 
+				<span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+			<span class="n">pass</span> <span class="n">segment</span> <span class="n">to</span> <span class="n">IP</span><span class="p">;</span>
+			<span class="n">NextSeqNum</span> <span class="o">=</span> <span class="n">NextSeqNum</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="nl">event</span><span class="p">:</span> <span class="n">timer</span> <span class="n">timeout</span>
+			<span class="n">retransmit</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span> <span class="n">with</span> <span class="n">smallest</span> <span class="n">sequence</span> <span class="n">number</span><span class="p">;</span>
+			<span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="nl">event</span><span class="p">:</span> <span class="n">ACK</span> <span class="n">received</span><span class="p">,</span> <span class="n">with</span> <span class="n">ACK</span> <span class="n">field</span> <span class="n">value</span> <span class="n">of</span> <span class="n">y</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">SendBase</span><span class="p">)</span> <span class="p">{</span>
+				<span class="n">SendBase</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+				<span class="k">if</span> <span class="p">(</span><span class="n">there</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">any</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span><span class="p">)</span> <span class="p">{</span>
+					<span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+			<span class="k">break</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
@@ -1034,18 +1036,18 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
 11
 12
 13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nl">event</span><span class="p">:</span> <span class="n">ACK</span> <span class="n">received</span><span class="p">,</span> <span class="n">with</span> <span class="n">ACK</span> <span class="n">field</span> <span class="n">value</span> <span class="n">of</span> <span class="n">y</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">SendBase</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">SendBase</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">there</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">any</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">increment</span> <span class="n">number</span> <span class="n">of</span> <span class="n">duplicate</span> <span class="n">ACKs</span> <span class="n">received</span> <span class="k">for</span> <span class="n">y</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">number</span> <span class="n">of</span> <span class="n">duplicated</span> <span class="n">ACKs</span> <span class="k">for</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">resend</span> <span class="n">segment</span> <span class="n">with</span> <span class="n">sequence</span> <span class="n">number</span> <span class="n">y</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">break</span><span class="p">;</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">SendBase</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">SendBase</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">there</span> <span class="n">are</span> <span class="n">currently</span> <span class="n">any</span> <span class="n">not</span><span class="o">-</span><span class="n">yet</span><span class="o">-</span><span class="n">acked</span> <span class="n">segment</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">start</span> <span class="n">timer</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="n">increment</span> <span class="n">number</span> <span class="n">of</span> <span class="n">duplicate</span> <span class="n">ACKs</span> <span class="n">received</span> <span class="k">for</span> <span class="n">y</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">number</span> <span class="n">of</span> <span class="n">duplicated</span> <span class="n">ACKs</span> <span class="k">for</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">resend</span> <span class="n">segment</span> <span class="n">with</span> <span class="n">sequence</span> <span class="n">number</span> <span class="n">y</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">break</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></p>
 <h3 id="4-tcp">4. <font face="Consolas">TCP</font> 连接管理</h3>
@@ -1175,6 +1177,18 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      
+        <script src="../../js/umlconvert.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

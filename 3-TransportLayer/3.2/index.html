@@ -73,6 +73,8 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         
@@ -457,8 +459,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" title="(1). 概述" class="md-nav__link">
-    (1). 概述
+  <a href="#1_1" title="(1). 可靠数据传输协议的基本结构" class="md-nav__link">
+    (1). 可靠数据传输协议的基本结构
   </a>
   
 </li>
@@ -820,8 +822,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" title="(1). 概述" class="md-nav__link">
-    (1). 概述
+  <a href="#1_1" title="(1). 可靠数据传输协议的基本结构" class="md-nav__link">
+    (1). 可靠数据传输协议的基本结构
   </a>
   
 </li>
@@ -922,26 +924,42 @@
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
 <h3 id="1">1. 可靠数据传输基本原理</h3>
-<h4 id="1_1">(1). 概述</h4>
+<h4 id="1_1">(1). 可靠数据传输协议的基本结构</h4>
 <p>&emsp;信道本身是不可靠的，通过数据传输协议的处理使传输变得可靠。可靠的定义为：不错、不丢、不乱。信道的不可靠性决定了可靠数据传输协议的复杂性。</br>
 &emsp;可靠数据传输协议的基本结构：</br>
 <div align=center><img src="/ComputerNetwork/img/3-TransportLayer/3.2/1structure.png" width=370></div></br>
 应用层与传输层之间的调用是单向的：可靠数据传输底层实现交给传输层实现；传输层和网络层之间的调用时双向的：在不可靠信道上数据传输不仅需要单向的数据流动，还需要双向的控制信息流动。</br>
-&emsp;以下的讨论仅考虑单向 (<font face="Consolas">unidirectional</font>) 数据传输。</p>
+&emsp;以下的讨论仅考虑单向 (<font face="Consolas">unidirectional</font>) 数据传输，并始终<abbr style="border-bottom: 1px dashed #000;">假设分组在信道转发过程中不会乱序</abbr>。</p>
 <h4 id="2-rdt10">(2). <font face="Consolas">Rdt1.0:</font> 可靠信道</h4>
-<p>&emsp;假设底层信道处于理想状态，完全可靠：不发生位错误、不丢弃分组、不乱序。</br>
+<p>&emsp;假设：底层信道处于理想状态，完全可靠。</br>
 &emsp;发送方和接收方的状态机独立，不需要交互控制消息。</p>
 <div align=center><img src="/ComputerNetwork/img/3-TransportLayer/3.2/2rdt10fsm.png" width=500></div>
 
 <h4 id="3-rdt20">(3). <font face="Consolas">Rdt2.0:</font> 产生位错误的信道</h4>
-<p>&emsp;假设信道只会产生位错误，底层信道可能翻转某些位。发送方可以使用 <font face="Consolas">checksum</font> 机制检测错误；如果要从错误中恢复，就要使用确认机制 (<font face="Consolas">Acknowledgements, ACK</font>)：接收方显式告诉发送方已正确接收；通过发送 <font face="Consolas">NAK</font> 告知发送方存在错误，发送方收到 <font face="Consolas">NAK</font> 后，重传分组。</br>
+<p>&emsp;假设：信道只会产生位错误，底层信道可能翻转某些位。</br>
+&emsp;<font face="Consolas">Rdt2.0</font> 因此引入了检错机制和恢复机制。
+发送方和接收方都通过计算 <font face="Consolas">checksum</font> 检错；如果发现错误，通过确认机制 (<font face="Consolas">Acknowledgements</font>) 从错误中恢复：
+<html> 
+<body>
+<ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">接收方通过发送 <font face="Calibri">ACK/NAK</font>，显式通知发送方 正确接收/未正确接收</li>
+<li style="margin:1px 26px;">发送方收到 <font face="Calibri">NAK</font> 后，重传分组</li>
+</body>
+</html>
 &emsp;基于这种重传机制的 <font face="Consolas">rdt</font> 协议称为 <font face="Consolas">ARQ(Automatic Repeat reQuest)</font> 协议。<font face="Consolas">ARQ</font> 协议的实现需要三种功能：1.差错检测；2.接收方反馈；3.重传。</p>
 <div align=center><img src="/ComputerNetwork/img/3-TransportLayer/3.2/3rdt20fsm.png"></div>
 
 <p></br>
-&emsp;当发送方处于等待 <font face="Consolas">ACK/NAK</font> 的状态时，不能从上层接收新数据，除非它确信接收方正确接收分组。这样的协议被称为停-等 (<font face="Consolas">stop-and-wait</font>) 协议。</p>
+&emsp;当发送方处于等待 <font face="Consolas">ACK/NAK</font> 的状态时，不能从上层接收新数据，除非它确认接收方正确接收分组。这样的协议被称为停-等 (<font face="Consolas">stop-and-wait</font>) 协议。</p>
 <h4 id="4-rdt2122-rdt20">(4). <font face="Consolas">Rdt2.1、2.2:</font> 改进 <font face="Consolas">Rdt2.0</font></h4>
-<p>&emsp;<font face="Consolas">Rdt2.0</font> 存在致命缺陷：无法处理 <font face="Consolas">ACK/NAK</font> 发生错误或者被破坏 (<font face="Consolas">corrupted</font>) 的情况。解决的办法是如果发送方收到损坏的 <font face="Consolas">ACK/NAK</font> 就让发送方重传，但简单的重传会导致重复分组 (<font face="Consolas">duplicate packet</font>) 问题：接收方可能收到相同的数据，因此 <font face="Consolas">Rdt2.1</font> 引入序列号 (<font face="Consolas">sequence number</font>) 机制：一旦重复，接收方丢弃重复分组。</br>
+<p>&emsp;假设：同 <font face="Consolas">Rdt2.0</font>。</br>
+&emsp;<font face="Consolas">Rdt2.0</font> 无法处理 <font face="Consolas">ACK/NAK</font> 发生错误或者被破坏的情况。解决的办法是如果发送方收到损坏的 <font face="Consolas">ACK/NAK</font> 就重传分组，但这会导致重复分组问题，即接收方无法知道收到的包是新包还是重传包。因此 <font face="Consolas">Rdt2.1</font> 又引入了序列号机制。注意到以下事实：
+<html> 
+<body>
+<ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">接收方在正确收到 <font face="Consolas">Packet<sub><em>i</em></sub></font> 后，下一个收到的包只可能是 <font face="Consolas">Packet<sub><em>i</em></sub></font> 或 <font face="Consolas">Packet<sub><em>i</em>+1</sub></font></li>
+</body>
+</html>
 &emsp;因为采用停-等协议，只需要两个序列号就足够，因此与 <font face="Consolas">Rdt2.0</font> 相比，状态数量翻倍。接收方需要判断是否重复：收到一个重复分组后，丢弃，并发送一个 <font face="Consolas">ACK</font>。</br>
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/4rdt31senderfsm.png" height=400></br>
@@ -1082,6 +1100,18 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      
+        <script src="../../js/umlconvert.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

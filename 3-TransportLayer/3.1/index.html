@@ -73,6 +73,8 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         
@@ -962,7 +964,7 @@
 <p>&emsp;<font face="Consolas">Internet</font> 有两种传输层协议:</br>
 &emsp;<font face="Consolas">TCP:</font> 可靠按序的交付服务，流量控制、拥塞控制、面向连接。</br>
 &emsp;<font face="Consolas">UDP: </font>不可靠的交付服务，“尽力而为”的模型，只实现传输层必要的服务，如多路分用、多路复用</br>
-&emsp;两种服务均没有延迟和带宽方面的保障。</p>
+&emsp;两种协议均没有延迟和带宽方面的保障。</p>
 <h3 id="2_1">2. 多路复用和多路分用</h3>
 <p>&emsp;复用和分用并不只作用于传输层，如果某层的一个协议直接与上层的多个模块交互，就需要复用和分用。应用层可能运行着多个不同协议的进程，传输层需要通过多路复用和分用协调通信，实现它的功能。</br>
 &emsp;<strong>·</strong> 接收端进行多路分用：传输层依据头部信息将收到的<font face="Consolas"> Segment </font>交给正确的 <font face="Consolas">Socket</font>，即不同的进程。(可用的字段包括：从数据报中提取的 源 <font face="Consolas">IP</font> 和目的 <font face="Consolas">IP</font>、从报文段中提取的源端口号和目的端口号)</br>
@@ -1074,6 +1076,18 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      
+        <script src="../../js/umlconvert.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>

@@ -73,6 +73,8 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.0.0/dist/mermaid.css">
+    
     
       
         
@@ -943,6 +945,12 @@
 &emsp;③. 如果 ② 相同，那么 <font face="Consolas">BGP</font> 就根据 <font face="Consolas">NEXT-HOP</font> 和热土豆路由策略选择路径。</br>
 &emsp;④. 如果仍剩余多条路由，根据 <font face="Consolas">BGP</font> 标识符选择。</br>
 &emsp;<font face="Consolas">BGP</font> 在热土豆路由之前，利用 <font face="Consolas">AS-PATH</font> 进行了过滤，一定程度上很可能会减小端到端时延。</p>
+<p>假设一台 <font face="Consolas">BGP</font> 路由器根据 ③ 选择了一条到网络 <font face="Consolas"><em>x</em></font> 的路由，它学习到相应表项的完整过程如下：
+<div class="mermaid">graph LR
+A(通过BGP协议学习到&lt;/br&gt;多个可以到达x的网关)--&gt;B("通过AS内部协议(如OSPF)，&lt;/br&gt;得到到达每个网关的开销")
+B--&gt;C("选择具有最小开销的网关，&lt;/br&gt;并确定其接口 I")
+C--&gt;D("添加表项(x,I)")
+</div></p>
 <h4 id="3">(3). 路由通告：控制流量</h4>
 <p><div align=center>
 <img src="/ComputerNetwork/img/4-NetworkLayer/4.4/bgpisp.png" height=120>
@@ -1029,6 +1037,18 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      
+        <script src="../../js/umlconvert.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
       
     
   </body>
