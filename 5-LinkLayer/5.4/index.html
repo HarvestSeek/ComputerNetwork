@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="../../css/orgtable1.css">
+    
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
     
@@ -954,7 +956,7 @@
 &emsp;<font face="Consolas">ARP</font> 协议是一个介于网络层与链路层之间的协议。</p>
 <h5 id="2"><font size=3>② 子网间通信</font></h5>
 <p><div align=center><img src="/ComputerNetwork/img/5-LinkLayer/5.4/out.png" height=160></div></p>
-<p>&emsp;如图，假设主机 $1$: <font face="Consolas">111.111.111.111</font> 向主机 $2$: <font face="Consolas">222.222.222.222</font> 发送一个数据报。主机 $1$ 首先检测出目的 <font face="Consolas">IP</font> 不与自己在同一子网内，通过 <font face="Consolas">ARP</font> 获得网关的 <font face="Consolas">MAC</font> 地址后，向网关发送此数据报；之后，路由器查询转发表发送该分组，并将其封装到一个新的帧中，此时，帧中的目的 <font face="Consolas">MAC</font> 是已通过 <font face="Consolas">ARP</font> 获得的主机 $2$ 的 <font face="Consolas">MAC</font>。</p>
+<p>&emsp;如图，假设主机 $1$: <font face="Consolas">111.111.111.111</font> 向主机 $2$: <font face="Consolas">222.222.222.222</font> 发送一个数据报。主机 $1$ 首先检测出目的 <font face="Consolas">IP</font> 不与自己在同一子网内，通过 <font face="Consolas">ARP</font> 获得网关的 <font face="Consolas">MAC</font> 地址后，向网关发送此数据报；之后，路由器查询转发表发送该分组，并将其封装到一个新的帧中，在目的 <font face="Consolas">MAC</font> 字段填写主机 $2$ 的 <font face="Consolas">MAC</font>。</p>
 <h3 id="2_1">2. 以太网</h3>
 <p>&emsp;以太网 (<font face="Consolas">Ethernet</font>) 自 20 世纪 70 年代被发明以来，不断演化与发展，直至现在仍保持支配地位。它是应用最广泛的有线 <font face="Consolas">LAN</font> 技术：造价低廉，一个以太网 <font face="Consolas">NIC</font> 不足 <font face="Consolas">￥100</font>；它比令牌局域网和 <font face="Consolas">ATM</font> 更简单、便宜；它可以满足网络带宽的需求。它以古时的假想物质“以太”命名。</br>
 &emsp;20 世纪 90 年代以前，以太网使用总线拓扑结构，同过同轴电缆总线互连节点，是一种广播局域网；90 年代后期，出现了基于集线器 (<font face="Consolas">hub</font>) 的星形拓扑，但其本质也是广播局域网；21 世纪初，位于中心的集线器被交换机所替代。</p>
@@ -988,7 +990,7 @@
 </body>
 </html>
 &emsp;以太网的最小帧长为 $\mathrm{64(+8)}$ 字节。</br>
-&emsp;以太网标准的不同通常是速率和物理介质的不同，帧的格式和使用的 <font face="Consolas">MAC</font> 协议是相同的。</p>
+&emsp;不同以太网标准的区别通常在于速率和物理介质，帧的格式和使用的 <font face="Consolas">MAC</font> 协议是相同的。</p>
 <h4 id="3">(3). 交换机</h4>
 <p>&emsp;交换机的功能是转发链路层帧，它对于子网中的主机和路由器来说是透明的 (<font face="Consolas">transparent</font>)。在交换以太网中，主机和路由器通过独享链路直连交换机，每段链路通过 <font face="Consolas">CSMA/CD</font> 收发帧，且不会有冲突出现；每段链路都支持全双工通信，链路之间支持并行通信。类似于路由器，交换机的输出接口也设有缓存。</br></p>
 <p>&emsp;交换机的功能通过存储于内部的转发表 (<font face="Consolas">switch table</font>) 实现，其形式如下：
@@ -1008,7 +1010,7 @@
 </table>
 
 <p>&emsp;基于交换表，交换机实现它的以下功能。</br>
-&emsp;① 自学习：假设交换表为空，每当有一个帧到达交换机，交换机会记录源 <font face="Consolas">MAC</font>、帧到达的接口、到达时间为一个新的表项。如果某个表项超过了交换机设定的老化期，则删除相应表项。因此，交换机是即插即用的，不需要管理员的外部干预。</br>
+&emsp;① 自学习：假设交换表为空，每当有一个帧到达交换机，交换机会记录 &lt;源 <font face="Consolas">MAC</font>, 帧到达的接口, 到达时间&gt; 为一个新的表项。如果某个表项超过了交换机设定的老化期，则删除相应表项。因此，交换机是即插即用的，不需要管理员的外部干预。</br>
 &emsp;② 过滤和转发：假设某个帧到达交换机的 $x$ 接口，可能出现三种情况：
 <html> 
 <body>

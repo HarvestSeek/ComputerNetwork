@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="../../css/orgtable1.css">
+    
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
     
@@ -699,7 +701,84 @@
 <p>如果将 <font face="Consolas">111.112.110.0/23</font> 划分为 $5$ 个子网，则可能划分出的最小子网的掩码是 <u>&emsp;&emsp;</u>，该最小子网可分配的 <font face="Consolas">IP</font> 地址数是 <u>&emsp;&emsp;</u> 。</p>
 </blockquote>
 <p><font face="Consolas">255.255.255.224，30</font></p>
-<p></font></p>
+<blockquote>
+<p>在 <font face="Consolas">IPv4</font> 网络中，一个提供 <font face="Consolas">NAT</font> 服务的路由器在向 <font face="Consolas">Internet</font> 转发一个源 <font face="Consolas">IP</font> 地址为 <font face="Consolas">10.0.0.1</font> 的 <font face="Consolas">IP</font> 数据分组时，可能重写的 <font face="Consolas">IP</font> 分组首部字段是 <u>&emsp;&emsp;</u></p>
+</blockquote>
+<p><font face="Roboto">
+Datagram Length, Fragmentation Offset, TTL, Source IP
+</font></p>
+<blockquote>
+<p>分片：<font face="Consolas">ID</font> <font face="Consolas">=</font> <font face="Consolas">123456</font>， <font face="Consolas">length</font> <font face="Consolas">=</font> <font face="Consolas">4000B</font>，<font face="Consolas">DF</font> <font face="Consolas">=</font> <font face="Consolas">0</font>, $\small \mathrm{MTU}$ <font face="Consolas">=</font> <font face="Consolas">1502B</font>，每片尽可能大。</br>
+<font face="Consolas">f1:</font> <font face="Consolas">ID</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">DF</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">MF</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">length</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">offset</font> <font face="Consolas">=</font> <u>&emsp;&emsp;</u></br>
+<font face="Consolas">f2:</font> <font face="Consolas">ID</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">DF</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">MF</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">length</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">offset</font> <font face="Consolas">=</font> <u>&emsp;&emsp;</u></br>
+<font face="Consolas">f3:</font> <font face="Consolas">ID</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">DF</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">MF</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">length</font> <font face="Consolas">=</font> <u>&emsp;</u>,  <font face="Consolas">offset</font> <font face="Consolas">=</font> <u>&emsp;&emsp;</u></p>
+</blockquote>
+<p><font face="Consolas">
+123456 0 1 1500 0</br>
+123456 0 1 1500 185</br>
+123456 0 0 1040 370
+</font></p>
+<p><img src="/ComputerNetwork/img/P/4/mouwangluo1.png" height=160 align=right></p>
+<blockquote>
+<p>某网络如图所示。将 <font face="Consolas">202.118.1.0</font> 划分为 <font face="Consolas">2</font> 个子网，分配给局域网 1 和局域网 2，每个子网所需 <font face="Consolas">IP</font> 不少于 <font face="Consolas">60</font> 个。给出 <font face="Consolas">R1</font> 的路由表，使其明确包括到 局域网 1、 局域网 2、域名服务器主机和互联网的路由。</p>
+</blockquote>
+<table class="gridtable1" style="width:500px;">
+<tr>
+    <th><font face="思源黑体 CN">目的网络</font></th><th><font face="思源黑体 CN">下一跳</font></th><th><font face="思源黑体 CN">接口</font></th>
+</tr>
+<tr>
+    <td>202.118.1.0/26</td><td>-</td><td>E1</td>
+</tr>
+<tr>
+    <td>202.118.1.64/26</td><td>-</td><td>E2</td>
+</tr>
+<tr>
+    <td>202.118.3.2/32</td><td>202.118.2.2</td><td>L0</td>
+</tr>
+<tr>
+    <td>0.0.0.0/0</td><td>202.118.2.2</td><td>L0</td>
+</tr>
+</table>
+
+<p><img src="/ComputerNetwork/img/P/4/poison.png" height=160 align=right></p>
+<blockquote>
+<p>考虑如图所示的网络拓扑。假设使用同步的距离向量路由算法，并应用了毒性逆转技术。如果 $ c(x,y)$ 突然增长至 $\mathrm{60}$，会发生无穷计数现象吗？如果会，<font face="Consolas">DV</font> 算法需要迭代多少次达到稳定状态？</p>
+</blockquote>
+<table class="gridtable1" style="font-size:15px margin-left:0px;" align=right>
+<tr>
+    <td style="border-left:none;border-top:none;">&emsp;</td><td style="border-left:none;border-top:none;border-right:none;">$x$</td><td style="border-left:none;border-top:none;border-right:none;">$y$</td><td style="border-left:none;border-top:none;border-right:none;">$z$</td><td style="border-left:none;border-top:none;border-right:none;">$w$</td>
+</tr>
+<tr>
+    <td style="border-left:none;border-top:none;border-bottom:none;">$y$
+    </td><td style="border:none;">$\mathrm{4}$</td><td style="border:none;">$\mathrm{0}$</td><td style="border:none;">$\mathrm{2}$</td><td style="border:none;">$\mathrm{1}$</td>
+</tr>
+<tr>
+    <td style="border-left:none;border-top:none;border-bottom:none;">$x$</td><td style="border:none;">$\mathrm{0}$</td><td style="border:none;">$\mathrm{4}$</td><td style="border:none;">$\infty$</td><td style="border:none;">$\infty$</td>
+</tr>
+<tr>
+    <td style="border-left:none;border-top:none;border-bottom:none;">$z$</td><td style="border:none;">$\mathrm{6}$</td><td style="border:none;">$\mathrm{2}$</td><td style="border:none;">$\mathrm{0}$</td><td style="border:none;">$\mathrm{1}$</td>
+</tr>
+<tr>
+    <td style="border-left:none;border-top:none;border-bottom:none;">$w$</td><td style="border:none;">$\infty$</td><td style="border:none;">$\mathrm{1}$</td><td style="border:none;">$\mathrm{1}$</td><td style="border:none;">$\mathrm{0}$</td>
+</tr>
+</table>
+
+<p>&emsp;$c(x,y)$ 未变化前，$y$ 持有的路由向量如右侧所示。在 $t_1$ 时刻，$y$ 探测到链路变化，根据路由向量求得 $\mathit{D_y}(x)=9$，然后开始以下迭代过程。</p>
+<p>$$
+\begin{aligned}
+t_1\ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=9\ \ &amp;\rightarrow z: \ \mathit{D_y}(x)=\infty \\
+t_2\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty\ \ &amp;\rightarrow z: \ \mathit{D_2}(x)=10 \\
+t_3\ \ \ \ &amp;\mathrm{for}\ z,\ \ &amp;\rightarrow w: \ \mathit{D_z}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_z}(x)=11 \\
+t_4\ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=14\ \ &amp;\rightarrow z: \ \mathit{D_y}(x)=\infty \\
+...\ &amp;(\mathit{similarly})\\
+t_{27}\ \ \ \ &amp;\mathrm{for}\ z,\ \ &amp;\rightarrow w: \ \mathit{D_z}(x)=50\ \ &amp;\rightarrow y: \ \mathit{D_z}(x)=50\\
+t_{28}\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=50 \\
+      \ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=53\ \ &amp;\rightarrow y: \ \mathit{D_y}(x)=\infty \\
+t_{29}\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=51\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty \\
+t_{30}\ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_y}(x)=52 \\
+\end{aligned}
+$$
+</font></p>
                 
                   
                 

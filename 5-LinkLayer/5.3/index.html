@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="../../css/orgtable1.css">
+    
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
     
@@ -938,7 +940,7 @@
 &emsp;广播链路 (<font face="Consolas">broadcast link</font>) 能够让多个发送和接收节点接入到同一个共享链路上。广播的含义是当任何一个节点传输一个帧时，信道广播该帧，每个其他节点都收到一个副本，以太网和无线局域网均基于此实现。</p>
 <h4 id="2">(2). 多路访问问题</h4>
 <p>&emsp;多路访问问题即为如何协调多个发送和接收节点对一个共享广播链路的访问，它对链路层来说十分重要。其关键在于，当多个节点同时传输帧的时候，所有节点同时接收到多个帧，帧与帧之间因为信号的合成发生了冲突 (<font face="Consolas">collide</font>)，所有涉及冲突的帧都会因此而丢失，这也导致了信道资源被浪费。</br>
-&emsp;当多个节点保持活跃状态，多路访问控制 (<font face="Consolas">mutiple access control</font>) 协议负责协调活跃节点之间的传输。近年来，已有几十种 <font face="Consolas">MAC</font> 协议被实现，分为三类：信道划分协议 (<font face="Consolas">channel partioning</font>)、随机访问协议 (<font face="Consolas">random access</font>)、轮流协议 (<font face="Consolas">taking-turns</font>)。</br>
+&emsp;当多个节点保持活跃状态，多路访问控制 (<font face="Consolas">mutiple access control</font>) 协议负责协调活跃节点之间的传输。近年来，已有几十种 <font face="Consolas">MAC</font> 协议被实现，分为三类：信道划分协议 (<font face="Consolas">channel partitioning</font>)、随机访问协议 (<font face="Consolas">random access</font>)、轮流协议 (<font face="Consolas">taking-turns</font>)。</br>
 &emsp;对于带宽为 $R$ <font face="Consolas">bps</font> 的广播链路，理想的 <font face="Consolas">MAC</font> 协议应具有以下特性：</br>
 &emsp;① 当仅有一个节点发送数据，其吞吐量为 $R$ <font face="Consolas">bps</font>；</br>
 &emsp;② 当有 $M$ 个节点发送数据，每个节点的吞吐量为 $R/M$ <font face="Consolas">bps</font> (平均传输速率)；</br>

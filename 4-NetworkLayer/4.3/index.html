@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="../../css/orgtable1.css">
+    
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
     
@@ -894,7 +896,7 @@
     <span class="n">send</span> <span class="n">distance</span> <span class="n">vector</span> <span class="n">Dx</span> <span class="n">to</span> <span class="n">all</span> <span class="n">neighbors</span>
 </pre></div>
 </td></tr></table>
-实际的距离向量的目标是子网，为了方便讨论，这里均以路由器为目标。</p>
+实际的距离向量的目标对象是子网，为了方便讨论，下面的例子均以路由器为目标。</p>
 <h4 id="1_1">① 链路开销改变/链路故障</h4>
 <p><img align=right src="/ComputerNetwork/img/4-NetworkLayer/4.3/dv1.png" height=100></p>
 <p>&emsp;假设 $c(x,y)$ 从 $4$ 变为 $60$，在变化之前，$\mathbf{D_y}=(4,0,1)$，$\mathbf{D_z}=(5,1,0)$。在 $t_0$ 时刻，$y$ 探测到这个变化，并由 $\mathbf{D_z}$ 重计算 $D_y(x)=6$；随后，在 $t_1$ 时刻，$y$ 将变化通知 $z$，$z$ 又重计算 $D_z(x)=7$，这时就进入了路由选择环路 <font face="Consolas">(routing loop)</font>。经过 $44$ 次报文交换以后，$z$ 才能确定到 $x$ 的最短路为 $(z,x)$。当链路开销增加的非常大，或者链路故障了，迭代的次数也就更多。这个问题也被称作无穷计数问题 (<font face="Consolas">count-to-infinity</font>)。</p>

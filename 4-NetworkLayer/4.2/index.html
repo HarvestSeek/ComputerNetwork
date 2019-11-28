@@ -69,6 +69,8 @@
     
       <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="../../css/orgtable1.css">
+    
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
     
@@ -1109,7 +1111,7 @@ height=250></div>
 <li>片偏移 (<font face="Consolas">13 bit</font>)：以 8 字节为单位，指出了分片封装的原数据的相对偏移量(首字节)</li>
 </ul>
 <h4 id="2">(2). 分片过程</h4>
-<p>&emsp;设原 <font face="Consolas">IP</font> 分组总长度为 $L$ <font face="Consolas">byte</font>，待转发链路的 <font face="Consolas">MTU</font> 大小为 $M$ <font face="Consolas">byte</font>。当 $L&gt;M$ 且 <font face="Consolas">DF</font> <font face="Consolas">=</font> <font face="Consolas">1</font>，需要分片。</br></p>
+<p>&emsp;设原 <font face="Consolas">IP</font> 分组总长度为 $\small L$ <font face="Consolas">byte</font>，待转发链路的 <font face="Consolas">MTU</font> 大小为 $\small M$ <font face="Consolas">byte</font>。当 $\small L&gt;M$ 且 <font face="Consolas">DF</font> <font face="Consolas">=</font> <font face="Consolas">0</font>，可以/需要分片。</br></p>
 <ul>
 <li>一个最大分片可以封装的数据大小：$d=\lfloor \frac{(M-20)}{8}\rfloor × 8$</br></li>
 <li>在最大分组条件下需要的总片数：$n=\lceil (L-20)/d \rceil$</br></li>
