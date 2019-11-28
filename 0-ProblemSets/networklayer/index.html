@@ -697,6 +697,7 @@
                 
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
+<hr />
 <blockquote>
 <p>如果将 <font face="Consolas">111.112.110.0/23</font> 划分为 $5$ 个子网，则可能划分出的最小子网的掩码是 <u>&emsp;&emsp;</u>，该最小子网可分配的 <font face="Consolas">IP</font> 地址数是 <u>&emsp;&emsp;</u> 。</p>
 </blockquote>
@@ -742,6 +743,7 @@ Datagram Length, Fragmentation Offset, TTL, Source IP
 
 <p><img src="/ComputerNetwork/img/P/4/poison.png" height=160 align=right></p>
 <blockquote>
+<p></br></p>
 <p>考虑如图所示的网络拓扑。假设使用同步的距离向量路由算法，并应用了毒性逆转技术。如果 $ c(x,y)$ 突然增长至 $\mathrm{60}$，会发生无穷计数现象吗？如果会，<font face="Consolas">DV</font> 算法需要迭代多少次达到稳定状态？</p>
 </blockquote>
 <table class="gridtable1" style="font-size:15px margin-left:0px;" align=right>
@@ -764,20 +766,20 @@ Datagram Length, Fragmentation Offset, TTL, Source IP
 </table>
 
 <p>&emsp;$c(x,y)$ 未变化前，$y$ 持有的路由向量如右侧所示。在 $t_1$ 时刻，$y$ 探测到链路变化，根据路由向量求得 $\mathit{D_y}(x)=9$，然后开始以下迭代过程。</p>
-<p>$$
+<p>$
 \begin{aligned}
 t_1\ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=9\ \ &amp;\rightarrow z: \ \mathit{D_y}(x)=\infty \\
 t_2\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty\ \ &amp;\rightarrow z: \ \mathit{D_2}(x)=10 \\
 t_3\ \ \ \ &amp;\mathrm{for}\ z,\ \ &amp;\rightarrow w: \ \mathit{D_z}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_z}(x)=11 \\
 t_4\ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=14\ \ &amp;\rightarrow z: \ \mathit{D_y}(x)=\infty \\
 ...\ &amp;(\mathit{similarly})\\
-t_{27}\ \ \ \ &amp;\mathrm{for}\ z,\ \ &amp;\rightarrow w: \ \mathit{D_z}(x)=50\ \ &amp;\rightarrow y: \ \mathit{D_z}(x)=50\\
-t_{28}\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=50 \\
-      \ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=53\ \ &amp;\rightarrow y: \ \mathit{D_y}(x)=\infty \\
-t_{29}\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=51\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty \\
+t_{27}\ \ \ \ &amp;\mathrm{for}\ z,\ \ &amp;\rightarrow w: \ \mathit{D_z}(x)=50\ \ &amp;\rightarrow y: \ \mathit{D_z}(x)=50\ (\mathrm{via}\ z)\\
+t_{28}\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=50\ (\mathrm{via}\ x) \\
+      \ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=53\ \ &amp;\rightarrow y: \ \mathit{D_y}(x)=\infty\ (\mathrm{via}\ z) \\
+t_{29}\ \ \ \ &amp;\mathrm{for}\ w,\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=51\ \ &amp;\rightarrow y: \ \mathit{D_w}(x)=\infty\ (\mathrm{via}\ z) \\
 t_{30}\ \ \ \ &amp;\mathrm{for}\ y,\ \ &amp;\rightarrow w: \ \mathit{D_y}(x)=\infty\ \ &amp;\rightarrow y: \ \mathit{D_y}(x)=52 \\
 \end{aligned}
-$$
+$
 </font></p>
                 
                   
