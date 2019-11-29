@@ -944,30 +944,30 @@
 <font face="Consolas">TCP</font> 的头部一般为 20 字节。</br>
 ① 源端口号/目的端口号</br>
 &emsp;同 <font face="Consolas">UDP</font> 一样，用于多路复用/多路分用。</br></p>
-<p>② 序列号、确认号 (<font face="Consolas">32 bit</font>)</br>
-&emsp;<font face="Consolas">TCP</font> 把数据视为有序的字节流，序列号基于字节顺序而不是报文段的序号。当接收方收到报文段之后，接收方填进报文段的序列号是它期望从发送方收到的下一字节的序号。</br>
-&emsp;<font face="Consolas">TCP</font> 是提供累积确认的协议，对于接收方来说，如果收到失序分组，仍会返回最后收到的有序字节号+1的确认号。<font face="Consolas">TCP RFC</font> 没有明确规定对失序报文段的处理，它的具体实现取决于 <font face="Consolas">TCP</font> 实现者，实践中接收方保留失序字节、等待缺少的字节对于网络带宽更有效。</br>
+<p>② 序列号 (<font face="Consolas">32</font> <font face="Consolas">bit</font>)、确认号 (<font face="Consolas">32</font> <font face="Consolas">bit</font>)</br>
+&emsp;<font face="Consolas">TCP</font> 把数据视为有序的<span style="text-decoration-line: underline; text-decoration-style: wavy;">字节流 </span>，序列号的值为报文段的首字节在字节流中的序号；当接收方收到报文段之后，接收方填进报文段的确认号是它期望从发送方收到的下一字节的序号。</br>
+&emsp;对于接收方来说，如果收到失序分组，仍会在返回报文段的 <font face="Consolas">ACK</font> 字段填入最近收到的有序字节+1，因此 <font face="Consolas">TCP</font> 也被认为是提供累积确认的协议。<font face="Consolas">TCP</font> 的 <font face="Consolas">RFC</font> 没有明确规定对失序报文段的处理，它的具体实现取决于 <font face="Consolas">TCP</font> 实现者，在实践经验中，接收方保留失序字节、等待缺少的字节对于网络带宽更有效。</br>
 &emsp;<font face="Consolas">TCP</font> 双方的初始序列号一般为随机选取，这样可以减少两台主机之间先前已终止的连接发送的报文段被误认为是新连接的报文段的可能性。</br></p>
-<p>③ 首部长度 (<font face="Consolas">4 bit</font>)</br>
+<p>③ 首部长度 (<font face="Consolas">4</font> <font face="Consolas">bit</font>)</br>
 &emsp;指示了以 32 比特的字为单位的 <font face="Consolas">TCP</font> 首部长度。由于 <font face="Consolas">option</font> 字段的原因，<font face="Consolas">TCP</font> 首部长度可变。<font face="Consolas">option</font> 字段通常为空，因此 <font face="Consolas">TCP</font> 首部字段长度一般为 20 字节。</br></p>
-<p>④ 标志字段 (<font face="Consolas">6 bit</font>)</br>
+<p>④ 标志字段 (<font face="Consolas">6</font> <font face="Consolas">bit</font>)</br>
 &emsp;
 <font face="Consolas">ACK</font>: 用于指示确认号字段的值有效。</br>
 <font face="Consolas">RST、SYN、FIN</font>: 用于连接的建立和拆除。</br></p>
-<p>⑤ 接收窗口字段 (<font face="Consolas">16 bit</font>)</br>
+<p>⑤ 接收窗口字段 (<font face="Consolas">16</font> <font face="Consolas">bit</font>)</br>
 &emsp;用于流量控制。</br></p>
 <p>⑥ 选项字段</br>
 &emsp;用于发送方和接收方协商最大报文段长度，或在高速网络环境下作窗口调节因子使用。</p>
 <h3 id="2-round-trip-time-estimation">2. 往返时间估计 (<font face="Consolas">Round-trip Time Estimation</font>)</h3>
-<p>&emsp;<font face="Consolas">TCP</font> 仍使用超时/重传机制处理数据丢失问题，并维护一个动态的样本往返时间 $SampleRTT$。大多数 <font face="Consolas">TCP</font> 仅在某个时刻对于一个已发送但未确认的报文段做一次 $SampleRTT$ 的测量，而忽略被重传的报文段。<font face="Consolas">TCP</font> 还维护一个样本 <font face="Consolas">RTT</font> 的平均值，每当获得一个新的样本值时更新均值：
-$$EstimatedRTT=(1-\alpha)\cdot EstimatedRTT+\alpha\cdot SampleRTT$$
-其中 $\alpha$ 的推荐值为 0.125。$EstimatedRTT$ 是 $SampleRTT$ 的一个加权平均值，在统计学上，这种平均被称为指数加权移动平均 (<font face="Consolas">Exponential Weighted Moving Average, EWMA</font>)。</br>
-&emsp;<font face="Consolas">TCP</font> 还维护一个 <font face="Consolas">RTT</font> 偏差值，用于估算 $SampleRTT$ 偏离 $EstimatedRTT$ 的程度：
-$$DevRTT=(1-\beta)\cdot DevRTT+\beta\cdot |SampleRTT-EstimatedRTT|$$
-$\beta$ 的推荐值为 0.25。如果 $SampleRTT$ 的波动很小，那么 $DevRTT$ 的值也很小，反之则很大。</br>
-&emsp;<font face="Consolas">TCP</font> 超时间隔应设为大于等于 $EstimatedRTT$，否则会造成不必要的重传；但不能大太多，否则会徒增时延。
-$$TimeoutInterval=EstimatedRTT+4\cdot DevRTT$$
-$TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加倍；只要收到报文段并更新 $EstimatedRTT$，就使用上述公式再次计算 $TimeoutInterval$。</p>
+<p>&emsp;<font face="Consolas">TCP</font> 仍使用超时/重传机制处理数据丢失问题，并维护一个动态的样本往返时间 $\small \mathrm{SampleRTT}$。大多数 <font face="Consolas">TCP</font> 仅在某个时刻对于一个已发送但未确认的报文段做一次 $\small \mathrm{SampleRTT}$ 的测量，而忽略被重传的报文段。<font face="Consolas">TCP</font> 还维护一个样本 <font face="Consolas">RTT</font> 的平均值，每当获得一个新的样本值时更新均值：
+$$\mathrm{EstimatedRTT}=(1-\alpha)\cdot \mathrm{EstimatedRTT}+\alpha\cdot  \mathrm{SampleRTT}$$
+其中 $\alpha$ 的推荐值为 0.125。$\small \mathrm{EstimatedRTT}$ 是 $\small \mathrm{SampleRTT}$ 的一个加权平均值，在统计学上，这种平均被称为指数加权移动平均 (<font face="Calibri">Exponential Weighted Moving Average</font>)。</br>
+&emsp;<font face="Consolas">TCP</font> 还维护一个 <font face="Consolas">RTT</font> 偏差值，用于估算 $\small  \mathrm{SampleRTT}$ 偏离 $\small  \mathrm{EstimatedRTT}$ 的程度：
+$$ \mathrm{DevRTT}=(1-\beta)\cdot  \mathrm{DevRTT}+\beta\cdot | \mathrm{SampleRTT}- \mathrm{EstimatedRTT}|$$
+$\beta$ 的推荐值为 0.25。如果 $\small  \mathrm{SampleRTT}$ 的波动很小，那么 $\small  \mathrm{DevRTT}$ 的值也很小，反之则很大。</br>
+&emsp;<font face="Consolas">TCP</font> 超时间隔应设为大于等于 $\small  \mathrm{EstimatedRTT}$，否则会造成不必要的重传；但不能大太多，否则会徒增时延。
+$$ \mathrm{TimeoutInterval}= \mathrm{EstimatedRTT}+4\cdot  \mathrm{DevRTT}$$
+$\small  \mathrm{TimeoutInterval}$ 的初值推荐为 1 秒。一旦出现超时，它的值加倍；只要收到报文段并更新 $\small  \mathrm{EstimatedRTT}$，就使用上述公式再次计算 $\small  \mathrm{TimeoutInterval}$。</p>
 <h3 id="3-tcp">3. <font face="Consolas">TCP</font> 的可靠数据传输</h3>
 <h4 id="1">(1). 发送方的简化描述</h4>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1031,7 +1031,7 @@ $TimeoutInterval$ 的初值推荐为 1 秒。一旦出现超时，它的值加�
 </td></tr></table>
 &emsp;<font face="Consolas">TCP</font> 采用单一定时器。注意到，如果收到的 <font face="Consolas">ACK</font> 使得 <font face="Consolas"><em>send_base</em></font> 刷新，且还有已发送但未收到回应的报文段的话，要重启计时器。</p>
 <h4 id="2">(2). 超时间隔加倍</h4>
-<p>&emsp;在大多数 <font face="Consolas">TCP</font> 中，每当超时事件发生，在重传相应报文段后，会设置 $TimeoutInterval×2$；直到另外两个响应时间其一发生，通过 $EstimatedRTT$ 和 $DevRTT$ 得到超时间隔的新值。</br>
+<p>&emsp;在大多数 <font face="Consolas">TCP</font> 中，每当超时事件发生，在重传相应报文段后，会设置 $\small \mathrm{TimeoutInterval×2}$；直到另外两个响应时间其一发生，通过 $\small \mathrm{EstimatedRTT}$ 和 $\small \mathrm{DevRTT}$ 得到超时间隔的新值。</br>
 &emsp;这种机制提供了一种形式受限的拥塞控制，定时器过期很可能由网络拥塞引起。</p>
 <h4 id="3-fast-retransmit">(3). 快速重传 (<font face="Consolas">Fast Retransmit</font>)</h4>
 <p>&emsp;当一个报文段丢失，如果超时周期过长，会增加端到端时延。<font face="Consolas">TCP</font> 发送方通过检测重复 <font face="Consolas">ACK</font> (<font face="Consolas">duplicate ACK</font>) 实现快速重传机制：如果 <font face="Consolas">TCP</font> 发送方接收到对于同一个报文段的 3 个 <font face="Consolas">ACK</font>，就认为该报文段已丢失，在定时器过期之前执行快速重传。
