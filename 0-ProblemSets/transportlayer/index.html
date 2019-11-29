@@ -718,7 +718,7 @@
 </blockquote>
 <p>(1).
 $\mathit{base}\in [k-\mathrm{N},k]$，$\therefore [k-\mathrm{N},k+\mathrm{N}-1]$</p>
-<p>(2). 首先，由于发送窗口的限制，<font face="Consolas">ACK</font> 可能取值为 $[k-\mathrm{N},k-1]$。发送方上一个收到的 <font face="Consolas">ACK</font> 的最小值是 $k-\mathrm{N}-1$，接收方一旦发送过一个 <font face="Consolas">ACK</font> 后，就不会再发送比这个 <font face="Consolas">ACK</font> 更小的值。因此，<font face="Consolas">ACK</font> 的范围是 $[k-\mathrm{N}-1,k-1]$。</p>
+<p>(2). 首先，由于发送窗口的限制，初步确定 <font face="Consolas">ACK</font> 的可能取值 $[k-\mathrm{N},k-1]$。$\mathit{base}$ 的最小值为 $k-\mathrm{N}$，因此发送方最近收到的 <font face="Consolas">ACK</font> 的最小值是 $k-\mathrm{N}-1$；接收方一旦发送过一个 <font face="Consolas">ACK</font> 后，就不会再发送比这个 <font face="Consolas">ACK</font> 更小的 <font face="Consolas">ACK</font>，所以也可能有一个值为 $k-\mathrm{N}-1$ 的 <font face="Consolas">ACK</font> 在信道里。综上，<font face="Consolas">ACK</font> 的范围是 $[k-\mathrm{N}-1,k-1]$。</p>
 <p></font></p>
                 
                   
