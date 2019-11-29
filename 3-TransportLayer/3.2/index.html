@@ -772,8 +772,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/linklayer/" title="Link Layer" class="md-nav__link">
-      Link Layer
+    <a href="../../0-ProblemSets/transportlayer/" title="Transport Layer" class="md-nav__link">
+      Transport Layer
     </a>
   </li>
 
@@ -786,6 +786,18 @@
   <li class="md-nav__item">
     <a href="../../0-ProblemSets/networklayer/" title="Network Layer" class="md-nav__link">
       Network Layer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../0-ProblemSets/linklayer/" title="Link Layer" class="md-nav__link">
+      Link Layer
     </a>
   </li>
 
@@ -1002,36 +1014,60 @@ $0,\ 1,\ ...\ , \ \boxed{\mathsf{base},\ ...\ , \mathsf{next\_seq},\ ..., \maths
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
     <li style="margin:1px 40px;">① 上层调用：发送方首先检查发送窗口是否已满，如果未满则生成分组并发送、并更新变量；否则，把数据返回给上层。（在实际实现时，使用缓存或同步机制)</li>
     <li style="margin:1px 40px;">② 超时：如果发生超时，发送方重传所有已发送但还未确认的分组；发送方仅使用一个定时器，它被用给最早发送但还未被确认的分组。在收到一个 <font face="Consolas">ACK</font> 后，如果仍有未被确认的分组，重启定时器；否则停止定时器。</li>
-    <li style="margin:1px 40px;">③ 收到一个 <font face="Consolas">ACK</font>：<font face="Consolas">GBN</font> 协议对分组采用累积确认 (<font face="Consolas">cumulative acknowledgment</font>) 的方式。发送方更新 <font face="Consolas"><em>base</em></font> 和定时器；对接收方来说，如果一个分组 <font face="Consolas">n</font> 被收到且按序，则接收方为 <font face="Consolas">n</font> 发送一个 <font face="Consolas">ACK</font>，表明它收到了 <font face="Consolas">n</font> 之前且包括 <font face="Consolas">n</font> 的所有分组，并向上层交付数据；在发送方的视角，可能没有收到某个 <font face="Consolas">n-i</font> 的 <font face="Consolas">ACK</font>，但只要收到 <font face="Consolas">ACK n</font>，<font face="Consolas"><em>send_base</em></font> 就移动到 <font face="Consolas">n</font> <font face="Consolas">+</font> <font face="Consolas">1</font> 的位置。所有其他情况下，接收方丢弃分组，并发送 <font face="Consolas">ACK</font> <font face="Consolas">+</font> 最近收到的按序分组序列号。</li>
+    <li style="margin:1px 40px;">③ 收到一个 $\small \mathsf{ACK_i}$：<font face="Consolas">GBN</font> 采用累积确认的机制。发送方更新 $\mathsf{base}$ 和定时器；对接收方来说，如果一个 $\small\mathsf{Packet_n}$ 被收到且按序，则接收方发送 $\small\mathsf{ACK_n}$，表明它收到了 <font face="Consolas">n</font> 之前且包括 <font face="Consolas">n</font> 的所有分组，并向上层交付数据；在发送方的视角，可能没有收到某个 $\small \mathsf{ACK_{n-i}}$，但只要收到 $\small\mathsf{ACK_n}$，$\mathsf{base}$ 就移动到 <font face="Consolas">n</font> <font face="Consolas">+</font> <font face="Consolas">1</font> 的位置。</li>
     </ul>
 </ul>
 </body>
 </html></p>
-<p>接收方的窗口：$... \, \boxed{\mathsf{expected}}, ...$，假设 $\mathsf{next\_seq=base+\small N - 1}$，则可以得到 $\mathsf{base \leq expected \leq base+\small N}$。</p>
+<p>接收方的窗口：$... \, \boxed{\mathsf{expected}}, ...$</br>
+* $\mathsf{base \leq expected \leq base+\small N}$。</br>
+* 假设接收方可能收到 $ \small \mathsf{Packet}_i$，则 $\small\mathsf{expected-\small N\leq i \leq base+\small N-1}$，从发送方的视角看则是 $\small \mathsf{base-\small N\leq i \leq base+\small N-1}$，从接收方的视角看则是 $\small \mathsf{expected-\small N\leq i \leq expected+\small N-1}$。</br></p>
 <p><html> 
 <body>
 <ul style="margin-top:-10px;margin-bottom:10px">
 <li style="margin:1px 26px;">接收方响应事件：</li>
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
     <li style="margin:1px 40px;">① 收到按序的 $\small \mathsf{Packet_{expected}}$：返回 $\mathsf{\small ACK_{expected}}$、向上层交付数据，然后向前移动一格滑动窗口；</li>
-    <li style="margin:1px 40px;">② 收到 $\small \mathsf{Packet_{i}}$，其中 $\mathsf{base\leq i \leq base+\small N-1}$ 且 $\mathsf{i \ne expected}$。此时接收方丢弃该分组，并返回 $\small \mathsf{ACK_j}$，$\mathsf{j}=$ 最近收到的正序分组编号。</li>
+    <li style="margin:1px 40px;">② 收到 $\small \mathsf{Packet_{i}}$，其中  且 $\mathsf{i \ne expected}$。此时接收方丢弃该分组，并返回 $\small \mathsf{ACK_j}$，$\mathsf{j}=$ 最近收到的正序分组编号。</li>
     </ul>
 </ul>
 </body>
 </html></p>
 <h4 id="3-sr-selective-repeat">(3) <font face="Consolas">SR</font> 协议 (<font face="Roboto">Selective Repeat</font>)</h4>
-<p>&emsp;<font face="Consolas">GBN</font> 协议仍存在性能问题：当窗口长度和时延带宽积很大，流水线中有很多分组时，单个分组的差错就会引起大量不必要的重传。</br>
+<p>&emsp;<font face="Consolas">GBN</font> 协议存在性能问题：当窗口长度和时延带宽积很大，流水线中有很多分组时，单个分组的差错就会引起大量不必要的重传。</br>
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/12sr1.png">
 </div></p>
-<p>发送方响应事件：</br>
-① 上层调用：同 <font face="Consolas">GBN</font>。</br>
-② 超时：每个分组都有自己的逻辑定时器。</br>
-③ 收到一个 <font face="Consolas">ACK</font>：如果收到的 <font face="Consolas">ACK</font> 在窗口内，则标记为已接收；如果收到的分组序号等于 <font face="Consolas"><em>send_base</em></font>，窗口基序号移动到最小已发送未确认序号处；如果窗口发生移动，且有可发送序号，则发送这些分组。</br></p>
-<p>接收方响应事件：</br>
-① 在 <font face="Consolas">[<em>rcv_base</em>, <em>rcv_base</em></font> <font face="Consolas"><em>+</em></font> <font face="Consolas"><em>N</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即收到的分组落在接收方的窗口范围内。首先返回一个 <font face="Consolas">ACK</font>；如果该分组以前未收到，缓存该分组；如果该分组等于基序号 <font face="Consolas"><em>rcv_base</em></font>，则将连续的缓存分组交付上层，接收窗口移动。</br>
-② 在 <font face="Consolas">[<em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>N</em>, <em>rcv_base</em></font> <font face="Consolas">-</font> <font face="Consolas"><em>1</em>]</font> 内的分组被接收：即接收方已确认接收并在窗口外的重复分组，返回一个 <font face="Consolas">ACK</font>。</br>
-③ 其他情况，忽略收到的分组。</p>
+<p>发送方的窗口：
+$0,\ 1,\ ...\ , \ \boxed{\mathsf{send\_base},\ ...\ , \mathsf{next\_seq},\ ..., \mathsf{send\_base+\small N-1}}, \mathsf{send\_base+ \small N}$</p>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">发送方响应事件：</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 40px;">① 上层调用：同 <font face="Consolas">GBN</font>。</li>
+    <li style="margin:1px 40px;">② 超时：每个分组都有自己的逻辑定时器。</li>
+    <li style="margin:1px 40px;">③ 收到一个 $\mathsf{\small ACK_{i}}$：如果 $\mathsf{i}$ 在窗口内，则标记为已接收；如果 $\mathsf{i=send\_base}$，窗口基序号移动到最小已发送未确认序号处；如果窗口发生移动，且有可发送序号，则发送这些分组。</li>
+    </ul>
+</ul>
+</body>
+</html></p>
+<p>接收方的窗口：
+$0,\ 1,\ ...\ , \ \boxed{\mathsf{rcv\_base},\ ..., \mathsf{rcv\_base+\small N-1}}, \mathsf{rcv\_base+ \small N}$</br>
+* $\mathsf{send\_base \leq rcv\_base \leq send\_base+\small N}$。</br>
+* 假设接收方可能收到 $ \small \mathsf{Packet}_i$，则 $\small \mathsf{rcv\_base-\small N\leq i \leq send\_base+\small N-1}$，从发送方的视角看则是 $\small \mathsf{send\_base-\small N\leq i \leq send\_base+\small N-1}$，从接收方的视角看则是 $\small\mathsf{rcv\_base-\small N\leq i \leq rcv\_base+\small N-1}$。</br></p>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px">
+<li style="margin:1px 26px;">接收方响应事件：</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 40px;">① 在 $\small\mathsf{[rcv\underline{~~}  base,rcv\underline{~~} base+\small N-1]} $ 内的分组被接收：即收到的分组落在接收方的窗口范围内。首先返回一个 <font face="Consolas">ACK</font>；如果该分组以前未收到，缓存该分组；如果该分组等于基序号 $\mathsf{rcv\underline{~~}base}$，则将连续的缓存分组交付上层，接收窗口移动。</li>
+    <li style="margin:1px 40px;">② 在 $\small\mathsf{[rcv\underline{~~}  base-\small N,rcv\underline{~~} base-1]} $ 内的分组被接收：即接收方已确认接收并在窗口外的重复分组，返回一个 <font face="Consolas">ACK</font>。</li>
+    <li style="margin:1px 40px;">③ 其他情况，忽略收到的分组。</li>
+    </ul>
+</ul>
+</body>
+</html></p>
 <h4 id="4-arq">(4) 连续 <font face="Consolas">ARQ</font> 协议的窗口大小</h4>
 <p>假设有 $n$ <font face="Roboto">bit</font> 可以用于存储序列号，发送窗口大小为 $N_s$，接收窗口大小为 $N_r$。</p>
 <p>① <font face="Consolas">GBN</font> 协议的发送窗口最大值为 $2^{n}-1$</br>
