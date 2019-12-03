@@ -1099,7 +1099,7 @@ $$
 <p>&emsp;以客户端主动向服务器发起连接为例。</br></p>
 <p><html> 
 <body>
-<ul style="margin-top:-10px;margin-bottom:10px;line-height:32px;">
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
 <li style="margin:1px 26px;">① 客户端向服务器发送一个 "<font face="Consolas">SYN</font> 报文段"，其中标志位 <font face="Consolas">SYN</font> 被置为 1 (<font face="Consolas">ACK = 0</font>)，并设置了一个随机的初始序列号 <font face="Consolas"><em>x</em></font>；</li>
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
     <li style="margin:1px 46px;"><font face="Consolas">SYN</font> <font face="Consolas">=</font> <font face="Consolas">1</font>，<font face="Consolas">ACK</font> <font face="Consolas">=</font> <font face="Consolas">0</font>，<font face="Consolas">seq</font> <font face="Consolas">=</font> <font face="Consolas"><em>x</em></font>。</li>
@@ -1120,7 +1120,7 @@ $$
 <p>&emsp;以客户端主动发起关闭请求为例。
 <html> 
 <body>
-<ul style="margin-top:-10px;margin-bottom:10px;line-height:32px;">
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
 <li style="margin:1px 26px;">① 客户端发送一个特殊的报文段，关闭客户端到服务器的数据传送，其中的 <font face="Consolas">FIN</font> 标志位置为 1；</li>
 <li style="margin:1px 26px;">② 服务器收到后，发送一个确认报文段，客户端接收这个报文段；</li>
 <li style="margin:1px 26px;">③ 服务器发送终止报文段，关闭服务器到客户端的数据传送，<font face="Consolas">FIN</font> 置为 1；</li>

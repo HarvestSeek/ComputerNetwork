@@ -719,6 +719,41 @@
 <p>(1).
 $\mathit{base}\in [k-\mathrm{N},k]$，$\therefore [k-\mathrm{N},k+\mathrm{N}-1]$</p>
 <p>(2). 首先，由于发送窗口的限制，初步确定 <font face="Consolas">ACK</font> 的可能取值 $[k-\mathrm{N},k-1]$。$\mathit{base}$ 的最小值为 $k-\mathrm{N}$，因此发送方最近收到的 <font face="Consolas">ACK</font> 的最小值是 $k-\mathrm{N}-1$；接收方一旦发送过一个 <font face="Consolas">ACK</font> 后，就不会再发送比这个 <font face="Consolas">ACK</font> 更小的 <font face="Consolas">ACK</font>，所以也可能有一个值为 $k-\mathrm{N}-1$ 的 <font face="Consolas">ACK</font> 在信道里。综上，<font face="Consolas">ACK</font> 的范围是 $[k-\mathrm{N}-1,k-1]$。</p>
+<blockquote>
+<p>如果应用层选择 <font face="Consolas">UDP</font> 作为传输层协议，则在应用层可以更好地实现对数据的控制。</br>考虑以下事实：</br>
+(1). 应用程序为什么可以对报文段中发送什么数据有更多的控制？</br>
+(2). 应用程序为什么对什么时候发送数据有更多的控制？</p>
+</blockquote>
+<p>(1). 如果使用 <font face="Consolas">TCP</font>，应用层报文会被写入 <font face="Consolas">TCP</font> 连接的发送缓存中，每个报文段因此可能封装了多于或少于一个应用层报文的内容。而如果使用 <font face="Consolas">UDP</font>，应用层传递的报文直接就是 <font face="Consolas">UDP</font> 的有效载荷。</p>
+<p>(2). 如果使用 <font face="Consolas">TCP</font>，由于流量控制和拥塞控制，应用层报文在写入发送缓存和被传递给网络层之间会有时延，而 <font face="Consolas">UDP</font> 则不会。</p>
+<blockquote>
+<p>设 $\alpha=0.125$，$\beta=0.25$，$\mathrm{EstimatedRTT}=100\mathsf{ms}$，$\mathrm{DevRTT}=5\mathsf{ms}$，在获得了一个 $\mathrm{SampleRTT}=106\mathsf{ms}$ 后，求 $\mathrm{TimeoutInterval}$。</p>
+</blockquote>
+<p>$\small\mathrm{DevRTT}=0.75×5+0.25×|106-100|=5.25\mathsf{ms}$</br>
+$\small\mathrm{EstimatedRTT}=0.875×100+0.125×106=100.75\mathsf{ms}$</br>
+$\small\mathrm{TimeoutInterval}=100.75+4×5.25=121.75\mathsf{ms}$</p>
+<blockquote>
+<p>设主机 <font face="Consolas">A</font> 向主机 <font face="Consolas">B</font> 发送编号 $1\sim 5$ 的 $5$ 个连续报文段，第二个报文段丢失，且最终 $5$ 个报文段全被主机 <font face="Consolas">B</font> 正确接收。对于 <font face="Consolas">GBN、SR</font> 和 <font face="Consolas">TCP</font>:</br>
+(1). 比较：① <font face="Consolas">A</font> 发送的报文段数；② <font face="Consolas">B</font> 发送的 <font face="Consolas">ACK</font> 数及其编号；</br>
+(2). 如果时钟的值远远大于 $5\cdot \mathrm{RTT}$，哪个协议交付 $5$ 个报文段所用时间最短。</p>
+</blockquote>
+<p>(1).</br>
+<font face="Consolas">GBN</font>：<font face="Consolas">9; 8; 1, 2(4), 3, 4, 5.</font></br>
+<font face="Consolas">SR</font>：<font face="Consolas">6; 5; 1, 3, 4, 5, 2.</font></br>
+<font face="Consolas">TCP</font>：<font face="Consolas">6; 5; 2(4), 6.</font></p>
+<p>(2). <font face="Consolas">TCP: Fast Retransmit</font>.</p>
+<p><img align=right src="/ComputerNetwork/img/P/3/round.png" height=200></p>
+<blockquote>
+<p>一个使用快速恢复的 <font face="Consolas">TCP</font> 经历了如右图所示的过程。</br>
+(1). 求在第 $1$ 个 <font face="Consolas">round</font> 和 第 $24$ 个 <font face="Consolas">round</font> 中的 $\mathsf{ssthresh}$ 的值；</p>
+</blockquote>
+<p>(1). $32$；$\lfloor 29/2 \rfloor=14$。</p>
+<blockquote>
+<p>主机 <font face="Consolas">A</font> 通过一条 <font face="Consolas">TCP</font> 连接向 <font face="Consolas">B</font> 发送一个大文件，且该连接不会发生分组丢失。假设 <font face="Consolas">A</font> 的接入带宽为 $R\ \mathsf{bps}$，<font face="Consolas">A</font> 向套接字传输数据速率的上限为 $S=10\cdot R$，发送缓存只能容纳这个文件的百分之一，接收缓存可以容纳整个文件。如何避免发送方以速率 $S$ 向套接字发送数据：能用流量控制吗？能用拥塞控制吗？如果不能，应该使用什么机制？</p>
+</blockquote>
+<p>接收缓存可以容纳整个文件：无法使用拥塞控制；</br>
+不会有分组丢失，无法通过拥塞控制抑制发送速率。</br>
+解决的办法只是简单地通过判断发送缓存是否已满抑制发送速率。</p>
 <p></font></p>
                 
                   
