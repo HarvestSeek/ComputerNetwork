@@ -717,8 +717,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/transportlayer/" title="Transport Layer" class="md-nav__link">
-      Transport Layer
+    <a href="../../0-ProblemSets/transportlayer/" title="I Transport Layer" class="md-nav__link">
+      I Transport Layer
     </a>
   </li>
 
@@ -729,8 +729,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/networklayer/" title="Network Layer" class="md-nav__link">
-      Network Layer
+    <a href="../../0-ProblemSets/networklayer/" title="II Network Layer" class="md-nav__link">
+      II Network Layer
     </a>
   </li>
 
@@ -741,8 +741,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/linklayer/" title="Link Layer" class="md-nav__link">
-      Link Layer
+    <a href="../../0-ProblemSets/linklayer/" title="III Link Layer" class="md-nav__link">
+      III Link Layer
     </a>
   </li>
 
@@ -840,7 +840,7 @@
 </html>
 &emsp;因此，<font face="Consolas">C/S</font> 结构的分发时间至少为
 $$
-D_{c/s}\geq \max \lbrace \frac{NF}{u_s}, \frac{F}{d_{min}} \rbrace 
+D_{c/s}\geq \max \bigg\lbrace \frac{NF}{u_s}, \frac{F}{d_{min}} \bigg\rbrace 
 $$
 &emsp;服务器可以调度它的传输方式，取得这个下界值。</br>
 &emsp;对于足够大的 $N$，$D_{c/s}$ 由 $NF/u_s$ 决定，并随着 $N$ 线性增加。</p>
@@ -856,11 +856,11 @@ $$
 </html>
 &emsp;因此，<font face="Consolas">P2P</font> 结构的分发时间至少为
 $$
-D_{P2P}\geq \max \lbrace \frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s+\sum_1^N u_i} \rbrace
+D_{P2P}\geq \max \bigg\lbrace \frac{F}{u_s}, \frac{F}{d_{min}}, \frac{NF}{u_s+\sum_1^N u_i} \bigg\rbrace
 $$
 &emsp;如果假设每个对等方每收到一个比特就能分发这个比特，则存在一种分发方案取得这个下界。</br></p>
 <p><img align=right src="/ComputerNetwork/img/2-ApplicationLayer/2.5/comp.png" height=220 title="mininum distribution time: c/s vs p2p">
-&emsp;假设所有对等方上传速率相同，均为 $u$，并且 $F/u=1\mathrm{h}$，$u_s=10u$，$d_{min}\geq u_s$，$d_i$ 均足够大，大到不会对总的分发时间产生限制。<font face="Consolas">C/S</font> 和 <font face="Consolas">P2P</font> 的分发时间对比如右图所示。随着 $N$ 的增大，<font face="Consolas">C/S</font> 结构的上传压力都集中于服务器，分发时间无线增大；<font face="Consolas">P2P</font> 的分发时间无限趋近于 $1$，因为每个加入的对等方也是一个上传方。</p>
+&emsp;假设所有对等方上传速率相同，均为 $u$，并且 $F/u=1\mathrm{h}$，$u_s=10u$，$d_{min}\geq u_s$，$d_i$ 均足够大，大到不会对总的分发时间产生限制。<font face="Consolas">C/S</font> 和 <font face="Consolas">P2P</font> 的分发时间对比如右图所示。随着 $N$ 的增大，<font face="Consolas">C/S</font> 结构的上传压力都集中于服务器，分发时间无限增大；<font face="Consolas">P2P</font> 的分发时间无限趋近于 $1$，因为每个加入的对等方也是一个上传方。</p>
 <h3 id="2-p2p-bittorrent">2. <font face="Consolas">P2P</font> 应用：<font face="Consolas">BitTorrent</font></h3>
 <p>&emsp;<font face="Consolas">BitTorrent</font> 是一个流行的 <font face="Consolas">P2P</font> 协议。它的基本特点如下：
 <html> 
@@ -868,7 +868,7 @@ $$
 <ul style="margin-top:-10px;margin-bottom:10px">
 <li style="margin:1px 26px;">参与一个特定文件分发的所有对等方被称为一个洪流 (<font face="Consolas">torrent</font>)，一个 <font face="Consolas">torrent</font> 中的对等方彼此下载大小为 <font face="Consolas">256KB</font> 的文件块。一个节点获得完整的文件后，它可以选择自私地离开或无私地留下。</li>
 <li style="margin:1px 26px;">每个洪流有一个基础设施节点，称为追踪器 (<font face="Consolas">tracer</font>)，当一个对等方加入 <font face="Consolas">torrent</font>，它向 <font face="Consolas">tracer</font> 注册自己。</li>
-<li style="margin:1px 26px;">当一个新的对等方 <font face="Consolas">Alice</font> 加入该 <font face="Consolas">torrent</font>，<font face="Consolas">tracer</font> 随机从 <font face="Consolas">torrent</font> 中划分出一个子集，并把子集中所有对等方的 <font face="Consolas">IP</font> 发送给 <font face="Consolas">Alice</font>，自己中的对等方称为邻居。<font face="Consolas">Alice</font> 持有这些邻居的列表，和所有邻居建立并行的 <font face="Consolas">TCP</font> 连接。邻居列表随时间动态变化。</li>
+<li style="margin:1px 26px;">当一个新的对等方 <font face="Consolas">Alice</font> 加入该 <font face="Consolas">torrent</font>，<font face="Consolas">tracer</font> 随机从 <font face="Consolas">torrent</font> 中划分出一个子集，并把子集中所有对等方的 <font face="Consolas">IP</font> 发送给 <font face="Consolas">Alice</font>，子集中的对等方称为邻居。<font face="Consolas">Alice</font> 持有这些邻居的列表，和所有邻居建立并行的 <font face="Consolas">TCP</font> 连接。邻居列表随时间动态变化。</li>
 <li style="margin:1px 26px;">在任意时刻，<font face="Consolas">torrent</font> 中每个对等方具有不同的 <font face="Consolas">chunk</font> 集合。每个对等方周期性询问它的邻居具有的块的列表，根据这个列表请求自己没有的块。因此，在某个时刻，<font face="Consolas">Alice</font> 需要作出以下两种决策：</li>
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;">
     <li style="margin:1px 46px;">请求块：通过最稀缺优先原则获取自己没有的块。其思路是，<font face="Consolas">Alice</font> 在自己没有的块中，选出在她的邻居中最稀缺的块。</li>

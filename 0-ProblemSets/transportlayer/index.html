@@ -40,7 +40,7 @@
 
     
       
-        <title>Transport Layer - Learning Notes of Computer Networking</title>
+        <title>I Transport Layer - Learning Notes of Computer Networking</title>
       
     
     
@@ -142,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Transport Layer
+                I Transport Layer
               
             </span>
           
@@ -658,8 +658,8 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
-    <a href="./" title="Transport Layer" class="md-nav__link md-nav__link--active">
-      Transport Layer
+    <a href="./" title="I Transport Layer" class="md-nav__link md-nav__link--active">
+      I Transport Layer
     </a>
     
   </li>
@@ -671,8 +671,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../networklayer/" title="Network Layer" class="md-nav__link">
-      Network Layer
+    <a href="../networklayer/" title="II Network Layer" class="md-nav__link">
+      II Network Layer
     </a>
   </li>
 
@@ -683,8 +683,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../linklayer/" title="Link Layer" class="md-nav__link">
-      Link Layer
+    <a href="../linklayer/" title="III Link Layer" class="md-nav__link">
+      III Link Layer
     </a>
   </li>
 
@@ -707,7 +707,7 @@
               
                 
                 
-                  <h1>Transport Layer</h1>
+                  <h1>I Transport Layer</h1>
                 
                 <p><font face="思源黑体 CN">
 <font face="Consolas"></font></p>
@@ -719,6 +719,11 @@
 <p>(1).
 $\mathit{base}\in [k-\mathrm{N},k]$，$\therefore [k-\mathrm{N},k+\mathrm{N}-1]$</p>
 <p>(2). 首先，由于发送窗口的限制，初步确定 <font face="Consolas">ACK</font> 的可能取值 $[k-\mathrm{N},k-1]$。$\mathit{base}$ 的最小值为 $k-\mathrm{N}$，因此发送方最近收到的 <font face="Consolas">ACK</font> 的最小值是 $k-\mathrm{N}-1$；接收方一旦发送过一个 <font face="Consolas">ACK</font> 后，就不会再发送比这个 <font face="Consolas">ACK</font> 更小的 <font face="Consolas">ACK</font>，所以也可能有一个值为 $k-\mathrm{N}-1$ 的 <font face="Consolas">ACK</font> 在信道里。综上，<font face="Consolas">ACK</font> 的范围是 $[k-\mathrm{N}-1,k-1]$。</p>
+<blockquote>
+<p>假设两台主机之间通过 <font face="Consolas">GBN</font> 协议传输数据，数据传输速率为 $16\mathsf{bps}$，单向传播时延 $270\mathsf{ms}$，数据帧长度范围 $128\sim 512$ 字节，且接收方总是以等长的帧发送确认。为使此情况下的信道利用率最高，帧序列的比特数至少为 <u>&emsp;&emsp;</u></p>
+</blockquote>
+<p>不论数据帧怎么变化，信道利用率都要达到最高，因此数据帧大小取 $\small 128$ 字节。</br>
+$\lceil 1+540/64+1 \rceil=\lceil 10.4 \rceil=11$，因此结果为 $4$。</p>
 <blockquote>
 <p>如果应用层选择 <font face="Consolas">UDP</font> 作为传输层协议，则在应用层可以更好地实现对数据的控制。</br>考虑以下事实：</br>
 (1). 应用程序为什么可以对报文段中发送什么数据有更多的控制？</br>
@@ -754,6 +759,15 @@ $\small\mathrm{TimeoutInterval}=100.75+4×5.25=121.75\mathsf{ms}$</p>
 <p>接收缓存可以容纳整个文件：无法使用拥塞控制；</br>
 不会有分组丢失，无法通过拥塞控制抑制发送速率。</br>
 解决的办法只是简单地通过判断发送缓存是否已满抑制发送速率。</p>
+<blockquote>
+<p>一个客户端与一个 <font face="Consolas">Web</font> 服务器间直连一条速率为 $R$ 的链路。假设客户端要取回一个大小为 $\small\mathrm{15S}$ 的对象，其中 $\small\mathrm{S}$ 为最大段长度 ($\small\mathrm{MSS}$)。忽略协议头部大小，考虑 <font face="Consolas">TCP</font> 慢启动阶段的时延，计算在下列情况下取回对象所需的时间：</br>
+(1). $\small\mathrm{RTT} &lt; \mathrm{S/R}$;</br>
+(2). $\small\mathrm{S/R} &lt; \mathrm{RTT} &lt; \mathrm{3\cdot S/R}$;</br>
+(3). $\small\mathrm{RTT}&gt;\mathrm{3\cdot S/R}$</p>
+</blockquote>
+<p>(1). $\small\mathrm{3\cdot RTT+15\cdot S/R}$</br>
+(2). $\small\mathrm{4\cdot RTT+14\cdot S/R}$</br>
+(3). $\small\mathrm{5\cdot RTT+11\cdot S/R}$</p>
 <p></font></p>
                 
                   
@@ -790,13 +804,13 @@ $\small\mathrm{TimeoutInterval}=100.75+4×5.25=121.75\mathsf{ms}$</p>
           </a>
         
         
-          <a href="../networklayer/" title="Network Layer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../networklayer/" title="II Network Layer" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Network Layer
+                II Network Layer
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

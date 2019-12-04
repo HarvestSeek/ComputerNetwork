@@ -772,8 +772,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/transportlayer/" title="Transport Layer" class="md-nav__link">
-      Transport Layer
+    <a href="../../0-ProblemSets/transportlayer/" title="I Transport Layer" class="md-nav__link">
+      I Transport Layer
     </a>
   </li>
 
@@ -784,8 +784,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/networklayer/" title="Network Layer" class="md-nav__link">
-      Network Layer
+    <a href="../../0-ProblemSets/networklayer/" title="II Network Layer" class="md-nav__link">
+      II Network Layer
     </a>
   </li>
 
@@ -796,8 +796,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../0-ProblemSets/linklayer/" title="Link Layer" class="md-nav__link">
-      Link Layer
+    <a href="../../0-ProblemSets/linklayer/" title="III Link Layer" class="md-nav__link">
+      III Link Layer
     </a>
   </li>
 
@@ -990,11 +990,22 @@
 <div align=center>
 <img src="/ComputerNetwork/img/3-TransportLayer/3.2/8rdt30senderfsm.png" height=400></br>
 </div></p>
-<p>&emsp;从 <font face="Consolas">Rdt3.0</font> 的 <font face="Consolas">FSM</font> 中可以看到，发送方由于数据错误需要执行的重传，都通过超时需要的重传执行。其意义在于：如果发送方在检错后直接重传，虽然 <font face="Consolas">Rdt3.0</font> 也可以正常工作，但如果定时器的时长设置得相对较短，大量的超时重传又会引发大量不必要的纠错重传。</p>
-<p>&emsp;定义信道的利用率为：传输数据与总的发送时间之比。停-等协议信道利用率为$\frac{L/R}{\mathrm{RTT}+L/R}$。 <font face="Consolas">Rdt3.0</font> 可以正确工作，但性能很差。</p>
+<p>&emsp;在 <font face="Consolas">Rdt3.0</font> 中，发送方重传的原因总结如下：
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">① 传输的分组发生位错误；</li>
+<li style="margin:1px 26px;">② 接收方返回的 <font face="Consolas">ACK</font> 损坏；</li>
+<li style="margin:1px 26px;">③ 数据包丢失，超时；k</li>
+<li style="margin:1px 26px;">④ 数据包未丢失，但定时器设置过短。</li>
+</ul>
+</body>
+</html>
+&emsp;从 <font face="Consolas">Rdt3.0</font> 的 <font face="Consolas">FSM</font> 中可以看到，发送方由于其他原因需要执行的重传，都通过超时需要的重传执行。其意义在于：如果发送方直接重传，虽然 <font face="Consolas">Rdt3.0</font> 也可以正常工作，但如果定时器设置过短，由 ①② 引起的重传随后会导致大量不必要的超时重传。</p>
+<p>&emsp;定义信道的利用率为：传输数据用的时间与总的发送时间之比。停-等协议信道利用率则为 $$\frac{L/R}{\mathrm{RTT}+L/R}$$ <font face="Consolas">Rdt3.0</font> 可以正确工作，但性能很差。</p>
 <h3 id="2">2. 滑动窗口协议</h3>
 <h4 id="1_2">(1). 概述</h4>
-<p>&emsp;针对停-等协议利用率低的原因，利用流水线机制，允许发送方在收到 <font face="Consolas">ACK</font> 之前连续发送多个分组，此时利用率变为 $\frac{n×L/R}{\mathrm{RTT}+L/R}$。相应地，需要更大的序列号范围，同时发送方和接收方也需要更大的缓存空间。</br>
+<p>&emsp;针对停-等协议利用率低的原因，利用流水线机制，允许发送方在收到 <font face="Consolas">ACK</font> 之前连续发送多个分组。因此利用率为 $$\frac{n×L/R}{\mathrm{RTT}+L/R}$$ 其中 $n$ 的值取决于窗口大小和 $\small \mathrm{RTT}$ 的大小。</br>
 &emsp;下面介绍两种滑动窗口协议 (<font face="Consolas">sliding-window protocol</font>)。</p>
 <h4 id="2-gbn-go-back-n">(2). <font face="Consolas">GBN</font> 协议 (<font face="Roboto">Go-Back-N</font>)</h4>
 <div align=center><img src="/ComputerNetwork/img/3-TransportLayer/3.2/9gbn1.png"></div>
