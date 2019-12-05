@@ -797,6 +797,15 @@ $\small\mathrm{TimeoutInterval}=100.75+4×5.25=121.75\mathsf{ms}$</p>
 <font face="Consolas">SR</font>：<font face="Consolas">6; 5; 1, 3, 4, 5, 2.</font></br>
 <font face="Consolas">TCP</font>：<font face="Consolas">6; 5; 2(4), 6.</font></p>
 <p>(2). <font face="Consolas">TCP: Fast Retransmit</font>.</p>
+<blockquote>
+<p>假设 <font face="Consolas">A、B</font> 两个端系统通过唯一的一条 <font face="Consolas">8Mbps</font> 链路连接，该链路的双向传播时延是 <font face="Consolas">150ms</font>；<font face="Consolas">A</font> 通过一个 <font face="Consolas">TCP</font> 连接向 <font face="Consolas">B</font> 发送一个大文件，<font face="Consolas">B</font> 的接收缓存足够大，每个 <font face="Consolas">TCP</font> 段最大段长度 (<font face="Consolas">MSS</font>) 为 <font face="Consolas">1500</font> 字节，<font face="Consolas">TCP</font> 采用 <font face="Consolas">Reno</font> 版本，且总是处于拥塞避免阶段 (即忽略慢启动)。</br>
+(1).该 <font face="Consolas">TCP</font> 连接能够获得的最大窗口尺寸 (以 <font face="Consolas">TCP</font> 段数计) 是多少？</br>
+(2).该 <font face="Consolas">TCP</font> 连接的平均窗口尺寸 (以 <font face="Consolas">TCP</font> 段数计) 和平均吞吐量 (以 <font face="Consolas">bps</font> 计) 是多少？</br>
+(3).该 <font face="Consolas">TCP</font> 连接的拥塞窗口从发生丢包到恢复到最大窗口尺寸要经历多长时间？</p>
+</blockquote>
+<p>(1). $\small\mathrm{W\cdot MSS/RTT\leq R}=8\mathsf{Mbps}, \mathrm{W=100}$</br>
+(2). $\small\mathrm{W'=0.75W=75}$，平均吞吐量 $\small\mathrm{=75×1500×8/0.15=6}\mathsf{Mbps}$</br>
+(3). $\small\mathrm{0.5×100/2=7.5s}$</p>
 <p><img align=right src="/ComputerNetwork/img/P/3/round.png" height=200></p>
 <blockquote>
 <p>一个使用快速恢复的 <font face="Consolas">TCP</font> 经历了如右图所示的过程。</br>
@@ -806,7 +815,7 @@ $\small\mathrm{TimeoutInterval}=100.75+4×5.25=121.75\mathsf{ms}$</p>
 <blockquote>
 <p>主机 <font face="Consolas">A</font> 通过一条 <font face="Consolas">TCP</font> 连接向 <font face="Consolas">B</font> 发送一个大文件，且该连接不会发生分组丢失。假设 <font face="Consolas">A</font> 的接入带宽为 $R\ \mathsf{bps}$，<font face="Consolas">A</font> 向套接字传输数据速率的上限为 $S=10\cdot R$，发送缓存只能容纳这个文件的百分之一，接收缓存可以容纳整个文件。如何避免发送方以速率 $S$ 向套接字发送数据：能用流量控制吗？能用拥塞控制吗？如果不能，应该使用什么机制？</p>
 </blockquote>
-<p>接收缓存可以容纳整个文件：无法使用拥塞控制；</br>
+<p>接收缓存可以容纳整个文件：无法使用流量控制；</br>
 不会有分组丢失，无法通过拥塞控制抑制发送速率。</br>
 解决的办法只是简单地通过判断发送缓存是否已满抑制发送速率。</p>
 <blockquote>
