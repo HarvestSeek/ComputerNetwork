@@ -344,8 +344,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../2-ApplicationLayer/2.3/" title="3.Electronic Email" class="md-nav__link">
-      3.Electronic Email
+    <a href="../../2-ApplicationLayer/2.3/" title="3.Electronic Mail" class="md-nav__link">
+      3.Electronic Mail
     </a>
   </li>
 
@@ -643,11 +643,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
     
     <label class="md-nav__link" for="nav-8">
-      VI Wireless And Mobilte Net
+      VI Wireless And Mobile Net
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-8">
-        VI Wireless And Mobilte Net
+        VI Wireless And Mobile Net
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -696,6 +696,60 @@
   <a href="#1-mathrm80211" title="1. $\mathrm{802.11}$ 标准" class="md-nav__link">
     1. $\mathrm{802.11}$ 标准
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 信道与关联" class="md-nav__link">
+    2. 信道与关联
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mathrm80211_1" title="(1). $\mathrm{802.11}$ 结构" class="md-nav__link">
+    (1). $\mathrm{802.11}$ 结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" title="(2). 关联" class="md-nav__link">
+    (2). 关联
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mathrm80211-mac" title="3. $\mathrm{802.11}$ MAC 协议" class="md-nav__link">
+    3. $\mathrm{802.11}$ MAC 协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="(1). 确认机制" class="md-nav__link">
+    (1). 确认机制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 处理隐藏终端" class="md-nav__link">
+    (2). 处理隐藏终端
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -800,6 +854,60 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#2" title="2. 信道与关联" class="md-nav__link">
+    2. 信道与关联
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mathrm80211_1" title="(1). $\mathrm{802.11}$ 结构" class="md-nav__link">
+    (1). $\mathrm{802.11}$ 结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" title="(2). 关联" class="md-nav__link">
+    (2). 关联
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mathrm80211-mac" title="3. $\mathrm{802.11}$ MAC 协议" class="md-nav__link">
+    3. $\mathrm{802.11}$ MAC 协议
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" title="(1). 确认机制" class="md-nav__link">
+    (1). 确认机制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" title="(2). 处理隐藏终端" class="md-nav__link">
+    (2). 处理隐藏终端
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -856,7 +964,86 @@
 </tr>
 </table>
 </body></p>
-<p></font></p>
+<h3 id="2">2. 信道与关联</h3>
+<p><img src="/ComputerNetwork/img/6-Wireless/6.2/stru.png" align=right height=260></p>
+<h4 id="1-mathrm80211_1">(1). $\mathrm{802.11}$ 结构</h4>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">基本服务集 (<font face="Calibri">Basic Service Set, BSS</font>)：<font face="Consolas">802.11</font> 的基本模块，描述一组相互通信的移动设备 (无线站点)。可以不包含 <font face="Consolas">AP</font>。</li>
+<li style="margin:1px 26px;">接入点 (<font face="Calibri">Access Point, AP</font>)：<font face="Consolas">BSS</font> 的中央基站。每个移动设备和 <font face="Consolas">AP</font> 的无线接口都具有一个 $6$ 字节的 <font face="Consolas">MAC</font> 地址，存储于 <font face="Consolas">802.11 NIC</font> 中。</li>
+</ul>
+</body>
+</html></p>
+<h4 id="2_1">(2). 关联</h4>
+<p>&emsp;以 <font face="Consolas">802.11b</font> 为例，当网络管理员在安装一个 <font face="Consolas">AP</font>，需要首先为这个 <font face="Consolas">AP</font> 配置：
+<html> 
+<body>
+<ul style="margin-top:-17px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">服务集标识符 (<font face="Calibri">Service Set Identifier, SSID</font>)：标识 <font face="Consolas">AP</font>；</li>
+<li style="margin:1px 26px;">信道号：<font face="Consolas">802.11b</font> 把频段 <font face="Consolas">2.4 ~ 2.4835GHz</font> 划分为 <font face="Consolas">11</font> 个信道，且相邻信道的频段有重叠。每个 <font face="Consolas">AP</font> 需要选择一个频率 (信道)，相近的 <font face="Consolas">AP</font> 如果选择了相邻或相同的频率，可能会产生干扰。</li>
+</ul>
+</body>
+</html>
+&emsp;随后，假设一个无线设备处于多个 <font face="Consolas">BSS</font> 重叠的一个区域，那么它需要选择一个 <font face="Consolas">AP</font> 进行关联，才能开始通信：
+<html> 
+<body>
+<ul style="margin-top:0px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">被动扫描</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 46px;"><font face="Consolas">802.11</font> 标准要求每个 <font face="Consolas">AP</font> 周期性发送信标帧 (<font face="Calibri">beacon frame</font>)，信标帧内包含该 <font face="Consolas">AP</font> 的 <font face="Consolas">SSID</font> 和 <font face="Consolas">MAC</font> 地址；</li>
+    <li style="margin:1px 46px;">无线设备扫描所有 <font face="Consolas">11</font> 个信道，找出当前位置所有可用的 <font face="Consolas">AP</font>。</li>
+    </ul>
+<img src="/ComputerNetwork/img/6-Wireless/6.2/scan.png" height=240 align=right>
+<li style="margin:1px 26px;">主动扫描</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 46px;">无线主机向范围内所有 <font face="Consolas">AP</font> 发送广播探测帧；</li>
+    <li style="margin:1px 46px;"><font face="Consolas">AP</font> 应答一个探测响应帧。</li>
+    </ul>
+</ul>
+</body>
+</html>
+&emsp;在完成一种扫描过程后，无线设备选择一个 <font face="Consolas">AP</font> 创建关联，向 <font face="Consolas">AP</font> 发送一个关联请求帧，随后 <font face="Consolas">AP</font> 会回应一个关联响应帧。关联完成以后，即无线设备希望加入 <font face="Consolas">AP</font> 所属的子网中，通常通过关联主机发送 <font face="Consolas">DHCP</font> 报文实现。</p>
+<h3 id="3-mathrm80211-mac">3. $\mathrm{802.11}$ <font face="Consolas">MAC</font> 协议</h3>
+<p>&emsp;前面的章节提到过，由于无线链路的特性，无法实现 <font face="Consolas">CSMA/CD</font> 的“边发边听”机制。在 <font face="Consolas">802.11</font> 中，使用带有冲突避免的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CA</font>) 作为 <font face="Consolas">MAC</font> 协议，。</p>
+<h4 id="1">(1). 确认机制</h4>
+<p>&emsp;由于无线链路的特性，某个帧可能出于多种原因不能无损地到达目的站点，因此 <font face="Consolas">802.11</font> <font face="Consolas">MAC</font> 使用了确认机制。具体过程如下：
+<img src="/ComputerNetwork/img/6-Wireless/6.2/ack.png" height=300 align=right>
+<html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">①<sub>(a).</sub> 如果某站点开始时监听到信道空闲，它等待一个 $\small \mathrm{DIFS}$ 时间段后开始发送帧。</li>
+<li style="margin:1px 26px;">①<sub>(b).</sub> 如果监听到信道忙，随机选取一个回退值；当监听到信道空闲，定时器以这个回退值为初值开始递减，结束时发送帧。</li>
+<li style="margin:1px 26px;">② 接收方收到帧且帧通过了 <font face="Consolas">CRC</font> 校验后，接收方等待一个 $\small \mathrm{SIFS}$ ($\small\mathrm{DIFS&gt;SIFS})$ 时间段后发送一个确认帧。</li>
+<li style="margin:1px 26px;">③ 最后，如果发送方收到确认帧，则它确定帧被正确接受，然后发送其他的帧；如果计时器超时，没有收到确认帧，那么发送方增加退避值的范围，然后回到 ①<sub>(b).</sub>。</li>
+</ul>
+</body>
+</html>
+&emsp;由于无线链路的特性，如果出现发送时冲突，发送方也不得不把这个帧完全传输，因此 <font face="Consolas">CSMA/CA</font> 的思路就在于尽量避免冲突的发生。假设主机 <font face="Consolas">B</font> 正在占用信道，主机 <font face="Consolas">A</font> 和主机 <font face="Consolas">C</font> 都监听到信道忙，因此它们进入随机回退；如果回退的值不同，那么在 <font face="Consolas">B</font> 传输完成后就会有一方先进行传输，另一方冻结它的计时器，重复退避的过程，因而达到了尽量避免冲突的效果。</br>
+&emsp;但如果主机 <font face="Consolas">A</font> 和 主机 <font face="Consolas">C</font> 之间不可见 (如：被障碍物阻隔) 或它们选择了相同的退避值，则冲突仍然会发生。</p>
+<h4 id="2_2">(2). 处理隐藏终端</h4>
+<p>&emsp;隐藏终端问题即：两台主机对 <font face="Consolas">AP</font> 均可见，但它们之间互相不可见，如果有一方占用信道另一方则无法探测到，因而可能会导致冲突造成的浪费。</br>
+&emsp;<font face="Consolas">802.11</font> 通过短请求发送控制帧 (<font face="Calibri">Request to Send, RTS</font>) 和短允许发送控制帧 (<font face="Calibri">Clear to Send,CTS</font>) 实现对信道的预约：
+<img src="/img/6-Wireless/6.2/hidden.png" align=right height=400>
+<html> 
+<body>
+<ul style="margin-top:-14px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">发送方发送 <font face="Consolas">DATA</font> 帧之前，广播一个 <font face="Consolas">RTS</font> 帧，指示传输 <font face="Consolas">DATA</font> 帧和 <font face="Consolas">ACK</font> 帧需要的时间；</li>
+<li style="margin:1px 26px;"><font face="Consolas">AP</font> 接收这个帧，然后广播一个 <font face="Consolas">CTS</font> 帧，此帧给予发送方许可，并指示其他主机在预约时间内不要发送。</li>
+</ul>
+</body>
+</html></p>
+<p>&emsp;基于 <font face="Consolas">RTS</font> 和 <font face="Consolas">CTS</font> 的策略的核心之处在于：
+<html> 
+<body>
+<ul style="margin-top:-15px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">解决了隐藏终端问题；</li>
+<li style="margin:1px 26px;">由于 <font face="Consolas">RTS</font> 和 <font face="Consolas">CTS</font> 帧较短，<font face="Consolas">RTS</font> 帧和 <font face="Consolas">CTS</font> 帧涉及的冲突的时间也较短。</li>
+</ul>
+</body>
+</html>
+&emsp;尽管 <font face="Consolas">RTS</font> 和 <font face="Consolas">CTS</font> 降低了碰撞，但它同样引入了时延并消耗了信道资源。在实际使用中，每个无线站点通常设置一个门限值，仅当帧长超过门限值时，才使用 <font face="Consolas">RTS/CTS</font> 序列。
+</font></p>
                 
                   
                 
