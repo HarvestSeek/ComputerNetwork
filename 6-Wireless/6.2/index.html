@@ -1005,7 +1005,7 @@
 </html>
 &emsp;在完成一种扫描过程后，无线设备选择一个 <font face="Consolas">AP</font> 创建关联，向 <font face="Consolas">AP</font> 发送一个关联请求帧，随后 <font face="Consolas">AP</font> 会回应一个关联响应帧。关联完成以后，即无线设备希望加入 <font face="Consolas">AP</font> 所属的子网中，通常通过关联主机发送 <font face="Consolas">DHCP</font> 报文实现。</p>
 <h3 id="3-mathrm80211-mac">3. $\mathrm{802.11}$ <font face="Consolas">MAC</font> 协议</h3>
-<p>&emsp;前面的章节提到过，由于无线链路的特性，无法实现 <font face="Consolas">CSMA/CD</font> 的“边发边听”机制。在 <font face="Consolas">802.11</font> 中，使用带有冲突避免的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CA</font>) 作为 <font face="Consolas">MAC</font> 协议。</p>
+<p>&emsp;前面的章节提到过，由于无线链路的特性 (以及下面将要提到的主机不可见问题)，无法实现 <font face="Consolas">CSMA/CD</font> 的“边发边听”机制。在 <font face="Consolas">802.11</font> 中，使用带有冲突避免的 <font face="Consolas">CSMA</font> (<font face="Consolas">CSMA/CA</font>) 作为 <font face="Consolas">MAC</font> 协议。</p>
 <h4 id="1">(1). 确认机制</h4>
 <p>&emsp;由于无线链路的特性，某个帧可能出于多种原因不能无损地到达目的站点，因此 <font face="Consolas">802.11</font> <font face="Consolas">MAC</font> 使用了确认机制。具体过程如下：
 <img src="/ComputerNetwork/img/6-Wireless/6.2/ack.png" height=300 align=right>
