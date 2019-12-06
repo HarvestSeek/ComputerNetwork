@@ -1015,7 +1015,7 @@
 <li style="margin:1px 26px;">①<sub>(a).</sub> 如果某站点开始时监听到信道空闲，它等待一个 $\small \mathrm{DIFS}$ 时间段后开始发送帧。</li>
 <li style="margin:1px 26px;">①<sub>(b).</sub> 如果监听到信道忙，随机选取一个回退值；当监听到信道空闲，定时器以这个回退值为初值开始递减，结束时发送帧。</li>
 <li style="margin:1px 26px;">② 接收方收到帧且帧通过了 <font face="Consolas">CRC</font> 校验后，接收方等待一个 $\small \mathrm{SIFS}$ ($\small\mathrm{DIFS&gt;SIFS})$ 时间段后发送一个确认帧。</li>
-<li style="margin:1px 26px;">③ 最后，如果发送方收到确认帧，则它确定帧被正确接受，然后发送其他的帧；如果计时器超时，没有收到确认帧，那么发送方增加退避值的范围，然后回到 ①<sub>(b).</sub>。</li>
+<li style="margin:1px 26px;">③ 最后，如果发送方收到确认帧，则它确定帧被正确接收，然后发送其他的帧；如果计时器超时，没有收到确认帧，那么发送方增加退避值的范围，然后回到 ①<sub>(b).</sub>。</li>
 </ul>
 </body>
 </html>
@@ -1036,7 +1036,7 @@
 &emsp;基于 <font face="Consolas">RTS</font> 和 <font face="Consolas">CTS</font> 的策略的核心之处在于：
 <html> 
 <body>
-<ul style="margin-top:-15px;margin-bottom:10px;line-height:30px;">
+<ul style="margin-top:0px;margin-bottom:10px;line-height:30px;">
 <li style="margin:1px 26px;">解决了隐藏终端问题；</li>
 <li style="margin:1px 26px;">由于 <font face="Consolas">RTS</font> 和 <font face="Consolas">CTS</font> 帧较短，<font face="Consolas">RTS</font> 帧和 <font face="Consolas">CTS</font> 帧涉及的冲突的时间也较短。</li>
 </ul>
