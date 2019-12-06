@@ -1008,12 +1008,13 @@
  C: QUIT
  S: 221 hamburger.edu closing connection</font>
 </pre>
-&emsp;在这个例子中，邮件服务器 <font face="Consolas">crepes.fr</font> 向邮件服务器 <font face="Consolas">hamburger.edu</font> 发送了一段报文“<font face="Rototo" size=2>Do you like ketchup? How about pickles?</font>”。<font face="Consolas">SMTP</font> 客户端在整个过程中发送了五个命令：<font face="Consolas">HELO、MAIL FROM、RCPT TO、DATA、QUIT</font>，服务器对这些命令作出回答，包含回答码和可选的解释。客户端发送一个只有“.”的行 (对应于 <font face="Consolas">ASCII</font> 码的 <font face="Consolas">CLRF.CLRF</font>)，指示断开连接。</p>
+&emsp;在这个例子中，邮件服务器 <font face="Consolas">crepes.fr</font> 向邮件服务器 <font face="Consolas">hamburger.edu</font> 发送了一段报文“<font face="Rototo" size=2>Do you like ketchup? How about pickles?</font>”。<font face="Consolas">SMTP</font> 客户端在整个过程中发送了五个命令：<font face="Consolas">HELO、MAIL FROM、RCPT TO、DATA、QUIT</font>，服务器对这些命令作出回答，包含回答码和可选的解释。客户端通过 <font face="Consolas">DATA</font> 指示开始传输报文，并以一个只有“.”的行 (对应于 <font face="Consolas">ASCII</font> 码的 <font face="Consolas">CLRF.CLRF</font>)，指示该过程结束。</p>
 <h4 id="2-http">(2). 与 <font face="Consolas">HTTP</font> 的对比</h4>
 <p><html> 
 <body>
 <ul style="margin-top:-10px;margin-bottom:10px">
 <li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 是拉式协议，用户从服务器拉取数据；<font face="Consolas">SMTP</font> 是推式协议，发起 <font face="Consolas">TCP</font> 连接的 <font face="Consolas">SMTP</font> 服务器把文件推向接收服务器。</li>
+<li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 是“请求-响应”模式，而 <font face="Consolas">SMTP</font> 是“命令-响应”模式。</li>
 <li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 的二进制数据无需进行编码解码。</li>
 <li style="margin:1px 26px;"><font face="Consolas">HTTP</font> 把对象封装到自己的相应报文中，<font face="Consolas">SMTP</font> 把所有的东西封装到一个报文中。</li>
 </ul>
