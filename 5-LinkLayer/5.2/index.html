@@ -865,8 +865,6 @@
 <font face="Consolas"></font></p>
 <h3 id="1">1. 差错检测与纠正</h3>
 <p><img align=right src="/ComputerNetwork/img/5-LinkLayer/5.2/edc.png" height=220></p>
-<p><img src="..\..\img\5-LinkLayer\5.2\edc.png" alt="dtt" />dd</p>
-<p><img src="..\gmi\lar.png" alt="dtt" />ee</p>
 <p>&emsp;链路层提供差错检测与纠正服务，其基本原理为：发送方通过差错检测纠正比特 <font face="Consolas"><em>EDC</em></font> 加强数据 <font face="Consolas"><em>D</em></font>，接收方通过收到的可能发生变化的 <font face="Consolas"><em>EDC'</em></font> 和 <font face="Consolas"><em>D'</em></font>，判断 <font face="Consolas"><em>D'</em></font> 是否与 <font face="Consolas"><em>D</em></font> 相同。</br>
 &emsp;即便使用了 <font face="Consolas"><em>EDC</em></font>，接收方也可能无法发现比特翻转，因此，采用的检测机制要使这种情况发生的概率尽可能小。一般而言，差错检测与纠正机制越复杂，需要的计算开销也就越大。</br>
 &emsp;下面介绍一些基本的差错检测技术。</p>
